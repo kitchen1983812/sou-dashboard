@@ -19,6 +19,7 @@ export const TABS: TabDef[] = [
   { id: "comparison", label: "年度比較", title: "年度比較" },
   { id: "report", label: "ブランド別", title: "ブランド別" },
   { id: "googleAds", label: "Google広告", title: "Google広告パフォーマンス" },
+  { id: "weeklyReport", label: "週次レポート", title: "週次レポート" },
 ];
 
 // --- ステータス定数 ---
@@ -106,6 +107,7 @@ export function getDateRangeForTab(tabId: TabId): { start: Date; end: Date } {
     case "comparison":
     case "report":
     case "googleAds":
+    case "weeklyReport":
       return {
         start: new Date(2020, 3, 1),
         end: now,
@@ -518,4 +520,91 @@ export function getUniqueValues(
     if (val) values.add(val);
   }
   return Array.from(values).sort();
+}
+
+// --- 週次レポート用ユーティリティ（水曜始まり〜火曜終了） ---
+
+/** 指定日が含まれる週の水曜日を取得する（水曜始まり） */
+export function getWeekStart(date: Date): Date {
+  const d = new Date(date);
+  const day = d.getDay(); // 0=Sun, 1=Mon, 2=Tue, 3=Wed, ...
+  // 水曜(3)を基準にオフセットを計算
+  const diff = day >= 3 ? day - 3 : day + 4; // 水曜からの経過日数
+  d.setDate(d.getDate() - diff);
+  d.setHours(0, 0, 0, 0);
+  return d;
+}
+
+/** 水曜日から火曜日 23:59:59 を取得する */
+export function getWeekEnd(wednesday: Date): Date {
+  const d = new Date(wednesday);
+  d.setDate(d.getDate() + 6);
+  d.setHours(23, 59, 59, 999);
+  return d;
+}
+
+/** 前週の水曜日を取得する */
+export function getPrevWeekStart(wednesday: Date): Date {
+  const d = new Date(wednesday);
+  d.setDate(d.getDate() - 7);
+  d.setHours(0, 0, 0, 0);
+  return d;
+}
+
+/** 週ラベルを "M/D(水)〜M/D(火)" 形式で返す */
+export function formatWeekLabel(wednesday: Date): string {
+  const tuesday = new Date(wednesday);
+  tuesday.setDate(tuesday.getDate() + 6);
+  const m1 = wednesday.getMonth() + 1;
+  const d1 = wednesday.getDate();
+  const m2 = tuesday.getMonth() + 1;
+  const d2 = tuesday.getDate();
+  return `${m1}/${d1}(水)〜${m2}/${d2}(火)`;
+}
+
+/** 直近N週の水曜日配列（新しい順） */
+export function getRecentWeeks(n: number = 12): Date[] {
+  const today = new Date();
+  const thisWed = getWeekStart(today);
+  const weeks: Date[] = [];
+  for (let i = 0; i < n; i++) {
+    const d = new Date(thisWed);
+    d.setDate(d.getDate() - 7 * i);
+    d.setHours(0, 0, 0, 0);
+    weeks.push(d);
+  }
+  return weeks;
+}
+
+/** 週次差分を計算する（絶対差 + direction） */
+export function computeWeeklyDiff(
+  current: number,
+  prev: number
+): { diff: number; direction: "up" | "down" | "none" } {
+  const diff = current - prev;
+  return {
+    diff,
+    direction: diff > 0 ? "up" : diff < 0 ? "down" : "none",
+  };
+}
+
+/** 子供の年齢を計算する（0歳児フィルタ用） */
+export function computeChildAge(
+  birthYear: string,
+  birthMonth: string,
+  postDate: string
+): number | null {
+  if (!birthYear || !birthMonth) return null;
+  const by = parseInt(birthYear, 10);
+  const bm = parseInt(birthMonth, 10);
+  if (isNaN(by) || isNaN(bm)) return null;
+
+  const d = parseDate(postDate);
+  if (!d) return null;
+
+  let ageY = d.getFullYear() - by;
+  const ageM = d.getMonth() + 1 - bm;
+  if (ageM < 0) ageY--;
+  if (ageY < 0) return null;
+  return ageY;
 }

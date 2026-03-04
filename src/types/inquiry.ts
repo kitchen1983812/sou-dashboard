@@ -46,7 +46,8 @@ export type TabId =
   | "fyMonthly"
   | "comparison"
   | "report"
-  | "googleAds";
+  | "googleAds"
+  | "weeklyReport";
 
 /** タブ定義 */
 export interface TabDef {

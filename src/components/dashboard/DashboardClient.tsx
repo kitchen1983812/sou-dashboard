@@ -33,6 +33,7 @@ import StatusBreakdownTable from "./StatusBreakdownTable";
 import ComparisonView from "./ComparisonView";
 import CompanyReportView from "./CompanyReportView";
 import GoogleAdsView from "./GoogleAdsView";
+import WeeklyReportView from "./WeeklyReportView";
 
 interface DashboardClientProps {
   inquiries: Inquiry[];
@@ -160,7 +161,13 @@ export default function DashboardClient({ inquiries, adKeywords, adSearchQueries
           />
 
           {/* Content based on active tab */}
-          {activeTab === "googleAds" ? (
+          {activeTab === "weeklyReport" ? (
+            <WeeklyReportView
+              inquiries={filteredInquiries}
+              adKeywords={adKeywords}
+              adSearchQueries={adSearchQueries}
+            />
+          ) : activeTab === "googleAds" ? (
             <GoogleAdsView
               inquiries={filteredInquiries}
               adKeywords={adKeywords}
