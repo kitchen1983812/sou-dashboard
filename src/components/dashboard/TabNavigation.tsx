@@ -113,8 +113,8 @@ export default function TabNavigation({
                   onClick={() => onTabChange(tab.id)}
                   className={`w-full text-left px-4 py-2 text-sm transition-colors ${
                     activeTab === tab.id
-                      ? "bg-red-50 text-red-700 border-l-3 border-red-600 font-semibold"
-                      : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 border-l-3 border-transparent"
+                      ? "bg-red-50 text-red-700 border-l-[3px] border-red-600 font-semibold"
+                      : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 border-l-[3px] border-transparent"
                   }`}
                 >
                   {tab.label}
@@ -156,8 +156,8 @@ export default function TabNavigation({
                   onClick={() => onTabChange(tab.id)}
                   className={`w-full text-left px-4 py-2 text-sm transition-colors ${
                     activeTab === tab.id
-                      ? "bg-red-50 text-red-700 border-l-3 border-red-600 font-semibold"
-                      : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 border-l-3 border-transparent"
+                      ? "bg-red-50 text-red-700 border-l-[3px] border-red-600 font-semibold"
+                      : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 border-l-[3px] border-transparent"
                   }`}
                 >
                   {tab.label}

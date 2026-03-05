@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { Applicant, RecruitCost } from "@/types/recruit";
 import {
   filterApplicantsByFY,
@@ -60,6 +60,13 @@ export default function RecruitCostView({
     });
     return Array.from(fySet).sort((a, b) => b - a);
   }, [recruitCosts]);
+
+  // データに選択FYが存在しない場合、最新の有効FYに切り替え
+  useEffect(() => {
+    if (availableFYs.length > 0 && !availableFYs.includes(selectedFY)) {
+      setSelectedFY(availableFYs[0]);
+    }
+  }, [availableFYs, selectedFY]);
 
   // FYフィルタ適用
   const fyApplicants = useMemo(

@@ -62,6 +62,7 @@ export default async function DashboardPage() {
 
   const adKeywords = transformAdKeywordData(rawAdKeywords);
   const adSearchQueries = transformAdSearchQueryData(rawAdSearchQueries);
+
   const applicants = transformApplicants(rawApplicants);
   const recruitCosts = transformRecruitCosts(rawRecruitCosts);
 

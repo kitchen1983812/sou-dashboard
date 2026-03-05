@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { Applicant, RecruitCost, RecruitFilterState } from "@/types/recruit";
 import {
   filterApplicantsByFY,
@@ -84,6 +84,13 @@ export default function RecruitReportView({
     });
     return Array.from(fySet).sort((a, b) => b - a);
   }, [applicants]);
+
+  // データに選択FYが存在しない場合、最新の有効FYに切り替え
+  useEffect(() => {
+    if (availableFYs.length > 0 && !availableFYs.includes(selectedFY)) {
+      setSelectedFY(availableFYs[0]);
+    }
+  }, [availableFYs, selectedFY]);
 
   // フィルタ選択肢
   const nurseries = useMemo(
