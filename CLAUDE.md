@@ -61,4 +61,4 @@ npm run lint     # Lint
 - GOOGLE_PRIVATE_KEYの`\n`はエスケープされた文字列のまま.env.localに記述する
 - シート名変更時はAPIルート（route.ts）のデフォルト値を合わせて変更する
 - 列名変更時はtransform.tsのCOLS定数を更新する
-- Google広告シート名「【AX】Google広告パフォーマンス」は、スプレッドシート側の変更後にコード（page.tsx）を合わせて更新すること
+- Google広告シート名「【SOU】Google広告パフォーマンス」はスプレッドシート側と名称を合わせること

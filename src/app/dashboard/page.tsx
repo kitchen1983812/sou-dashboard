@@ -20,7 +20,7 @@ export default async function DashboardPage() {
         ? getSheetData("全データ", process.env.GOOGLE_SHEET_ID_FY22)
         : Promise.resolve([] as string[][]),
       adsSheetId
-        ? getSheetData("【AX】Google広告パフォーマンス", adsSheetId)
+        ? getSheetData("【SOU】Google広告パフォーマンス", adsSheetId)
         : Promise.resolve([] as string[][]),
       adsSheetId
         ? getSheetData("検索語句", adsSheetId)

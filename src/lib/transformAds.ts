@@ -1,7 +1,7 @@
 import { AdKeywordRow, AdSearchQueryRow } from "@/types/ads";
 
 /**
- * 【AX】Google広告パフォーマンスシートの列マッピング（検索キーワードレベル）
+ * 【SOU】Google広告パフォーマンスシートの列マッピング（検索キーワードレベル）
  * Headers: 日, キーワード ID, 検索キーワード, 通貨コード, 費用, 平均クリック単価,
  *          コンバージョン単価, 表示回数, クリック数, コンバージョン, ...
  */

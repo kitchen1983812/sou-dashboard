@@ -1,4 +1,4 @@
-/** 【AX】Google広告パフォーマンス - 検索キーワードレベル（費用集計用） */
+/** 【SOU】Google広告パフォーマンス - 検索キーワードレベル（費用集計用） */
 export interface AdKeywordRow {
   date: string; // YYYY-MM-DD
   keywordId: string; // キーワード ID
