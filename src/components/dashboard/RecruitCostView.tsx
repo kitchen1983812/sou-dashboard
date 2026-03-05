@@ -202,6 +202,57 @@ export default function RecruitCostView({
         </ResponsiveContainer>
       </div>
 
+      {/* 全体月次推移 */}
+      <div className="bg-white border border-gray-200 rounded-lg p-4">
+        <h3 className="text-sm font-semibold text-gray-700 mb-3">
+          全体 — 月次推移
+        </h3>
+        <ResponsiveContainer width="100%" height={280}>
+          <ComposedChart data={monthlyTrends["合計"]}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="month" tick={{ fontSize: 11 }} />
+            <YAxis
+              yAxisId="cost"
+              tick={{ fontSize: 11 }}
+              tickFormatter={(v) =>
+                v >= 10000 ? `${Math.round(v / 10000)}万` : `${v}`
+              }
+            />
+            <YAxis
+              yAxisId="hires"
+              orientation="right"
+              tick={{ fontSize: 11 }}
+            />
+            <Tooltip
+              formatter={(value: number, name: string) =>
+                name === "費用"
+                  ? `¥${value.toLocaleString()}`
+                  : name === "採用単価"
+                  ? `¥${value.toLocaleString()}`
+                  : `${value}名`
+              }
+            />
+            <Legend />
+            <Bar
+              yAxisId="cost"
+              dataKey="cost"
+              fill="#6B7280"
+              name="費用"
+              opacity={0.7}
+            />
+            <Line
+              yAxisId="hires"
+              type="monotone"
+              dataKey="hires"
+              stroke="#DC2626"
+              strokeWidth={2}
+              dot={{ r: 3 }}
+              name="入社数"
+            />
+          </ComposedChart>
+        </ResponsiveContainer>
+      </div>
+
       {/* カテゴリ別月次チャート（4パネル） */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         {categories.map((cat) => (
@@ -256,57 +307,6 @@ export default function RecruitCostView({
             </ResponsiveContainer>
           </div>
         ))}
-      </div>
-
-      {/* 全体月次推移 */}
-      <div className="bg-white border border-gray-200 rounded-lg p-4">
-        <h3 className="text-sm font-semibold text-gray-700 mb-3">
-          全体 — 月次推移
-        </h3>
-        <ResponsiveContainer width="100%" height={280}>
-          <ComposedChart data={monthlyTrends["合計"]}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="month" tick={{ fontSize: 11 }} />
-            <YAxis
-              yAxisId="cost"
-              tick={{ fontSize: 11 }}
-              tickFormatter={(v) =>
-                v >= 10000 ? `${Math.round(v / 10000)}万` : `${v}`
-              }
-            />
-            <YAxis
-              yAxisId="hires"
-              orientation="right"
-              tick={{ fontSize: 11 }}
-            />
-            <Tooltip
-              formatter={(value: number, name: string) =>
-                name === "費用"
-                  ? `¥${value.toLocaleString()}`
-                  : name === "採用単価"
-                  ? `¥${value.toLocaleString()}`
-                  : `${value}名`
-              }
-            />
-            <Legend />
-            <Bar
-              yAxisId="cost"
-              dataKey="cost"
-              fill="#6B7280"
-              name="費用"
-              opacity={0.7}
-            />
-            <Line
-              yAxisId="hires"
-              type="monotone"
-              dataKey="hires"
-              stroke="#DC2626"
-              strokeWidth={2}
-              dot={{ r: 3 }}
-              name="入社数"
-            />
-          </ComposedChart>
-        </ResponsiveContainer>
       </div>
     </div>
   );

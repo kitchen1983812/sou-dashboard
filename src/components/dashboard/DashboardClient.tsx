@@ -138,6 +138,8 @@ export default function DashboardClient({ inquiries, adKeywords, adSearchQueries
   // Show contact method filter for pages 1&2, show status filter for pages 3-6
   const showContactMethod = activeTab === "recent" || activeTab === "annual";
   const showStatus = !showContactMethod;
+  const isRecruitTab =
+    activeTab === "recruitReport" || activeTab === "recruitCost";
 
   return (
     <div className="flex min-h-screen">
@@ -150,20 +152,22 @@ export default function DashboardClient({ inquiries, adKeywords, adSearchQueries
             {currentTab?.title}
           </h2>
 
-          {/* Filters */}
-          <Filters
-            filters={filters}
-            onFilterChange={setFilters}
-            companies={companies}
-            nurseries={nurseries}
-            areas={areas}
-            contactMethods={contactMethods}
-            statuses={statuses}
-            duplicateChecks={duplicateChecks}
-            showContactMethod={showContactMethod}
-            showStatus={showStatus}
-            dateLabel={dateLabel}
-          />
+          {/* Filters (集客タブのみ表示) */}
+          {!isRecruitTab && (
+            <Filters
+              filters={filters}
+              onFilterChange={setFilters}
+              companies={companies}
+              nurseries={nurseries}
+              areas={areas}
+              contactMethods={contactMethods}
+              statuses={statuses}
+              duplicateChecks={duplicateChecks}
+              showContactMethod={showContactMethod}
+              showStatus={showStatus}
+              dateLabel={dateLabel}
+            />
+          )}
 
           {/* Content based on active tab */}
           {activeTab === "recruitReport" ? (
