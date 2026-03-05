@@ -20,6 +20,8 @@ export const TABS: TabDef[] = [
   { id: "report", label: "ブランド別", title: "ブランド別" },
   { id: "googleAds", label: "Google広告", title: "Google広告パフォーマンス" },
   { id: "weeklyReport", label: "週次レポート", title: "週次レポート" },
+  { id: "recruitReport", label: "採用レポート", title: "採用レポート" },
+  { id: "recruitCost", label: "採用費分析", title: "採用費分析" },
 ];
 
 // --- ステータス定数 ---
@@ -108,6 +110,8 @@ export function getDateRangeForTab(tabId: TabId): { start: Date; end: Date } {
     case "report":
     case "googleAds":
     case "weeklyReport":
+    case "recruitReport":
+    case "recruitCost":
       return {
         start: new Date(2020, 3, 1),
         end: now,

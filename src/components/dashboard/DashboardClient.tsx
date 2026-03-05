@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import { Inquiry, TabId, FilterState } from "@/types/inquiry";
 import { AdKeywordRow, AdSearchQueryRow } from "@/types/ads";
+import { Applicant, RecruitCost } from "@/types/recruit";
 import {
   TABS,
   getDateRangeForTab,
@@ -34,11 +35,15 @@ import ComparisonView from "./ComparisonView";
 import CompanyReportView from "./CompanyReportView";
 import GoogleAdsView from "./GoogleAdsView";
 import WeeklyReportView from "./WeeklyReportView";
+import RecruitReportView from "./RecruitReportView";
+import RecruitCostView from "./RecruitCostView";
 
 interface DashboardClientProps {
   inquiries: Inquiry[];
   adKeywords: AdKeywordRow[];
   adSearchQueries: AdSearchQueryRow[];
+  applicants: Applicant[];
+  recruitCosts: RecruitCost[];
 }
 
 function formatDateRange(start: Date, end: Date): string {
@@ -49,7 +54,7 @@ function formatDateRange(start: Date, end: Date): string {
   return `${fmt(start)} - ${fmt(end)}`;
 }
 
-export default function DashboardClient({ inquiries, adKeywords, adSearchQueries }: DashboardClientProps) {
+export default function DashboardClient({ inquiries, adKeywords, adSearchQueries, applicants, recruitCosts }: DashboardClientProps) {
   const [activeTab, setActiveTab] = useState<TabId>("recent");
   const [filters, setFilters] = useState<FilterState>({
     company: "",
@@ -161,7 +166,17 @@ export default function DashboardClient({ inquiries, adKeywords, adSearchQueries
           />
 
           {/* Content based on active tab */}
-          {activeTab === "weeklyReport" ? (
+          {activeTab === "recruitReport" ? (
+            <RecruitReportView
+              applicants={applicants}
+              recruitCosts={recruitCosts}
+            />
+          ) : activeTab === "recruitCost" ? (
+            <RecruitCostView
+              applicants={applicants}
+              recruitCosts={recruitCosts}
+            />
+          ) : activeTab === "weeklyReport" ? (
             <WeeklyReportView
               inquiries={filteredInquiries}
               adKeywords={adKeywords}
