@@ -37,6 +37,7 @@ import GoogleAdsView from "./GoogleAdsView";
 import WeeklyReportView from "./WeeklyReportView";
 import RecruitReportView from "./RecruitReportView";
 import RecruitCostView from "./RecruitCostView";
+import GA4View from "./GA4View";
 
 interface DashboardClientProps {
   inquiries: Inquiry[];
@@ -139,7 +140,7 @@ export default function DashboardClient({ inquiries, adKeywords, adSearchQueries
   const showContactMethod = activeTab === "recent" || activeTab === "annual";
   const showStatus = !showContactMethod;
   const isRecruitTab =
-    activeTab === "recruitReport" || activeTab === "recruitCost";
+    activeTab === "recruitReport" || activeTab === "recruitCost" || activeTab === "ga4";
 
   return (
     <div className="flex min-h-screen">
@@ -170,7 +171,9 @@ export default function DashboardClient({ inquiries, adKeywords, adSearchQueries
           )}
 
           {/* Content based on active tab */}
-          {activeTab === "recruitReport" ? (
+          {activeTab === "ga4" ? (
+            <GA4View />
+          ) : activeTab === "recruitReport" ? (
             <RecruitReportView
               applicants={applicants}
               recruitCosts={recruitCosts}

@@ -16,6 +16,7 @@ const INQUIRY_TABS: { id: TabId; label: string }[] = [
   { id: "report", label: "ブランド別" },
   { id: "googleAds", label: "Google広告" },
   { id: "weeklyReport", label: "週次レポート" },
+  { id: "ga4", label: "GA4" },
 ];
 
 const RECRUIT_TABS: { id: TabId; label: string }[] = [

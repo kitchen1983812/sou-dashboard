@@ -49,7 +49,8 @@ export type TabId =
   | "googleAds"
   | "weeklyReport"
   | "recruitReport"
-  | "recruitCost";
+  | "recruitCost"
+  | "ga4";
 
 /** タブ定義 */
 export interface TabDef {
