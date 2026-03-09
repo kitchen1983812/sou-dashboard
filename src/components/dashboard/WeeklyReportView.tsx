@@ -18,8 +18,14 @@ import {
   computeDailyTimeline,
   computeAreaStatusData,
   computeMonthlyStatusData,
+  computeNurseryStatusData,
+  computeBrandSummary,
+  normalizeArea,
   getFiscalYear,
   parseDate,
+  STATUS,
+  ALL_STATUSES,
+  STATUS_COLORS,
 } from "@/lib/dashboardUtils";
 import ScoreCards from "./ScoreCards";
 import ChannelDonut from "./ChannelDonut";
@@ -107,7 +113,7 @@ function compute0saiAreaData(
   function countByArea(data: Inquiry[]): Map<string, number> {
     const counts = new Map<string, number>();
     for (const inq of data) {
-      const area = inq.area || "その他";
+      const area = normalizeArea(inq.area || "");
       counts.set(area, (counts.get(area) || 0) + 1);
     }
     return counts;
@@ -374,6 +380,18 @@ export default function WeeklyReportView({
   const ageAreaRows = useMemo(
     () => compute0saiAreaData(thisWeekData, prevWeekData),
     [thisWeekData, prevWeekData]
+  );
+
+  // --- セクション7: 各園×ステータス ---
+  const nurseryStatusData = useMemo(
+    () => computeNurseryStatusData(fyData),
+    [fyData]
+  );
+
+  // --- セクション8: ブランド別サマリー ---
+  const brandSummary = useMemo(
+    () => computeBrandSummary(fyData),
+    [fyData]
   );
 
   // --- セクション6: Google広告 ---
@@ -818,6 +836,92 @@ export default function WeeklyReportView({
           )}
         </div>
       </section>
+
+      {/* ======= セクション7: 各園×ステータス ======= */}
+      <section>
+        <h3 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+          <span className="w-1 h-4 bg-red-600 rounded-full inline-block" />
+          FY{String(currentFY).slice(2)} 各園ステータス一覧
+        </h3>
+        <div className="bg-white rounded-lg border border-gray-200 overflow-x-auto">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b-2 border-gray-200 bg-gray-50">
+                <th className="px-2 py-2 text-left font-semibold text-gray-600 sticky left-0 bg-gray-50">園名</th>
+                <th className="px-2 py-2 text-right font-semibold text-gray-600">合計</th>
+                <th className="px-2 py-2 text-right font-semibold text-gray-600">入園率</th>
+                {ALL_STATUSES.map((s) => (
+                  <th key={s} className="px-2 py-2 text-right font-semibold text-gray-600 whitespace-nowrap">
+                    <span className="inline-block w-2 h-2 rounded-full mr-1" style={{ backgroundColor: STATUS_COLORS[s] }} />
+                    {s.replace("諸事情により受入不可", "受入不可").replace("待ちリスト登録済み", "待ちリスト")}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {nurseryStatusData.map((row) => {
+                const enrolled = row.statuses[STATUS.ENROLLED] || 0;
+                return (
+                  <tr key={row.nursery} className="border-b border-gray-100 hover:bg-gray-50">
+                    <td className="px-2 py-1.5 text-gray-700 font-medium sticky left-0 bg-white whitespace-nowrap">{row.nursery}</td>
+                    <td className="px-2 py-1.5 text-right font-semibold text-gray-900">{row.total}</td>
+                    <td className={`px-2 py-1.5 text-right font-semibold ${row.enrollmentRate >= 50 ? "text-green-600" : row.enrollmentRate >= 30 ? "text-blue-600" : "text-gray-600"}`}>
+                      {row.enrollmentRate}%
+                    </td>
+                    {ALL_STATUSES.map((s) => (
+                      <td key={s} className="px-2 py-1.5 text-right text-gray-600">
+                        {row.statuses[s] || 0}
+                      </td>
+                    ))}
+                  </tr>
+                );
+              })}
+              {/* 合計行 */}
+              {nurseryStatusData.length > 0 && (() => {
+                const totals: Record<string, number> = {};
+                let grandTotal = 0;
+                for (const row of nurseryStatusData) {
+                  grandTotal += row.total;
+                  for (const s of ALL_STATUSES) {
+                    totals[s] = (totals[s] || 0) + (row.statuses[s] || 0);
+                  }
+                }
+                const grandEnrolled = totals[STATUS.ENROLLED] || 0;
+                const grandRate = grandTotal > 0 ? Math.round((grandEnrolled / grandTotal) * 1000) / 10 : 0;
+                return (
+                  <tr className="bg-red-50 font-bold border-t-2 border-red-300">
+                    <td className="px-2 py-2 text-red-800 sticky left-0 bg-red-50">合計</td>
+                    <td className="px-2 py-2 text-right text-red-800">{grandTotal}</td>
+                    <td className="px-2 py-2 text-right text-red-800">{grandRate}%</td>
+                    {ALL_STATUSES.map((s) => (
+                      <td key={s} className="px-2 py-2 text-right text-red-800">{totals[s] || 0}</td>
+                    ))}
+                  </tr>
+                );
+              })()}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* ======= セクション8: ブランド別サマリー ======= */}
+      {brandSummary.length > 0 && (
+        <section>
+          <h3 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+            <span className="w-1 h-4 bg-red-600 rounded-full inline-block" />
+            FY{String(currentFY).slice(2)} ブランド別入園数
+          </h3>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            {brandSummary.map((b) => (
+              <div key={b.brand} className="bg-white rounded-lg border border-gray-200 px-4 py-3">
+                <div className="text-xs text-gray-500 mb-1">{b.brand}</div>
+                <div className="text-2xl font-bold text-gray-900">{b.enrolled}<span className="text-sm font-normal text-gray-500 ml-1">名</span></div>
+                <div className="text-xs text-gray-400 mt-1">問い合わせ {b.total}件 / 入園率 {b.total > 0 ? Math.round((b.enrolled / b.total) * 1000) / 10 : 0}%</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 }

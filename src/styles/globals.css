@@ -22,3 +22,51 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-gray-400;
 }
+
+/* 印刷・画面共有向けスタイル */
+@media print {
+  /* サイドバーを非表示 */
+  nav,
+  [data-sidebar] {
+    display: none !important;
+  }
+
+  /* フルワイドで表示 */
+  .flex-1 {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  body {
+    background: white !important;
+    font-size: 10px !important;
+  }
+
+  /* セクションの改ページ制御 */
+  section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* ボタン・フィルターを非表示 */
+  button,
+  select {
+    display: none !important;
+  }
+
+  /* 選択中の週ボタンだけ表示 */
+  button.bg-red-600 {
+    display: inline-block !important;
+    border: 1px solid #333 !important;
+    background: white !important;
+    color: #333 !important;
+  }
+
+  /* テーブルの枠線を見やすく */
+  table {
+    border-collapse: collapse;
+  }
+  th, td {
+    border: 1px solid #ddd !important;
+  }
+}

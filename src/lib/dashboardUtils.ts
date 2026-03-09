@@ -64,6 +64,125 @@ export const ALL_STATUSES = [
   STATUS.CANNOT_ACCEPT,
 ];
 
+// --- エリア正規化（園名→都県名マッピング） ---
+
+const NURSERY_TO_PREFECTURE: Record<string, string> = {
+  // 東京都
+  "練馬中村橋園": "東京都", "練馬中村橋": "東京都",
+  "大田馬込園": "東京都", "大田馬込": "東京都",
+  "稲城長沼園": "東京都", "稲城長沼": "東京都",
+  "目黒園": "東京都", "目黒": "東京都",
+  "中野新橋園": "東京都", "中野新橋": "東京都",
+  "高円寺II園": "東京都", "高円寺II": "東京都",
+  // 神奈川県
+  "座間II園": "神奈川県", "座間II": "神奈川県", "座間２園": "神奈川県",
+  "相武台前園": "神奈川県", "相武台前": "神奈川県",
+  "中央林間園": "神奈川県", "中央林間": "神奈川県",
+  "大和園": "神奈川県", "大和": "神奈川県",
+  "武蔵中原園": "神奈川県", "武蔵中原": "神奈川県",
+  "相模原園": "神奈川県", "相模原": "神奈川県",
+  // 千葉県
+  "柏II園": "千葉県", "柏II": "千葉県", "柏２園": "千葉県",
+  "京成八幡園": "千葉県", "京成八幡": "千葉県",
+  "南行徳園": "千葉県", "南行徳": "千葉県",
+  "ふぇりーちぇほいくえん（東千葉園）": "千葉県",
+  "ふぇりーちぇほいくえん": "千葉県", "東千葉園": "千葉県",
+  "行徳園": "千葉県", "行徳": "千葉県",
+  "成田園": "千葉県", "並木町園": "千葉県", "久住園": "千葉県",
+  "もねの里園": "千葉県", "東金園": "千葉県",
+  "日吉台園": "千葉県", "スカイタウン園": "千葉県",
+  "勝田台園": "千葉県", "公津の杜園": "千葉県", "本八幡園": "千葉県",
+  "LAKESIDE INTERNATIONAL CHILDCARE": "千葉県",
+  // 埼玉県
+  "東川口園": "埼玉県", "東川口": "埼玉県",
+  "鳩ヶ谷園": "埼玉県", "鳩ヶ谷": "埼玉県",
+  "蕨園": "埼玉県", "蕨": "埼玉県",
+  "和光園": "埼玉県", "和光": "埼玉県",
+  "和光II園": "埼玉県", "和光II": "埼玉県", "和光２園": "埼玉県",
+  "新座園": "埼玉県", "新座": "埼玉県",
+  "蕨II園": "埼玉県", "蕨II": "埼玉県", "蕨２園": "埼玉県",
+  "朝霞園": "埼玉県", "朝霞": "埼玉県",
+  "病児保育室にじのへや": "埼玉県",
+};
+
+const PREFECTURES = new Set(["東京都", "神奈川県", "千葉県", "埼玉県"]);
+
+/** エリア文字列を都県名に正規化する */
+export function normalizeArea(area: string): string {
+  if (!area) return "その他";
+  if (PREFECTURES.has(area)) return area;
+  return NURSERY_TO_PREFECTURE[area] || "その他";
+}
+
+// --- 園別ステータス集計 ---
+
+export interface NurseryStatusRow {
+  nursery: string;
+  area: string;
+  company: string;
+  total: number;
+  enrollmentRate: number;
+  statuses: Record<string, number>;
+}
+
+/** 園別×ステータス集計（週次レポート用） */
+export function computeNurseryStatusData(inquiries: Inquiry[]): NurseryStatusRow[] {
+  const map = new Map<string, { area: string; company: string; statuses: Record<string, number> }>();
+
+  for (const inq of inquiries) {
+    const nursery = inq.sheetName || inq.nursery || "";
+    if (!nursery) continue;
+
+    if (!map.has(nursery)) {
+      map.set(nursery, {
+        area: inq.area || "",
+        company: inq.company || "",
+        statuses: {},
+      });
+    }
+    const entry = map.get(nursery)!;
+    const s = inq.status || STATUS.UNANSWERED;
+    entry.statuses[s] = (entry.statuses[s] || 0) + 1;
+  }
+
+  const rows: NurseryStatusRow[] = [];
+  map.forEach((data, nursery) => {
+    const total = Object.values(data.statuses).reduce((s, v) => s + v, 0);
+    const enrolled = data.statuses[STATUS.ENROLLED] || 0;
+    rows.push({
+      nursery,
+      area: data.area,
+      company: data.company,
+      total,
+      enrollmentRate: total > 0 ? Math.round((enrolled / total) * 1000) / 10 : 0,
+      statuses: data.statuses,
+    });
+  });
+
+  // エリア順 → 園名順
+  const AREA_ORDER = ["東京都", "神奈川県", "千葉県", "埼玉県"];
+  rows.sort((a, b) => {
+    const ai = AREA_ORDER.indexOf(normalizeArea(a.area));
+    const bi = AREA_ORDER.indexOf(normalizeArea(b.area));
+    const aIdx = ai !== -1 ? ai : 99;
+    const bIdx = bi !== -1 ? bi : 99;
+    if (aIdx !== bIdx) return aIdx - bIdx;
+    return a.nursery.localeCompare(b.nursery);
+  });
+
+  return rows;
+}
+
+/** ブランド別入園数サマリー */
+export function computeBrandSummary(inquiries: Inquiry[]): { brand: string; enrolled: number; total: number }[] {
+  const brands = ["POP", "give&give"];
+  return brands.map((brand) => {
+    const brandInqs = inquiries.filter((inq) => inq.company === brand);
+    const enrolled = brandInqs.filter((inq) => inq.status === STATUS.ENROLLED).length;
+    return { brand, enrolled, total: brandInqs.length };
+  }).filter((b) => b.total > 0);
+}
+
 // --- 日付ユーティリティ ---
 
 /** 日付文字列をDateオブジェクトにパースする */

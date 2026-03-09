@@ -34,7 +34,7 @@ export default function TabNavigation({
 
   if (collapsed) {
     return (
-      <nav className="w-10 shrink-0 border-r border-gray-200 bg-white flex flex-col items-center pt-2">
+      <nav data-sidebar className="w-10 shrink-0 border-r border-gray-200 bg-white flex flex-col items-center pt-2">
         <button
           onClick={() => setCollapsed(false)}
           className="p-1.5 text-gray-400 hover:text-gray-700 hover:bg-gray-100 rounded"
@@ -59,7 +59,7 @@ export default function TabNavigation({
   }
 
   return (
-    <nav className="w-48 shrink-0 border-r border-gray-200 bg-white flex flex-col">
+    <nav data-sidebar className="w-48 shrink-0 border-r border-gray-200 bg-white flex flex-col print:hidden">
       {/* 折りたたみボタン */}
       <div className="flex justify-end px-2 pt-2">
         <button
