@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error("Failed to fetch inquiries:", error);
     return NextResponse.json(
-      { error: "データの取得に失敗しました", detail: String(error) },
+      { error: "データの取得に失敗しました" },
       { status: 500 }
     );
   }
