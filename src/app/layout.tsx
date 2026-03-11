@@ -1,20 +1,27 @@
 import type { Metadata } from "next";
+import { Noto_Sans_JP } from "next/font/google";
 import "@/styles/globals.css";
 
+const notoSansJP = Noto_Sans_JP({
+	subsets: ["latin"],
+	weight: ["400", "500", "700"],
+	display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "問い合わせ分析ダッシュボード",
-  description:
-    "コーポレートサイト問い合わせデータを可視化する分析ダッシュボード",
+	title: "問い合わせ分析ダッシュボード",
+	description:
+		"コーポレートサイト問い合わせデータを可視化する分析ダッシュボード",
 };
 
 export default function RootLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode;
+	children: React.ReactNode;
 }) {
-  return (
-    <html lang="ja">
-      <body>{children}</body>
-    </html>
-  );
+	return (
+		<html lang="ja" className={notoSansJP.className}>
+			<body>{children}</body>
+		</html>
+	);
 }
