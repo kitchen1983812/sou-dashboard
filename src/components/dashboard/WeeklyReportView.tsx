@@ -109,7 +109,7 @@ function compute0saiAreaData(
 	function countByArea(data: Inquiry[]): Map<string, number> {
 		const counts = new Map<string, number>();
 		for (const inq of data) {
-			const area = normalizeArea(inq.area || "");
+			const area = normalizeArea(inq.area || "", inq.sheetName);
 			counts.set(area, (counts.get(area) || 0) + 1);
 		}
 		return counts;

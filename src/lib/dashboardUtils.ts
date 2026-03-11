@@ -154,11 +154,27 @@ const NURSERY_TO_PREFECTURE: Record<string, string> = {
 
 const PREFECTURES = new Set(["東京都", "神奈川県", "千葉県", "埼玉県"]);
 
-/** エリア文字列を都県名に正規化する */
-export function normalizeArea(area: string): string {
-	if (!area) return "その他";
-	if (PREFECTURES.has(area)) return area;
-	return NURSERY_TO_PREFECTURE[area] || "その他";
+/** 短縮形エリア名→正式都県名 */
+const AREA_SHORT_MAP: Record<string, string> = {
+	東京: "東京都",
+	神奈川: "神奈川県",
+	千葉: "千葉県",
+	埼玉: "埼玉県",
+};
+
+/** エリア文字列を都県名に正規化する。エリア空欄時は園名からフォールバック */
+export function normalizeArea(area: string, nurseryName?: string): string {
+	if (area) {
+		if (PREFECTURES.has(area)) return area;
+		if (AREA_SHORT_MAP[area]) return AREA_SHORT_MAP[area];
+		const fromMap = NURSERY_TO_PREFECTURE[area];
+		if (fromMap) return fromMap;
+	}
+	if (nurseryName) {
+		const fromNursery = NURSERY_TO_PREFECTURE[nurseryName];
+		if (fromNursery) return fromNursery;
+	}
+	return "その他";
 }
 
 // --- 園別ステータス集計 ---
@@ -215,8 +231,8 @@ export function computeNurseryStatusData(
 	// エリア順 → 園名順
 	const AREA_ORDER = ["東京都", "神奈川県", "千葉県", "埼玉県"];
 	rows.sort((a, b) => {
-		const ai = AREA_ORDER.indexOf(normalizeArea(a.area));
-		const bi = AREA_ORDER.indexOf(normalizeArea(b.area));
+		const ai = AREA_ORDER.indexOf(normalizeArea(a.area, a.nursery));
+		const bi = AREA_ORDER.indexOf(normalizeArea(b.area, b.nursery));
 		const aIdx = ai !== -1 ? ai : 99;
 		const bIdx = bi !== -1 ? bi : 99;
 		if (aIdx !== bIdx) return aIdx - bIdx;
