@@ -35,8 +35,8 @@ interface GoogleAdsViewProps {
 
 // --- ブランドキーワード判定 ---
 const BRAND_KEYWORDS = [
-	"アルコバレーノ",
-	"arcobaleno",
+	"フェリーチェ",
+	"felice",
 	"ブレア",
 	"brea",
 	"コビー",
@@ -46,8 +46,6 @@ const BRAND_KEYWORDS = [
 	"sou",
 	"skuld",
 	"スクルド",
-	"フェリーチェ",
-	"felice",
 ];
 
 function isBrandKeyword(keyword: string): boolean {
