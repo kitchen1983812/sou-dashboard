@@ -123,7 +123,7 @@ export default function RecruitCostView({
 					<button
 						key={fy}
 						onClick={() => setSelectedFY(fy)}
-						className={`px-3 py-1.5 text-xs rounded border transition-colors ${
+						className={`px-3 py-1.5 text-sm rounded border transition-colors ${
 							selectedFY === fy
 								? "bg-red-600 text-white border-red-600"
 								: "bg-white text-gray-600 border-gray-300 hover:bg-gray-50"
@@ -149,7 +149,7 @@ export default function RecruitCostView({
 									: "border-gray-200 bg-white"
 							}`}
 						>
-							<div className="text-xs text-gray-500 mb-1">
+							<div className="text-sm text-gray-500 mb-1">
 								{row.category === "合計" ? (
 									<span className="font-bold">合計</span>
 								) : (
@@ -159,7 +159,7 @@ export default function RecruitCostView({
 							<div className="text-lg font-bold text-gray-800">
 								¥{row.cost.toLocaleString()}
 							</div>
-							<div className="flex justify-between mt-1 text-xs text-gray-500">
+							<div className="flex justify-between mt-1 text-sm text-gray-500">
 								<span>入社: {row.hires}名</span>
 								<span>
 									単価:{" "}

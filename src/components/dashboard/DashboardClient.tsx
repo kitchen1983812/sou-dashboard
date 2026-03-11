@@ -304,7 +304,7 @@ function MonthlyTabContent({ inquiries }: { inquiries: Inquiry[] }) {
 					<button
 						key={fy}
 						onClick={() => setSelectedFY(fy)}
-						className={`px-3 py-1.5 text-xs rounded border transition-colors ${
+						className={`px-3 py-1.5 text-sm rounded border transition-colors ${
 							selectedFY === fy
 								? "bg-red-600 text-white border-red-600"
 								: "bg-white text-gray-600 border-gray-300 hover:bg-gray-50"

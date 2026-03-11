@@ -60,12 +60,12 @@ function WeeklySummaryCard({
 				highlight ? "bg-red-50 border-red-200" : "bg-white border-gray-200"
 			}`}
 		>
-			<div className="text-xs text-gray-500 mb-1">{label}</div>
+			<div className="text-sm text-gray-500 mb-1">{label}</div>
 			<div className="text-2xl font-bold text-gray-900">
 				{value.toLocaleString()}
 			</div>
 			<div
-				className={`text-xs mt-1 font-medium ${
+				className={`text-sm mt-1 font-medium ${
 					direction === "up"
 						? "text-green-600"
 						: direction === "down"
@@ -414,7 +414,7 @@ export default function WeeklyReportView({
 						<button
 							key={wed.toISOString()}
 							onClick={() => setSelectedWed(wed)}
-							className={`px-3 py-1.5 text-xs rounded border transition-colors whitespace-nowrap ${
+							className={`px-3 py-1.5 text-sm rounded border transition-colors whitespace-nowrap ${
 								isSelected
 									? "bg-red-600 text-white border-red-600"
 									: "bg-white text-gray-600 border-gray-300 hover:bg-gray-50"
@@ -429,7 +429,7 @@ export default function WeeklyReportView({
 
 			{/* ======= セクション1: 今週のサマリー ======= */}
 			<section>
-				<h3 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+				<h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center gap-2">
 					<span className="w-1 h-4 bg-red-600 rounded-full inline-block" />
 					今週のサマリー（{formatWeekLabel(selectedWed)}
 					{isCurrentWeek && " 進行中"}）
@@ -466,7 +466,7 @@ export default function WeeklyReportView({
 
 			{/* ======= セクション2: 直近30日 ======= */}
 			<section>
-				<h3 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+				<h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center gap-2">
 					<span className="w-1 h-4 bg-red-600 rounded-full inline-block" />
 					直近30日 問い合わせ状況
 				</h3>
@@ -482,7 +482,7 @@ export default function WeeklyReportView({
 
 			{/* ======= セクション3: FY通年サマリー ======= */}
 			<section>
-				<h3 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+				<h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center gap-2">
 					<span className="w-1 h-4 bg-red-600 rounded-full inline-block" />
 					FY{String(currentFY).slice(2)} 年度通年サマリー（今週の変動）
 				</h3>
@@ -562,7 +562,7 @@ export default function WeeklyReportView({
 
 			{/* ======= セクション4: FY月次推移 ======= */}
 			<section>
-				<h3 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+				<h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center gap-2">
 					<span className="w-1 h-4 bg-red-600 rounded-full inline-block" />
 					FY{String(currentFY).slice(2)} 月次推移
 				</h3>
@@ -571,7 +571,7 @@ export default function WeeklyReportView({
 
 			{/* ======= セクション5: 0歳児 エリア別 ======= */}
 			<section>
-				<h3 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+				<h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center gap-2">
 					<span className="w-1 h-4 bg-red-600 rounded-full inline-block" />
 					0歳児 エリア別（前週比）
 				</h3>
@@ -666,7 +666,7 @@ export default function WeeklyReportView({
 
 			{/* ======= セクション6: Google広告 週次 ======= */}
 			<section>
-				<h3 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+				<h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center gap-2">
 					<span className="w-1 h-4 bg-red-600 rounded-full inline-block" />
 					Google広告 週次サマリー
 				</h3>
@@ -739,11 +739,11 @@ export default function WeeklyReportView({
 					{/* 月次累計テーブル */}
 					{monthlyAdData.length > 0 && (
 						<>
-							<h4 className="text-xs font-semibold text-gray-500 mt-3">
+							<h4 className="text-sm font-semibold text-gray-500 mt-3">
 								FY{String(currentFY).slice(2)} 月次累計
 							</h4>
 							<div className="overflow-x-auto">
-								<table className="w-full text-xs">
+								<table className="w-full text-sm">
 									<thead>
 										<tr className="border-b-2 border-gray-200">
 											<th className="px-3 py-2 text-left font-semibold text-gray-600">
@@ -817,12 +817,12 @@ export default function WeeklyReportView({
 
 			{/* ======= セクション7: 各園×ステータス ======= */}
 			<section>
-				<h3 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+				<h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center gap-2">
 					<span className="w-1 h-4 bg-red-600 rounded-full inline-block" />
 					FY{String(currentFY).slice(2)} 各園ステータス一覧
 				</h3>
 				<div className="bg-white rounded-xl border border-gray-200 overflow-x-auto">
-					<table className="w-full text-xs">
+					<table className="w-full text-sm">
 						<thead>
 							<tr className="border-b-2 border-gray-200 bg-gray-50">
 								<th className="px-2 py-2 text-left font-semibold text-gray-600 sticky left-0 bg-gray-50">
@@ -926,7 +926,7 @@ export default function WeeklyReportView({
 			{/* ======= セクション8: ブランド別サマリー ======= */}
 			{brandSummary.length > 0 && (
 				<section>
-					<h3 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+					<h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center gap-2">
 						<span className="w-1 h-4 bg-red-600 rounded-full inline-block" />
 						FY{String(currentFY).slice(2)} ブランド別入園数
 					</h3>
@@ -936,14 +936,14 @@ export default function WeeklyReportView({
 								key={b.brand}
 								className="bg-white rounded-xl border border-gray-200 px-4 py-3"
 							>
-								<div className="text-xs text-gray-500 mb-1">{b.brand}</div>
+								<div className="text-sm text-gray-500 mb-1">{b.brand}</div>
 								<div className="text-2xl font-bold text-gray-900">
 									{b.enrolled}
 									<span className="text-sm font-normal text-gray-500 ml-1">
 										名
 									</span>
 								</div>
-								<div className="text-xs text-gray-400 mt-1">
+								<div className="text-sm text-gray-400 mt-1">
 									問い合わせ {b.total}件 / 入園率{" "}
 									{b.total > 0
 										? Math.round((b.enrolled / b.total) * 1000) / 10

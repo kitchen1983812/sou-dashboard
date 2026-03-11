@@ -94,7 +94,7 @@ function Card({ label, value, prevValue, highlight, suffix, icon }: CardProps) {
 				<span className={highlight ? "text-red-400" : "text-gray-400"}>
 					{icon}
 				</span>
-				<span className="text-xs text-gray-500 font-medium">{label}</span>
+				<span className="text-sm text-gray-500 font-medium">{label}</span>
 			</div>
 			<div className="text-2xl font-bold text-gray-900">
 				{value.toLocaleString()}
@@ -102,7 +102,7 @@ function Card({ label, value, prevValue, highlight, suffix, icon }: CardProps) {
 			</div>
 			{change !== null && (
 				<div
-					className={`text-xs mt-1 flex items-center gap-1 font-medium ${
+					className={`text-sm mt-1 flex items-center gap-1 font-medium ${
 						change.direction === "up"
 							? "text-green-600"
 							: change.direction === "down"
@@ -129,7 +129,7 @@ function Card({ label, value, prevValue, highlight, suffix, icon }: CardProps) {
 				</div>
 			)}
 			{change === null && prevValue !== undefined && (
-				<div className="text-xs mt-1 text-gray-400">前期:{prevValue}</div>
+				<div className="text-sm mt-1 text-gray-400">前期:{prevValue}</div>
 			)}
 		</div>
 	);
@@ -146,7 +146,7 @@ function RateChip({
 }) {
 	return (
 		<span
-			className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold ${
+			className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold ${
 				warn ? "bg-amber-50 text-amber-700" : "bg-red-50 text-red-600"
 			}`}
 		>

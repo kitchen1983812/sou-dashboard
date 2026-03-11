@@ -57,7 +57,7 @@ export default function StatusBreakdownTable({
 				ステータス / 件数
 			</h3>
 			<div className="overflow-x-auto">
-				<table className="w-full text-xs">
+				<table className="w-full text-sm">
 					<thead>
 						<tr className="border-b-2 border-gray-200 bg-gray-50">
 							{COLUMNS.map((col) => (

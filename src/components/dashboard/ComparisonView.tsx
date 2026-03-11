@@ -192,7 +192,7 @@ const SCORE_COLS: {
 function FYScoreTable({ rows }: { rows: FYRowData[] }) {
 	return (
 		<div className="bg-white rounded-xl border border-gray-200 overflow-x-auto">
-			<table className="w-full text-xs border-collapse table-fixed">
+			<table className="w-full text-sm border-collapse table-fixed">
 				<thead>
 					<tr className="border-b-2 border-gray-300 bg-gray-50">
 						<th className="px-2 py-2 text-left font-semibold text-gray-600 w-[52px]">
@@ -291,7 +291,7 @@ function ComparisonTable({
 			<h3 className="text-sm font-semibold text-gray-700 mb-3">
 				FY / 総数 / 入園数 / 入園率
 			</h3>
-			<table className="w-full text-xs">
+			<table className="w-full text-sm">
 				<thead>
 					<tr className="border-b-2 border-gray-300">
 						<th className="px-2 py-1.5 text-left" rowSpan={2}>

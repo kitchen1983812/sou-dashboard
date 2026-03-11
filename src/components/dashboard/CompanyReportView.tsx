@@ -339,7 +339,7 @@ function CompanyTable({
 
 	return (
 		<div className="mb-8">
-			<table className="w-full text-xs border-collapse">
+			<table className="w-full text-sm border-collapse">
 				<thead>
 					<tr className="border-b-2 border-gray-300 bg-gray-50">
 						<SortableHeader
@@ -562,11 +562,11 @@ export default function CompanyReportView({
 			{/* コントロールバー */}
 			<div className="flex items-center gap-4 flex-wrap">
 				<div className="flex items-center gap-2">
-					<span className="text-sm font-medium text-gray-600">年度:</span>
+					<span className="text-base font-medium text-gray-600">年度:</span>
 					<div className="flex gap-1">
 						<button
 							onClick={() => setSelectedFY("all")}
-							className={`px-3 py-1.5 text-xs rounded-md border transition-colors ${
+							className={`px-3 py-2 text-sm rounded-md border transition-colors ${
 								selectedFY === "all"
 									? "bg-red-600 text-white border-red-600"
 									: "bg-white text-gray-600 border-gray-300 hover:bg-gray-50"
@@ -578,7 +578,7 @@ export default function CompanyReportView({
 							<button
 								key={fy}
 								onClick={() => setSelectedFY(fy)}
-								className={`px-3 py-1.5 text-xs rounded-md border transition-colors ${
+								className={`px-3 py-2 text-sm rounded-md border transition-colors ${
 									selectedFY === fy
 										? "bg-red-600 text-white border-red-600"
 										: "bg-white text-gray-600 border-gray-300 hover:bg-gray-50"
@@ -591,11 +591,11 @@ export default function CompanyReportView({
 				</div>
 
 				<div className="flex items-center gap-2">
-					<span className="text-sm font-medium text-gray-600">ブランド:</span>
+					<span className="text-base font-medium text-gray-600">ブランド:</span>
 					<div className="flex gap-1">
 						<button
 							onClick={() => setSelectedCompany("all")}
-							className={`px-3 py-1.5 text-xs rounded-md border transition-colors ${
+							className={`px-3 py-2 text-sm rounded-md border transition-colors ${
 								selectedCompany === "all"
 									? "bg-red-600 text-white border-red-600"
 									: "bg-white text-gray-600 border-gray-300 hover:bg-gray-50"
@@ -607,7 +607,7 @@ export default function CompanyReportView({
 							<button
 								key={c}
 								onClick={() => setSelectedCompany(c)}
-								className={`px-3 py-1.5 text-xs rounded-md border transition-colors ${
+								className={`px-3 py-2 text-sm rounded-md border transition-colors ${
 									selectedCompany === c
 										? "bg-red-600 text-white border-red-600"
 										: "bg-white text-gray-600 border-gray-300 hover:bg-gray-50"

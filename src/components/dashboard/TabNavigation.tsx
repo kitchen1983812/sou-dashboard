@@ -99,7 +99,7 @@ export default function TabNavigation({
 			<div>
 				<button
 					onClick={() => setInquiryOpen(!inquiryOpen)}
-					className="w-full flex items-center justify-between px-4 py-2.5 text-xs font-bold text-red-600 tracking-wider hover:bg-red-50 border-b border-gray-100"
+					className="w-full flex items-center justify-between px-4 py-2.5 text-sm font-bold text-red-600 tracking-wider hover:bg-red-50 border-b border-gray-100"
 				>
 					<span className="flex items-center gap-1.5">
 						<span className="w-1.5 h-4 bg-red-500 rounded-full" />
@@ -145,7 +145,7 @@ export default function TabNavigation({
 			<div className="border-t border-gray-200 mt-1">
 				<button
 					onClick={() => setRecruitOpen(!recruitOpen)}
-					className="w-full flex items-center justify-between px-4 py-2.5 text-xs font-bold text-red-600 tracking-wider hover:bg-red-50 border-b border-gray-100"
+					className="w-full flex items-center justify-between px-4 py-2.5 text-sm font-bold text-red-600 tracking-wider hover:bg-red-50 border-b border-gray-100"
 				>
 					<span className="flex items-center gap-1.5">
 						<span className="w-1.5 h-4 bg-red-500 rounded-full" />

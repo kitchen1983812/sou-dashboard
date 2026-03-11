@@ -297,7 +297,7 @@ export default function GoogleAdsView({
 							setSelectedFY(fy);
 							setDetailPage(0);
 						}}
-						className={`px-3 py-1.5 text-xs rounded border transition-colors ${
+						className={`px-3 py-1.5 text-sm rounded border transition-colors ${
 							selectedFY === fy
 								? "bg-red-600 text-white border-red-600"
 								: "bg-white text-gray-600 border-gray-300 hover:bg-gray-50"
@@ -314,7 +314,7 @@ export default function GoogleAdsView({
 					月次広告パフォーマンス（FY{String(selectedFY).slice(2)}）
 				</h3>
 				<div className="overflow-x-auto">
-					<table className="w-full text-xs">
+					<table className="w-full text-sm">
 						<thead>
 							<tr className="border-b-2 border-gray-200">
 								<th className="px-3 py-2 text-left font-semibold text-gray-600">
@@ -473,7 +473,7 @@ export default function GoogleAdsView({
 					Google広告経由 問い合わせ一覧（{linkedInquiries.length}件）
 				</h3>
 				<div className="overflow-x-auto">
-					<table className="w-full text-xs">
+					<table className="w-full text-sm">
 						<thead>
 							<tr className="border-b-2 border-gray-200">
 								<th className="px-2 py-2 text-left font-semibold text-gray-600 w-10">
@@ -567,7 +567,7 @@ export default function GoogleAdsView({
 					</table>
 				</div>
 				{totalDetailPages > 1 && (
-					<div className="flex items-center justify-center gap-2 mt-3 text-xs text-gray-500">
+					<div className="flex items-center justify-center gap-2 mt-3 text-sm text-gray-500">
 						<span>
 							{detailPage * PAGE_SIZE + 1}-
 							{Math.min((detailPage + 1) * PAGE_SIZE, linkedInquiries.length)} /{" "}

@@ -74,13 +74,13 @@ function SummaryCard({ label, value, prev, unit = "" }: SummaryCardProps) {
 	const direction = diff > 0 ? "up" : diff < 0 ? "down" : "none";
 	return (
 		<div className="bg-white rounded-xl border border-gray-200 px-4 py-3">
-			<div className="text-xs text-gray-500 mb-1">{label}</div>
+			<div className="text-sm text-gray-500 mb-1">{label}</div>
 			<div className="text-2xl font-bold text-gray-900">
 				{value.toLocaleString()}
 				{unit && <span className="text-sm font-normal ml-1">{unit}</span>}
 			</div>
 			<div
-				className={`text-xs mt-1 font-medium ${
+				className={`text-sm mt-1 font-medium ${
 					direction === "up"
 						? "text-green-600"
 						: direction === "down"
@@ -144,7 +144,7 @@ export default function GA4View() {
 					<button
 						key={opt.value}
 						onClick={() => setPeriod(opt.value)}
-						className={`px-3 py-1.5 text-xs rounded border transition-colors ${
+						className={`px-3 py-1.5 text-sm rounded border transition-colors ${
 							period === opt.value
 								? "bg-red-600 text-white border-red-600"
 								: "bg-white text-gray-600 border-gray-300 hover:bg-gray-50"
@@ -154,14 +154,14 @@ export default function GA4View() {
 					</button>
 				))}
 				{loading && (
-					<span className="text-xs text-gray-400 ml-2">読み込み中...</span>
+					<span className="text-sm text-gray-400 ml-2">読み込み中...</span>
 				)}
 			</div>
 
 			{error && (
 				<div className="bg-red-50 border border-red-200 rounded-xl p-3 text-sm text-red-700">
 					データ取得エラー: {error}
-					<div className="text-xs mt-1 text-red-500">
+					<div className="text-sm mt-1 text-red-500">
 						サービスアカウントにGA4プロパティのアクセス権が付与されているか確認してください。
 					</div>
 				</div>

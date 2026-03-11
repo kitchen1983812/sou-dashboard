@@ -29,7 +29,7 @@ export default function AreaStackedBar({ data }: AreaStackedBarProps) {
 				<span className="w-1 h-4 bg-red-500 rounded-full" />
 				エリア別ステータス
 			</h3>
-			<div className="flex flex-wrap gap-3 mb-3 text-xs">
+			<div className="flex flex-wrap gap-3 mb-3 text-sm">
 				{activeStatuses.map((status) => (
 					<div key={status} className="flex items-center gap-1">
 						<span

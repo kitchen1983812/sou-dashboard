@@ -30,7 +30,7 @@ export default function InquiryDetailTable({ data }: InquiryDetailTableProps) {
 				問い合わせ一覧
 			</h3>
 			<div className="overflow-x-auto">
-				<table className="w-full text-xs">
+				<table className="w-full text-sm">
 					<thead>
 						<tr className="border-b-2 border-gray-200 bg-gray-50">
 							<th className="px-2 py-2 text-left font-semibold text-gray-600 w-8">
@@ -86,7 +86,7 @@ export default function InquiryDetailTable({ data }: InquiryDetailTableProps) {
 				</table>
 			</div>
 			{totalPages > 1 && (
-				<div className="flex items-center justify-center gap-2 mt-3 text-xs text-gray-500">
+				<div className="flex items-center justify-center gap-2 mt-3 text-sm text-gray-500">
 					<span>
 						{page * PAGE_SIZE + 1}-
 						{Math.min((page + 1) * PAGE_SIZE, sorted.length)} / {sorted.length}

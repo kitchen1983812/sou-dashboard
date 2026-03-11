@@ -66,7 +66,7 @@ export default function ChannelDonut({ data }: ChannelDonutProps) {
 						</PieChart>
 					</ResponsiveContainer>
 				</div>
-				<div className="flex-1 text-xs space-y-1 max-h-48 overflow-y-auto">
+				<div className="flex-1 text-sm space-y-1 max-h-48 overflow-y-auto">
 					{chartData.map((d, i) => (
 						<div key={d.name} className="flex items-center gap-2">
 							<span

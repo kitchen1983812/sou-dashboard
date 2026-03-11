@@ -8,9 +8,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* テーブル内の数値を等幅表示 */
+/* テーブル共通: 等幅数値 + セル余白底上げ */
 td, th {
   font-variant-numeric: tabular-nums;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 ::-webkit-scrollbar {

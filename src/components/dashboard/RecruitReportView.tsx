@@ -184,7 +184,7 @@ export default function RecruitReportView({
 					<button
 						key={fy}
 						onClick={() => setSelectedFY(fy)}
-						className={`px-3 py-1.5 text-xs rounded border transition-colors ${
+						className={`px-3 py-1.5 text-sm rounded border transition-colors ${
 							selectedFY === fy
 								? "bg-red-600 text-white border-red-600"
 								: "bg-white text-gray-600 border-gray-300 hover:bg-gray-50"
@@ -256,7 +256,7 @@ export default function RecruitReportView({
 						{ label: "入社", value: funnel.joined, color: "bg-blue-600" },
 					].map((stage, i) => (
 						<div key={i} className="flex-1 text-center">
-							<div className="text-xs text-gray-500 mb-1">{stage.label}</div>
+							<div className="text-sm text-gray-500 mb-1">{stage.label}</div>
 							<div
 								className={`${stage.color} text-white rounded mx-auto flex items-center justify-center font-bold`}
 								style={{
@@ -268,7 +268,7 @@ export default function RecruitReportView({
 							>
 								{stage.value}
 							</div>
-							<div className="text-xs text-gray-400 mt-1">
+							<div className="text-sm text-gray-400 mt-1">
 								{funnelRate(stage.value)}
 							</div>
 						</div>
@@ -290,7 +290,7 @@ export default function RecruitReportView({
 						key={i}
 						className="bg-white border border-gray-200 rounded-xl p-3 text-center"
 					>
-						<div className="text-xs text-gray-500">{item.label}</div>
+						<div className="text-sm text-gray-500">{item.label}</div>
 						<div className="text-lg font-bold text-red-600">{item.value}</div>
 					</div>
 				))}
@@ -298,7 +298,7 @@ export default function RecruitReportView({
 
 			{/* 不採用カード */}
 			<div className="bg-white border border-gray-200 rounded-xl p-3 w-fit">
-				<span className="text-xs text-gray-500 mr-2">不採用:</span>
+				<span className="text-sm text-gray-500 mr-2">不採用:</span>
 				<span className="text-lg font-bold text-gray-700">
 					{funnel.rejected}
 				</span>
@@ -486,7 +486,7 @@ function FilterSelect({
 		<select
 			value={value}
 			onChange={(e) => onChange(e.target.value)}
-			className="px-2 py-1.5 text-xs border border-gray-300 rounded bg-white text-gray-700"
+			className="px-2 py-1.5 text-sm border border-gray-300 rounded bg-white text-gray-700"
 		>
 			<option value="">全{label}</option>
 			{options.map((opt) => (
@@ -520,7 +520,7 @@ function CostTable({
 		<div className="bg-white border border-gray-200 rounded-xl p-4">
 			<h3 className="text-sm font-semibold text-gray-700 mb-3">{title}</h3>
 			<div className="overflow-x-auto">
-				<table className="w-full text-xs">
+				<table className="w-full text-sm">
 					<thead>
 						<tr className="border-b border-gray-200 text-gray-500">
 							<th className="text-left py-2 px-2">名称</th>
@@ -615,7 +615,7 @@ function CrosstabTable({
 		<div className="bg-white border border-gray-200 rounded-xl p-4">
 			<h3 className="text-sm font-semibold text-gray-700 mb-3">{title}</h3>
 			<div className="overflow-x-auto">
-				<table className="w-full text-xs">
+				<table className="w-full text-sm">
 					<thead>
 						<tr className="border-b border-gray-200 text-gray-500">
 							<th className="text-left py-2 px-2 sticky left-0 bg-white">
