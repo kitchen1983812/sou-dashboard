@@ -10,7 +10,7 @@ interface ChannelDonutProps {
 // Core palette (8 colors: distinguishable, accessible, consistent with dashboard theme)
 const COLORS = [
 	"#2563EB", // blue-600
-	"#DC2626", // red-600
+	"#008cc9", // brand-500
 	"#16A34A", // green-600
 	"#F59E0B", // amber-500
 	"#8B5CF6", // violet-500
@@ -30,7 +30,7 @@ export default function ChannelDonut({ data }: ChannelDonutProps) {
 	return (
 		<div className="bg-white rounded-xl border border-gray-200 p-4">
 			<h3 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
-				<span className="w-1 h-4 bg-red-500 rounded-full" />
+				<span className="w-1 h-4 bg-brand-500 rounded-full" />
 				経路
 			</h3>
 			<div className="flex items-start gap-4">

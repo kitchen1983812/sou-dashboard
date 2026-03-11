@@ -26,7 +26,7 @@ export default function MonthlyStackedBar({ data }: MonthlyStackedBarProps) {
 	return (
 		<div className="bg-white rounded-xl border border-gray-200 p-4">
 			<h3 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
-				<span className="w-1 h-4 bg-red-500 rounded-full" />
+				<span className="w-1 h-4 bg-brand-500 rounded-full" />
 				月次推移
 			</h3>
 			<div className="flex flex-wrap gap-3 mb-3 text-sm">

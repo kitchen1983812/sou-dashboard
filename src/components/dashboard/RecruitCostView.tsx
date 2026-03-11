@@ -125,7 +125,7 @@ export default function RecruitCostView({
 						onClick={() => setSelectedFY(fy)}
 						className={`px-3 py-1.5 text-sm rounded border transition-colors ${
 							selectedFY === fy
-								? "bg-red-600 text-white border-red-600"
+								? "bg-brand-500 text-white border-brand-500"
 								: "bg-white text-gray-600 border-gray-300 hover:bg-gray-50"
 						}`}
 					>
@@ -248,7 +248,7 @@ export default function RecruitCostView({
 							yAxisId="hires"
 							type="monotone"
 							dataKey="hires"
-							stroke="#DC2626"
+							stroke="#008cc9"
 							strokeWidth={2}
 							dot={{ r: 3 }}
 							name="入社数"
@@ -302,7 +302,7 @@ export default function RecruitCostView({
 									yAxisId="hires"
 									type="monotone"
 									dataKey="hires"
-									stroke="#DC2626"
+									stroke="#008cc9"
 									strokeWidth={2}
 									dot={{ r: 3 }}
 									name="入社数"

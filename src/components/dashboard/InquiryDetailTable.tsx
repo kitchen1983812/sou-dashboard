@@ -26,7 +26,7 @@ export default function InquiryDetailTable({ data }: InquiryDetailTableProps) {
 	return (
 		<div className="bg-white rounded-xl border border-gray-200 p-4">
 			<h3 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
-				<span className="w-1 h-4 bg-red-500 rounded-full" />
+				<span className="w-1 h-4 bg-brand-500 rounded-full" />
 				問い合わせ一覧
 			</h3>
 			<div className="overflow-x-auto">

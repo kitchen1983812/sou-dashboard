@@ -43,7 +43,7 @@ function useUniqueFYs(inquiries: Inquiry[]): number[] {
 
 // --- 直近3年度 月次推移チャート ---
 
-const FY_LINE_COLORS = ["#9CA3AF", "#F59E0B", "#DC2626"]; // oldest=gray, middle=amber, newest=red
+const FY_LINE_COLORS = ["#9CA3AF", "#4db5e3", "#008cc9"]; // oldest=gray, middle=amber, newest=red
 
 type MonthlyComparisonPoint = {
 	month: string;

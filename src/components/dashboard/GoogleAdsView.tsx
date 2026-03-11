@@ -299,7 +299,7 @@ export default function GoogleAdsView({
 						}}
 						className={`px-3 py-1.5 text-sm rounded border transition-colors ${
 							selectedFY === fy
-								? "bg-red-600 text-white border-red-600"
+								? "bg-brand-500 text-white border-brand-500"
 								: "bg-white text-gray-600 border-gray-300 hover:bg-gray-50"
 						}`}
 					>
@@ -365,21 +365,21 @@ export default function GoogleAdsView({
 							))}
 						</tbody>
 						<tfoot>
-							<tr className="bg-red-50 font-bold border-t-2 border-red-300">
-								<td className="px-3 py-2 text-red-800">合計</td>
-								<td className="px-3 py-2 text-right text-red-800">
+							<tr className="bg-brand-50 font-bold border-t-2 border-brand-300">
+								<td className="px-3 py-2 text-brand-800">合計</td>
+								<td className="px-3 py-2 text-right text-brand-800">
 									&yen;{totals.adSpend.toLocaleString()}
 								</td>
-								<td className="px-3 py-2 text-right text-red-800">
+								<td className="px-3 py-2 text-right text-brand-800">
 									{totals.conversions}
 								</td>
-								<td className="px-3 py-2 text-right text-red-800">
+								<td className="px-3 py-2 text-right text-brand-800">
 									{totals.cpa > 0 ? `¥${totals.cpa.toLocaleString()}` : "-"}
 								</td>
-								<td className="px-3 py-2 text-right text-red-800">
+								<td className="px-3 py-2 text-right text-brand-800">
 									{totals.inquiryCount}
 								</td>
-								<td className="px-3 py-2 text-right text-red-800">
+								<td className="px-3 py-2 text-right text-brand-800">
 									{totals.unitCost > 0
 										? `¥${totals.unitCost.toLocaleString()}`
 										: "-"}
@@ -449,7 +449,7 @@ export default function GoogleAdsView({
 							<Bar
 								yAxisId="left"
 								dataKey="inquiryCount"
-								fill="#DC2626"
+								fill="#008cc9"
 								radius={[3, 3, 0, 0]}
 								barSize={28}
 							/>

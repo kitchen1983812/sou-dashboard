@@ -270,7 +270,7 @@ function SortableHeader({
 			<span className="inline-flex items-center gap-0.5">
 				{label}
 				<span
-					className={`text-[9px] ${active ? "text-red-600" : "text-gray-300"}`}
+					className={`text-[9px] ${active ? "text-brand-500" : "text-gray-300"}`}
 				>
 					{active ? (currentDir === "asc" ? "\u25B2" : "\u25BC") : "\u25B6"}
 				</span>
@@ -472,15 +472,15 @@ function CompanyTable({
 						})}
 					</tr>
 					{/* 合計行 */}
-					<tr className="bg-red-50 font-bold border-t-2 border-red-300">
-						<td className="px-2 py-1.5 text-red-800" colSpan={2}>
+					<tr className="bg-brand-50 font-bold border-t-2 border-brand-300">
+						<td className="px-2 py-1.5 text-brand-800" colSpan={2}>
 							{summary.company} 合計
 						</td>
-						<td className={`px-1 py-1.5 text-center text-red-800 ${COL_W}`}>
+						<td className={`px-1 py-1.5 text-center text-brand-800 ${COL_W}`}>
 							{summary.total}
 							<YoY current={summary.total} prev={prevCompany?.total} />
 						</td>
-						<td className={`px-1 py-1.5 text-center text-red-800 ${COL_W}`}>
+						<td className={`px-1 py-1.5 text-center text-brand-800 ${COL_W}`}>
 							{summary.enrollmentRate.toFixed(2)}%
 							<YoYRate
 								current={summary.enrollmentRate}
@@ -490,7 +490,7 @@ function CompanyTable({
 						{STATUS_COLS.map((col) => (
 							<td
 								key={`total-${col.key}`}
-								className={`px-1 py-1.5 text-center text-red-800 ${COL_W}`}
+								className={`px-1 py-1.5 text-center text-brand-800 ${COL_W}`}
 							>
 								{summary.totalCounts[col.key]}
 								<YoY
@@ -568,7 +568,7 @@ export default function CompanyReportView({
 							onClick={() => setSelectedFY("all")}
 							className={`px-3 py-2 text-sm rounded-md border transition-colors ${
 								selectedFY === "all"
-									? "bg-red-600 text-white border-red-600"
+									? "bg-brand-500 text-white border-brand-500"
 									: "bg-white text-gray-600 border-gray-300 hover:bg-gray-50"
 							}`}
 						>
@@ -580,7 +580,7 @@ export default function CompanyReportView({
 								onClick={() => setSelectedFY(fy)}
 								className={`px-3 py-2 text-sm rounded-md border transition-colors ${
 									selectedFY === fy
-										? "bg-red-600 text-white border-red-600"
+										? "bg-brand-500 text-white border-brand-500"
 										: "bg-white text-gray-600 border-gray-300 hover:bg-gray-50"
 								}`}
 							>
@@ -597,7 +597,7 @@ export default function CompanyReportView({
 							onClick={() => setSelectedCompany("all")}
 							className={`px-3 py-2 text-sm rounded-md border transition-colors ${
 								selectedCompany === "all"
-									? "bg-red-600 text-white border-red-600"
+									? "bg-brand-500 text-white border-brand-500"
 									: "bg-white text-gray-600 border-gray-300 hover:bg-gray-50"
 							}`}
 						>
@@ -609,7 +609,7 @@ export default function CompanyReportView({
 								onClick={() => setSelectedCompany(c)}
 								className={`px-3 py-2 text-sm rounded-md border transition-colors ${
 									selectedCompany === c
-										? "bg-red-600 text-white border-red-600"
+										? "bg-brand-500 text-white border-brand-500"
 										: "bg-white text-gray-600 border-gray-300 hover:bg-gray-50"
 								}`}
 							>

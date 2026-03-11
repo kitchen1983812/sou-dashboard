@@ -60,7 +60,7 @@ td, th {
   }
 
   /* 選択中の週ボタンだけ表示 */
-  button.bg-red-600 {
+  button.bg-brand-500 {
     display: inline-block !important;
     border: 1px solid #333 !important;
     background: white !important;

@@ -155,7 +155,7 @@ export default function DashboardClient({
 				<div className="p-5 sm:p-6 space-y-6">
 					{/* Title */}
 					<h2 className="text-xl font-bold text-gray-800 flex items-center gap-2">
-						<span className="w-1.5 h-6 bg-red-600 rounded-full" />
+						<span className="w-1.5 h-6 bg-brand-500 rounded-full" />
 						{currentTab?.title}
 					</h2>
 
@@ -306,7 +306,7 @@ function MonthlyTabContent({ inquiries }: { inquiries: Inquiry[] }) {
 						onClick={() => setSelectedFY(fy)}
 						className={`px-3 py-1.5 text-sm rounded border transition-colors ${
 							selectedFY === fy
-								? "bg-red-600 text-white border-red-600"
+								? "bg-brand-500 text-white border-brand-500"
 								: "bg-white text-gray-600 border-gray-300 hover:bg-gray-50"
 						}`}
 					>

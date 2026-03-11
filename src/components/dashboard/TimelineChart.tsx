@@ -28,7 +28,7 @@ export default function TimelineChart({
 	return (
 		<div className="bg-white rounded-xl border border-gray-200 p-4">
 			<h3 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
-				<span className="w-1 h-4 bg-red-500 rounded-full" />
+				<span className="w-1 h-4 bg-brand-500 rounded-full" />
 				{title}
 			</h3>
 			<ResponsiveContainer width="100%" height={280}>
@@ -67,7 +67,7 @@ export default function TimelineChart({
 							<Line
 								type="monotone"
 								dataKey="prevCount"
-								stroke="#f87171"
+								stroke="#80caeb"
 								strokeWidth={1.5}
 								strokeOpacity={0.35}
 								strokeDasharray="4 3"
@@ -79,10 +79,10 @@ export default function TimelineChart({
 					<Line
 						type="monotone"
 						dataKey="count"
-						stroke="#ef4444"
+						stroke="#008cc9"
 						strokeWidth={2}
-						dot={{ r: 3, fill: "#ef4444" }}
-						activeDot={{ r: 5, fill: "#dc2626" }}
+						dot={{ r: 3, fill: "#008cc9" }}
+						activeDot={{ r: 5, fill: "#005f8a" }}
 					/>
 				</LineChart>
 			</ResponsiveContainer>

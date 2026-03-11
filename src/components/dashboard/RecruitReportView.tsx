@@ -35,7 +35,7 @@ import {
 // Unified 8-color palette
 const COLORS = [
 	"#2563EB", // blue-600
-	"#DC2626", // red-600
+	"#008cc9", // brand-500
 	"#16A34A", // green-600
 	"#F59E0B", // amber-500
 	"#8B5CF6", // violet-500
@@ -186,7 +186,7 @@ export default function RecruitReportView({
 						onClick={() => setSelectedFY(fy)}
 						className={`px-3 py-1.5 text-sm rounded border transition-colors ${
 							selectedFY === fy
-								? "bg-red-600 text-white border-red-600"
+								? "bg-brand-500 text-white border-brand-500"
 								: "bg-white text-gray-600 border-gray-300 hover:bg-gray-50"
 						}`}
 					>

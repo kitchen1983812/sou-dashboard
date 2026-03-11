@@ -99,10 +99,10 @@ export default function TabNavigation({
 			<div>
 				<button
 					onClick={() => setInquiryOpen(!inquiryOpen)}
-					className="w-full flex items-center justify-between px-4 py-2.5 text-sm font-bold text-red-600 tracking-wider hover:bg-red-50 border-b border-gray-100"
+					className="w-full flex items-center justify-between px-4 py-2.5 text-sm font-bold text-brand-700 tracking-wider hover:bg-brand-50 border-b border-gray-100"
 				>
 					<span className="flex items-center gap-1.5">
-						<span className="w-1.5 h-4 bg-red-500 rounded-full" />
+						<span className="w-1.5 h-4 bg-brand-500 rounded-full" />
 						集客
 					</span>
 					<svg
@@ -129,7 +129,7 @@ export default function TabNavigation({
 									onClick={() => onTabChange(tab.id)}
 									className={`w-full text-left px-4 py-2 text-sm transition-colors ${
 										activeTab === tab.id
-											? "bg-red-50 text-red-700 border-l-[3px] border-red-600 font-semibold"
+											? "bg-brand-50 text-brand-700 border-l-[3px] border-brand-500 font-semibold"
 											: "text-gray-600 hover:bg-gray-50 hover:text-gray-900 border-l-[3px] border-transparent"
 									}`}
 								>
@@ -145,10 +145,10 @@ export default function TabNavigation({
 			<div className="border-t border-gray-200 mt-1">
 				<button
 					onClick={() => setRecruitOpen(!recruitOpen)}
-					className="w-full flex items-center justify-between px-4 py-2.5 text-sm font-bold text-red-600 tracking-wider hover:bg-red-50 border-b border-gray-100"
+					className="w-full flex items-center justify-between px-4 py-2.5 text-sm font-bold text-brand-700 tracking-wider hover:bg-brand-50 border-b border-gray-100"
 				>
 					<span className="flex items-center gap-1.5">
-						<span className="w-1.5 h-4 bg-red-500 rounded-full" />
+						<span className="w-1.5 h-4 bg-brand-500 rounded-full" />
 						採用
 					</span>
 					<svg
@@ -175,7 +175,7 @@ export default function TabNavigation({
 									onClick={() => onTabChange(tab.id)}
 									className={`w-full text-left px-4 py-2 text-sm transition-colors ${
 										activeTab === tab.id
-											? "bg-red-50 text-red-700 border-l-[3px] border-red-600 font-semibold"
+											? "bg-brand-50 text-brand-700 border-l-[3px] border-brand-500 font-semibold"
 											: "text-gray-600 hover:bg-gray-50 hover:text-gray-900 border-l-[3px] border-transparent"
 									}`}
 								>

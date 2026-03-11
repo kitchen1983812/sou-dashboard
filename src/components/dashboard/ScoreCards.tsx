@@ -87,11 +87,11 @@ function Card({ label, value, prevValue, highlight, suffix, icon }: CardProps) {
 	return (
 		<div
 			className={`rounded-xl border px-4 py-3 transition-shadow hover:shadow-md ${
-				highlight ? "bg-red-50 border-red-200" : "bg-white border-gray-200"
+				highlight ? "bg-brand-50 border-brand-200" : "bg-white border-gray-200"
 			}`}
 		>
 			<div className="flex items-center gap-1.5 mb-1.5">
-				<span className={highlight ? "text-red-400" : "text-gray-400"}>
+				<span className={highlight ? "text-brand-400" : "text-gray-400"}>
 					{icon}
 				</span>
 				<span className="text-sm text-gray-500 font-medium">{label}</span>
@@ -147,7 +147,7 @@ function RateChip({
 	return (
 		<span
 			className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold ${
-				warn ? "bg-amber-50 text-amber-700" : "bg-red-50 text-red-600"
+				warn ? "bg-amber-50 text-amber-700" : "bg-brand-50 text-brand-600"
 			}`}
 		>
 			{label}

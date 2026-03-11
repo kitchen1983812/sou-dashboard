@@ -57,7 +57,7 @@ function WeeklySummaryCard({
 	return (
 		<div
 			className={`rounded-xl border px-4 py-3 ${
-				highlight ? "bg-red-50 border-red-200" : "bg-white border-gray-200"
+				highlight ? "bg-brand-50 border-brand-200" : "bg-white border-gray-200"
 			}`}
 		>
 			<div className="text-sm text-gray-500 mb-1">{label}</div>
@@ -416,7 +416,7 @@ export default function WeeklyReportView({
 							onClick={() => setSelectedWed(wed)}
 							className={`px-3 py-1.5 text-sm rounded border transition-colors whitespace-nowrap ${
 								isSelected
-									? "bg-red-600 text-white border-red-600"
+									? "bg-brand-500 text-white border-brand-500"
 									: "bg-white text-gray-600 border-gray-300 hover:bg-gray-50"
 							}`}
 						>
@@ -430,7 +430,7 @@ export default function WeeklyReportView({
 			{/* ======= セクション1: 今週のサマリー ======= */}
 			<section>
 				<h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center gap-2">
-					<span className="w-1 h-4 bg-red-600 rounded-full inline-block" />
+					<span className="w-1 h-4 bg-brand-500 rounded-full inline-block" />
 					今週のサマリー（{formatWeekLabel(selectedWed)}
 					{isCurrentWeek && " 進行中"}）
 				</h3>
@@ -467,7 +467,7 @@ export default function WeeklyReportView({
 			{/* ======= セクション2: 直近30日 ======= */}
 			<section>
 				<h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center gap-2">
-					<span className="w-1 h-4 bg-red-600 rounded-full inline-block" />
+					<span className="w-1 h-4 bg-brand-500 rounded-full inline-block" />
 					直近30日 問い合わせ状況
 				</h3>
 				<ScoreCards data={scoreCards30d} />
@@ -483,7 +483,7 @@ export default function WeeklyReportView({
 			{/* ======= セクション3: FY通年サマリー ======= */}
 			<section>
 				<h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center gap-2">
-					<span className="w-1 h-4 bg-red-600 rounded-full inline-block" />
+					<span className="w-1 h-4 bg-brand-500 rounded-full inline-block" />
 					FY{String(currentFY).slice(2)} 年度通年サマリー（今週の変動）
 				</h3>
 				<div className="bg-white rounded-xl border border-gray-200 p-4">
@@ -563,7 +563,7 @@ export default function WeeklyReportView({
 			{/* ======= セクション4: FY月次推移 ======= */}
 			<section>
 				<h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center gap-2">
-					<span className="w-1 h-4 bg-red-600 rounded-full inline-block" />
+					<span className="w-1 h-4 bg-brand-500 rounded-full inline-block" />
 					FY{String(currentFY).slice(2)} 月次推移
 				</h3>
 				<MonthlyStackedBar data={monthlyData} />
@@ -572,7 +572,7 @@ export default function WeeklyReportView({
 			{/* ======= セクション5: 0歳児 エリア別 ======= */}
 			<section>
 				<h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center gap-2">
-					<span className="w-1 h-4 bg-red-600 rounded-full inline-block" />
+					<span className="w-1 h-4 bg-brand-500 rounded-full inline-block" />
 					0歳児 エリア別（前週比）
 				</h3>
 				<div className="bg-white rounded-xl border border-gray-200 p-4">
@@ -627,12 +627,12 @@ export default function WeeklyReportView({
 									</tr>
 								))}
 								{/* 合計行 */}
-								<tr className="bg-red-50 font-bold border-t-2 border-red-300">
-									<td className="px-3 py-2 text-red-800">合計</td>
-									<td className="px-3 py-2 text-right text-red-800">
+								<tr className="bg-brand-50 font-bold border-t-2 border-brand-300">
+									<td className="px-3 py-2 text-brand-800">合計</td>
+									<td className="px-3 py-2 text-right text-brand-800">
 										{ageAreaRows.reduce((s, r) => s + r.thisWeek, 0)}
 									</td>
-									<td className="px-3 py-2 text-right text-red-800">
+									<td className="px-3 py-2 text-right text-brand-800">
 										{ageAreaRows.reduce((s, r) => s + r.prevWeek, 0)}
 									</td>
 									<td
@@ -667,7 +667,7 @@ export default function WeeklyReportView({
 			{/* ======= セクション6: Google広告 週次 ======= */}
 			<section>
 				<h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center gap-2">
-					<span className="w-1 h-4 bg-red-600 rounded-full inline-block" />
+					<span className="w-1 h-4 bg-brand-500 rounded-full inline-block" />
 					Google広告 週次サマリー
 				</h3>
 				<div className="bg-white rounded-xl border border-gray-200 p-4 space-y-4">
@@ -790,18 +790,18 @@ export default function WeeklyReportView({
 										))}
 									</tbody>
 									<tfoot>
-										<tr className="bg-red-50 font-bold border-t-2 border-red-300">
-											<td className="px-3 py-2 text-red-800">合計</td>
-											<td className="px-3 py-2 text-right text-red-800">
+										<tr className="bg-brand-50 font-bold border-t-2 border-brand-300">
+											<td className="px-3 py-2 text-brand-800">合計</td>
+											<td className="px-3 py-2 text-right text-brand-800">
 												¥{adTotals.adSpend.toLocaleString()}
 											</td>
-											<td className="px-3 py-2 text-right text-red-800">
+											<td className="px-3 py-2 text-right text-brand-800">
 												{adTotals.conversions}
 											</td>
-											<td className="px-3 py-2 text-right text-red-800">
+											<td className="px-3 py-2 text-right text-brand-800">
 												{adTotals.inquiryCount}
 											</td>
-											<td className="px-3 py-2 text-right text-red-800">
+											<td className="px-3 py-2 text-right text-brand-800">
 												{adTotals.unitCost > 0
 													? `¥${adTotals.unitCost.toLocaleString()}`
 													: "-"}
@@ -818,7 +818,7 @@ export default function WeeklyReportView({
 			{/* ======= セクション7: 各園×ステータス ======= */}
 			<section>
 				<h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center gap-2">
-					<span className="w-1 h-4 bg-red-600 rounded-full inline-block" />
+					<span className="w-1 h-4 bg-brand-500 rounded-full inline-block" />
 					FY{String(currentFY).slice(2)} 各園ステータス一覧
 				</h3>
 				<div className="bg-white rounded-xl border border-gray-200 overflow-x-auto">
@@ -897,20 +897,20 @@ export default function WeeklyReportView({
 											? Math.round((grandEnrolled / grandTotal) * 1000) / 10
 											: 0;
 									return (
-										<tr className="bg-red-50 font-bold border-t-2 border-red-300">
-											<td className="px-2 py-2 text-red-800 sticky left-0 bg-red-50">
+										<tr className="bg-brand-50 font-bold border-t-2 border-brand-300">
+											<td className="px-2 py-2 text-brand-800 sticky left-0 bg-red-50">
 												合計
 											</td>
-											<td className="px-2 py-2 text-right text-red-800">
+											<td className="px-2 py-2 text-right text-brand-800">
 												{grandTotal}
 											</td>
-											<td className="px-2 py-2 text-right text-red-800">
+											<td className="px-2 py-2 text-right text-brand-800">
 												{grandRate}%
 											</td>
 											{ALL_STATUSES.map((s) => (
 												<td
 													key={s}
-													className="px-2 py-2 text-right text-red-800"
+													className="px-2 py-2 text-right text-brand-800"
 												>
 													{totals[s] || 0}
 												</td>
@@ -927,7 +927,7 @@ export default function WeeklyReportView({
 			{brandSummary.length > 0 && (
 				<section>
 					<h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center gap-2">
-						<span className="w-1 h-4 bg-red-600 rounded-full inline-block" />
+						<span className="w-1 h-4 bg-brand-500 rounded-full inline-block" />
 						FY{String(currentFY).slice(2)} ブランド別入園数
 					</h3>
 					<div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
