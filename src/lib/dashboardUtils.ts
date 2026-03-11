@@ -25,6 +25,18 @@ export const TABS: TabDef[] = [
 	{ id: "ga4", label: "GA4", title: "サイトパフォーマンス (GA4)" },
 ];
 
+// --- ブランド名正規化（旧名→新名マッピング） ---
+const BRAND_NAME_MAP: Record<string, string> = {
+	アルコバレーノ: "フェリーチェ",
+	POP: "わくわく保育園",
+	"give&give": "ことり保育園",
+};
+
+/** ブランド名（企業名）を正規化する。旧名は新名に変換 */
+export function normalizeBrandName(name: string): string {
+	return BRAND_NAME_MAP[name] || name;
+}
+
 // --- ステータス定数 ---
 export const STATUS = {
 	ENROLLED: "入園",

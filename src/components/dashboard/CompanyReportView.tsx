@@ -9,6 +9,7 @@ import {
 	filterByDateRange,
 	getFYRange,
 	STATUS,
+	normalizeBrandName,
 } from "@/lib/dashboardUtils";
 
 interface CompanyReportViewProps {
@@ -77,7 +78,7 @@ function computeCompanyReport(inquiries: Inquiry[]): CompanySummary[] {
 	const companyMap = new Map<string, Map<string, Inquiry[]>>();
 
 	for (const inq of inquiries) {
-		const company = inq.company || "不明";
+		const company = normalizeBrandName(inq.company || "不明");
 		if (!companyMap.has(company)) companyMap.set(company, new Map());
 		const nurseryMap = companyMap.get(company)!;
 		const nursery = inq.sheetName || "不明";
@@ -541,7 +542,7 @@ export default function CompanyReportView({
 	const companies = useMemo(() => {
 		const set = new Set<string>();
 		for (const inq of inquiries) {
-			if (inq.company) set.add(inq.company);
+			if (inq.company) set.add(normalizeBrandName(inq.company));
 		}
 		return Array.from(set).sort();
 	}, [inquiries]);
