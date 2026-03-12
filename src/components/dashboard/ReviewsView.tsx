@@ -58,7 +58,7 @@ export default function ReviewsView() {
 
 	const areas = useMemo(() => {
 		if (!data) return [];
-		return [...new Set(data.reviews.map((r) => r.area))].sort();
+		return Array.from(new Set(data.reviews.map((r) => r.area))).sort();
 	}, [data]);
 
 	const filtered = useMemo(() => {
