@@ -38,6 +38,7 @@ import WeeklyReportView from "./WeeklyReportView";
 import RecruitReportView from "./RecruitReportView";
 import RecruitCostView from "./RecruitCostView";
 import GA4View from "./GA4View";
+import ReviewsView from "./ReviewsView";
 
 interface DashboardClientProps {
 	inquiries: Inquiry[];
@@ -177,7 +178,9 @@ export default function DashboardClient({
 					)}
 
 					{/* Content based on active tab */}
-					{activeTab === "ga4" ? (
+					{activeTab === "reviews" ? (
+						<ReviewsView />
+					) : activeTab === "ga4" ? (
 						<GA4View />
 					) : activeTab === "recruitReport" ? (
 						<RecruitReportView

@@ -23,6 +23,7 @@ const INQUIRY_TABS: { id: TabId; label: string }[] = [
 	{ id: "report", label: "ブランド別" },
 	{ id: "googleAds", label: "Google広告" },
 	{ id: "ga4", label: "GA4" },
+	{ id: "reviews", label: "Google口コミ" },
 ];
 
 const RECRUIT_TABS: { id: TabId; label: string }[] = [
