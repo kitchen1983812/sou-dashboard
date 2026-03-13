@@ -1,0 +1,1227 @@
+[
+  {
+    "nursery": "稲城長沼園",
+    "area": "東京都",
+    "placeId": "ChIJAT_un8j6GGARRJDWMAye3XE",
+    "ownRating": 4,
+    "ownReviewCount": 1,
+    "candidates": [
+      {
+        "placeId": "ChIJjwuqU876GGARettnhJBINR8",
+        "name": "Oomaru-Yushi Nursery",
+        "rating": 4.3,
+        "reviewCount": 7,
+        "distanceM": 400,
+        "ratingDiff": 0.3
+      },
+      {
+        "placeId": "ChIJs0jA2VT7GGARxI_y1qKk09E",
+        "name": "Inagi Nozomi Nursery",
+        "rating": 3.5,
+        "reviewCount": 6,
+        "distanceM": 767,
+        "ratingDiff": 0.5
+      },
+      {
+        "placeId": "ChIJ1W_ir8P6GGAR8dIXnP-s2YQ",
+        "name": "ピノキオ幼児舎 稲城園",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 911,
+        "ratingDiff": 1
+      },
+      {
+        "placeId": "ChIJvUJPlcP6GGART-ZqOmnQejA",
+        "name": "Hongo Yushi Nursery",
+        "rating": 2,
+        "reviewCount": 1,
+        "distanceM": 787,
+        "ratingDiff": 2
+      },
+      {
+        "placeId": "ChIJvVe2Cc36GGARyrHQdRzs0-0",
+        "name": "稲城市立 第四学童クラブ六小分室",
+        "rating": null,
+        "reviewCount": 0,
+        "distanceM": 702,
+        "ratingDiff": 99
+      }
+    ]
+  },
+  {
+    "nursery": "京成八幡園",
+    "area": "千葉県",
+    "placeId": "ChIJq30EnM-GGGARwtXJOrPeADY",
+    "ownRating": null,
+    "ownReviewCount": 0,
+    "candidates": [
+      {
+        "placeId": "ChIJdSue9s-GGGARNrrYzfGVd68",
+        "name": "Little K'sアクス本八幡保育園",
+        "rating": 3.1,
+        "reviewCount": 14,
+        "distanceM": 176,
+        "ratingDiff": 99
+      },
+      {
+        "placeId": "ChIJd40C0fuHGGARu253cDnvjUo",
+        "name": "かえで保育園本八幡",
+        "rating": null,
+        "reviewCount": 0,
+        "distanceM": 251,
+        "ratingDiff": 99
+      },
+      {
+        "placeId": "ChIJI6ybp5qHGGARElY1YcqTNWk",
+        "name": "ル・アンジェ本八幡保育園",
+        "rating": null,
+        "reviewCount": 0,
+        "distanceM": 339,
+        "ratingDiff": 99
+      },
+      {
+        "placeId": "ChIJu3_TQ5iHGGARSJoAP8Ri1uU",
+        "name": "AIAI NURSERY 本八幡",
+        "rating": null,
+        "reviewCount": 0,
+        "distanceM": 366,
+        "ratingDiff": 99
+      },
+      {
+        "placeId": "ChIJQe6_BdKHGGARMy6VGlz2vvE",
+        "name": "八幡チャイルド保育園",
+        "rating": null,
+        "reviewCount": 0,
+        "distanceM": 397,
+        "ratingDiff": 99
+      }
+    ]
+  },
+  {
+    "nursery": "行徳園",
+    "area": "千葉県",
+    "placeId": "ChIJc2MR3muHGGARhHtG6RP1dKU",
+    "ownRating": 5,
+    "ownReviewCount": 1,
+    "candidates": [
+      {
+        "placeId": "ChIJd6jkHAaHGGARsCWagJzjZ7k",
+        "name": "Compass Yohoen Ichikawa School",
+        "rating": 5,
+        "reviewCount": 5,
+        "distanceM": 209,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJpYQb3GmHGGARsx48PV4frbM",
+        "name": "若葉インターナショナル幼保園 行徳園",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 308,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJQZrxfEKHGGARXCwiH9pfzRY",
+        "name": "アスク行徳保育園",
+        "rating": 5,
+        "reviewCount": 2,
+        "distanceM": 390,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJj8fKIEKHGGARYl-JyKzwO1s",
+        "name": "Suehiro Nursery",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 529,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJg2FIchGHGGAR41ptEGKhmQA",
+        "name": "ネピア ソダテラス",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 997,
+        "ratingDiff": 0
+      }
+    ]
+  },
+  {
+    "nursery": "新座園",
+    "area": "埼玉県",
+    "placeId": "ChIJt9t-ubLpGGARbSs4iZCwOMU",
+    "ownRating": 5,
+    "ownReviewCount": 1,
+    "candidates": [
+      {
+        "placeId": "ChIJca4GiEjoGGAR-Xqd06iGIg8",
+        "name": "小規模保育園 元気キッズ 新座園",
+        "rating": 4.9,
+        "reviewCount": 10,
+        "distanceM": 925,
+        "ratingDiff": 0.1
+      },
+      {
+        "placeId": "ChIJ6Sdnm5jpGGAR-JZomfWi1po",
+        "name": "一時保育 菜のハナ",
+        "rating": 3,
+        "reviewCount": 1,
+        "distanceM": 638,
+        "ratingDiff": 2
+      },
+      {
+        "placeId": "ChIJSX5TFlToGGARO1I2XFHU3Iw",
+        "name": "Shiraume Nursery",
+        "rating": 1,
+        "reviewCount": 1,
+        "distanceM": 994,
+        "ratingDiff": 4
+      },
+      {
+        "placeId": "ChIJ35QMqU3oGGARpsl7_jiNz20",
+        "name": "Shiraume Daini Nursery",
+        "rating": null,
+        "reviewCount": 0,
+        "distanceM": 274,
+        "ratingDiff": 99
+      },
+      {
+        "placeId": "ChIJ6R6OikjoGGARGfxnn_faHEE",
+        "name": "Otowanomoriniiza Nursery",
+        "rating": null,
+        "reviewCount": 0,
+        "distanceM": 884,
+        "ratingDiff": 99
+      }
+    ]
+  },
+  {
+    "nursery": "相武台前園",
+    "area": "神奈川県",
+    "placeId": "ChIJmfaEZpz_GGARzgWS_10r0o8",
+    "ownRating": 5,
+    "ownReviewCount": 1,
+    "candidates": [
+      {
+        "placeId": "ChIJFWZ8AgX_GGAR69wxllX3LiM",
+        "name": "Sobudai Nursery",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 168,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJWXqejRL_GGARfeG607vs20g",
+        "name": "マジオたんぽぽ保育園相武台",
+        "rating": 5,
+        "reviewCount": 3,
+        "distanceM": 278,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJ6Xse5MT_GGARsU7gq9MmBN4",
+        "name": "Best Kids Sobudai Nursery",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 364,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJyaRKKgf_GGARC5dFwlkHfic",
+        "name": "たんぽぽ保育園・相武台前",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 692,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJUUJVvR3_GGAR4dchSMfHJP4",
+        "name": "Sagamigaokanishi Nursery",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 873,
+        "ratingDiff": 0
+      }
+    ]
+  },
+  {
+    "nursery": "相模原園",
+    "area": "神奈川県",
+    "placeId": "ChIJq9CYz9kDGWARvC3WXdkbKpA",
+    "ownRating": 4.5,
+    "ownReviewCount": 6,
+    "candidates": [
+      {
+        "placeId": "ChIJ31x8yF_9GGARntcZGNMzdrs",
+        "name": "Kensei Nursery",
+        "rating": 4.6,
+        "reviewCount": 5,
+        "distanceM": 446,
+        "ratingDiff": 0.1
+      },
+      {
+        "placeId": "ChIJjRqkZnv9GGARnzdQtpYjgko",
+        "name": "はっぴーているずdogsroom相模原店",
+        "rating": 4.3,
+        "reviewCount": 7,
+        "distanceM": 911,
+        "ratingDiff": 0.2
+      },
+      {
+        "placeId": "ChIJt8ZmLGf9GGARSXGVC_Ta8Sk",
+        "name": "カメリアキッズ相模原園",
+        "rating": 4.8,
+        "reviewCount": 24,
+        "distanceM": 557,
+        "ratingDiff": 0.3
+      },
+      {
+        "placeId": "ChIJ8b4vMF79GGAR_dHtHt7aK_M",
+        "name": "Yotsuba Nursery Sagamihara",
+        "rating": 5,
+        "reviewCount": 2,
+        "distanceM": 505,
+        "ratingDiff": 0.5
+      },
+      {
+        "placeId": "ChIJZS4C2Wb9GGAR84Q_-00wBSQ",
+        "name": "Sagamiharasakura Nursery",
+        "rating": 5,
+        "reviewCount": 6,
+        "distanceM": 603,
+        "ratingDiff": 0.5
+      }
+    ]
+  },
+  {
+    "nursery": "大田馬込園",
+    "area": "東京都",
+    "placeId": "ChIJ0QP_5KGKGGAR2U-hrZrUCZA",
+    "ownRating": 5,
+    "ownReviewCount": 1,
+    "candidates": [
+      {
+        "placeId": "ChIJdU8HH5qLGGARDw4je5WILCo",
+        "name": "Gakkenほいくえん 馬込",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 180,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJwdieSjGLGGARtsb0Yu3zulE",
+        "name": "小鳩ナーサリースクール中馬込",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 385,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJdWUvN6eKGGARtJoMHv7NDRg",
+        "name": "Kenpa Nursery Nishimagome",
+        "rating": 5,
+        "reviewCount": 2,
+        "distanceM": 694,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJAajRgZ2KGGARCkzrWdpmItg",
+        "name": "Midori no Oka Nursery",
+        "rating": 5,
+        "reviewCount": 2,
+        "distanceM": 733,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJ79_vb6-KGGARxgeEW9mIDKo",
+        "name": "Shakaifukushi Hojin Tsubomikai Kamiikedai Nursery",
+        "rating": 4.8,
+        "reviewCount": 4,
+        "distanceM": 966,
+        "ratingDiff": 0.2
+      }
+    ]
+  },
+  {
+    "nursery": "大和園",
+    "area": "神奈川県",
+    "placeId": "ChIJsbeGEa34GGARRaVauXzbF0g",
+    "ownRating": 5,
+    "ownReviewCount": 1,
+    "candidates": [
+      {
+        "placeId": "ChIJMXQnQbP4GGARkgUKgq2AESs",
+        "name": "プリンス保育園 南林間",
+        "rating": 5,
+        "reviewCount": 2,
+        "distanceM": 563,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJlzjxH1X_GGARpSqrZSzv0ik",
+        "name": "Shakaifukushi Hojin Kenofukushikai Nishitsuruma Nursery",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 787,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJXX1BaKz4GGAR1zWJ3oHzv2g",
+        "name": "大和 ひまわり保育園・分園",
+        "rating": 4.5,
+        "reviewCount": 2,
+        "distanceM": 174,
+        "ratingDiff": 0.5
+      },
+      {
+        "placeId": "ChIJiQSpB5H5GGARI1WxakxBhZY",
+        "name": "Akachanhonpo Yamatotsurumaitoyokadoten",
+        "rating": 4.1,
+        "reviewCount": 13,
+        "distanceM": 833,
+        "ratingDiff": 0.9
+      },
+      {
+        "placeId": "ChIJrWnRSaj4GGARqqlsXio6CP8",
+        "name": "Yamato Shiritsu Wakaba Nursery",
+        "rating": 4,
+        "reviewCount": 2,
+        "distanceM": 687,
+        "ratingDiff": 1
+      }
+    ]
+  },
+  {
+    "nursery": "中央林間園",
+    "area": "神奈川県",
+    "placeId": "ChIJWVLe3xP_GGARPjPg9pKfdsM",
+    "ownRating": 3,
+    "ownReviewCount": 2,
+    "candidates": [
+      {
+        "placeId": "ChIJXQFt8d_5GGAR43PomTGWCxc",
+        "name": "まあむベイビィズ中央林間",
+        "rating": 3,
+        "reviewCount": 1,
+        "distanceM": 748,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJw-m-oMz4GGARN6VUW7q5elk",
+        "name": "ほいくえん虹の子",
+        "rating": 2.9,
+        "reviewCount": 8,
+        "distanceM": 364,
+        "ratingDiff": 0.1
+      },
+      {
+        "placeId": "ChIJn479rbL5GGAR5BK-2fne-D0",
+        "name": "スクルドエンジェル保育園中央林間園",
+        "rating": 2.8,
+        "reviewCount": 4,
+        "distanceM": 341,
+        "ratingDiff": 0.2
+      },
+      {
+        "placeId": "ChIJs4JiyjL5GGAR8_bSaufq9cc",
+        "name": "Tsukiminoshonan Nursery",
+        "rating": 3.5,
+        "reviewCount": 2,
+        "distanceM": 705,
+        "ratingDiff": 0.5
+      },
+      {
+        "placeId": "ChIJqcqTQjL_GGAREFnCRoGh6jM",
+        "name": "ヴィラまなびの森保育園中央林間",
+        "rating": 2.5,
+        "reviewCount": 2,
+        "distanceM": 821,
+        "ratingDiff": 0.5
+      }
+    ]
+  },
+  {
+    "nursery": "中野新橋園",
+    "area": "東京都",
+    "placeId": "ChIJ-7i0-efyGGAR2Zm6giP_Fdc",
+    "ownRating": 5,
+    "ownReviewCount": 4,
+    "candidates": [
+      {
+        "placeId": "ChIJCZ6hQO7zGGARWKFiv6q4H94",
+        "name": "Konbipurazayayoicho Hoikuen",
+        "rating": 5,
+        "reviewCount": 3,
+        "distanceM": 258,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJEUkde9zyGGARlZHdOsklZuo",
+        "name": "Global Kids Nakano-Shimbashi",
+        "rating": 5,
+        "reviewCount": 4,
+        "distanceM": 429,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJ__-Pw8HyGGARrd-V0-ZN74A",
+        "name": "Nakamachi Nursery",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 775,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJVTO3OOHyGGARx-48kpqxfbY",
+        "name": "Yayoi Nursery",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 775,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJMw9s_OTyGGAR3O1ppEYghu4",
+        "name": "Musashino Nursery",
+        "rating": 5,
+        "reviewCount": 3,
+        "distanceM": 894,
+        "ratingDiff": 0
+      }
+    ]
+  },
+  {
+    "nursery": "朝霞園",
+    "area": "埼玉県",
+    "placeId": "ChIJgbwKmXfpGGARsTdBJiV-YpU",
+    "ownRating": 5,
+    "ownReviewCount": 1,
+    "candidates": [
+      {
+        "placeId": "ChIJAVe-OHfpGGARcosquEYC8WM",
+        "name": "あさかたんぽぽ保育園なかよし園",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 222,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJn3fhVTbpGGARfKZ2NIQEifI",
+        "name": "小規模保育園 元気キッズ 朝霞根岸台園",
+        "rating": 5,
+        "reviewCount": 8,
+        "distanceM": 458,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJ0xk8rZjpGGARtMbPc6b96Mk",
+        "name": "Takinone Nursery",
+        "rating": 5,
+        "reviewCount": 3,
+        "distanceM": 859,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJbQC1rZvpGGARGPcghoBZEr0",
+        "name": "小規模保育園 元気キッズ 朝霞岡園、児童発達支援 元気キッズ 朝霞教室",
+        "rating": 5,
+        "reviewCount": 9,
+        "distanceM": 882,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJu0tIaYvpGGARZKYZXZigyts",
+        "name": "認可保育園 元気キッズ第二朝霞根岸台園",
+        "rating": 4.9,
+        "reviewCount": 8,
+        "distanceM": 504,
+        "ratingDiff": 0.1
+      }
+    ]
+  },
+  {
+    "nursery": "東川口園",
+    "area": "埼玉県",
+    "placeId": "ChIJ6XMEHgaVGGARGzFHI1-Ly_o",
+    "ownRating": 5,
+    "ownReviewCount": 1,
+    "candidates": [
+      {
+        "placeId": "ChIJVd6jJrCVGGARqtw7tzgJR_Y",
+        "name": "Higashikawaguchihatobue Nursery",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 270,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJ35TKqTaVGGARVlUdXNDSNQ8",
+        "name": "みんなの保育園東川口",
+        "rating": 5,
+        "reviewCount": 3,
+        "distanceM": 337,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJUS8UawCVGGAR6wdAGGDgte4",
+        "name": "すてっぷ すきっぷ第３",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 408,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJS_4W0BCVGGAR6yhDv_EOInM",
+        "name": "東川口ポポロ保育園",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 432,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJIUQNIriVGGAR4BWL6J9vqM0",
+        "name": "たいよう保育園 戸塚東園",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 518,
+        "ratingDiff": 0
+      }
+    ]
+  },
+  {
+    "nursery": "南行徳園",
+    "area": "千葉県",
+    "placeId": "ChIJxfYClqmHGGARNxWFyGrt2Mg",
+    "ownRating": 5,
+    "ownReviewCount": 1,
+    "candidates": [
+      {
+        "placeId": "ChIJOZ7l5LOHGGARNuqYXHBbMnU",
+        "name": "南行徳せいわ保育園",
+        "rating": 5,
+        "reviewCount": 3,
+        "distanceM": 24,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJCeYQgnCHGGARuFrkVQ3TxK4",
+        "name": "Kakemama Nursery",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 508,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJx7ItSImHGGARwUqjWVTcMek",
+        "name": "AIAI NURSERY",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 609,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJR4c0EHGHGGARHYM-bu44Qg0",
+        "name": "すくすくの杜南行徳園",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 814,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJKdm6K4qHGGAR-ixFnAJ-VxY",
+        "name": "【児童発達支援】入園・入学準備教室クラス",
+        "rating": 4,
+        "reviewCount": 1,
+        "distanceM": 644,
+        "ratingDiff": 1
+      }
+    ]
+  },
+  {
+    "nursery": "柏II園",
+    "area": "千葉県",
+    "placeId": "ChIJYf0QStOdGGARaQzhDXeDgiA",
+    "ownRating": 4.8,
+    "ownReviewCount": 5,
+    "candidates": [
+      {
+        "placeId": "ChIJOTeF3PKcGGARbYsAyY4_slM",
+        "name": "Kurumi Kodomoen",
+        "rating": 4.7,
+        "reviewCount": 15,
+        "distanceM": 949,
+        "ratingDiff": 0.1
+      },
+      {
+        "placeId": "ChIJg7vMpu-cGGARiwXXv_8l7aw",
+        "name": "Kashiwa Central Nursery",
+        "rating": 5,
+        "reviewCount": 5,
+        "distanceM": 234,
+        "ratingDiff": 0.2
+      },
+      {
+        "placeId": "ChIJgazCMsedGGARnqdRGhRCmWI",
+        "name": "柏サンフラワー保育園",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 557,
+        "ratingDiff": 0.2
+      },
+      {
+        "placeId": "ChIJV1EM3F-dGGARQ1nKODT0FhI",
+        "name": "Kagayaki nursery school Kashiwa",
+        "rating": 5,
+        "reviewCount": 3,
+        "distanceM": 673,
+        "ratingDiff": 0.2
+      },
+      {
+        "placeId": "ChIJgWJOvNGdGGARZp7NQZrxqQE",
+        "name": "Kashiwa Himawari nursery",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 766,
+        "ratingDiff": 0.2
+      }
+    ]
+  },
+  {
+    "nursery": "鳩ヶ谷園",
+    "area": "埼玉県",
+    "placeId": "ChIJ02cMqmOUGGARQmncmaR1mXE",
+    "ownRating": null,
+    "ownReviewCount": 0,
+    "candidates": [
+      {
+        "placeId": "ChIJyb046sWVGGARuZvGZrbdA-s",
+        "name": "かたつむりベビー保育園 鳩ケ谷",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 84,
+        "ratingDiff": 99
+      },
+      {
+        "placeId": "ChIJbXJD4xeVGGARRCnRyxmXU3w",
+        "name": "ベビカル鳩ヶ谷駅（レンタルベビーカー）",
+        "rating": null,
+        "reviewCount": 0,
+        "distanceM": 140,
+        "ratingDiff": 99
+      },
+      {
+        "placeId": "ChIJ94zH5WKUGGARE4KJfiQTUCM",
+        "name": "Ichigo Nursery",
+        "rating": 4,
+        "reviewCount": 2,
+        "distanceM": 142,
+        "ratingDiff": 99
+      },
+      {
+        "placeId": "ChIJPxLE9GKUGGARb6vr2KoyRBE",
+        "name": "いちご保育園支援センター",
+        "rating": null,
+        "reviewCount": 0,
+        "distanceM": 160,
+        "ratingDiff": 99
+      },
+      {
+        "placeId": "ChIJ00AJbn-VGGARh96-CgTuuaM",
+        "name": "鳩ヶ谷キッズランド",
+        "rating": 5,
+        "reviewCount": 5,
+        "distanceM": 272,
+        "ratingDiff": 99
+      }
+    ]
+  },
+  {
+    "nursery": "武蔵中原園",
+    "area": "神奈川県",
+    "placeId": "ChIJTVVcNZ71GGARS1eDY7Ubf8A",
+    "ownRating": 5,
+    "ownReviewCount": 1,
+    "candidates": [
+      {
+        "placeId": "ChIJocZjQHH1GGARh6CjDynonjI",
+        "name": "Ein Musashikosugi-kita Nursery School",
+        "rating": 5,
+        "reviewCount": 2,
+        "distanceM": 652,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJ-XJDBqj1GGARXxdZgqAJtfc",
+        "name": "京進のほいくえん HOPPAパークシティ武蔵小杉",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 713,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJYd7LvJz1GGARWqwBhyYkOww",
+        "name": "Musashinakaharamorinoko Nursery",
+        "rating": 5,
+        "reviewCount": 2,
+        "distanceM": 844,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJyT5S2Xf1GGARiWFgLnZrun8",
+        "name": "Chachaimai Nursery",
+        "rating": 4.4,
+        "reviewCount": 12,
+        "distanceM": 544,
+        "ratingDiff": 0.6
+      },
+      {
+        "placeId": "ChIJ9cMceXf1GGARv1nL7kfGGp4",
+        "name": "Chacha Nakamachi Nursery",
+        "rating": 4.3,
+        "reviewCount": 15,
+        "distanceM": 643,
+        "ratingDiff": 0.7
+      }
+    ]
+  },
+  {
+    "nursery": "目黒園",
+    "area": "東京都",
+    "placeId": "ChIJ7akCmzyLGGARdDt5sc19MYQ",
+    "ownRating": 4.5,
+    "ownReviewCount": 8,
+    "candidates": [
+      {
+        "placeId": "ChIJcY6bhm6LGGAR6gqZIzgf37o",
+        "name": "さくらさくみらい 目黒",
+        "rating": 4.5,
+        "reviewCount": 2,
+        "distanceM": 319,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJT8fMpjmLGGART1T_gKRECMw",
+        "name": "Tokyo International School Nakameguro Kinder Garden",
+        "rating": 4.4,
+        "reviewCount": 8,
+        "distanceM": 499,
+        "ratingDiff": 0.1
+      },
+      {
+        "placeId": "ChIJV1Wh2hiLGGARmzzpPhiBbcs",
+        "name": "Beyondia International School Meguro(旧SOMOSインターナショナルプリスクール)",
+        "rating": 4.2,
+        "reviewCount": 10,
+        "distanceM": 681,
+        "ratingDiff": 0.3
+      },
+      {
+        "placeId": "ChIJr9DuTCOLGGARJwxiNCyeZn0",
+        "name": "HOPPA Meguro Nursery",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 178,
+        "ratingDiff": 0.5
+      },
+      {
+        "placeId": "ChIJ7Tp0VDuLGGARAXieEfvJKyY",
+        "name": "Dendō Nursery",
+        "rating": 4,
+        "reviewCount": 1,
+        "distanceM": 206,
+        "ratingDiff": 0.5
+      }
+    ]
+  },
+  {
+    "nursery": "練馬中村橋園",
+    "area": "東京都",
+    "placeId": "ChIJF5cU6rHtGGARE3OZgLrHKBs",
+    "ownRating": 4.7,
+    "ownReviewCount": 3,
+    "candidates": [
+      {
+        "placeId": "ChIJwX3846_tGGAR8JE-Y_9JzBY",
+        "name": "Sorasuto Nakamurabashi Nursery",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 260,
+        "ratingDiff": 0.3
+      },
+      {
+        "placeId": "ChIJ5-Hv2K_tGGAR6iQNvIfGO0E",
+        "name": "Kazenoko Nursery",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 282,
+        "ratingDiff": 0.3
+      },
+      {
+        "placeId": "ChIJ-dyenbrtGGAR3AMWphJ6Xa4",
+        "name": "Art Childcare Nakamurabashi",
+        "rating": 5,
+        "reviewCount": 3,
+        "distanceM": 429,
+        "ratingDiff": 0.3
+      },
+      {
+        "placeId": "ChIJKyQpprbtGGARuunzAzvItd4",
+        "name": "Nursery Maam Nakamurabashiekimae",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 433,
+        "ratingDiff": 0.3
+      },
+      {
+        "placeId": "ChIJo1l1zoHtGGARn9mIDXL4Fno",
+        "name": "練馬あけみ保育園",
+        "rating": 5,
+        "reviewCount": 3,
+        "distanceM": 818,
+        "ratingDiff": 0.3
+      }
+    ]
+  },
+  {
+    "nursery": "和光園",
+    "area": "埼玉県",
+    "placeId": "ChIJ21XWI-DrGGARJjwrKXbBVx8",
+    "ownRating": 4,
+    "ownReviewCount": 1,
+    "candidates": [
+      {
+        "placeId": "ChIJf5SEBeHrGGAR9MuG_duthhw",
+        "name": "Ito Yokado Wako Store",
+        "rating": 3.7,
+        "reviewCount": 1877,
+        "distanceM": 218,
+        "ratingDiff": 0.3
+      },
+      {
+        "placeId": "ChIJU3TZBeHrGGARBzRNp3j717w",
+        "name": "Akachan Honpo",
+        "rating": 3.6,
+        "reviewCount": 34,
+        "distanceM": 233,
+        "ratingDiff": 0.4
+      },
+      {
+        "placeId": "ChIJFYWvVYTpGGARNM2o0aPycXg",
+        "name": "和光なかよしこども園",
+        "rating": 4.5,
+        "reviewCount": 2,
+        "distanceM": 547,
+        "ratingDiff": 0.5
+      },
+      {
+        "placeId": "ChIJXTgOfN3rGGARqNErTPrTtgg",
+        "name": "和光プライムスター保育園",
+        "rating": 3.4,
+        "reviewCount": 5,
+        "distanceM": 739,
+        "ratingDiff": 0.6
+      },
+      {
+        "placeId": "ChIJVxMKjmTpGGAReYXQcACOkF0",
+        "name": "Nakamachidoronko Nursery",
+        "rating": 4.6,
+        "reviewCount": 12,
+        "distanceM": 875,
+        "ratingDiff": 0.6
+      }
+    ]
+  },
+  {
+    "nursery": "和光II園",
+    "area": "埼玉県",
+    "placeId": "ChIJUboxFebrGGAR4wU8-2A2zno",
+    "ownRating": null,
+    "ownReviewCount": 0,
+    "candidates": [
+      {
+        "placeId": "ChIJ3TNrxt_rGGAREd9w1ggXoIQ",
+        "name": "Wakotchi Little Star Nursery",
+        "rating": 3,
+        "reviewCount": 2,
+        "distanceM": 182,
+        "ratingDiff": 99
+      },
+      {
+        "placeId": "ChIJjzO2DmDpGGARlol-vkg3VtU",
+        "name": "わいわいがーでん",
+        "rating": 1,
+        "reviewCount": 1,
+        "distanceM": 228,
+        "ratingDiff": 99
+      },
+      {
+        "placeId": "ChIJrVoOR97rGGARzu-C1z2MFZk",
+        "name": "Hinata Nursery",
+        "rating": null,
+        "reviewCount": 0,
+        "distanceM": 272,
+        "ratingDiff": 99
+      },
+      {
+        "placeId": "ChIJFYA_wODrGGAR7Q0t8HONaBg",
+        "name": "メリー★ポピンズ 和光ルーム",
+        "rating": 5,
+        "reviewCount": 4,
+        "distanceM": 287,
+        "ratingDiff": 99
+      },
+      {
+        "placeId": "ChIJ1Q2_2l_pGGARxTjbWbb0NcI",
+        "name": "Kids Aid Wako Nursery",
+        "rating": 4.8,
+        "reviewCount": 4,
+        "distanceM": 335,
+        "ratingDiff": 99
+      }
+    ]
+  },
+  {
+    "nursery": "蕨園",
+    "area": "埼玉県",
+    "placeId": "ChIJm_dqt2_rGGARZOwV9-OkTxQ",
+    "ownRating": 5,
+    "ownReviewCount": 1,
+    "candidates": [
+      {
+        "placeId": "ChIJVVXBADrrGGARISwcPoiq6JM",
+        "name": "蕨市小規模保育園 保育ルームのぞみ",
+        "rating": 5,
+        "reviewCount": 4,
+        "distanceM": 663,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJW1MIesyUGGARpgKhAnBNXqM",
+        "name": "Himawari Nursery",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 762,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJL1FGhybrGGARhpQoeZ1juNQ",
+        "name": "Midori Nursery",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 838,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJqQNvhSzrGGARBCIqaj-9sVs",
+        "name": "芝保育所",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 888,
+        "ratingDiff": 0
+      },
+      {
+        "placeId": "ChIJc5MifznrGGARtzrjyPg6gkw",
+        "name": "Jirokai Toda Nursery School",
+        "rating": 5,
+        "reviewCount": 1,
+        "distanceM": 944,
+        "ratingDiff": 0
+      }
+    ]
+  },
+  {
+    "nursery": "蕨II園",
+    "area": "埼玉県",
+    "placeId": "ChIJlzqtUpfrGGARUsZBMphXEXA",
+    "ownRating": null,
+    "ownReviewCount": 0,
+    "candidates": [
+      {
+        "placeId": "ChIJDQELpjPrGGARY8qMny7sl1M",
+        "name": "蕨ゆたか保育園",
+        "rating": 4.3,
+        "reviewCount": 3,
+        "distanceM": 200,
+        "ratingDiff": 99
+      },
+      {
+        "placeId": "ChIJC5Q2NTPrGGARCwldGlKtoho",
+        "name": "Keyaki nursery",
+        "rating": 3,
+        "reviewCount": 2,
+        "distanceM": 465,
+        "ratingDiff": 99
+      },
+      {
+        "placeId": "ChIJYQndCS_rGGARFMEvBZIvhkU",
+        "name": "ニチイキッズわらび保育園",
+        "rating": 4.7,
+        "reviewCount": 3,
+        "distanceM": 473,
+        "ratingDiff": 99
+      },
+      {
+        "placeId": "ChIJI5aj08yUGGAR0Sv0JWh-QgA",
+        "name": "Tokyokobetsushidogakuin Warabikyoshitsu",
+        "rating": 4.5,
+        "reviewCount": 6,
+        "distanceM": 512,
+        "ratingDiff": 99
+      },
+      {
+        "placeId": "ChIJQbDzFjXrGGARzRr5HkUEROg",
+        "name": "Warabishitachisakura Nursery",
+        "rating": 3.6,
+        "reviewCount": 5,
+        "distanceM": 545,
+        "ratingDiff": 99
+      }
+    ]
+  },
+  {
+    "nursery": "ふぇりーちぇほいくえん",
+    "area": "千葉県",
+    "placeId": "ChIJ80xh1ceEImARJ_hE_nHvtvM",
+    "ownRating": 4,
+    "ownReviewCount": 2,
+    "candidates": [
+      {
+        "placeId": "ChIJg9FU7UOFImAR64iCRLe9yo0",
+        "name": "Tokyokobetsushidogakuin Chibahigashiguchikyoshitsu",
+        "rating": 4.2,
+        "reviewCount": 10,
+        "distanceM": 893,
+        "ratingDiff": 0.2
+      },
+      {
+        "placeId": "ChIJh9_2PsmEImARIgK0UYRwf0k",
+        "name": "Innai Nursery",
+        "rating": 3.5,
+        "reviewCount": 4,
+        "distanceM": 326,
+        "ratingDiff": 0.5
+      },
+      {
+        "placeId": "ChIJBdNbsAuFImARs7KpHPBI4TA",
+        "name": "Mirainomachi Nursery Tsurusawa",
+        "rating": 4.8,
+        "reviewCount": 6,
+        "distanceM": 996,
+        "ratingDiff": 0.8
+      },
+      {
+        "placeId": "ChIJT_uxjsuEImAR43PEskn3VJE",
+        "name": "チャコ保育園 児童発達支援チャコ千葉教室 相談支援事業所チャコ",
+        "rating": 5,
+        "reviewCount": 4,
+        "distanceM": 614,
+        "ratingDiff": 1
+      },
+      {
+        "placeId": "ChIJcT7ktTeFImARy-oAosDZdcM",
+        "name": "Nestいんない保育園",
+        "rating": 5,
+        "reviewCount": 6,
+        "distanceM": 636,
+        "ratingDiff": 1
+      }
+    ]
+  },
+  {
+    "nursery": "病児保育室にじのへや",
+    "area": "埼玉県",
+    "placeId": "ChIJK9MxgKLrGGARUiRQk2GgMaU",
+    "ownRating": null,
+    "ownReviewCount": 0,
+    "candidates": [
+      {
+        "placeId": "ChIJDQELpjPrGGARY8qMny7sl1M",
+        "name": "蕨ゆたか保育園",
+        "rating": 4.3,
+        "reviewCount": 3,
+        "distanceM": 200,
+        "ratingDiff": 99
+      },
+      {
+        "placeId": "ChIJC5Q2NTPrGGARCwldGlKtoho",
+        "name": "Keyaki nursery",
+        "rating": 3,
+        "reviewCount": 2,
+        "distanceM": 465,
+        "ratingDiff": 99
+      },
+      {
+        "placeId": "ChIJYQndCS_rGGARFMEvBZIvhkU",
+        "name": "ニチイキッズわらび保育園",
+        "rating": 4.7,
+        "reviewCount": 3,
+        "distanceM": 473,
+        "ratingDiff": 99
+      },
+      {
+        "placeId": "ChIJI5aj08yUGGAR0Sv0JWh-QgA",
+        "name": "Tokyokobetsushidogakuin Warabikyoshitsu",
+        "rating": 4.5,
+        "reviewCount": 6,
+        "distanceM": 512,
+        "ratingDiff": 99
+      },
+      {
+        "placeId": "ChIJQbDzFjXrGGARzRr5HkUEROg",
+        "name": "Warabishitachisakura Nursery",
+        "rating": 3.6,
+        "reviewCount": 5,
+        "distanceM": 545,
+        "ratingDiff": 99
+      }
+    ]
+  },
+  {
+    "nursery": "座間II園",
+    "area": "神奈川県",
+    "placeId": "ChIJLZnrOpn_GGARulv_-cYUkSM",
+    "ownRating": 5,
+    "ownReviewCount": 3,
+    "candidates": [
+      {
+        "placeId": "ChIJY1ZD_Bv1GGAR8XDkKyOT42Y",
+        "name": "ユニーク・１・インターナショナル・キッズ・アカデミー",
+        "rating": 4.7,
+        "reviewCount": 15,
+        "distanceM": 633,
+        "ratingDiff": 0.3
+      },
+      {
+        "placeId": "ChIJOf6Vk57_GGARfg1ham8GNDw",
+        "name": "Zamasukoyaka Nursery",
+        "rating": 4,
+        "reviewCount": 2,
+        "distanceM": 235,
+        "ratingDiff": 1
+      },
+      {
+        "placeId": "ChIJhceeB3f_GGARESBkI8dz6WE",
+        "name": "Yanase Nursery",
+        "rating": 4,
+        "reviewCount": 2,
+        "distanceM": 423,
+        "ratingDiff": 1
+      },
+      {
+        "placeId": "ChIJB9fZcZX_GGAR1TG0eLx1BQI",
+        "name": "Zama Shiritsu Chigusa Nursery",
+        "rating": 4,
+        "reviewCount": 1,
+        "distanceM": 994,
+        "ratingDiff": 1
+      },
+      {
+        "placeId": "ChIJfTx2ipv_GGARcmnXco2UD70",
+        "name": "Zama Nursery",
+        "rating": 2.8,
+        "reviewCount": 5,
+        "distanceM": 296,
+        "ratingDiff": 2.2
+      }
+    ]
+  }
+]
