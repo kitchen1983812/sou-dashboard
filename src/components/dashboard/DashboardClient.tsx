@@ -146,7 +146,8 @@ export default function DashboardClient({
 	const isRecruitTab =
 		activeTab === "recruitReport" ||
 		activeTab === "recruitCost" ||
-		activeTab === "ga4";
+		activeTab === "ga4" ||
+		activeTab === "reviews";
 
 	return (
 		<div className="flex min-h-screen">
