@@ -36,6 +36,7 @@ export default function ReviewsView() {
 	const [sortKey, setSortKey] = useState<SortKey>("rating");
 	const [sortDir, setSortDir] = useState<SortDir>("desc");
 	const [areaFilter, setAreaFilter] = useState("all");
+	const [expandedRow, setExpandedRow] = useState<string | null>(null);
 
 	useEffect(() => {
 		fetch("/api/reviews")
@@ -514,6 +515,8 @@ export default function ReviewsView() {
 							{hasSnapshot && (
 								<th className="px-3 py-2 w-32 text-center">目標進捗</th>
 							)}
+							<th className="text-right px-3 py-2">競合平均★</th>
+							<th className="text-right px-3 py-2">差分</th>
 							<th className="px-3 py-2 w-36 text-center">評価バー</th>
 						</tr>
 					</thead>
@@ -526,62 +529,141 @@ export default function ReviewsView() {
 							const achieved =
 								r.monthlyIncrease !== null &&
 								r.monthlyIncrease >= r.monthlyGoal;
+							const compDiff =
+								r.rating !== null && r.compAvgRating !== null
+									? Math.round((r.rating - r.compAvgRating) * 100) / 100
+									: null;
+							const isExpanded = expandedRow === r.placeId;
+							const colSpan = hasSnapshot ? 9 : 7;
 							return (
-								<tr
-									key={r.placeId}
-									className="border-b border-gray-100 hover:bg-gray-50"
-								>
-									<td className="px-3 py-2.5 font-medium">{r.name}</td>
-									<td className="px-3 py-2.5 text-gray-600">{r.area}</td>
-									<td className="px-3 py-2.5 text-right tabular-nums font-semibold">
-										{r.rating !== null ? `★${r.rating.toFixed(1)}` : "-"}
-									</td>
-									<td className="px-3 py-2.5 text-right tabular-nums">
-										{r.reviewCount}
-									</td>
-									{hasSnapshot && (
-										<td
-											className={`px-3 py-2.5 text-right tabular-nums ${
-												r.monthlyIncrease !== null
-													? increaseColor(r.monthlyIncrease)
-													: "text-gray-300"
-											}`}
-										>
-											{r.monthlyIncrease !== null
-												? r.monthlyIncrease > 0
-													? `+${r.monthlyIncrease}`
-													: String(r.monthlyIncrease)
+								<>
+									<tr
+										key={r.placeId}
+										className={`border-b border-gray-100 hover:bg-gray-50 cursor-pointer ${isExpanded ? "bg-blue-50" : ""}`}
+										onClick={() =>
+											setExpandedRow(isExpanded ? null : r.placeId)
+										}
+									>
+										<td className="px-3 py-2.5 font-medium">{r.name}</td>
+										<td className="px-3 py-2.5 text-gray-600">{r.area}</td>
+										<td className="px-3 py-2.5 text-right tabular-nums font-semibold">
+											{r.rating !== null ? `★${r.rating.toFixed(1)}` : "-"}
+										</td>
+										<td className="px-3 py-2.5 text-right tabular-nums">
+											{r.reviewCount}
+										</td>
+										{hasSnapshot && (
+											<td
+												className={`px-3 py-2.5 text-right tabular-nums ${
+													r.monthlyIncrease !== null
+														? increaseColor(r.monthlyIncrease)
+														: "text-gray-300"
+												}`}
+											>
+												{r.monthlyIncrease !== null
+													? r.monthlyIncrease > 0
+														? `+${r.monthlyIncrease}`
+														: String(r.monthlyIncrease)
+													: "-"}
+											</td>
+										)}
+										{hasSnapshot && (
+											<td className="px-3 py-2.5">
+												<div className="flex items-center gap-1">
+													<div className="flex-1 bg-gray-100 rounded-full h-2">
+														<div
+															className={`${achieved ? "bg-green-500" : "bg-brand-400"} h-2 rounded-full`}
+															style={{ width: `${goalPct}%` }}
+														/>
+													</div>
+													<span className="text-xs text-gray-400 w-8 text-right">
+														{r.monthlyIncrease !== null
+															? `${r.monthlyIncrease}/${r.monthlyGoal}`
+															: "-"}
+													</span>
+												</div>
+											</td>
+										)}
+										<td className="px-3 py-2.5 text-right tabular-nums text-gray-600">
+											{r.compAvgRating !== null
+												? `★${r.compAvgRating.toFixed(2)}`
 												: "-"}
 										</td>
-									)}
-									{hasSnapshot && (
+										<td
+											className={`px-3 py-2.5 text-right tabular-nums font-semibold ${compDiff === null ? "text-gray-300" : compDiff >= 0 ? "text-green-600" : "text-red-500"}`}
+										>
+											{compDiff !== null
+												? `${compDiff >= 0 ? "+" : ""}${compDiff.toFixed(2)}`
+												: "-"}
+										</td>
 										<td className="px-3 py-2.5">
-											<div className="flex items-center gap-1">
-												<div className="flex-1 bg-gray-100 rounded-full h-2">
-													<div
-														className={`${achieved ? "bg-green-500" : "bg-brand-400"} h-2 rounded-full`}
-														style={{ width: `${goalPct}%` }}
-													/>
-												</div>
-												<span className="text-xs text-gray-400 w-8 text-right">
-													{r.monthlyIncrease !== null
-														? `${r.monthlyIncrease}/${r.monthlyGoal}`
-														: "-"}
-												</span>
+											<div className="bg-gray-100 rounded-full h-4 overflow-hidden">
+												<div
+													className={`${ratingColor(r.rating)} h-full rounded-full`}
+													style={{
+														width: `${r.rating !== null ? (r.rating / 5) * 100 : 0}%`,
+													}}
+												/>
 											</div>
 										</td>
+									</tr>
+									{isExpanded && r.nurseryCompetitors.length > 0 && (
+										<tr key={`${r.placeId}-comp`} className="bg-blue-50">
+											<td colSpan={colSpan} className="px-4 py-2">
+												<table className="w-full text-xs">
+													<thead>
+														<tr className="text-gray-500 border-b border-blue-200">
+															<th className="text-left py-1 px-2 font-medium">
+																競合園名
+															</th>
+															<th className="text-right py-1 px-2 font-medium">
+																★評価
+															</th>
+															<th className="text-right py-1 px-2 font-medium">
+																口コミ数
+															</th>
+															<th className="text-right py-1 px-2 font-medium">
+																差分
+															</th>
+														</tr>
+													</thead>
+													<tbody>
+														{r.nurseryCompetitors.map((c) => {
+															const d =
+																r.rating !== null && c.rating !== null
+																	? Math.round((r.rating - c.rating) * 100) /
+																		100
+																	: null;
+															return (
+																<tr
+																	key={c.name}
+																	className="border-b border-blue-100 last:border-0"
+																>
+																	<td className="py-1.5 px-2">{c.name}</td>
+																	<td className="py-1.5 px-2 text-right tabular-nums">
+																		{c.rating !== null
+																			? `★${c.rating.toFixed(1)}`
+																			: "-"}
+																	</td>
+																	<td className="py-1.5 px-2 text-right tabular-nums text-gray-500">
+																		{c.reviewCount}
+																	</td>
+																	<td
+																		className={`py-1.5 px-2 text-right tabular-nums font-semibold ${d === null ? "text-gray-300" : d >= 0 ? "text-green-600" : "text-red-500"}`}
+																	>
+																		{d !== null
+																			? `${d >= 0 ? "+" : ""}${d.toFixed(2)}`
+																			: "-"}
+																	</td>
+																</tr>
+															);
+														})}
+													</tbody>
+												</table>
+											</td>
+										</tr>
 									)}
-									<td className="px-3 py-2.5">
-										<div className="bg-gray-100 rounded-full h-4 overflow-hidden">
-											<div
-												className={`${ratingColor(r.rating)} h-full rounded-full`}
-												style={{
-													width: `${r.rating !== null ? (r.rating / 5) * 100 : 0}%`,
-												}}
-											/>
-										</div>
-									</td>
-								</tr>
+								</>
 							);
 						})}
 					</tbody>
@@ -603,6 +685,7 @@ export default function ReviewsView() {
 								</td>
 							)}
 							{hasSnapshot && <td />}
+							<td colSpan={2} />
 							<td />
 						</tr>
 					</tfoot>

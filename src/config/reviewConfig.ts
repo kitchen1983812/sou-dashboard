@@ -640,6 +640,210 @@ export const COMPETITORS: CompetitorConfig[] = [
 	},
 ];
 
+/** 自園placeId → 近隣競合placeId一覧（Places API Nearby Searchで発見、最大5件） */
+export const NURSERY_COMPETITORS: Record<string, string[]> = {
+	// 稲城長沼園
+	ChIJAT_un8j6GGARRJDWMAye3XE: [
+		"ChIJjwuqU876GGARettnhJBINR8",
+		"ChIJs0jA2VT7GGARxI_y1qKk09E",
+		"ChIJ1W_ir8P6GGAR8dIXnP-s2YQ",
+		"ChIJvUJPlcP6GGART-ZqOmnQejA",
+		"ChIJvVe2Cc36GGARyrHQdRzs0-0",
+	],
+	// 京成八幡園
+	"ChIJq30EnM-GGGARwtXJOrPeADY": [
+		"ChIJdSue9s-GGGARNrrYzfGVd68",
+		"ChIJd40C0fuHGGARu253cDnvjUo",
+		"ChIJI6ybp5qHGGARElY1YcqTNWk",
+		"ChIJu3_TQ5iHGGARSJoAP8Ri1uU",
+		"ChIJQe6_BdKHGGARMy6VGlz2vvE",
+	],
+	// 行徳園
+	ChIJc2MR3muHGGARhHtG6RP1dKU: [
+		"ChIJd6jkHAaHGGARsCWagJzjZ7k",
+		"ChIJpYQb3GmHGGARsx48PV4frbM",
+		"ChIJQZrxfEKHGGARXCwiH9pfzRY",
+		"ChIJj8fKIEKHGGARYl-JyKzwO1s",
+		"ChIJg2FIchGHGGAR41ptEGKhmQA",
+	],
+	// 新座園
+	"ChIJt9t-ubLpGGARbSs4iZCwOMU": [
+		"ChIJca4GiEjoGGAR-Xqd06iGIg8",
+		"ChIJ6Sdnm5jpGGAR-JZomfWi1po",
+		"ChIJSX5TFlToGGARO1I2XFHU3Iw",
+		"ChIJ35QMqU3oGGARpsl7_jiNz20",
+		"ChIJ6R6OikjoGGARGfxnn_faHEE",
+	],
+	// 相武台前園
+	ChIJmfaEZpz_GGARzgWS_10r0o8: [
+		"ChIJFWZ8AgX_GGAR69wxllX3LiM",
+		"ChIJWXqejRL_GGARfeG607vs20g",
+		"ChIJ6Xse5MT_GGARsU7gq9MmBN4",
+		"ChIJyaRKKgf_GGARC5dFwlkHfic",
+		"ChIJUUJVvR3_GGAR4dchSMfHJP4",
+	],
+	// 相模原園
+	ChIJq9CYz9kDGWARvC3WXdkbKpA: [
+		"ChIJ31x8yF_9GGARntcZGNMzdrs",
+		"ChIJjRqkZnv9GGARnzdQtpYjgko",
+		"ChIJt8ZmLGf9GGARSXGVC_Ta8Sk",
+		"ChIJ8b4vMF79GGAR_dHtHt7aK_M",
+		"ChIJZS4C2Wb9GGAR84Q_-00wBSQ",
+	],
+	// 大田馬込園
+	"ChIJ0QP_5KGKGGAR2U-hrZrUCZA": [
+		"ChIJdU8HH5qLGGARDw4je5WILCo",
+		"ChIJwdieSjGLGGARtsb0Yu3zulE",
+		"ChIJdWUvN6eKGGARtJoMHv7NDRg",
+		"ChIJAajRgZ2KGGARCkzrWdpmItg",
+		"ChIJ79_vb6-KGGARxgeEW9mIDKo",
+	],
+	// 大和園
+	ChIJsbeGEa34GGARRaVauXzbF0g: [
+		"ChIJMXQnQbP4GGARkgUKgq2AESs",
+		"ChIJlzjxH1X_GGARpSqrZSzv0ik",
+		"ChIJXX1BaKz4GGAR1zWJ3oHzv2g",
+		"ChIJiQSpB5H5GGARI1WxakxBhZY",
+		"ChIJrWnRSaj4GGARqqlsXio6CP8",
+	],
+	// 中央林間園
+	ChIJWVLe3xP_GGARPjPg9pKfdsM: [
+		"ChIJXQFt8d_5GGAR43PomTGWCxc",
+		"ChIJw-m-oMz4GGARN6VUW7q5elk",
+		"ChIJn479rbL5GGAR5BK-2fne-D0",
+		"ChIJs4JiyjL5GGAR8_bSaufq9cc",
+		"ChIJqcqTQjL_GGAREFnCRoGh6jM",
+	],
+	// 中野新橋園
+	"ChIJ-7i0-efyGGAR2Zm6giP_Fdc": [
+		"ChIJCZ6hQO7zGGARWKFiv6q4H94",
+		"ChIJEUkde9zyGGARlZHdOsklZuo",
+		"ChIJ__-Pw8HyGGARrd-V0-ZN74A",
+		"ChIJVTO3OOHyGGARx-48kpqxfbY",
+		"ChIJMw9s_OTyGGAR3O1ppEYghu4",
+	],
+	// 朝霞園
+	"ChIJgbwKmXfpGGARsTdBJiV-YpU": [
+		"ChIJAVe-OHfpGGARcosquEYC8WM",
+		"ChIJn3fhVTbpGGARfKZ2NIQEifI",
+		"ChIJ0xk8rZjpGGARtMbPc6b96Mk",
+		"ChIJbQC1rZvpGGARGPcghoBZEr0",
+		"ChIJu0tIaYvpGGARZKYZXZigyts",
+	],
+	// 東川口園
+	"ChIJ6XMEHgaVGGARGzFHI1-Ly_o": [
+		"ChIJVd6jJrCVGGARqtw7tzgJR_Y",
+		"ChIJ35TKqTaVGGARVlUdXNDSNQ8",
+		"ChIJUS8UawCVGGAR6wdAGGDgte4",
+		"ChIJS_4W0BCVGGAR6yhDv_EOInM",
+		"ChIJIUQNIriVGGAR4BWL6J9vqM0",
+	],
+	// 南行徳園
+	ChIJxfYClqmHGGARNxWFyGrt2Mg: [
+		"ChIJOZ7l5LOHGGARNuqYXHBbMnU",
+		"ChIJCeYQgnCHGGARuFrkVQ3TxK4",
+		"ChIJx7ItSImHGGARwUqjWVTcMek",
+		"ChIJR4c0EHGHGGARHYM-bu44Qg0",
+		"ChIJKdm6K4qHGGAR-ixFnAJ-VxY",
+	],
+	// 柏II園
+	ChIJYf0QStOdGGARaQzhDXeDgiA: [
+		"ChIJOTeF3PKcGGARbYsAyY4_slM",
+		"ChIJg7vMpu-cGGARiwXXv_8l7aw",
+		"ChIJgazCMsedGGARnqdRGhRCmWI",
+		"ChIJV1EM3F-dGGARQ1nKODT0FhI",
+		"ChIJgWJOvNGdGGARZp7NQZrxqQE",
+	],
+	// 鳩ヶ谷園
+	ChIJ02cMqmOUGGARQmncmaR1mXE: [
+		"ChIJyb046sWVGGARuZvGZrbdA-s",
+		"ChIJbXJD4xeVGGARRCnRyxmXU3w",
+		"ChIJ94zH5WKUGGARE4KJfiQTUCM",
+		"ChIJPxLE9GKUGGARb6vr2KoyRBE",
+		"ChIJ00AJbn-VGGARh96-CgTuuaM",
+	],
+	// 武蔵中原園
+	ChIJTVVcNZ71GGARS1eDY7Ubf8A: [
+		"ChIJocZjQHH1GGARh6CjDynonjI",
+		"ChIJ-XJDBqj1GGARXxdZgqAJtfc",
+		"ChIJYd7LvJz1GGARWqwBhyYkOww",
+		"ChIJyT5S2Xf1GGARiWFgLnZrun8",
+		"ChIJ9cMceXf1GGARv1nL7kfGGp4",
+	],
+	// 目黒園
+	ChIJ7akCmzyLGGARdDt5sc19MYQ: [
+		"ChIJcY6bhm6LGGAR6gqZIzgf37o",
+		"ChIJT8fMpjmLGGART1T_gKRECMw",
+		"ChIJV1Wh2hiLGGARmzzpPhiBbcs",
+		"ChIJr9DuTCOLGGARJwxiNCyeZn0",
+		"ChIJ7Tp0VDuLGGARAXieEfvJKyY",
+	],
+	// 練馬中村橋園
+	ChIJF5cU6rHtGGARE3OZgLrHKBs: [
+		"ChIJwX3846_tGGAR8JE-Y_9JzBY",
+		"ChIJ5-Hv2K_tGGAR6iQNvIfGO0E",
+		"ChIJ-dyenbrtGGAR3AMWphJ6Xa4",
+		"ChIJKyQpprbtGGARuunzAzvItd4",
+		"ChIJo1l1zoHtGGARn9mIDXL4Fno",
+	],
+	// 和光園
+	"ChIJ21XWI-DrGGARJjwrKXbBVx8": [
+		"ChIJf5SEBeHrGGAR9MuG_duthhw",
+		"ChIJU3TZBeHrGGARBzRNp3j717w",
+		"ChIJFYWvVYTpGGARNM2o0aPycXg",
+		"ChIJXTgOfN3rGGARqNErTPrTtgg",
+		"ChIJVxMKjmTpGGAReYXQcACOkF0",
+	],
+	// 和光II園
+	"ChIJUboxFebrGGAR4wU8-2A2zno": [
+		"ChIJ3TNrxt_rGGAREd9w1ggXoIQ",
+		"ChIJjzO2DmDpGGARlol-vkg3VtU",
+		"ChIJrVoOR97rGGARzu-C1z2MFZk",
+		"ChIJFYA_wODrGGAR7Q0t8HONaBg",
+		"ChIJ1Q2_2l_pGGARxTjbWbb0NcI",
+	],
+	// 蕨園
+	"ChIJm_dqt2_rGGARZOwV9-OkTxQ": [
+		"ChIJVVXBADrrGGARISwcPoiq6JM",
+		"ChIJW1MIesyUGGARpgKhAnBNXqM",
+		"ChIJL1FGhybrGGARhpQoeZ1juNQ",
+		"ChIJqQNvhSzrGGARBCIqaj-9sVs",
+		"ChIJc5MifznrGGARtzrjyPg6gkw",
+	],
+	// 蕨II園
+	ChIJlzqtUpfrGGARUsZBMphXEXA: [
+		"ChIJDQELpjPrGGARY8qMny7sl1M",
+		"ChIJC5Q2NTPrGGARCwldGlKtoho",
+		"ChIJYQndCS_rGGARFMEvBZIvhkU",
+		"ChIJI5aj08yUGGAR0Sv0JWh-QgA",
+		"ChIJQbDzFjXrGGARzRr5HkUEROg",
+	],
+	// ふぇりーちぇほいくえん
+	ChIJ80xh1ceEImARJ_hE_nHvtvM: [
+		"ChIJg9FU7UOFImAR64iCRLe9yo0",
+		"ChIJh9_2PsmEImARIgK0UYRwf0k",
+		"ChIJBdNbsAuFImARs7KpHPBI4TA",
+		"ChIJT_uxjsuEImAR43PEskn3VJE",
+		"ChIJcT7ktTeFImARy-oAosDZdcM",
+	],
+	// 病児保育室にじのへや
+	ChIJK9MxgKLrGGARUiRQk2GgMaU: [
+		"ChIJDQELpjPrGGARY8qMny7sl1M",
+		"ChIJC5Q2NTPrGGARCwldGlKtoho",
+		"ChIJYQndCS_rGGARFMEvBZIvhkU",
+		"ChIJI5aj08yUGGAR0Sv0JWh-QgA",
+		"ChIJQbDzFjXrGGARzRr5HkUEROg",
+	],
+	// 座間II園
+	"ChIJLZnrOpn_GGARulv_-cYUkSM": [
+		"ChIJY1ZD_Bv1GGAR8XDkKyOT42Y",
+		"ChIJOf6Vk57_GGARfg1ham8GNDw",
+		"ChIJhceeB3f_GGARESBkI8dz6WE",
+		"ChIJB9fZcZX_GGAR1TG0eLx1BQI",
+		"ChIJfTx2ipv_GGARcmnXco2UD70",
+	],
+};
+
 /** 月次口コミ獲得目標 */
 export const DEFAULT_MONTHLY_GOAL = 3; // 件/月（デフォルト）
 

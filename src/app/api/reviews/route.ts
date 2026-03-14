@@ -1,7 +1,12 @@
 import fs from "fs";
 import path from "path";
 import { NextResponse } from "next/server";
-import { NURSERIES, COMPETITORS, getMonthlyGoal } from "@/config/reviewConfig";
+import {
+	NURSERIES,
+	COMPETITORS,
+	NURSERY_COMPETITORS,
+	getMonthlyGoal,
+} from "@/config/reviewConfig";
 
 const API_KEY = process.env.GOOGLE_PLACES_API_KEY || "";
 
@@ -56,6 +61,8 @@ export interface ReviewData {
 	reviewCount: number;
 	monthlyIncrease: number | null;
 	monthlyGoal: number;
+	compAvgRating: number | null;
+	nurseryCompetitors: CompetitorReviewData[];
 }
 
 export interface CompetitorReviewData {
@@ -113,15 +120,18 @@ export async function GET() {
 				reviewCount: detail.userRatingCount,
 				monthlyIncrease,
 				monthlyGoal: getMonthlyGoal(n.placeId),
+				compAvgRating: null,
+				nurseryCompetitors: [],
 			};
 		}),
 	);
 
-	// 競合データ取得
-	const competitors: CompetitorReviewData[] = await Promise.all(
+	// 競合データ取得 → placeId でルックアップできるMapを作成
+	const competitorResults = await Promise.all(
 		COMPETITORS.map(async (c) => {
 			const detail = await fetchPlaceDetails(c.placeId);
 			return {
+				placeId: c.placeId,
 				name: c.name,
 				area: c.area,
 				rating: detail.rating,
@@ -129,6 +139,29 @@ export async function GET() {
 			};
 		}),
 	);
+	const competitorMap = new Map(competitorResults.map((c) => [c.placeId, c]));
+	const competitors: CompetitorReviewData[] = competitorResults.map(
+		({ placeId: _pid, ...rest }) => rest,
+	);
+
+	// 園別競合データを付加（NURSERY_COMPETITORSからcompetitorMapを参照）
+	for (const r of reviews) {
+		const compIds = NURSERY_COMPETITORS[r.placeId] ?? [];
+		const comps = compIds
+			.map((id) => competitorMap.get(id))
+			.filter((c): c is (typeof competitorResults)[0] => c !== undefined)
+			.map(({ placeId: _pid, ...rest }) => rest);
+		r.nurseryCompetitors = comps;
+		const ratings = comps
+			.filter((c) => c.rating !== null)
+			.map((c) => c.rating as number);
+		r.compAvgRating =
+			ratings.length > 0
+				? Math.round(
+						(ratings.reduce((s, v) => s + v, 0) / ratings.length) * 100,
+					) / 100
+				: null;
+	}
 
 	// エリア→園名順でソート
 	reviews.sort((a, b) => {
