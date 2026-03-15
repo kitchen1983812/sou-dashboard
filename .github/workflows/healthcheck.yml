@@ -1,0 +1,25 @@
+name: Dashboard Healthcheck
+
+on:
+  schedule:
+    # 毎朝9:00 JST = 0:00 UTC
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  healthcheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check sou-dashboard
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            -u "${{ secrets.BASIC_AUTH_USER }}:${{ secrets.BASIC_AUTH_PASS }}" \
+            https://sou-dashboard.vercel.app/dashboard)
+          echo "HTTP Status: $STATUS"
+          if [ "$STATUS" != "200" ]; then
+            echo "::error::sou-dashboard is DOWN (HTTP $STATUS)"
+            exit 1
+          fi
+          echo "sou-dashboard OK"

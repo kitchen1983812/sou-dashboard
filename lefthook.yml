@@ -1,0 +1,11 @@
+# Lefthook - pre-commit hooks for sou-dashboard
+
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      glob: "*.{ts,tsx,js,jsx}"
+      run: npx @biomejs/biome format --write {staged_files} && git add {staged_files}
+    lint:
+      glob: "*.{ts,tsx,js,jsx}"
+      run: npx oxlint {staged_files}
