@@ -1,13 +1,12 @@
 "use client";
 
 import { useMemo } from "react";
-import { Inquiry, ScoreCardWithComparison } from "@/types/inquiry";
+import { Inquiry } from "@/types/inquiry";
 import {
 	STATUS,
 	computeScoreCards,
 	computeScoreCardsWithComparison,
 	filterByDateRange,
-	getPrevDateRange,
 	getCurrentFY,
 	getFYRange,
 	normalizeArea,
