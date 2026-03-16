@@ -13,6 +13,7 @@ import {
 
 // --- タブ定義 ---
 export const TABS: TabDef[] = [
+	{ id: "executive", label: "経営サマリー", title: "経営サマリー" },
 	{ id: "recent", label: "直近30日-園別", title: "直近30日-園別" },
 	{ id: "annual", label: "年度集計-園別", title: "年度集計-園別" },
 	{ id: "fyMonthly", label: "年度集計-月次別", title: "年度集計-月次別" },
@@ -20,6 +21,8 @@ export const TABS: TabDef[] = [
 	{ id: "report", label: "ブランド別", title: "ブランド別" },
 	{ id: "googleAds", label: "Google広告", title: "Google広告パフォーマンス" },
 	{ id: "weeklyReport", label: "週次レポート", title: "週次レポート" },
+	{ id: "occupancy", label: "定員充足率", title: "定員充足率" },
+	{ id: "funnel", label: "入園ファネル", title: "入園ファネル分析" },
 	{ id: "recruitReport", label: "採用レポート", title: "採用レポート" },
 	{ id: "recruitCost", label: "採用費分析", title: "採用費分析" },
 	{ id: "ga4", label: "GA4", title: "サイトパフォーマンス (GA4)" },
@@ -53,16 +56,16 @@ export const STATUS = {
 } as const;
 
 export const STATUS_COLORS: Record<string, string> = {
-	[STATUS.GUIDED]: "#0EA5E9",
-	[STATUS.UNANSWERED]: "#DC2626",
-	[STATUS.CONSIDERING]: "#16A34A",
-	[STATUS.IN_PROGRESS]: "#F59E0B",
-	[STATUS.WAITLISTED]: "#8B5CF6",
-	[STATUS.ENROLLED]: "#008cc9",
-	[STATUS.CANNOT_REACH]: "#94A3B8",
-	[STATUS.DECLINED]: "#F97316",
-	[STATUS.CANNOT_ACCEPT]: "#6B7280",
-	[STATUS.DUPLICATE]: "#A16207",
+	[STATUS.UNANSWERED]: "#DC2626", // red-600: 要アクション
+	[STATUS.IN_PROGRESS]: "#F59E0B", // amber-500: 進行中
+	[STATUS.GUIDED]: "#0EA5E9", // sky-500: 案内済
+	[STATUS.CONSIDERING]: "#16A34A", // green-600: 検討中
+	[STATUS.WAITLISTED]: "#8B5CF6", // violet-500: 待ち
+	[STATUS.ENROLLED]: "#008cc9", // brand: 成約
+	[STATUS.DECLINED]: "#6B7280", // gray-500: クローズ
+	[STATUS.CANNOT_REACH]: "#94A3B8", // gray-400: 連絡不可
+	[STATUS.CANNOT_ACCEPT]: "#6B7280", // gray-500: 受入不可
+	[STATUS.DUPLICATE]: "#A16207", // yellow-700: 重複
 };
 
 export const ALL_STATUSES = [
@@ -301,11 +304,15 @@ export function getDateRangeForTab(tabId: TabId): { start: Date; end: Date } {
 		}
 		case "annual":
 			return getFYRange(getCurrentFY());
+		case "executive":
+			return getFYRange(getCurrentFY());
 		case "fyMonthly":
 		case "comparison":
 		case "report":
 		case "googleAds":
 		case "weeklyReport":
+		case "occupancy":
+		case "funnel":
 		case "recruitReport":
 		case "ga4":
 		case "recruitCost":
@@ -334,6 +341,7 @@ export function getPrevDateRange(tabId: TabId): {
 			return { start, end };
 		}
 		case "annual":
+		case "executive":
 			return getFYRange(getCurrentFY() - 1);
 		default:
 			return null;

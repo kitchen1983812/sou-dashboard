@@ -39,6 +39,10 @@ import RecruitReportView from "./RecruitReportView";
 import RecruitCostView from "./RecruitCostView";
 import GA4View from "./GA4View";
 import ReviewsView from "./ReviewsView";
+import ExecutiveSummaryView from "./ExecutiveSummaryView";
+import OccupancyView from "./OccupancyView";
+import FunnelView from "./FunnelView";
+import InsightPanel from "./InsightPanel";
 
 interface DashboardClientProps {
 	inquiries: Inquiry[];
@@ -63,7 +67,7 @@ export default function DashboardClient({
 	applicants,
 	recruitCosts,
 }: DashboardClientProps) {
-	const [activeTab, setActiveTab] = useState<TabId>("weeklyReport");
+	const [activeTab, setActiveTab] = useState<TabId>("executive");
 	const [filters, setFilters] = useState<FilterState>({
 		company: "",
 		nursery: "",
@@ -144,8 +148,11 @@ export default function DashboardClient({
 	const showContactMethod = activeTab === "recent" || activeTab === "annual";
 	const showStatus = !showContactMethod;
 	const isRecruitTab =
+		activeTab === "executive" ||
 		activeTab === "recruitReport" ||
 		activeTab === "recruitCost" ||
+		activeTab === "occupancy" ||
+		activeTab === "funnel" ||
 		activeTab === "ga4" ||
 		activeTab === "reviews";
 
@@ -179,7 +186,13 @@ export default function DashboardClient({
 					)}
 
 					{/* Content based on active tab */}
-					{activeTab === "reviews" ? (
+					{activeTab === "executive" ? (
+						<ExecutiveSummaryView inquiries={filteredInquiries} />
+					) : activeTab === "occupancy" ? (
+						<OccupancyView />
+					) : activeTab === "funnel" ? (
+						<FunnelView inquiries={filteredInquiries} />
+					) : activeTab === "reviews" ? (
 						<ReviewsView />
 					) : activeTab === "ga4" ? (
 						<GA4View />
@@ -213,6 +226,12 @@ export default function DashboardClient({
 						<MonthlyTabContent inquiries={filteredInquiries} />
 					) : (
 						<>
+							{/* Insight Panel */}
+							<InsightPanel
+								inquiries={dateFiltered}
+								prevInquiries={prevDateFiltered}
+							/>
+
 							{/* Score Cards */}
 							<ScoreCards data={scoreCards} />
 

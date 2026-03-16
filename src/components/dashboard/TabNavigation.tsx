@@ -14,6 +14,10 @@ const currentFY = (() => {
 })();
 const fyShort = String(currentFY).slice(2);
 
+const EXECUTIVE_TABS: { id: TabId; label: string }[] = [
+	{ id: "executive", label: "経営サマリー" },
+];
+
 const INQUIRY_TABS: { id: TabId; label: string }[] = [
 	{ id: "weeklyReport", label: "週次レポート" },
 	{ id: "recent", label: "直近30日-園別" },
@@ -24,6 +28,11 @@ const INQUIRY_TABS: { id: TabId; label: string }[] = [
 	{ id: "googleAds", label: "Google広告" },
 	{ id: "ga4", label: "GA4" },
 	{ id: "reviews", label: "Google口コミ" },
+];
+
+const OPERATIONS_TABS: { id: TabId; label: string }[] = [
+	{ id: "occupancy", label: "定員充足率" },
+	{ id: "funnel", label: "入園ファネル" },
 ];
 
 const RECRUIT_TABS: { id: TabId; label: string }[] = [
@@ -37,6 +46,7 @@ export default function TabNavigation({
 }: TabNavigationProps) {
 	const [collapsed, setCollapsed] = useState(false);
 	const [inquiryOpen, setInquiryOpen] = useState(true);
+	const [opsOpen, setOpsOpen] = useState(true);
 	const [recruitOpen, setRecruitOpen] = useState(true);
 
 	if (collapsed) {
@@ -96,8 +106,28 @@ export default function TabNavigation({
 				</button>
 			</div>
 
-			{/* 集客パート */}
+			{/* 経営パート（常時展開） */}
 			<div>
+				<ul>
+					{EXECUTIVE_TABS.map((tab) => (
+						<li key={tab.id}>
+							<button
+								onClick={() => onTabChange(tab.id)}
+								className={`w-full text-left px-4 py-2.5 text-sm font-bold transition-colors ${
+									activeTab === tab.id
+										? "bg-brand-50 text-brand-700 border-l-[3px] border-brand-500"
+										: "text-gray-700 hover:bg-gray-50 border-l-[3px] border-transparent"
+								}`}
+							>
+								{tab.label}
+							</button>
+						</li>
+					))}
+				</ul>
+			</div>
+
+			{/* 集客パート */}
+			<div className="border-t border-gray-200">
 				<button
 					onClick={() => setInquiryOpen(!inquiryOpen)}
 					className="w-full flex items-center justify-between px-4 py-2.5 text-sm font-bold text-brand-700 tracking-wider hover:bg-brand-50 border-b border-gray-100"
@@ -125,6 +155,52 @@ export default function TabNavigation({
 				{inquiryOpen && (
 					<ul>
 						{INQUIRY_TABS.map((tab) => (
+							<li key={tab.id}>
+								<button
+									onClick={() => onTabChange(tab.id)}
+									className={`w-full text-left px-4 py-2 text-sm transition-colors ${
+										activeTab === tab.id
+											? "bg-brand-50 text-brand-700 border-l-[3px] border-brand-500 font-semibold"
+											: "text-gray-600 hover:bg-gray-50 hover:text-gray-900 border-l-[3px] border-transparent"
+									}`}
+								>
+									{tab.label}
+								</button>
+							</li>
+						))}
+					</ul>
+				)}
+			</div>
+
+			{/* 運営パート */}
+			<div className="border-t border-gray-200 mt-1">
+				<button
+					onClick={() => setOpsOpen(!opsOpen)}
+					className="w-full flex items-center justify-between px-4 py-2.5 text-sm font-bold text-brand-700 tracking-wider hover:bg-brand-50 border-b border-gray-100"
+				>
+					<span className="flex items-center gap-1.5">
+						<span className="w-1.5 h-4 bg-brand-500 rounded-full" />
+						運営
+					</span>
+					<svg
+						className={`w-3.5 h-3.5 transition-transform ${
+							opsOpen ? "" : "-rotate-90"
+						}`}
+						fill="none"
+						stroke="currentColor"
+						viewBox="0 0 24 24"
+					>
+						<path
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							strokeWidth={2}
+							d="M19 9l-7 7-7-7"
+						/>
+					</svg>
+				</button>
+				{opsOpen && (
+					<ul>
+						{OPERATIONS_TABS.map((tab) => (
 							<li key={tab.id}>
 								<button
 									onClick={() => onTabChange(tab.id)}

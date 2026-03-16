@@ -41,6 +41,7 @@ export interface Inquiry {
 
 /** タブID */
 export type TabId =
+	| "executive"
 	| "recent"
 	| "annual"
 	| "fyMonthly"
@@ -48,6 +49,8 @@ export type TabId =
 	| "report"
 	| "googleAds"
 	| "weeklyReport"
+	| "occupancy"
+	| "funnel"
 	| "recruitReport"
 	| "recruitCost"
 	| "ga4"
