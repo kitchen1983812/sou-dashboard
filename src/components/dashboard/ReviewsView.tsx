@@ -7,6 +7,10 @@ interface ReviewsResponse {
 	reviews: ReviewData[];
 	competitors: CompetitorReviewData[];
 	snapshotDate: string | null;
+	baselineDate: string | null;
+	baselineStartDate: string | null;
+	halfYearGoal: number;
+	goalDeadline: string | null;
 	fetchedAt: string;
 }
 
@@ -26,7 +30,13 @@ function increaseColor(n: number): string {
 	return "text-gray-400";
 }
 
-type SortKey = "name" | "area" | "rating" | "reviewCount" | "increase";
+type SortKey =
+	| "name"
+	| "area"
+	| "rating"
+	| "reviewCount"
+	| "increase"
+	| "baselineIncrease";
 type SortDir = "asc" | "desc";
 
 export default function ReviewsView() {
@@ -71,6 +81,11 @@ export default function ReviewsView() {
 				const bi = b.monthlyIncrease ?? -1;
 				return (ai - bi) * dir;
 			}
+			if (sortKey === "baselineIncrease") {
+				const ai = a.baselineIncrease ?? -1;
+				const bi = b.baselineIncrease ?? -1;
+				return (ai - bi) * dir;
+			}
 			const av = sortKey === "rating" ? (a.rating ?? -1) : a.reviewCount;
 			const bv = sortKey === "rating" ? (b.rating ?? -1) : b.reviewCount;
 			return (av - bv) * dir;
@@ -107,6 +122,19 @@ export default function ReviewsView() {
 						.length
 				: null;
 
+		// ベースライン比の集計
+		const withBaseline = reviews.filter((r) => r.baselineIncrease !== null);
+		const totalBaselineIncrease =
+			withBaseline.length > 0
+				? withBaseline.reduce((s, r) => s + (r.baselineIncrease ?? 0), 0)
+				: null;
+		const baselineAchievedCount =
+			withBaseline.length > 0
+				? withBaseline.filter(
+						(r) => (r.baselineIncrease ?? 0) >= (data.halfYearGoal ?? 10),
+					).length
+				: null;
+
 		return {
 			avgRating,
 			totalReviews,
@@ -115,6 +143,8 @@ export default function ReviewsView() {
 			total: reviews.length,
 			totalIncrease,
 			achievedCount,
+			totalBaselineIncrease,
+			baselineAchievedCount,
 		};
 	}, [data]);
 
@@ -245,6 +275,7 @@ export default function ReviewsView() {
 	if (!data || !kpi) return null;
 
 	const hasSnapshot = data.snapshotDate !== null;
+	const hasBaseline = data.baselineDate !== null;
 
 	return (
 		<div className="space-y-5">
@@ -294,6 +325,111 @@ export default function ReviewsView() {
 					</div>
 				</div>
 			</div>
+
+			{/* 口コミ施策 進捗（ベースライン比） */}
+			{hasBaseline && (
+				<div className="bg-gradient-to-r from-brand-50 to-green-50 border border-brand-200 rounded-xl p-4">
+					<h3 className="text-base font-bold text-brand-800 mb-3">
+						口コミ施策 進捗
+						<span className="text-xs font-normal text-brand-500 ml-2">
+							（{data.baselineStartDate}〜 / 基準日: {data.baselineDate}）
+						</span>
+					</h3>
+					<div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+						<div className="bg-white/80 rounded-lg p-3">
+							<div className="text-xs text-gray-500">全園 増加合計</div>
+							<div className="text-2xl font-bold text-green-600 mt-1">
+								{kpi.totalBaselineIncrease !== null
+									? `+${kpi.totalBaselineIncrease}`
+									: "-"}
+								<span className="text-sm font-normal text-gray-500 ml-1">
+									件
+								</span>
+							</div>
+						</div>
+						<div className="bg-white/80 rounded-lg p-3">
+							<div className="text-xs text-gray-500">半年目標</div>
+							<div className="text-2xl font-bold text-brand-700 mt-1">
+								{data.halfYearGoal}
+								<span className="text-sm font-normal text-gray-500 ml-1">
+									件/園
+								</span>
+							</div>
+						</div>
+						<div className="bg-white/80 rounded-lg p-3">
+							<div className="text-xs text-gray-500">目標達成園数</div>
+							<div className="text-2xl font-bold text-amber-600 mt-1">
+								{kpi.baselineAchievedCount ?? 0}
+								<span className="text-sm font-normal text-gray-500 ml-1">
+									/ {kpi.total}園
+								</span>
+							</div>
+						</div>
+						<div className="bg-white/80 rounded-lg p-3">
+							<div className="text-xs text-gray-500">目標期限</div>
+							<div className="text-lg font-bold text-gray-700 mt-1">
+								{data.goalDeadline ?? "-"}
+							</div>
+						</div>
+					</div>
+					{/* 園別 施策進捗ランキング top 5 */}
+					{(() => {
+						const ranked = [...data.reviews]
+							.filter(
+								(r) => r.baselineIncrease !== null && r.baselineIncrease > 0,
+							)
+							.sort(
+								(a, b) => (b.baselineIncrease ?? 0) - (a.baselineIncrease ?? 0),
+							)
+							.slice(0, 5);
+						if (ranked.length === 0) return null;
+						return (
+							<div className="space-y-1.5">
+								{ranked.map((r, i) => {
+									const pct = Math.min(
+										((r.baselineIncrease ?? 0) / data.halfYearGoal) * 100,
+										100,
+									);
+									return (
+										<div
+											key={r.placeId}
+											className="flex items-center gap-3 bg-white/70 rounded-lg px-3 py-2"
+										>
+											<span className="text-lg w-6 text-center font-bold text-brand-600">
+												{i + 1}
+											</span>
+											<div className="flex-1 min-w-0">
+												<div className="text-sm font-semibold text-gray-800 truncate">
+													{r.name}
+												</div>
+											</div>
+											<div className="text-right mr-2">
+												<span className="text-lg font-bold text-green-600">
+													+{r.baselineIncrease}
+												</span>
+												<span className="text-xs text-gray-400 ml-1">
+													/ {data.halfYearGoal}
+												</span>
+											</div>
+											<div className="w-20">
+												<div className="bg-gray-200 rounded-full h-2">
+													<div
+														className={`${pct >= 100 ? "bg-green-500" : "bg-brand-400"} h-2 rounded-full`}
+														style={{ width: `${pct}%` }}
+													/>
+												</div>
+												<div className="text-xs text-gray-400 text-right mt-0.5">
+													{Math.round(pct)}%
+												</div>
+											</div>
+										</div>
+									);
+								})}
+							</div>
+						);
+					})()}
+				</div>
+			)}
 
 			{/* 今月のMVPランキング */}
 			{hasSnapshot && (
@@ -504,6 +640,17 @@ export default function ReviewsView() {
 							>
 								累計 {sortIcon("reviewCount")}
 							</th>
+							{hasBaseline && (
+								<th
+									className="text-right px-3 py-2 cursor-pointer hover:text-brand-600"
+									onClick={() => handleSort("baselineIncrease")}
+								>
+									施策後 {sortIcon("baselineIncrease")}
+								</th>
+							)}
+							{hasBaseline && (
+								<th className="px-3 py-2 w-32 text-center">半年目標</th>
+							)}
 							{hasSnapshot && (
 								<th
 									className="text-right px-3 py-2 cursor-pointer hover:text-brand-600"
@@ -513,7 +660,7 @@ export default function ReviewsView() {
 								</th>
 							)}
 							{hasSnapshot && (
-								<th className="px-3 py-2 w-32 text-center">目標進捗</th>
+								<th className="px-3 py-2 w-32 text-center">月次進捗</th>
 							)}
 							<th className="text-right px-3 py-2">競合平均★</th>
 							<th className="text-right px-3 py-2">差分</th>
@@ -533,8 +680,18 @@ export default function ReviewsView() {
 								r.rating !== null && r.compAvgRating !== null
 									? Math.round((r.rating - r.compAvgRating) * 100) / 100
 									: null;
+							const baselineGoalPct =
+								r.baselineIncrease !== null
+									? Math.min(
+											(r.baselineIncrease / data.halfYearGoal) * 100,
+											100,
+										)
+									: 0;
+							const baselineAchieved =
+								r.baselineIncrease !== null &&
+								r.baselineIncrease >= data.halfYearGoal;
 							const isExpanded = expandedRow === r.placeId;
-							const colSpan = hasSnapshot ? 9 : 7;
+							const colSpan = 7 + (hasBaseline ? 2 : 0) + (hasSnapshot ? 2 : 0);
 							return (
 								<>
 									<tr
@@ -552,6 +709,38 @@ export default function ReviewsView() {
 										<td className="px-3 py-2.5 text-right tabular-nums">
 											{r.reviewCount}
 										</td>
+										{hasBaseline && (
+											<td
+												className={`px-3 py-2.5 text-right tabular-nums ${
+													r.baselineIncrease !== null
+														? increaseColor(r.baselineIncrease)
+														: "text-gray-300"
+												}`}
+											>
+												{r.baselineIncrease !== null
+													? r.baselineIncrease > 0
+														? `+${r.baselineIncrease}`
+														: String(r.baselineIncrease)
+													: "-"}
+											</td>
+										)}
+										{hasBaseline && (
+											<td className="px-3 py-2.5">
+												<div className="flex items-center gap-1">
+													<div className="flex-1 bg-gray-100 rounded-full h-2">
+														<div
+															className={`${baselineAchieved ? "bg-green-500" : "bg-brand-400"} h-2 rounded-full`}
+															style={{ width: `${baselineGoalPct}%` }}
+														/>
+													</div>
+													<span className="text-xs text-gray-400 w-10 text-right">
+														{r.baselineIncrease !== null
+															? `${r.baselineIncrease}/${data.halfYearGoal}`
+															: "-"}
+													</span>
+												</div>
+											</td>
+										)}
 										{hasSnapshot && (
 											<td
 												className={`px-3 py-2.5 text-right tabular-nums ${
@@ -679,6 +868,14 @@ export default function ReviewsView() {
 							<td className="px-3 py-2.5 text-right text-brand-800 tabular-nums">
 								{kpi.totalReviews}
 							</td>
+							{hasBaseline && (
+								<td className="px-3 py-2.5 text-right text-green-700 tabular-nums font-bold">
+									{kpi.totalBaselineIncrease !== null
+										? `+${kpi.totalBaselineIncrease}`
+										: "-"}
+								</td>
+							)}
+							{hasBaseline && <td />}
 							{hasSnapshot && (
 								<td className="px-3 py-2.5 text-right text-green-700 tabular-nums font-bold">
 									{kpi.totalIncrease !== null ? `+${kpi.totalIncrease}` : "-"}
@@ -694,8 +891,14 @@ export default function ReviewsView() {
 
 			{/* 更新時刻 */}
 			<div className="text-xs text-gray-400 text-right space-y-0.5">
+				{data.baselineDate && (
+					<div>
+						施策ベースライン: {data.baselineDate}（施策開始:{" "}
+						{data.baselineStartDate}）
+					</div>
+				)}
 				{data.snapshotDate && (
-					<div>基準スナップショット: {data.snapshotDate}</div>
+					<div>月次スナップショット: {data.snapshotDate}</div>
 				)}
 				<div>最終更新: {new Date(data.fetchedAt).toLocaleString("ja-JP")}</div>
 			</div>

@@ -117,13 +117,14 @@ async function fetchReviewCount(placeId) {
 
 async function main() {
 	const now = new Date();
-	// 月初スナップショット: 当月YYYY-MMとして保存
 	const year = now.getFullYear();
 	const month = String(now.getMonth() + 1).padStart(2, "0");
-	const yearMonth = `${year}-${month}`;
 	const dateStr = `${year}-${month}-${String(now.getDate()).padStart(2, "0")}`;
 
-	console.log(`Taking snapshot for ${yearMonth} (${dateStr})...`);
+	// SNAPSHOT_NAME が指定されていればそれをファイル名に、なければ YYYY-MM
+	const snapshotName = process.env.SNAPSHOT_NAME || `${year}-${month}`;
+
+	console.log(`Taking snapshot "${snapshotName}" (${dateStr})...`);
 
 	const counts = {};
 	for (const nursery of NURSERIES) {
@@ -145,12 +146,12 @@ async function main() {
 		fs.mkdirSync(snapshotDir, { recursive: true });
 	}
 
-	const outputPath = path.join(snapshotDir, `${yearMonth}.json`);
+	const outputPath = path.join(snapshotDir, `${snapshotName}.json`);
 	const snapshot = { date: dateStr, counts };
 	fs.writeFileSync(outputPath, JSON.stringify(snapshot, null, 2), "utf-8");
 
 	const total = Object.values(counts).reduce((s, v) => s + v.count, 0);
-	console.log(`\nSnapshot saved: public/snapshots/${yearMonth}.json`);
+	console.log(`\nSnapshot saved: public/snapshots/${snapshotName}.json`);
 	console.log(`Total reviews across all nurseries: ${total}`);
 }
 

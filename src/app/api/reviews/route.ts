@@ -6,6 +6,7 @@ import {
 	COMPETITORS,
 	NURSERY_COMPETITORS,
 	getMonthlyGoal,
+	BASELINE_CONFIG,
 } from "@/config/reviewConfig";
 
 const API_KEY = process.env.GOOGLE_PLACES_API_KEY || "";
@@ -22,23 +23,15 @@ interface SnapshotFile {
 	counts: Record<string, SnapshotEntry>;
 }
 
-/** 直前月のスナップショットを読み込む */
-function loadPreviousSnapshot(): {
-	date: string;
-	counts: Record<string, number>;
-} | null {
-	const now = new Date();
-	// 前月を計算
-	const prevYear =
-		now.getMonth() === 0 ? now.getFullYear() - 1 : now.getFullYear();
-	const prevMonth = now.getMonth() === 0 ? 12 : now.getMonth();
-	const key = `${prevYear}-${String(prevMonth).padStart(2, "0")}`;
-
+/** スナップショットファイルを読み込む汎用関数 */
+function loadSnapshot(
+	fileName: string,
+): { date: string; counts: Record<string, number> } | null {
 	const filePath = path.join(
 		process.cwd(),
 		"public",
 		"snapshots",
-		`${key}.json`,
+		`${fileName}.json`,
 	);
 	try {
 		const raw = fs.readFileSync(filePath, "utf-8");
@@ -53,6 +46,21 @@ function loadPreviousSnapshot(): {
 	}
 }
 
+/** 直前月のスナップショットを読み込む */
+function loadPreviousSnapshot() {
+	const now = new Date();
+	const prevYear =
+		now.getMonth() === 0 ? now.getFullYear() - 1 : now.getFullYear();
+	const prevMonth = now.getMonth() === 0 ? 12 : now.getMonth();
+	const key = `${prevYear}-${String(prevMonth).padStart(2, "0")}`;
+	return loadSnapshot(key);
+}
+
+/** ベースラインスナップショットを読み込む（施策起点） */
+function loadBaselineSnapshot() {
+	return loadSnapshot(BASELINE_CONFIG.snapshotName);
+}
+
 export interface ReviewData {
 	name: string;
 	area: string;
@@ -61,6 +69,8 @@ export interface ReviewData {
 	reviewCount: number;
 	monthlyIncrease: number | null;
 	monthlyGoal: number;
+	/** 施策開始後（ベースライン比）の増加数 */
+	baselineIncrease: number | null;
 	compAvgRating: number | null;
 	nurseryCompetitors: CompetitorReviewData[];
 }
@@ -102,8 +112,9 @@ export async function GET() {
 		);
 	}
 
-	// スナップショット読み込み（前月末時点のデータ）
+	// スナップショット読み込み
 	const snapshot = loadPreviousSnapshot();
+	const baseline = loadBaselineSnapshot();
 
 	// 自園データ取得
 	const reviews: ReviewData[] = await Promise.all(
@@ -112,6 +123,9 @@ export async function GET() {
 			const snapshotCount = snapshot?.counts[n.placeId] ?? null;
 			const monthlyIncrease =
 				snapshotCount !== null ? detail.userRatingCount - snapshotCount : null;
+			const baselineCount = baseline?.counts[n.placeId] ?? null;
+			const baselineIncrease =
+				baselineCount !== null ? detail.userRatingCount - baselineCount : null;
 			return {
 				name: n.name,
 				area: n.area,
@@ -120,6 +134,7 @@ export async function GET() {
 				reviewCount: detail.userRatingCount,
 				monthlyIncrease,
 				monthlyGoal: getMonthlyGoal(n.placeId),
+				baselineIncrease,
 				compAvgRating: null,
 				nurseryCompetitors: [],
 			};
@@ -174,6 +189,10 @@ export async function GET() {
 		reviews,
 		competitors,
 		snapshotDate: snapshot?.date ?? null,
+		baselineDate: baseline?.date ?? null,
+		baselineStartDate: baseline ? BASELINE_CONFIG.startDate : null,
+		halfYearGoal: BASELINE_CONFIG.halfYearGoal,
+		goalDeadline: BASELINE_CONFIG.goalDeadline,
 		fetchedAt: new Date().toISOString(),
 	});
 }

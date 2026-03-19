@@ -844,6 +844,18 @@ export const NURSERY_COMPETITORS: Record<string, string[]> = {
 	],
 };
 
+/** ベースラインスナップショット設定（口コミ施策の起点） */
+export const BASELINE_CONFIG = {
+	/** ベースラインスナップショットのファイル名（public/snapshots/ 内） */
+	snapshotName: "baseline-20260327",
+	/** 施策開始日（表示ラベル用） */
+	startDate: "2026-03-28",
+	/** 半年目標（1園あたりの口コミ増加件数） */
+	halfYearGoal: 10,
+	/** 目標期限 */
+	goalDeadline: "2026-09-27",
+} as const;
+
 /** 月次口コミ獲得目標 */
 export const DEFAULT_MONTHLY_GOAL = 3; // 件/月（デフォルト）
 
