@@ -1,0 +1,805 @@
+{
+  "date": "2026-03-23",
+  "nurseries": {
+    "ChIJAT_un8j6GGARRJDWMAye3XE": {
+      "name": "稲城長沼園",
+      "area": "東京都",
+      "count": 1,
+      "rating": 4
+    },
+    "ChIJq30EnM-GGGARwtXJOrPeADY": {
+      "name": "京成八幡園",
+      "area": "千葉県",
+      "count": 0,
+      "rating": null
+    },
+    "ChIJc2MR3muHGGARhHtG6RP1dKU": {
+      "name": "行徳園",
+      "area": "千葉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJt9t-ubLpGGARbSs4iZCwOMU": {
+      "name": "新座園",
+      "area": "埼玉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJmfaEZpz_GGARzgWS_10r0o8": {
+      "name": "相武台前園",
+      "area": "神奈川県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJq9CYz9kDGWARvC3WXdkbKpA": {
+      "name": "相模原園",
+      "area": "神奈川県",
+      "count": 6,
+      "rating": 4.5
+    },
+    "ChIJ0QP_5KGKGGAR2U-hrZrUCZA": {
+      "name": "大田馬込園",
+      "area": "東京都",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJsbeGEa34GGARRaVauXzbF0g": {
+      "name": "大和園",
+      "area": "神奈川県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJWVLe3xP_GGARPjPg9pKfdsM": {
+      "name": "中央林間園",
+      "area": "神奈川県",
+      "count": 2,
+      "rating": 3
+    },
+    "ChIJ-7i0-efyGGAR2Zm6giP_Fdc": {
+      "name": "中野新橋園",
+      "area": "東京都",
+      "count": 4,
+      "rating": 5
+    },
+    "ChIJgbwKmXfpGGARsTdBJiV-YpU": {
+      "name": "朝霞園",
+      "area": "埼玉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJ6XMEHgaVGGARGzFHI1-Ly_o": {
+      "name": "東川口園",
+      "area": "埼玉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJxfYClqmHGGARNxWFyGrt2Mg": {
+      "name": "南行徳園",
+      "area": "千葉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJYf0QStOdGGARaQzhDXeDgiA": {
+      "name": "柏II園",
+      "area": "千葉県",
+      "count": 5,
+      "rating": 4.8
+    },
+    "ChIJ02cMqmOUGGARQmncmaR1mXE": {
+      "name": "鳩ヶ谷園",
+      "area": "埼玉県",
+      "count": 0,
+      "rating": null
+    },
+    "ChIJTVVcNZ71GGARS1eDY7Ubf8A": {
+      "name": "武蔵中原園",
+      "area": "神奈川県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJ7akCmzyLGGARdDt5sc19MYQ": {
+      "name": "目黒園",
+      "area": "東京都",
+      "count": 8,
+      "rating": 4.5
+    },
+    "ChIJF5cU6rHtGGARE3OZgLrHKBs": {
+      "name": "練馬中村橋園",
+      "area": "東京都",
+      "count": 3,
+      "rating": 4.7
+    },
+    "ChIJ21XWI-DrGGARJjwrKXbBVx8": {
+      "name": "和光園",
+      "area": "埼玉県",
+      "count": 1,
+      "rating": 4
+    },
+    "ChIJUboxFebrGGAR4wU8-2A2zno": {
+      "name": "和光II園",
+      "area": "埼玉県",
+      "count": 0,
+      "rating": null
+    },
+    "ChIJm_dqt2_rGGARZOwV9-OkTxQ": {
+      "name": "蕨園",
+      "area": "埼玉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJlzqtUpfrGGARUsZBMphXEXA": {
+      "name": "蕨II園",
+      "area": "埼玉県",
+      "count": 0,
+      "rating": null
+    },
+    "ChIJ80xh1ceEImARJ_hE_nHvtvM": {
+      "name": "ふぇりーちぇほいくえん",
+      "area": "千葉県",
+      "count": 2,
+      "rating": 4
+    },
+    "ChIJK9MxgKLrGGARUiRQk2GgMaU": {
+      "name": "病児保育室にじのへや",
+      "area": "埼玉県",
+      "count": 0,
+      "rating": null
+    },
+    "ChIJLZnrOpn_GGARulv_-cYUkSM": {
+      "name": "座間II園",
+      "area": "神奈川県",
+      "count": 3,
+      "rating": 5
+    }
+  },
+  "competitors": {
+    "ChIJjwuqU876GGARettnhJBINR8": {
+      "name": "Oomaru-Yushi Nursery",
+      "area": "東京都",
+      "count": 7,
+      "rating": 4.3
+    },
+    "ChIJs0jA2VT7GGARxI_y1qKk09E": {
+      "name": "Inagi Nozomi Nursery",
+      "area": "東京都",
+      "count": 6,
+      "rating": 3.5
+    },
+    "ChIJ1W_ir8P6GGAR8dIXnP-s2YQ": {
+      "name": "ピノキオ幼児舎 稲城園",
+      "area": "東京都",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJvUJPlcP6GGART-ZqOmnQejA": {
+      "name": "Hongo Yushi Nursery",
+      "area": "東京都",
+      "count": 1,
+      "rating": 2
+    },
+    "ChIJdU8HH5qLGGARDw4je5WILCo": {
+      "name": "Gakkenほいくえん 馬込",
+      "area": "東京都",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJwdieSjGLGGARtsb0Yu3zulE": {
+      "name": "小鳩ナーサリースクール中馬込",
+      "area": "東京都",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJdWUvN6eKGGARtJoMHv7NDRg": {
+      "name": "Kenpa Nursery Nishimagome",
+      "area": "東京都",
+      "count": 2,
+      "rating": 5
+    },
+    "ChIJAajRgZ2KGGARCkzrWdpmItg": {
+      "name": "Midori no Oka Nursery",
+      "area": "東京都",
+      "count": 2,
+      "rating": 5
+    },
+    "ChIJ79_vb6-KGGARxgeEW9mIDKo": {
+      "name": "Shakaifukushi Hojin Tsubomikai Kamiikedai Nursery",
+      "area": "東京都",
+      "count": 4,
+      "rating": 4.8
+    },
+    "ChIJCZ6hQO7zGGARWKFiv6q4H94": {
+      "name": "Konbipurazayayoicho Hoikuen",
+      "area": "東京都",
+      "count": 3,
+      "rating": 5
+    },
+    "ChIJEUkde9zyGGARlZHdOsklZuo": {
+      "name": "Global Kids Nakano-Shimbashi",
+      "area": "東京都",
+      "count": 4,
+      "rating": 5
+    },
+    "ChIJ__-Pw8HyGGARrd-V0-ZN74A": {
+      "name": "Nakamachi Nursery",
+      "area": "東京都",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJVTO3OOHyGGARx-48kpqxfbY": {
+      "name": "Yayoi Nursery",
+      "area": "東京都",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJMw9s_OTyGGAR3O1ppEYghu4": {
+      "name": "Musashino Nursery",
+      "area": "東京都",
+      "count": 3,
+      "rating": 5
+    },
+    "ChIJcY6bhm6LGGAR6gqZIzgf37o": {
+      "name": "さくらさくみらい 目黒",
+      "area": "東京都",
+      "count": 2,
+      "rating": 4.5
+    },
+    "ChIJT8fMpjmLGGART1T_gKRECMw": {
+      "name": "Tokyo International School Nakameguro Kinder Garden",
+      "area": "東京都",
+      "count": 8,
+      "rating": 4.4
+    },
+    "ChIJV1Wh2hiLGGARmzzpPhiBbcs": {
+      "name": "Beyondia International School Meguro",
+      "area": "東京都",
+      "count": 10,
+      "rating": 4.2
+    },
+    "ChIJr9DuTCOLGGARJwxiNCyeZn0": {
+      "name": "HOPPA Meguro Nursery",
+      "area": "東京都",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJ7Tp0VDuLGGARAXieEfvJKyY": {
+      "name": "Dendō Nursery",
+      "area": "東京都",
+      "count": 1,
+      "rating": 4
+    },
+    "ChIJwX3846_tGGAR8JE-Y_9JzBY": {
+      "name": "Sorasuto Nakamurabashi Nursery",
+      "area": "東京都",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJ5-Hv2K_tGGAR6iQNvIfGO0E": {
+      "name": "Kazenoko Nursery",
+      "area": "東京都",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJ-dyenbrtGGAR3AMWphJ6Xa4": {
+      "name": "Art Childcare Nakamurabashi",
+      "area": "東京都",
+      "count": 3,
+      "rating": 5
+    },
+    "ChIJKyQpprbtGGARuunzAzvItd4": {
+      "name": "Nursery Maam Nakamurabashiekimae",
+      "area": "東京都",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJo1l1zoHtGGARn9mIDXL4Fno": {
+      "name": "練馬あけみ保育園",
+      "area": "東京都",
+      "count": 3,
+      "rating": 5
+    },
+    "ChIJdSue9s-GGGARNrrYzfGVd68": {
+      "name": "Little K'sアクス本八幡保育園",
+      "area": "千葉県",
+      "count": 14,
+      "rating": 3.1
+    },
+    "ChIJd40C0fuHGGARu253cDnvjUo": {
+      "name": "かえで保育園本八幡",
+      "area": "千葉県",
+      "count": 0,
+      "rating": null
+    },
+    "ChIJI6ybp5qHGGARElY1YcqTNWk": {
+      "name": "ル・アンジェ本八幡保育園",
+      "area": "千葉県",
+      "count": 0,
+      "rating": null
+    },
+    "ChIJu3_TQ5iHGGARSJoAP8Ri1uU": {
+      "name": "AIAI NURSERY 本八幡",
+      "area": "千葉県",
+      "count": 0,
+      "rating": null
+    },
+    "ChIJQe6_BdKHGGARMy6VGlz2vvE": {
+      "name": "八幡チャイルド保育園",
+      "area": "千葉県",
+      "count": 0,
+      "rating": null
+    },
+    "ChIJd6jkHAaHGGARsCWagJzjZ7k": {
+      "name": "Compass Yohoen Ichikawa School",
+      "area": "千葉県",
+      "count": 5,
+      "rating": 5
+    },
+    "ChIJpYQb3GmHGGARsx48PV4frbM": {
+      "name": "若葉インターナショナル幼保園 行徳園",
+      "area": "千葉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJQZrxfEKHGGARXCwiH9pfzRY": {
+      "name": "アスク行徳保育園",
+      "area": "千葉県",
+      "count": 2,
+      "rating": 5
+    },
+    "ChIJj8fKIEKHGGARYl-JyKzwO1s": {
+      "name": "Suehiro Nursery",
+      "area": "千葉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJg2FIchGHGGAR41ptEGKhmQA": {
+      "name": "ネピア ソダテラス",
+      "area": "千葉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJOZ7l5LOHGGARNuqYXHBbMnU": {
+      "name": "南行徳せいわ保育園",
+      "area": "千葉県",
+      "count": 3,
+      "rating": 5
+    },
+    "ChIJCeYQgnCHGGARuFrkVQ3TxK4": {
+      "name": "Kakemama Nursery",
+      "area": "千葉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJx7ItSImHGGARwUqjWVTcMek": {
+      "name": "AIAI NURSERY 南行徳",
+      "area": "千葉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJR4c0EHGHGGARHYM-bu44Qg0": {
+      "name": "すくすくの杜南行徳園",
+      "area": "千葉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJOTeF3PKcGGARbYsAyY4_slM": {
+      "name": "Kurumi Kodomoen",
+      "area": "千葉県",
+      "count": 15,
+      "rating": 4.7
+    },
+    "ChIJg7vMpu-cGGARiwXXv_8l7aw": {
+      "name": "Kashiwa Central Nursery",
+      "area": "千葉県",
+      "count": 5,
+      "rating": 5
+    },
+    "ChIJgazCMsedGGARnqdRGhRCmWI": {
+      "name": "柏サンフラワー保育園",
+      "area": "千葉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJV1EM3F-dGGARQ1nKODT0FhI": {
+      "name": "Kagayaki nursery school Kashiwa",
+      "area": "千葉県",
+      "count": 3,
+      "rating": 5
+    },
+    "ChIJgWJOvNGdGGARZp7NQZrxqQE": {
+      "name": "Kashiwa Himawari nursery",
+      "area": "千葉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJh9_2PsmEImARIgK0UYRwf0k": {
+      "name": "Innai Nursery",
+      "area": "千葉県",
+      "count": 4,
+      "rating": 3.5
+    },
+    "ChIJBdNbsAuFImARs7KpHPBI4TA": {
+      "name": "Mirainomachi Nursery Tsurusawa",
+      "area": "千葉県",
+      "count": 6,
+      "rating": 4.8
+    },
+    "ChIJT_uxjsuEImAR43PEskn3VJE": {
+      "name": "チャコ保育園",
+      "area": "千葉県",
+      "count": 4,
+      "rating": 5
+    },
+    "ChIJcT7ktTeFImARy-oAosDZdcM": {
+      "name": "Nestいんない保育園",
+      "area": "千葉県",
+      "count": 6,
+      "rating": 5
+    },
+    "ChIJca4GiEjoGGAR-Xqd06iGIg8": {
+      "name": "小規模保育園 元気キッズ 新座園",
+      "area": "埼玉県",
+      "count": 10,
+      "rating": 4.9
+    },
+    "ChIJ6Sdnm5jpGGAR-JZomfWi1po": {
+      "name": "一時保育 菜のハナ",
+      "area": "埼玉県",
+      "count": 1,
+      "rating": 3
+    },
+    "ChIJSX5TFlToGGARO1I2XFHU3Iw": {
+      "name": "Shiraume Nursery",
+      "area": "埼玉県",
+      "count": 1,
+      "rating": 1
+    },
+    "ChIJ35QMqU3oGGARpsl7_jiNz20": {
+      "name": "Shiraume Daini Nursery",
+      "area": "埼玉県",
+      "count": 0,
+      "rating": null
+    },
+    "ChIJ6R6OikjoGGARGfxnn_faHEE": {
+      "name": "Otowanomoriniiza Nursery",
+      "area": "埼玉県",
+      "count": 0,
+      "rating": null
+    },
+    "ChIJAVe-OHfpGGARcosquEYC8WM": {
+      "name": "あさかたんぽぽ保育園なかよし園",
+      "area": "埼玉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJn3fhVTbpGGARfKZ2NIQEifI": {
+      "name": "小規模保育園 元気キッズ 朝霞根岸台園",
+      "area": "埼玉県",
+      "count": 8,
+      "rating": 5
+    },
+    "ChIJ0xk8rZjpGGARtMbPc6b96Mk": {
+      "name": "Takinone Nursery",
+      "area": "埼玉県",
+      "count": 3,
+      "rating": 5
+    },
+    "ChIJbQC1rZvpGGARGPcghoBZEr0": {
+      "name": "小規模保育園 元気キッズ 朝霞岡園",
+      "area": "埼玉県",
+      "count": 9,
+      "rating": 5
+    },
+    "ChIJu0tIaYvpGGARZKYZXZigyts": {
+      "name": "認可保育園 元気キッズ第二朝霞根岸台園",
+      "area": "埼玉県",
+      "count": 8,
+      "rating": 4.9
+    },
+    "ChIJVd6jJrCVGGARqtw7tzgJR_Y": {
+      "name": "Higashikawaguchihatobue Nursery",
+      "area": "埼玉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJ35TKqTaVGGARVlUdXNDSNQ8": {
+      "name": "みんなの保育園東川口",
+      "area": "埼玉県",
+      "count": 3,
+      "rating": 5
+    },
+    "ChIJUS8UawCVGGAR6wdAGGDgte4": {
+      "name": "すてっぷ すきっぷ第３",
+      "area": "埼玉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJS_4W0BCVGGAR6yhDv_EOInM": {
+      "name": "東川口ポポロ保育園",
+      "area": "埼玉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJIUQNIriVGGAR4BWL6J9vqM0": {
+      "name": "たいよう保育園 戸塚東園",
+      "area": "埼玉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJyb046sWVGGARuZvGZrbdA-s": {
+      "name": "かたつむりベビー保育園 鳩ケ谷",
+      "area": "埼玉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJ94zH5WKUGGARE4KJfiQTUCM": {
+      "name": "Ichigo Nursery",
+      "area": "埼玉県",
+      "count": 2,
+      "rating": 4
+    },
+    "ChIJFYWvVYTpGGARNM2o0aPycXg": {
+      "name": "和光なかよしこども園",
+      "area": "埼玉県",
+      "count": 2,
+      "rating": 4.5
+    },
+    "ChIJXTgOfN3rGGARqNErTPrTtgg": {
+      "name": "和光プライムスター保育園",
+      "area": "埼玉県",
+      "count": 5,
+      "rating": 3.4
+    },
+    "ChIJVxMKjmTpGGAReYXQcACOkF0": {
+      "name": "Nakamachidoronko Nursery",
+      "area": "埼玉県",
+      "count": 12,
+      "rating": 4.6
+    },
+    "ChIJ3TNrxt_rGGAREd9w1ggXoIQ": {
+      "name": "Wakotchi Little Star Nursery",
+      "area": "埼玉県",
+      "count": 2,
+      "rating": 3
+    },
+    "ChIJrVoOR97rGGARzu-C1z2MFZk": {
+      "name": "Hinata Nursery",
+      "area": "埼玉県",
+      "count": 0,
+      "rating": null
+    },
+    "ChIJFYA_wODrGGAR7Q0t8HONaBg": {
+      "name": "メリー★ポピンズ 和光ルーム",
+      "area": "埼玉県",
+      "count": 4,
+      "rating": 5
+    },
+    "ChIJ1Q2_2l_pGGARxTjbWbb0NcI": {
+      "name": "Kids Aid Wako Nursery",
+      "area": "埼玉県",
+      "count": 4,
+      "rating": 4.8
+    },
+    "ChIJVVXBADrrGGARISwcPoiq6JM": {
+      "name": "蕨市小規模保育園 保育ルームのぞみ",
+      "area": "埼玉県",
+      "count": 4,
+      "rating": 5
+    },
+    "ChIJW1MIesyUGGARpgKhAnBNXqM": {
+      "name": "Himawari Nursery",
+      "area": "埼玉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJL1FGhybrGGARhpQoeZ1juNQ": {
+      "name": "Midori Nursery",
+      "area": "埼玉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJqQNvhSzrGGARBCIqaj-9sVs": {
+      "name": "芝保育所",
+      "area": "埼玉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJc5MifznrGGARtzrjyPg6gkw": {
+      "name": "Jirokai Toda Nursery School",
+      "area": "埼玉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJDQELpjPrGGARY8qMny7sl1M": {
+      "name": "蕨ゆたか保育園",
+      "area": "埼玉県",
+      "count": 3,
+      "rating": 4.3
+    },
+    "ChIJC5Q2NTPrGGARCwldGlKtoho": {
+      "name": "Keyaki nursery",
+      "area": "埼玉県",
+      "count": 2,
+      "rating": 3
+    },
+    "ChIJYQndCS_rGGARFMEvBZIvhkU": {
+      "name": "ニチイキッズわらび保育園",
+      "area": "埼玉県",
+      "count": 3,
+      "rating": 4.7
+    },
+    "ChIJQbDzFjXrGGARzRr5HkUEROg": {
+      "name": "Warabishitachisakura Nursery",
+      "area": "埼玉県",
+      "count": 5,
+      "rating": 3.6
+    },
+    "ChIJFWZ8AgX_GGAR69wxllX3LiM": {
+      "name": "Sobudai Nursery",
+      "area": "神奈川県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJWXqejRL_GGARfeG607vs20g": {
+      "name": "マジオたんぽぽ保育園相武台",
+      "area": "神奈川県",
+      "count": 3,
+      "rating": 5
+    },
+    "ChIJ6Xse5MT_GGARsU7gq9MmBN4": {
+      "name": "Best Kids Sobudai Nursery",
+      "area": "神奈川県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJyaRKKgf_GGARC5dFwlkHfic": {
+      "name": "たんぽぽ保育園・相武台前",
+      "area": "神奈川県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJUUJVvR3_GGAR4dchSMfHJP4": {
+      "name": "Sagamigaokanishi Nursery",
+      "area": "神奈川県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJ31x8yF_9GGARntcZGNMzdrs": {
+      "name": "Kensei Nursery",
+      "area": "神奈川県",
+      "count": 5,
+      "rating": 4.6
+    },
+    "ChIJt8ZmLGf9GGARSXGVC_Ta8Sk": {
+      "name": "カメリアキッズ相模原園",
+      "area": "神奈川県",
+      "count": 24,
+      "rating": 4.8
+    },
+    "ChIJ8b4vMF79GGAR_dHtHt7aK_M": {
+      "name": "Yotsuba Nursery Sagamihara",
+      "area": "神奈川県",
+      "count": 2,
+      "rating": 5
+    },
+    "ChIJZS4C2Wb9GGAR84Q_-00wBSQ": {
+      "name": "Sagamiharasakura Nursery",
+      "area": "神奈川県",
+      "count": 6,
+      "rating": 5
+    },
+    "ChIJMXQnQbP4GGARkgUKgq2AESs": {
+      "name": "プリンス保育園 南林間",
+      "area": "神奈川県",
+      "count": 2,
+      "rating": 5
+    },
+    "ChIJlzjxH1X_GGARpSqrZSzv0ik": {
+      "name": "Shakaifukushi Hojin Kenofukushikai Nishitsuruma Nursery",
+      "area": "神奈川県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJXX1BaKz4GGAR1zWJ3oHzv2g": {
+      "name": "大和 ひまわり保育園・分園",
+      "area": "神奈川県",
+      "count": 2,
+      "rating": 4.5
+    },
+    "ChIJrWnRSaj4GGARqqlsXio6CP8": {
+      "name": "Yamato Shiritsu Wakaba Nursery",
+      "area": "神奈川県",
+      "count": 2,
+      "rating": 4
+    },
+    "ChIJXQFt8d_5GGAR43PomTGWCxc": {
+      "name": "まあむベイビィズ中央林間",
+      "area": "神奈川県",
+      "count": 1,
+      "rating": 3
+    },
+    "ChIJw-m-oMz4GGARN6VUW7q5elk": {
+      "name": "ほいくえん虹の子",
+      "area": "神奈川県",
+      "count": 8,
+      "rating": 2.9
+    },
+    "ChIJn479rbL5GGAR5BK-2fne-D0": {
+      "name": "スクルドエンジェル保育園中央林間園",
+      "area": "神奈川県",
+      "count": 4,
+      "rating": 2.8
+    },
+    "ChIJs4JiyjL5GGAR8_bSaufq9cc": {
+      "name": "Tsukiminoshonan Nursery",
+      "area": "神奈川県",
+      "count": 2,
+      "rating": 3.5
+    },
+    "ChIJqcqTQjL_GGAREFnCRoGh6jM": {
+      "name": "ヴィラまなびの森保育園中央林間",
+      "area": "神奈川県",
+      "count": 2,
+      "rating": 2.5
+    },
+    "ChIJocZjQHH1GGARh6CjDynonjI": {
+      "name": "Ein Musashikosugi-kita Nursery School",
+      "area": "神奈川県",
+      "count": 2,
+      "rating": 5
+    },
+    "ChIJ-XJDBqj1GGARXxdZgqAJtfc": {
+      "name": "京進のほいくえん HOPPAパークシティ武蔵小杉",
+      "area": "神奈川県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJYd7LvJz1GGARWqwBhyYkOww": {
+      "name": "Musashinakaharamorinoko Nursery",
+      "area": "神奈川県",
+      "count": 2,
+      "rating": 5
+    },
+    "ChIJyT5S2Xf1GGARiWFgLnZrun8": {
+      "name": "Chachaimai Nursery",
+      "area": "神奈川県",
+      "count": 12,
+      "rating": 4.4
+    },
+    "ChIJ9cMceXf1GGARv1nL7kfGGp4": {
+      "name": "Chacha Nakamachi Nursery",
+      "area": "神奈川県",
+      "count": 15,
+      "rating": 4.3
+    },
+    "ChIJY1ZD_Bv1GGAR8XDkKyOT42Y": {
+      "name": "ユニーク・１・インターナショナル・キッズ・アカデミー",
+      "area": "神奈川県",
+      "count": 15,
+      "rating": 4.7
+    },
+    "ChIJOf6Vk57_GGARfg1ham8GNDw": {
+      "name": "Zamasukoyaka Nursery",
+      "area": "神奈川県",
+      "count": 2,
+      "rating": 4
+    },
+    "ChIJhceeB3f_GGARESBkI8dz6WE": {
+      "name": "Yanase Nursery",
+      "area": "神奈川県",
+      "count": 2,
+      "rating": 4
+    },
+    "ChIJB9fZcZX_GGAR1TG0eLx1BQI": {
+      "name": "Zama Shiritsu Chigusa Nursery",
+      "area": "神奈川県",
+      "count": 1,
+      "rating": 4
+    },
+    "ChIJfTx2ipv_GGARcmnXco2UD70": {
+      "name": "Zama Nursery",
+      "area": "神奈川県",
+      "count": 5,
+      "rating": 2.8
+    }
+  }
+}
