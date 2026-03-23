@@ -3,13 +3,13 @@ import path from "path";
 import { NextResponse } from "next/server";
 import {
 	NURSERIES,
-	COMPETITORS,
 	NURSERY_COMPETITORS,
 	getMonthlyGoal,
 	BASELINE_CONFIG,
 } from "@/config/reviewConfig";
 
-const API_KEY = process.env.GOOGLE_PLACES_API_KEY || "";
+/** 5分間キャッシュ（current.jsonはファイル読み込みのみ、API呼び出しなし） */
+export const revalidate = 300;
 
 /** スナップショットファイルの型 */
 interface SnapshotEntry {
@@ -21,6 +21,13 @@ interface SnapshotEntry {
 interface SnapshotFile {
 	date: string;
 	counts: Record<string, SnapshotEntry>;
+}
+
+/** current.json の型 */
+interface CurrentFile {
+	date: string;
+	nurseries: Record<string, SnapshotEntry>;
+	competitors: Record<string, SnapshotEntry>;
 }
 
 /** スナップショットファイルを読み込む汎用関数 */
@@ -61,6 +68,22 @@ function loadBaselineSnapshot() {
 	return loadSnapshot(BASELINE_CONFIG.snapshotName);
 }
 
+/** current.json を読み込む（自園+競合の最新データ） */
+function loadCurrentData(): CurrentFile | null {
+	const filePath = path.join(
+		process.cwd(),
+		"public",
+		"snapshots",
+		"current.json",
+	);
+	try {
+		const raw = fs.readFileSync(filePath, "utf-8");
+		return JSON.parse(raw);
+	} catch {
+		return null;
+	}
+}
+
 export interface ReviewData {
 	name: string;
 	area: string;
@@ -82,32 +105,14 @@ export interface CompetitorReviewData {
 	reviewCount: number;
 }
 
-async function fetchPlaceDetails(placeId: string): Promise<{
-	rating: number | null;
-	userRatingCount: number;
-}> {
-	const url = `https://places.googleapis.com/v1/places/${placeId}`;
-	const res = await fetch(url, {
-		headers: {
-			"X-Goog-Api-Key": API_KEY,
-			"X-Goog-FieldMask": "rating,userRatingCount",
-		},
-		next: { revalidate: 86400 }, // 24h cache
-	});
-	if (!res.ok) {
-		return { rating: null, userRatingCount: 0 };
-	}
-	const data = await res.json();
-	return {
-		rating: data.rating ?? null,
-		userRatingCount: data.userRatingCount ?? 0,
-	};
-}
-
 export async function GET() {
-	if (!API_KEY) {
+	const current = loadCurrentData();
+	if (!current) {
 		return NextResponse.json(
-			{ error: "GOOGLE_PLACES_API_KEY not configured" },
+			{
+				error:
+					"口コミデータがありません。GitHub Actionsでcurrent.jsonを生成してください。",
+			},
 			{ status: 500 },
 		);
 	}
@@ -116,56 +121,63 @@ export async function GET() {
 	const snapshot = loadPreviousSnapshot();
 	const baseline = loadBaselineSnapshot();
 
-	// 自園データ取得
-	const reviews: ReviewData[] = await Promise.all(
-		NURSERIES.map(async (n) => {
-			const detail = await fetchPlaceDetails(n.placeId);
-			const snapshotCount = snapshot?.counts[n.placeId] ?? null;
-			const monthlyIncrease =
-				snapshotCount !== null ? detail.userRatingCount - snapshotCount : null;
-			const baselineCount = baseline?.counts[n.placeId] ?? null;
-			const baselineIncrease =
-				baselineCount !== null ? detail.userRatingCount - baselineCount : null;
-			return {
-				name: n.name,
-				area: n.area,
-				placeId: n.placeId,
-				rating: detail.rating,
-				reviewCount: detail.userRatingCount,
-				monthlyIncrease,
-				monthlyGoal: getMonthlyGoal(n.placeId),
-				baselineIncrease,
-				compAvgRating: null,
-				nurseryCompetitors: [],
-			};
-		}),
+	// 自園データを current.json から構築
+	const reviews: ReviewData[] = NURSERIES.map((n) => {
+		const entry = current.nurseries[n.placeId];
+		const reviewCount = entry?.count ?? 0;
+		const rating = entry?.rating ?? null;
+
+		const snapshotCount = snapshot?.counts[n.placeId] ?? null;
+		const monthlyIncrease =
+			snapshotCount !== null ? reviewCount - snapshotCount : null;
+
+		const baselineCount = baseline?.counts[n.placeId] ?? null;
+		const baselineIncrease =
+			baselineCount !== null ? reviewCount - baselineCount : null;
+
+		return {
+			name: n.name,
+			area: n.area,
+			placeId: n.placeId,
+			rating,
+			reviewCount,
+			monthlyIncrease,
+			monthlyGoal: getMonthlyGoal(n.placeId),
+			baselineIncrease,
+			compAvgRating: null,
+			nurseryCompetitors: [],
+		};
+	});
+
+	// 競合データを current.json から構築
+	const competitors: CompetitorReviewData[] = Object.entries(
+		current.competitors,
+	).map(([_placeId, entry]) => ({
+		name: entry.name,
+		area: entry.area,
+		rating: entry.rating,
+		reviewCount: entry.count,
+	}));
+
+	// 競合のplaceId → データのMap
+	const competitorMap = new Map(
+		Object.entries(current.competitors).map(([placeId, entry]) => [
+			placeId,
+			{
+				name: entry.name,
+				area: entry.area,
+				rating: entry.rating,
+				reviewCount: entry.count,
+			},
+		]),
 	);
 
-	// 競合データ取得 → placeId でルックアップできるMapを作成
-	const competitorResults = await Promise.all(
-		COMPETITORS.map(async (c) => {
-			const detail = await fetchPlaceDetails(c.placeId);
-			return {
-				placeId: c.placeId,
-				name: c.name,
-				area: c.area,
-				rating: detail.rating,
-				reviewCount: detail.userRatingCount,
-			};
-		}),
-	);
-	const competitorMap = new Map(competitorResults.map((c) => [c.placeId, c]));
-	const competitors: CompetitorReviewData[] = competitorResults.map(
-		({ placeId: _pid, ...rest }) => rest,
-	);
-
-	// 園別競合データを付加（NURSERY_COMPETITORSからcompetitorMapを参照）
+	// 園別競合データを付加
 	for (const r of reviews) {
 		const compIds = NURSERY_COMPETITORS[r.placeId] ?? [];
 		const comps = compIds
 			.map((id) => competitorMap.get(id))
-			.filter((c): c is (typeof competitorResults)[0] => c !== undefined)
-			.map(({ placeId: _pid, ...rest }) => rest);
+			.filter((c): c is CompetitorReviewData => c !== undefined);
 		r.nurseryCompetitors = comps;
 		const ratings = comps
 			.filter((c) => c.rating !== null)
@@ -193,6 +205,7 @@ export async function GET() {
 		baselineStartDate: baseline ? BASELINE_CONFIG.startDate : null,
 		halfYearGoal: BASELINE_CONFIG.halfYearGoal,
 		goalDeadline: BASELINE_CONFIG.goalDeadline,
+		currentDataDate: current.date,
 		fetchedAt: new Date().toISOString(),
 	});
 }

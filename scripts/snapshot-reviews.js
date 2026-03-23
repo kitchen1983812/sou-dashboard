@@ -1,93 +1,28 @@
 /**
  * Google口コミ スナップショット取得スクリプト
- * GitHub Actionsから毎月1日に実行し、各園の口コミ件数を記録する。
  *
  * 使い方:
+ *   # 月次スナップショット（自園のみ → YYYY-MM.json）
  *   GOOGLE_PLACES_API_KEY=xxx node scripts/snapshot-reviews.js
+ *
+ *   # カスタム名で保存（ベースライン等）
+ *   SNAPSHOT_NAME=baseline-20260327 GOOGLE_PLACES_API_KEY=xxx node scripts/snapshot-reviews.js
+ *
+ *   # 全データ取得（自園+競合 → current.json）※週次更新用
+ *   INCLUDE_COMPETITORS=true GOOGLE_PLACES_API_KEY=xxx node scripts/snapshot-reviews.js
  */
 
 const fs = require("fs");
 const path = require("path");
 
-// ======= 設定 (src/config/reviewConfig.ts と同期して管理) =======
-const NURSERIES = [
-	{
-		name: "稲城長沼園",
-		area: "東京都",
-		placeId: "ChIJAT_un8j6GGARRJDWMAye3XE",
-	},
-	{
-		name: "京成八幡園",
-		area: "千葉県",
-		placeId: "ChIJq30EnM-GGGARwtXJOrPeADY",
-	},
-	{ name: "行徳園", area: "千葉県", placeId: "ChIJc2MR3muHGGARhHtG6RP1dKU" },
-	{ name: "新座園", area: "埼玉県", placeId: "ChIJt9t-ubLpGGARbSs4iZCwOMU" },
-	{
-		name: "相武台前園",
-		area: "神奈川県",
-		placeId: "ChIJmfaEZpz_GGARzgWS_10r0o8",
-	},
-	{
-		name: "相模原園",
-		area: "神奈川県",
-		placeId: "ChIJq9CYz9kDGWARvC3WXdkbKpA",
-	},
-	{
-		name: "大田馬込園",
-		area: "東京都",
-		placeId: "ChIJ0QP_5KGKGGAR2U-hrZrUCZA",
-	},
-	{ name: "大和園", area: "神奈川県", placeId: "ChIJsbeGEa34GGARRaVauXzbF0g" },
-	{
-		name: "中央林間園",
-		area: "神奈川県",
-		placeId: "ChIJWVLe3xP_GGARPjPg9pKfdsM",
-	},
-	{
-		name: "中野新橋園",
-		area: "東京都",
-		placeId: "ChIJ-7i0-efyGGAR2Zm6giP_Fdc",
-	},
-	{ name: "朝霞園", area: "埼玉県", placeId: "ChIJgbwKmXfpGGARsTdBJiV-YpU" },
-	{ name: "東川口園", area: "埼玉県", placeId: "ChIJ6XMEHgaVGGARGzFHI1-Ly_o" },
-	{ name: "南行徳園", area: "千葉県", placeId: "ChIJxfYClqmHGGARNxWFyGrt2Mg" },
-	{ name: "柏II園", area: "千葉県", placeId: "ChIJYf0QStOdGGARaQzhDXeDgiA" },
-	{ name: "鳩ヶ谷園", area: "埼玉県", placeId: "ChIJ02cMqmOUGGARQmncmaR1mXE" },
-	{
-		name: "武蔵中原園",
-		area: "神奈川県",
-		placeId: "ChIJTVVcNZ71GGARS1eDY7Ubf8A",
-	},
-	{ name: "目黒園", area: "東京都", placeId: "ChIJ7akCmzyLGGARdDt5sc19MYQ" },
-	{
-		name: "練馬中村橋園",
-		area: "東京都",
-		placeId: "ChIJF5cU6rHtGGARE3OZgLrHKBs",
-	},
-	{ name: "和光園", area: "埼玉県", placeId: "ChIJ21XWI-DrGGARJjwrKXbBVx8" },
-	{ name: "和光II園", area: "埼玉県", placeId: "ChIJUboxFebrGGAR4wU8-2A2zno" },
-	{ name: "蕨園", area: "埼玉県", placeId: "ChIJm_dqt2_rGGARZOwV9-OkTxQ" },
-	{ name: "蕨II園", area: "埼玉県", placeId: "ChIJlzqtUpfrGGARUsZBMphXEXA" },
-	{
-		name: "ふぇりーちぇほいくえん",
-		area: "千葉県",
-		placeId: "ChIJ80xh1ceEImARJ_hE_nHvtvM",
-	},
-	{
-		name: "病児保育室にじのへや",
-		area: "埼玉県",
-		placeId: "ChIJK9MxgKLrGGARUiRQk2GgMaU",
-	},
-	{
-		name: "座間II園",
-		area: "神奈川県",
-		placeId: "ChIJLZnrOpn_GGARulv_-cYUkSM",
-	},
-];
-// ===============================================================
+// 共有データファイルからPlace IDを読み込む
+const placesPath = path.join(__dirname, "review-places.json");
+const { nurseries: NURSERIES, competitors: COMPETITORS } = JSON.parse(
+	fs.readFileSync(placesPath, "utf-8"),
+);
 
 const API_KEY = process.env.GOOGLE_PLACES_API_KEY;
+const INCLUDE_COMPETITORS = process.env.INCLUDE_COMPETITORS === "true";
 
 if (!API_KEY) {
 	console.error(
@@ -115,44 +50,77 @@ async function fetchReviewCount(placeId) {
 	};
 }
 
+async function fetchAll(places, label) {
+	const counts = {};
+	for (const place of places) {
+		process.stdout.write(`  [${label}] ${place.name}...`);
+		const { count, rating } = await fetchReviewCount(place.placeId);
+		counts[place.placeId] = {
+			name: place.name,
+			area: place.area,
+			count,
+			rating,
+		};
+		console.log(` ${count}件 ★${rating ?? "-"}`);
+		await new Promise((r) => setTimeout(r, 100));
+	}
+	return counts;
+}
+
 async function main() {
 	const now = new Date();
 	const year = now.getFullYear();
 	const month = String(now.getMonth() + 1).padStart(2, "0");
 	const dateStr = `${year}-${month}-${String(now.getDate()).padStart(2, "0")}`;
 
-	// SNAPSHOT_NAME が指定されていればそれをファイル名に、なければ YYYY-MM
-	const snapshotName = process.env.SNAPSHOT_NAME || `${year}-${month}`;
-
-	console.log(`Taking snapshot "${snapshotName}" (${dateStr})...`);
-
-	const counts = {};
-	for (const nursery of NURSERIES) {
-		process.stdout.write(`  Fetching: ${nursery.name}...`);
-		const { count, rating } = await fetchReviewCount(nursery.placeId);
-		counts[nursery.placeId] = {
-			name: nursery.name,
-			area: nursery.area,
-			count,
-			rating,
-		};
-		console.log(` ${count}件 ★${rating ?? "-"}`);
-		// API レート制限を避けるため少し待機
-		await new Promise((r) => setTimeout(r, 100));
-	}
-
 	const snapshotDir = path.join(process.cwd(), "public", "snapshots");
 	if (!fs.existsSync(snapshotDir)) {
 		fs.mkdirSync(snapshotDir, { recursive: true });
 	}
 
-	const outputPath = path.join(snapshotDir, `${snapshotName}.json`);
-	const snapshot = { date: dateStr, counts };
-	fs.writeFileSync(outputPath, JSON.stringify(snapshot, null, 2), "utf-8");
+	if (INCLUDE_COMPETITORS) {
+		// --- current.json モード（自園+競合） ---
+		console.log(`Fetching full data for current.json (${dateStr})...`);
+		console.log(
+			`  Nurseries: ${NURSERIES.length}, Competitors: ${COMPETITORS.length}`,
+		);
 
-	const total = Object.values(counts).reduce((s, v) => s + v.count, 0);
-	console.log(`\nSnapshot saved: public/snapshots/${snapshotName}.json`);
-	console.log(`Total reviews across all nurseries: ${total}`);
+		const nurseryCounts = await fetchAll(NURSERIES, "自園");
+		const competitorCounts = await fetchAll(COMPETITORS, "競合");
+
+		const current = {
+			date: dateStr,
+			nurseries: nurseryCounts,
+			competitors: competitorCounts,
+		};
+		const outputPath = path.join(snapshotDir, "current.json");
+		fs.writeFileSync(outputPath, JSON.stringify(current, null, 2), "utf-8");
+
+		const totalN = Object.values(nurseryCounts).reduce(
+			(s, v) => s + v.count,
+			0,
+		);
+		const totalC = Object.values(competitorCounts).reduce(
+			(s, v) => s + v.count,
+			0,
+		);
+		console.log(`\nSaved: public/snapshots/current.json`);
+		console.log(`  Nursery reviews: ${totalN}, Competitor reviews: ${totalC}`);
+	} else {
+		// --- 月次/ベースライン スナップショットモード（自園のみ） ---
+		const snapshotName = process.env.SNAPSHOT_NAME || `${year}-${month}`;
+		console.log(`Taking snapshot "${snapshotName}" (${dateStr})...`);
+
+		const counts = await fetchAll(NURSERIES, "自園");
+
+		const outputPath = path.join(snapshotDir, `${snapshotName}.json`);
+		const snapshot = { date: dateStr, counts };
+		fs.writeFileSync(outputPath, JSON.stringify(snapshot, null, 2), "utf-8");
+
+		const total = Object.values(counts).reduce((s, v) => s + v.count, 0);
+		console.log(`\nSnapshot saved: public/snapshots/${snapshotName}.json`);
+		console.log(`Total reviews across all nurseries: ${total}`);
+	}
 }
 
 main().catch((err) => {

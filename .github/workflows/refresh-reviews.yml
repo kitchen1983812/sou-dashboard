@@ -1,0 +1,36 @@
+name: Refresh Reviews (current.json)
+
+on:
+  # 毎週月曜 9:00 JST（0:00 UTC）に自動実行
+  schedule:
+    - cron: "0 0 * * 1"
+  # 手動実行
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Fetch current reviews (nurseries + competitors)
+        run: node scripts/snapshot-reviews.js
+        env:
+          GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
+          INCLUDE_COMPETITORS: "true"
+
+      - name: Commit and push
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: refresh current.json reviews [skip ci]"
+          file_pattern: "public/snapshots/current.json"
+          commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"

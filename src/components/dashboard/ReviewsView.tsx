@@ -11,6 +11,7 @@ interface ReviewsResponse {
 	baselineStartDate: string | null;
 	halfYearGoal: number;
 	goalDeadline: string | null;
+	currentDataDate: string | null;
 	fetchedAt: string;
 }
 
@@ -900,7 +901,10 @@ export default function ReviewsView() {
 				{data.snapshotDate && (
 					<div>月次スナップショット: {data.snapshotDate}</div>
 				)}
-				<div>最終更新: {new Date(data.fetchedAt).toLocaleString("ja-JP")}</div>
+				{data.currentDataDate && (
+					<div>口コミデータ取得日: {data.currentDataDate}（週次自動更新）</div>
+				)}
+				<div>表示時刻: {new Date(data.fetchedAt).toLocaleString("ja-JP")}</div>
 			</div>
 		</div>
 	);
