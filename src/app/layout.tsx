@@ -12,6 +12,13 @@ export const metadata: Metadata = {
 	title: "問い合わせ分析ダッシュボード",
 	description:
 		"コーポレートサイト問い合わせデータを可視化する分析ダッシュボード",
+	icons: {
+		icon: [
+			{ url: "/favicon.ico", sizes: "32x32" },
+			{ url: "/favicon.png", type: "image/png", sizes: "150x150" },
+		],
+		apple: "/favicon.png",
+	},
 };
 
 export default function RootLayout({
