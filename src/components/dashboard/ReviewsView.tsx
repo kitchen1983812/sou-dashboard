@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 import type { ReviewData, CompetitorReviewData } from "@/app/api/reviews/route";
 
 interface ReviewsResponse {
@@ -235,6 +235,46 @@ export default function ReviewsView() {
 		}
 		return buckets;
 	}, [data]);
+
+	/** CSV出力 */
+	const handleCsvDownload = useCallback(() => {
+		if (!data) return;
+		const BOM = "\uFEFF";
+		const headers = [
+			"園名",
+			"エリア",
+			"★評価",
+			"口コミ数",
+			"競合平均★",
+			"差分",
+		];
+		const rows = filtered.map((r) => {
+			const compDiff =
+				r.rating !== null && r.compAvgRating !== null
+					? (r.rating - r.compAvgRating).toFixed(2)
+					: "";
+			return [
+				r.name,
+				r.area,
+				r.rating !== null ? r.rating.toFixed(1) : "",
+				String(r.reviewCount),
+				r.compAvgRating !== null ? r.compAvgRating.toFixed(2) : "",
+				compDiff,
+			];
+		});
+		const csv =
+			BOM +
+			[headers, ...rows]
+				.map((r) => r.map((c) => `"${c}"`).join(","))
+				.join("\n");
+		const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+		const url = URL.createObjectURL(blob);
+		const a = document.createElement("a");
+		a.href = url;
+		a.download = `口コミ一覧_${new Date().toISOString().slice(0, 10)}.csv`;
+		a.click();
+		URL.revokeObjectURL(url);
+	}, [data, filtered]);
 
 	const handleSort = (key: SortKey) => {
 		if (sortKey === key) {
@@ -597,7 +637,14 @@ export default function ReviewsView() {
 			<div className="bg-white border border-gray-200 rounded-xl p-4 overflow-x-auto">
 				<div className="flex items-center justify-between mb-3">
 					<h3 className="text-base font-bold text-gray-700">園別口コミ一覧</h3>
-					<div className="flex items-center gap-2">
+					<div className="flex items-center gap-3">
+						<button
+							type="button"
+							onClick={handleCsvDownload}
+							className="text-xs bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1.5 rounded-md border border-gray-300 transition-colors"
+						>
+							CSV
+						</button>
 						<span className="text-sm text-gray-500">エリア:</span>
 						<select
 							value={areaFilter}
