@@ -7,6 +7,8 @@ import {
 	filterCostsByFY,
 	computeCostSummaryGrid,
 	computeMonthlyCostTrend,
+	computeAgencyCost,
+	computeNurseryEmploymentCost,
 } from "@/lib/recruitUtils";
 import { getCurrentFY, parseDate, getFiscalYear } from "@/lib/dashboardUtils";
 import {
@@ -102,6 +104,54 @@ export default function RecruitCostView({
 		result["合計"] = computeMonthlyCostTrend(fyCosts, fyApplicants, selectedFY);
 		return result;
 	}, [fyCosts, fyApplicants, selectedFY]);
+
+	// 媒体別コスト
+	const agencyCosts = useMemo(
+		() => computeAgencyCost(fyApplicants, fyCosts),
+		[fyApplicants, fyCosts],
+	);
+
+	// 園×雇用形態別コスト
+	const nurseryEmpCosts = useMemo(
+		() => computeNurseryEmploymentCost(fyApplicants, fyCosts),
+		[fyApplicants, fyCosts],
+	);
+
+	// 園別小計（ピボット表示用）
+	const nurseryPivot = useMemo(() => {
+		const map = new Map<
+			string,
+			{
+				nursery: string;
+				byType: Record<string, number>;
+				total: number;
+				hires: number;
+			}
+		>();
+		for (const row of nurseryEmpCosts) {
+			if (!map.has(row.nursery)) {
+				map.set(row.nursery, {
+					nursery: row.nursery,
+					byType: {},
+					total: 0,
+					hires: 0,
+				});
+			}
+			const entry = map.get(row.nursery)!;
+			entry.byType[row.employmentType] =
+				(entry.byType[row.employmentType] || 0) + row.cost;
+			entry.total += row.cost;
+			entry.hires += row.hires;
+		}
+		return Array.from(map.values()).sort((a, b) => b.total - a.total);
+	}, [nurseryEmpCosts]);
+
+	// 雇用形態のユニーク一覧
+	const empTypes = useMemo(() => {
+		const set = new Set<string>();
+		for (const row of nurseryEmpCosts) set.add(row.employmentType);
+		return Array.from(set).sort();
+	}, [nurseryEmpCosts]);
 
 	// 採用単価推移（4系列比較）
 	const unitCostTrend = useMemo(() => {
@@ -256,6 +306,138 @@ export default function RecruitCostView({
 					</ComposedChart>
 				</ResponsiveContainer>
 			</div>
+
+			{/* 媒体別コスト */}
+			{agencyCosts.length > 0 && (
+				<div className="bg-white border border-gray-200 rounded-xl p-4 overflow-x-auto">
+					<h3 className="text-sm font-semibold text-gray-700 mb-3">
+						媒体別コスト（FY{String(selectedFY).slice(2)}）
+					</h3>
+					<table className="w-full text-sm">
+						<thead>
+							<tr className="border-b-2 border-gray-200 text-gray-600">
+								<th className="text-left px-3 py-2">媒体/会社</th>
+								<th className="text-right px-3 py-2">費用（税抜）</th>
+								<th className="text-right px-3 py-2">入社数</th>
+								<th className="text-right px-3 py-2">採用単価</th>
+							</tr>
+						</thead>
+						<tbody>
+							{agencyCosts.map((row) => (
+								<tr
+									key={row.agency}
+									className="border-b border-gray-100 hover:bg-gray-50"
+								>
+									<td className="px-3 py-2 font-medium">{row.agency}</td>
+									<td className="px-3 py-2 text-right tabular-nums">
+										¥{row.cost.toLocaleString()}
+									</td>
+									<td className="px-3 py-2 text-right tabular-nums">
+										{row.hires}名
+									</td>
+									<td className="px-3 py-2 text-right tabular-nums">
+										{row.unitCost > 0
+											? `¥${row.unitCost.toLocaleString()}`
+											: "-"}
+									</td>
+								</tr>
+							))}
+						</tbody>
+						<tfoot>
+							<tr className="bg-gray-50 font-bold border-t-2 border-gray-300">
+								<td className="px-3 py-2">合計</td>
+								<td className="px-3 py-2 text-right tabular-nums">
+									¥
+									{agencyCosts.reduce((s, r) => s + r.cost, 0).toLocaleString()}
+								</td>
+								<td className="px-3 py-2 text-right tabular-nums">
+									{agencyCosts.reduce((s, r) => s + r.hires, 0)}名
+								</td>
+								<td className="px-3 py-2 text-right tabular-nums">
+									{(() => {
+										const tc = agencyCosts.reduce((s, r) => s + r.cost, 0);
+										const th = agencyCosts.reduce((s, r) => s + r.hires, 0);
+										return th > 0
+											? `¥${Math.round(tc / th).toLocaleString()}`
+											: "-";
+									})()}
+								</td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			)}
+
+			{/* 園×雇用形態別コスト */}
+			{nurseryPivot.length > 0 && (
+				<div className="bg-white border border-gray-200 rounded-xl p-4 overflow-x-auto">
+					<h3 className="text-sm font-semibold text-gray-700 mb-3">
+						園×雇用形態別コスト（FY{String(selectedFY).slice(2)}）
+					</h3>
+					<table className="w-full text-sm">
+						<thead>
+							<tr className="border-b-2 border-gray-200 text-gray-600">
+								<th className="text-left px-3 py-2">園名</th>
+								{empTypes.map((et) => (
+									<th key={et} className="text-right px-3 py-2">
+										{et}
+									</th>
+								))}
+								<th className="text-right px-3 py-2">合計</th>
+								<th className="text-right px-3 py-2">入社</th>
+							</tr>
+						</thead>
+						<tbody>
+							{nurseryPivot.map((row) => (
+								<tr
+									key={row.nursery}
+									className="border-b border-gray-100 hover:bg-gray-50"
+								>
+									<td className="px-3 py-2 font-medium">{row.nursery}</td>
+									{empTypes.map((et) => (
+										<td key={et} className="px-3 py-2 text-right tabular-nums">
+											{row.byType[et]
+												? `¥${row.byType[et].toLocaleString()}`
+												: "-"}
+										</td>
+									))}
+									<td className="px-3 py-2 text-right tabular-nums font-semibold">
+										¥{row.total.toLocaleString()}
+									</td>
+									<td className="px-3 py-2 text-right tabular-nums">
+										{row.hires > 0 ? `${row.hires}名` : "-"}
+									</td>
+								</tr>
+							))}
+						</tbody>
+						<tfoot>
+							<tr className="bg-gray-50 font-bold border-t-2 border-gray-300">
+								<td className="px-3 py-2">合計</td>
+								{empTypes.map((et) => {
+									const etTotal = nurseryPivot.reduce(
+										(s, r) => s + (r.byType[et] || 0),
+										0,
+									);
+									return (
+										<td key={et} className="px-3 py-2 text-right tabular-nums">
+											¥{etTotal.toLocaleString()}
+										</td>
+									);
+								})}
+								<td className="px-3 py-2 text-right tabular-nums">
+									¥
+									{nurseryPivot
+										.reduce((s, r) => s + r.total, 0)
+										.toLocaleString()}
+								</td>
+								<td className="px-3 py-2 text-right tabular-nums">
+									{nurseryPivot.reduce((s, r) => s + r.hires, 0)}名
+								</td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			)}
 
 			{/* カテゴリ別月次チャート（4パネル） */}
 			<div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
