@@ -1,14 +1,14 @@
 name: Snapshot Reviews
 
 on:
-  # 毎月1日 23:00 JST（14:00 UTC）に自動実行
+  # 毎日 23:00 JST（14:00 UTC）に自動実行
   schedule:
-    - cron: "0 14 1 * *"
+    - cron: "0 14 * * *"
   # 手動実行（初回セットアップや再取得時）
   workflow_dispatch:
     inputs:
       snapshot_name:
-        description: "カスタムファイル名（例: baseline-20260327）。空欄ならYYYY-MM"
+        description: "カスタムファイル名（例: baseline-20260327）。空欄なら当日YYYY-MM-DD"
         required: false
         default: ""
 
@@ -31,7 +31,8 @@ jobs:
         run: node scripts/snapshot-reviews.js
         env:
           GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
-          SNAPSHOT_NAME: ${{ github.event.inputs.snapshot_name }}
+          # 手動入力があればそれを使用、なければ当日YYYY-MM-DD
+          SNAPSHOT_NAME: ${{ github.event.inputs.snapshot_name || '' }}
 
       - name: Commit and push snapshot
         uses: stefanzweifel/git-auto-commit-action@v5

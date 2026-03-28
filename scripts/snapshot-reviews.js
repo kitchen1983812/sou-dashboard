@@ -108,7 +108,7 @@ async function main() {
 		console.log(`  Nursery reviews: ${totalN}, Competitor reviews: ${totalC}`);
 	} else {
 		// --- 月次/ベースライン スナップショットモード（自園のみ） ---
-		const snapshotName = process.env.SNAPSHOT_NAME || `${year}-${month}`;
+		const snapshotName = process.env.SNAPSHOT_NAME || dateStr;
 		console.log(`Taking snapshot "${snapshotName}" (${dateStr})...`);
 
 		const counts = await fetchAll(NURSERIES, "自園");
