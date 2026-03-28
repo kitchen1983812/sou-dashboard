@@ -1,5 +1,5 @@
 {
-  "date": "2026-03-23",
+  "date": "2026-03-28",
   "nurseries": {
     "ChIJAT_un8j6GGARRJDWMAye3XE": {
       "name": "稲城長沼園",
@@ -10,8 +10,8 @@
     "ChIJq30EnM-GGGARwtXJOrPeADY": {
       "name": "京成八幡園",
       "area": "千葉県",
-      "count": 0,
-      "rating": null
+      "count": 5,
+      "rating": 5
     },
     "ChIJc2MR3muHGGARhHtG6RP1dKU": {
       "name": "行徳園",
@@ -34,8 +34,8 @@
     "ChIJq9CYz9kDGWARvC3WXdkbKpA": {
       "name": "相模原園",
       "area": "神奈川県",
-      "count": 6,
-      "rating": 4.5
+      "count": 7,
+      "rating": 4.6
     },
     "ChIJ0QP_5KGKGGAR2U-hrZrUCZA": {
       "name": "大田馬込園",
@@ -46,7 +46,7 @@
     "ChIJsbeGEa34GGARRaVauXzbF0g": {
       "name": "大和園",
       "area": "神奈川県",
-      "count": 1,
+      "count": 3,
       "rating": 5
     },
     "ChIJWVLe3xP_GGARPjPg9pKfdsM": {
@@ -58,7 +58,7 @@
     "ChIJ-7i0-efyGGAR2Zm6giP_Fdc": {
       "name": "中野新橋園",
       "area": "東京都",
-      "count": 4,
+      "count": 5,
       "rating": 5
     },
     "ChIJgbwKmXfpGGARsTdBJiV-YpU": {
@@ -130,14 +130,14 @@
     "ChIJlzqtUpfrGGARUsZBMphXEXA": {
       "name": "蕨II園",
       "area": "埼玉県",
-      "count": 0,
-      "rating": null
+      "count": 1,
+      "rating": 5
     },
     "ChIJ80xh1ceEImARJ_hE_nHvtvM": {
       "name": "ふぇりーちぇほいくえん",
       "area": "千葉県",
-      "count": 2,
-      "rating": 4
+      "count": 3,
+      "rating": 4.3
     },
     "ChIJK9MxgKLrGGARUiRQk2GgMaU": {
       "name": "病児保育室にじのへや",
@@ -378,7 +378,7 @@
     "ChIJR4c0EHGHGGARHYM-bu44Qg0": {
       "name": "すくすくの杜南行徳園",
       "area": "千葉県",
-      "count": 1,
+      "count": 2,
       "rating": 5
     },
     "ChIJOTeF3PKcGGARbYsAyY4_slM": {
@@ -678,7 +678,7 @@
     "ChIJ8b4vMF79GGAR_dHtHt7aK_M": {
       "name": "Yotsuba Nursery Sagamihara",
       "area": "神奈川県",
-      "count": 2,
+      "count": 3,
       "rating": 5
     },
     "ChIJZS4C2Wb9GGAR84Q_-00wBSQ": {
