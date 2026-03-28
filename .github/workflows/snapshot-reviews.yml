@@ -27,12 +27,18 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Take snapshot
+      - name: Take snapshot (dated)
         run: node scripts/snapshot-reviews.js
         env:
           GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
           # 手動入力があればそれを使用、なければ当日YYYY-MM-DD
           SNAPSHOT_NAME: ${{ github.event.inputs.snapshot_name || '' }}
+
+      - name: Update current.json (nurseries + competitors)
+        run: node scripts/snapshot-reviews.js
+        env:
+          GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
+          INCLUDE_COMPETITORS: "true"
 
       - name: Commit and push snapshot
         uses: stefanzweifel/git-auto-commit-action@v5
