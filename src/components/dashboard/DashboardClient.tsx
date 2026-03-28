@@ -22,6 +22,7 @@ import {
 	getCurrentFY,
 	parseDate,
 	getFiscalYear,
+	normalizeBrandName,
 } from "@/lib/dashboardUtils";
 import TabNavigation from "./TabNavigation";
 import Filters from "./Filters";
@@ -84,11 +85,15 @@ function DashboardClientInner({
 		duplicateCheck: "-",
 	});
 
-	// Filter options
-	const companies = useMemo(
-		() => getUniqueValues(inquiries, "company"),
-		[inquiries],
-	);
+	// Filter options — company uses brand names (normalized) as both label and filter key
+	const companies = useMemo(() => {
+		const seen = new Set<string>();
+		for (const inq of inquiries) {
+			const brand = normalizeBrandName(inq.company || "");
+			if (brand) seen.add(brand);
+		}
+		return Array.from(seen).sort();
+	}, [inquiries]);
 	const nurseries = useMemo(
 		() => getUniqueValues(inquiries, "sheetName"),
 		[inquiries],
@@ -110,7 +115,11 @@ function DashboardClientInner({
 	// Apply filters (non-date)
 	const filteredInquiries = useMemo(() => {
 		return inquiries.filter((inq) => {
-			if (filters.company && inq.company !== filters.company) return false;
+			if (
+				filters.company &&
+				normalizeBrandName(inq.company || "") !== filters.company
+			)
+				return false;
 			if (filters.nursery && inq.sheetName !== filters.nursery) return false;
 			if (filters.area && inq.area !== filters.area) return false;
 			if (filters.contactMethod && inq.contact !== filters.contactMethod)
