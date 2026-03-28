@@ -2,19 +2,11 @@
 
 import { ScoreCardWithComparison } from "@/types/inquiry";
 import { calcChangeRate } from "@/lib/dashboardUtils";
+import ScoreCard from "@/components/ui/ScoreCard";
 
 interface ScoreCardsProps {
 	data: ScoreCardWithComparison;
 	fyLabel?: string;
-}
-
-interface CardProps {
-	label: string;
-	value: number;
-	prevValue?: number;
-	highlight?: boolean;
-	suffix?: string;
-	icon: React.ReactNode;
 }
 
 /* --- SVG Icons (inline, lightweight) --- */
@@ -81,58 +73,10 @@ const IconDecline = () => (
 	</svg>
 );
 
-function Card({ label, value, prevValue, highlight, suffix, icon }: CardProps) {
-	const change = calcChangeRate(value, prevValue);
-
-	return (
-		<div
-			className={`rounded-xl border px-4 py-3 transition-shadow hover:shadow-md ${
-				highlight ? "bg-brand-50 border-brand-200" : "bg-white border-gray-200"
-			}`}
-		>
-			<div className="flex items-center gap-1.5 mb-1.5">
-				<span className={highlight ? "text-brand-400" : "text-gray-400"}>
-					{icon}
-				</span>
-				<span className="text-sm text-gray-500 font-medium">{label}</span>
-			</div>
-			<div className="text-2xl font-bold text-gray-900">
-				{value.toLocaleString()}
-				{suffix && <span className="text-sm font-normal ml-1">{suffix}</span>}
-			</div>
-			{change !== null && (
-				<div
-					className={`text-sm mt-1 flex items-center gap-1 font-medium ${
-						change.direction === "up"
-							? "text-green-600"
-							: change.direction === "down"
-								? "text-red-500"
-								: "text-gray-400"
-					}`}
-				>
-					{change.direction === "up" && (
-						<svg className="w-3 h-3" viewBox="0 0 12 12" fill="currentColor">
-							<path d="M6 2l4 5H2l4-5z" />
-						</svg>
-					)}
-					{change.direction === "down" && (
-						<svg className="w-3 h-3" viewBox="0 0 12 12" fill="currentColor">
-							<path d="M6 10L2 5h8l-4 5z" />
-						</svg>
-					)}
-					{change.direction !== "none" ? `${change.rate.toFixed(1)}%` : "±0"}
-					{prevValue !== undefined && change.direction !== "none" && (
-						<span className="text-gray-400 font-normal ml-1">
-							前期:{prevValue}
-						</span>
-					)}
-				</div>
-			)}
-			{change === null && prevValue !== undefined && (
-				<div className="text-sm mt-1 text-gray-400">前期:{prevValue}</div>
-			)}
-		</div>
-	);
+function toChangeNum(value: number, prevValue?: number): number | undefined {
+	const result = calcChangeRate(value, prevValue);
+	if (!result || result.direction === "none") return undefined;
+	return result.direction === "up" ? result.rate : -result.rate;
 }
 
 function RateChip({
@@ -163,49 +107,68 @@ export default function ScoreCards({ data, fyLabel }: ScoreCardsProps) {
 				<div className="text-sm text-gray-500 font-medium">{fyLabel}</div>
 			)}
 			<div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
-				<Card
-					label="問い合わせ数"
-					value={data.totalInquiries}
-					prevValue={data.prevTotalInquiries}
+				<ScoreCard
+					title="問い合わせ数"
+					value={data.totalInquiries.toLocaleString()}
+					change={toChangeNum(data.totalInquiries, data.prevTotalInquiries)}
+					changeLabel="前期比"
 					icon={<IconInquiry />}
+					size="compact"
 				/>
-				<Card
-					label="入園数"
-					value={data.enrollments}
-					prevValue={data.prevEnrollments}
-					highlight
+				<ScoreCard
+					title="入園数"
+					value={data.enrollments.toLocaleString()}
+					change={toChangeNum(data.enrollments, data.prevEnrollments)}
+					changeLabel="前期比"
+					variant="ok"
 					icon={<IconEnroll />}
+					size="compact"
 				/>
-				<Card
-					label="未対応"
-					value={data.unanswered}
-					prevValue={data.prevUnanswered}
+				<ScoreCard
+					title="未対応"
+					value={data.unanswered.toLocaleString()}
+					change={toChangeNum(data.unanswered, data.prevUnanswered)}
+					changeLabel="前期比"
+					variant={data.unansweredRate > 20 ? "ng" : "warn"}
+					invertColor
 					icon={<IconPending />}
+					size="compact"
 				/>
-				<Card
-					label="対応中数"
-					value={data.inProgress}
-					prevValue={data.prevInProgress}
+				<ScoreCard
+					title="対応中"
+					value={data.inProgress.toLocaleString()}
+					change={toChangeNum(data.inProgress, data.prevInProgress)}
+					changeLabel="前期比"
 					icon={<IconProgress />}
+					size="compact"
 				/>
-				<Card
-					label="検討中数"
-					value={data.underConsideration}
-					prevValue={data.prevUnderConsideration}
+				<ScoreCard
+					title="検討中"
+					value={data.underConsideration.toLocaleString()}
+					change={toChangeNum(
+						data.underConsideration,
+						data.prevUnderConsideration,
+					)}
+					changeLabel="前期比"
 					icon={<IconConsider />}
+					size="compact"
 				/>
-				<Card
-					label="待ちリスト数"
-					value={data.waitlisted}
-					prevValue={data.prevWaitlisted}
-					highlight
+				<ScoreCard
+					title="待ちリスト"
+					value={data.waitlisted.toLocaleString()}
+					change={toChangeNum(data.waitlisted, data.prevWaitlisted)}
+					changeLabel="前期比"
+					variant="accent"
 					icon={<IconWaitlist />}
+					size="compact"
 				/>
-				<Card
-					label="辞退数"
-					value={data.declined}
-					prevValue={data.prevDeclined}
+				<ScoreCard
+					title="辞退数"
+					value={data.declined.toLocaleString()}
+					change={toChangeNum(data.declined, data.prevDeclined)}
+					changeLabel="前期比"
 					icon={<IconDecline />}
+					size="compact"
 				/>
 			</div>
 			<div className="flex flex-wrap gap-3">

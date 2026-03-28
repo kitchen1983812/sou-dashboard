@@ -1,24 +1,12 @@
+import { DashboardViewSkeleton } from "@/components/ui/Skeleton";
+
 export default function DashboardLoading() {
 	return (
-		<div className="p-6 space-y-6 animate-pulse">
-			{/* スコアカード */}
-			<div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-				{Array.from({ length: 4 }).map((_, i) => (
-					<div
-						key={i}
-						className="bg-white rounded-xl border border-gray-200 p-4"
-					>
-						<div className="h-4 bg-gray-200 rounded w-20 mb-2" />
-						<div className="h-8 bg-gray-200 rounded w-16" />
-					</div>
-				))}
-			</div>
-			{/* テーブル */}
-			<div className="bg-white rounded-xl border border-gray-200 p-4">
-				<div className="h-5 bg-gray-200 rounded w-40 mb-4" />
-				{Array.from({ length: 8 }).map((_, i) => (
-					<div key={i} className="h-4 bg-gray-100 rounded mb-3" />
-				))}
+		<div className="flex h-screen overflow-hidden bg-gray-50">
+			{/* サイドバープレースホルダー */}
+			<div className="w-56 shrink-0 bg-white border-r border-gray-200 hidden lg:block" />
+			<div className="flex-1 overflow-y-auto p-4 sm:p-6">
+				<DashboardViewSkeleton />
 			</div>
 		</div>
 	);

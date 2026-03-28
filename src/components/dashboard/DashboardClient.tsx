@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Inquiry, TabId, FilterState } from "@/types/inquiry";
 import { AdKeywordRow, AdSearchQueryRow } from "@/types/ads";
 import { Applicant, RecruitCost } from "@/types/recruit";
@@ -24,6 +25,7 @@ import {
 } from "@/lib/dashboardUtils";
 import TabNavigation from "./TabNavigation";
 import Filters from "./Filters";
+import PeriodFilter from "@/components/ui/PeriodFilter";
 import ScoreCards from "./ScoreCards";
 import ChannelDonut from "./ChannelDonut";
 import TimelineChart from "./TimelineChart";
@@ -43,6 +45,7 @@ import ExecutiveSummaryView from "./ExecutiveSummaryView";
 import OccupancyView from "./OccupancyView";
 import FunnelView from "./FunnelView";
 import InsightPanel from "./InsightPanel";
+import SectionErrorBoundary from "@/components/ui/SectionErrorBoundary";
 
 interface DashboardClientProps {
 	inquiries: Inquiry[];
@@ -60,14 +63,26 @@ function formatDateRange(start: Date, end: Date): string {
 	return `${fmt(start)} - ${fmt(end)}`;
 }
 
-export default function DashboardClient({
+/** URL同期を行う内部コンポーネント（useSearchParams用にSuspense内で実行） */
+function DashboardClientInner({
 	inquiries,
 	adKeywords,
 	adSearchQueries,
 	applicants,
 	recruitCosts,
 }: DashboardClientProps) {
-	const [activeTab, setActiveTab] = useState<TabId>("executive");
+	const router = useRouter();
+	const searchParams = useSearchParams();
+	const tabFromUrl = searchParams.get("tab") as TabId | null;
+	const validTabIds = TABS.map((t) => t.id);
+	const initialTab: TabId =
+		tabFromUrl && validTabIds.includes(tabFromUrl) ? tabFromUrl : "executive";
+
+	const [activeTab, setActiveTab] = useState<TabId>(initialTab);
+	const [customDateRange, setCustomDateRange] = useState<{
+		from: string;
+		to: string;
+	} | null>(null);
 	const [filters, setFilters] = useState<FilterState>({
 		company: "",
 		nursery: "",
@@ -118,8 +133,33 @@ export default function DashboardClient({
 		});
 	}, [inquiries, filters]);
 
-	// Date range for current tab
-	const dateRange = useMemo(() => getDateRangeForTab(activeTab), [activeTab]);
+	// Min/max months for PeriodFilter (derived from inquiry data)
+	const minMonth = useMemo(() => {
+		const dates = inquiries
+			.map((i) => i.postDate)
+			.filter(Boolean)
+			.sort();
+		if (!dates.length) return "2021-04";
+		const d = new Date(dates[0]);
+		return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+	}, [inquiries]);
+	const maxMonth = useMemo(() => {
+		const now = new Date();
+		return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`;
+	}, []);
+
+	// Date range for current tab (custom range overrides tab default)
+	const dateRange = useMemo(() => {
+		if (customDateRange) {
+			const [fy, fm] = customDateRange.from.split("-").map(Number);
+			const [ty, tm] = customDateRange.to.split("-").map(Number);
+			return {
+				start: new Date(fy, fm - 1, 1),
+				end: new Date(ty, tm, 0, 23, 59, 59),
+			};
+		}
+		return getDateRangeForTab(activeTab);
+	}, [activeTab, customDateRange]);
 
 	// Date-filtered data
 	const dateFiltered = useMemo(
@@ -142,7 +182,6 @@ export default function DashboardClient({
 
 	// Tab title
 	const currentTab = TABS.find((t) => t.id === activeTab);
-	const dateLabel = formatDateRange(dateRange.start, dateRange.end);
 
 	// Show contact method filter for pages 1&2, show status filter for pages 3-6
 	const showContactMethod = activeTab === "recent" || activeTab === "annual";
@@ -156,9 +195,26 @@ export default function DashboardClient({
 		activeTab === "ga4" ||
 		activeTab === "reviews";
 
+	const handleTabChange = (tab: TabId) => {
+		setActiveTab(tab);
+		setCustomDateRange(null);
+		const params = new URLSearchParams(searchParams.toString());
+		params.set("tab", tab);
+		router.push(`/dashboard?${params.toString()}`, { scroll: false });
+	};
+
+	// Show period filter for inquiry data tabs (not recruit/ops/reviews)
+	const showPeriodFilter = !isRecruitTab;
+	const periodFilterFrom =
+		customDateRange?.from ??
+		`${dateRange.start.getFullYear()}-${String(dateRange.start.getMonth() + 1).padStart(2, "0")}`;
+	const periodFilterTo =
+		customDateRange?.to ??
+		`${dateRange.end.getFullYear()}-${String(dateRange.end.getMonth() + 1).padStart(2, "0")}`;
+
 	return (
 		<div className="flex min-h-screen">
-			<TabNavigation activeTab={activeTab} onTabChange={setActiveTab} />
+			<TabNavigation activeTab={activeTab} onTabChange={handleTabChange} />
 
 			<div className="flex-1 overflow-auto">
 				<div className="p-5 sm:p-6 space-y-6">
@@ -170,60 +226,94 @@ export default function DashboardClient({
 
 					{/* Filters (集客タブのみ表示) */}
 					{!isRecruitTab && (
-						<Filters
-							filters={filters}
-							onFilterChange={setFilters}
-							companies={companies}
-							nurseries={nurseries}
-							areas={areas}
-							contactMethods={contactMethods}
-							statuses={statuses}
-							duplicateChecks={duplicateChecks}
-							showContactMethod={showContactMethod}
-							showStatus={showStatus}
-							dateLabel={dateLabel}
-						/>
+						<div className="flex flex-wrap items-center gap-3">
+							<Filters
+								filters={filters}
+								onFilterChange={setFilters}
+								companies={companies}
+								nurseries={nurseries}
+								areas={areas}
+								contactMethods={contactMethods}
+								statuses={statuses}
+								duplicateChecks={duplicateChecks}
+								showContactMethod={showContactMethod}
+								showStatus={showStatus}
+							/>
+							{showPeriodFilter && (
+								<PeriodFilter
+									from={periodFilterFrom}
+									to={periodFilterTo}
+									minMonth={minMonth}
+									maxMonth={maxMonth}
+									onChange={(f, t) => setCustomDateRange({ from: f, to: t })}
+								/>
+							)}
+						</div>
 					)}
 
 					{/* Content based on active tab */}
 					{activeTab === "executive" ? (
-						<ExecutiveSummaryView inquiries={filteredInquiries} />
+						<SectionErrorBoundary sectionName="経営サマリー">
+							<ExecutiveSummaryView inquiries={filteredInquiries} />
+						</SectionErrorBoundary>
 					) : activeTab === "occupancy" ? (
-						<OccupancyView />
+						<SectionErrorBoundary sectionName="定員充足率">
+							<OccupancyView />
+						</SectionErrorBoundary>
 					) : activeTab === "funnel" ? (
-						<FunnelView inquiries={filteredInquiries} />
+						<SectionErrorBoundary sectionName="入園ファネル">
+							<FunnelView inquiries={filteredInquiries} />
+						</SectionErrorBoundary>
 					) : activeTab === "reviews" ? (
-						<ReviewsView />
+						<SectionErrorBoundary sectionName="Google口コミ">
+							<ReviewsView />
+						</SectionErrorBoundary>
 					) : activeTab === "ga4" ? (
-						<GA4View />
+						<SectionErrorBoundary sectionName="GA4">
+							<GA4View />
+						</SectionErrorBoundary>
 					) : activeTab === "recruitReport" ? (
-						<RecruitReportView
-							applicants={applicants}
-							recruitCosts={recruitCosts}
-						/>
+						<SectionErrorBoundary sectionName="採用レポート">
+							<RecruitReportView
+								applicants={applicants}
+								recruitCosts={recruitCosts}
+							/>
+						</SectionErrorBoundary>
 					) : activeTab === "recruitCost" ? (
-						<RecruitCostView
-							applicants={applicants}
-							recruitCosts={recruitCosts}
-						/>
+						<SectionErrorBoundary sectionName="採用費分析">
+							<RecruitCostView
+								applicants={applicants}
+								recruitCosts={recruitCosts}
+							/>
+						</SectionErrorBoundary>
 					) : activeTab === "weeklyReport" ? (
-						<WeeklyReportView
-							inquiries={filteredInquiries}
-							adKeywords={adKeywords}
-							adSearchQueries={adSearchQueries}
-						/>
+						<SectionErrorBoundary sectionName="週次レポート">
+							<WeeklyReportView
+								inquiries={filteredInquiries}
+								adKeywords={adKeywords}
+								adSearchQueries={adSearchQueries}
+							/>
+						</SectionErrorBoundary>
 					) : activeTab === "googleAds" ? (
-						<GoogleAdsView
-							inquiries={filteredInquiries}
-							adKeywords={adKeywords}
-							adSearchQueries={adSearchQueries}
-						/>
+						<SectionErrorBoundary sectionName="Google広告">
+							<GoogleAdsView
+								inquiries={filteredInquiries}
+								adKeywords={adKeywords}
+								adSearchQueries={adSearchQueries}
+							/>
+						</SectionErrorBoundary>
 					) : activeTab === "comparison" ? (
-						<ComparisonView inquiries={filteredInquiries} />
+						<SectionErrorBoundary sectionName="年度比較">
+							<ComparisonView inquiries={filteredInquiries} />
+						</SectionErrorBoundary>
 					) : activeTab === "report" ? (
-						<CompanyReportView inquiries={filteredInquiries} />
+						<SectionErrorBoundary sectionName="ブランド別">
+							<CompanyReportView inquiries={filteredInquiries} />
+						</SectionErrorBoundary>
 					) : activeTab === "fyMonthly" ? (
-						<MonthlyTabContent inquiries={filteredInquiries} />
+						<SectionErrorBoundary sectionName="年度集計-月次別">
+							<MonthlyTabContent inquiries={filteredInquiries} />
+						</SectionErrorBoundary>
 					) : (
 						<>
 							{/* Insight Panel */}
@@ -257,6 +347,15 @@ export default function DashboardClient({
 				</div>
 			</div>
 		</div>
+	);
+}
+
+/** Suspenseラッパー — useSearchParamsはSuspense境界内で実行する必要がある */
+export default function DashboardClient(props: DashboardClientProps) {
+	return (
+		<Suspense fallback={null}>
+			<DashboardClientInner {...props} />
+		</Suspense>
 	);
 }
 

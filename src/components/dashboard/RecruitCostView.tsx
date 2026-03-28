@@ -24,6 +24,7 @@ import {
 	ComposedChart,
 	ResponsiveContainer,
 } from "recharts";
+import DualAxisChart from "@/components/charts/DualAxisChart";
 
 const CATEGORY_COLORS: Record<string, string> = {
 	"保育:正社員": "#2563EB",
@@ -219,6 +220,36 @@ export default function RecruitCostView({
 						</div>
 					))}
 				</div>
+			</div>
+
+			{/* 月次コスト × 採用人数（二軸チャート） */}
+			<div className="bg-white border border-gray-200 rounded-xl p-4">
+				<h3 className="text-sm font-semibold text-gray-700 mb-3">
+					月次採用コスト × 採用人数
+				</h3>
+				<DualAxisChart
+					data={monthlyTrends["合計"]}
+					xKey="month"
+					leftSeries={[
+						{
+							key: "cost",
+							name: "採用コスト",
+							color: "#008cc9",
+							type: "bar",
+						},
+					]}
+					rightSeries={[
+						{
+							key: "hires",
+							name: "採用人数",
+							color: "#16a34a",
+							type: "line",
+						},
+					]}
+					leftLabel="コスト（円）"
+					rightLabel="採用人数（名）"
+					height={280}
+				/>
 			</div>
 
 			{/* 採用単価推移 */}

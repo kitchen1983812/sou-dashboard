@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useMemo } from "react";
 import type { OccupancyNursery } from "@/app/api/occupancy/route";
+import GaugeChart from "@/components/charts/GaugeChart";
 
 interface OccupancyResponse {
 	nurseries: OccupancyNursery[];
@@ -174,23 +175,16 @@ export default function OccupancyView() {
 						</div>
 					);
 				})}
-				{/* 全体 */}
-				<div className="bg-brand-50 border border-brand-200 rounded-lg p-3 text-center">
-					<div className="text-xs text-brand-600 mb-1 font-semibold">全体</div>
-					<div className="text-xl font-bold text-brand-800">
-						{grandCap > 0 ? Math.round((grandEnr / grandCap) * 100) : 0}%
+				{/* 全体ゲージ */}
+				<div className="bg-brand-50 border border-brand-200 rounded-xl p-3 text-center col-span-2 sm:col-span-1">
+					<div className="text-xs text-brand-600 mb-0.5 font-semibold">
+						全体
 					</div>
-					<div className="text-xs text-brand-500">
-						{grandEnr}/{grandCap}
-					</div>
-					<div className="mt-2 h-2 bg-brand-100 rounded-full overflow-hidden">
-						<div
-							className="bg-brand-500 h-full rounded-full"
-							style={{
-								width: `${Math.min(grandCap > 0 ? (grandEnr / grandCap) * 100 : 0, 100)}%`,
-							}}
-						/>
-					</div>
+					<GaugeChart
+						value={grandCap > 0 ? Math.round((grandEnr / grandCap) * 100) : 0}
+						label={`${grandEnr}/${grandCap}名`}
+						height={140}
+					/>
 				</div>
 			</div>
 

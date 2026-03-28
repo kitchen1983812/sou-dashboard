@@ -2,6 +2,77 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================
+   Design Tokens — Layer 1: Primitive
+   Raw named values. Do not use directly in components.
+   ============================================================ */
+:root {
+  /* Brand */
+  --primitive-brand-50: #e6f4fb;
+  --primitive-brand-100: #b3dff3;
+  --primitive-brand-300: #4db5e3;
+  --primitive-brand-500: #008cc9;
+  --primitive-brand-600: #0078ab;
+  --primitive-brand-700: #005f8a;
+
+  /* Gray */
+  --primitive-gray-50: #f9fafb;
+  --primitive-gray-100: #f3f4f6;
+  --primitive-gray-200: #e5e7eb;
+  --primitive-gray-300: #d1d5db;
+  --primitive-gray-400: #9ca3af;
+  --primitive-gray-500: #6b7280;
+  --primitive-gray-700: #374151;
+  --primitive-gray-800: #1f2937;
+  --primitive-gray-900: #111827;
+
+  /* Status */
+  --primitive-green-50: #f0fdf4;
+  --primitive-green-600: #16a34a;
+  --primitive-red-50: #fef2f2;
+  --primitive-red-600: #dc2626;
+  --primitive-amber-50: #fffbeb;
+  --primitive-amber-600: #d97706;
+}
+
+/* ============================================================
+   Design Tokens — Layer 2: Semantic
+   Purpose-based aliases. Use these in new component code.
+   ============================================================ */
+:root {
+  /* Text */
+  --text-primary:   var(--primitive-gray-800);
+  --text-secondary: var(--primitive-gray-500);
+  --text-disabled:  var(--primitive-gray-400);
+  --text-brand:     var(--primitive-brand-600);
+
+  /* Surface */
+  --bg-surface:        #ffffff;
+  --bg-surface-subtle: var(--primitive-gray-50);
+  --bg-surface-muted:  var(--primitive-gray-100);
+
+  /* Border */
+  --border-default: var(--primitive-gray-200);
+  --border-strong:  var(--primitive-gray-300);
+
+  /* Status — ok */
+  --status-ok-text: var(--primitive-green-600);
+  --status-ok-bg:   var(--primitive-green-50);
+
+  /* Status — danger */
+  --status-danger-text: var(--primitive-red-600);
+  --status-danger-bg:   var(--primitive-red-50);
+
+  /* Status — warning */
+  --status-warn-text: var(--primitive-amber-600);
+  --status-warn-bg:   var(--primitive-amber-50);
+
+  /* Elevation (box-shadow) */
+  --elevation-1: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --elevation-2: 0 1px 3px 0 rgb(0 0 0 / 0.10), 0 1px 2px -1px rgb(0 0 0 / 0.10);
+  --elevation-3: 0 4px 6px -1px rgb(0 0 0 / 0.10), 0 2px 4px -2px rgb(0 0 0 / 0.10);
+}
+
 body {
   @apply bg-white text-gray-800;
   -webkit-font-smoothing: antialiased;

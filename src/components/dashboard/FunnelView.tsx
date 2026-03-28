@@ -9,12 +9,12 @@ import {
 	getFYRange,
 } from "@/lib/dashboardUtils";
 import InsightPanel from "./InsightPanel";
+import FunnelChart from "@/components/charts/FunnelChart";
 
 interface FunnelViewProps {
 	inquiries: Inquiry[];
 }
 
-/** 現在利用可能なデータからファネルを構成 */
 function computeBasicFunnel(inquiries: Inquiry[]) {
 	const total = inquiries.length;
 	const inProgress = inquiries.filter(
@@ -32,10 +32,11 @@ function computeBasicFunnel(inquiries: Inquiry[]) {
 	const unanswered = inquiries.filter(
 		(i) => i.status === STATUS.UNANSWERED || !i.status,
 	).length;
+	const responded = total - unanswered;
 
 	return {
 		total,
-		responded: total - unanswered,
+		responded,
 		guided,
 		considering,
 		waitlisted,
@@ -44,46 +45,6 @@ function computeBasicFunnel(inquiries: Inquiry[]) {
 		unanswered,
 		inProgress,
 	};
-}
-
-function FunnelBar({
-	label,
-	value,
-	maxValue,
-	color,
-	subLabel,
-}: {
-	label: string;
-	value: number;
-	maxValue: number;
-	color: string;
-	subLabel?: string;
-}) {
-	const pct = maxValue > 0 ? Math.max((value / maxValue) * 100, 3) : 0;
-
-	return (
-		<div className="flex items-center gap-3">
-			<span className="text-sm text-gray-600 w-24 shrink-0 text-right">
-				{label}
-			</span>
-			<div className="flex-1 h-8 bg-gray-100 rounded overflow-hidden">
-				<div
-					className={`h-full ${color} rounded flex items-center px-2 transition-all`}
-					style={{ width: `${pct}%` }}
-				>
-					{pct > 10 && (
-						<span className="text-xs text-white font-bold">{value}</span>
-					)}
-				</div>
-			</div>
-			{pct <= 10 && (
-				<span className="text-sm font-bold text-gray-700 w-8">{value}</span>
-			)}
-			<span className="text-xs text-gray-400 w-16 text-right">
-				{subLabel || ""}
-			</span>
-		</div>
-	);
 }
 
 export default function FunnelView({ inquiries }: FunnelViewProps) {
@@ -95,110 +56,103 @@ export default function FunnelView({ inquiries }: FunnelViewProps) {
 
 	const funnel = useMemo(() => computeBasicFunnel(fyData), [fyData]);
 
+	const funnelData = useMemo(
+		() => [
+			{
+				stage: "問い合わせ",
+				count: funnel.total,
+				subLabel: "100%",
+			},
+			{
+				stage: "対応済",
+				count: funnel.responded,
+				subLabel:
+					funnel.total > 0
+						? `${Math.round((funnel.responded / funnel.total) * 100)}%`
+						: "-",
+			},
+			{
+				stage: "ご案内済",
+				count: funnel.guided,
+				subLabel:
+					funnel.total > 0
+						? `${Math.round((funnel.guided / funnel.total) * 100)}%`
+						: "-",
+			},
+			{
+				stage: "検討中",
+				count: funnel.considering,
+				subLabel:
+					funnel.total > 0
+						? `${Math.round((funnel.considering / funnel.total) * 100)}%`
+						: "-",
+			},
+			{
+				stage: "待ちリスト",
+				count: funnel.waitlisted,
+				subLabel:
+					funnel.total > 0
+						? `${Math.round((funnel.waitlisted / funnel.total) * 100)}%`
+						: "-",
+			},
+			{
+				stage: "入園",
+				count: funnel.enrolled,
+				subLabel:
+					funnel.total > 0
+						? `${Math.round((funnel.enrolled / funnel.total) * 100)}%`
+						: "-",
+			},
+		],
+		[funnel],
+	);
+
 	return (
 		<div className="space-y-6">
 			{/* インサイト */}
 			<InsightPanel inquiries={fyData} />
 
-			{/* 現行データファネル */}
+			{/* ステータス別フロー */}
 			<section>
 				<h3 className="text-base font-bold text-gray-800 mb-3 flex items-center gap-2">
 					<span className="w-1 h-5 bg-brand-500 rounded-full" />
 					ステータス別フロー（FY{String(getCurrentFY()).slice(2)}）
 				</h3>
-				<div className="space-y-2 bg-white border border-gray-200 rounded-lg p-4">
-					<FunnelBar
-						label="問い合わせ"
-						value={funnel.total}
-						maxValue={funnel.total}
-						color="bg-gray-500"
-						subLabel="100%"
-					/>
-					<FunnelBar
-						label="対応済"
-						value={funnel.responded}
-						maxValue={funnel.total}
-						color="bg-brand-500"
-						subLabel={
-							funnel.total > 0
-								? `${Math.round((funnel.responded / funnel.total) * 100)}%`
-								: ""
-						}
-					/>
-					<FunnelBar
-						label="ご案内済"
-						value={funnel.guided}
-						maxValue={funnel.total}
-						color="bg-sky-500"
-						subLabel={
-							funnel.total > 0
-								? `${Math.round((funnel.guided / funnel.total) * 100)}%`
-								: ""
-						}
-					/>
-					<FunnelBar
-						label="検討中"
-						value={funnel.considering}
-						maxValue={funnel.total}
-						color="bg-green-500"
-						subLabel={
-							funnel.total > 0
-								? `${Math.round((funnel.considering / funnel.total) * 100)}%`
-								: ""
-						}
-					/>
-					<FunnelBar
-						label="待ちリスト"
-						value={funnel.waitlisted}
-						maxValue={funnel.total}
-						color="bg-violet-500"
-						subLabel={
-							funnel.total > 0
-								? `${Math.round((funnel.waitlisted / funnel.total) * 100)}%`
-								: ""
-						}
-					/>
-					<FunnelBar
-						label="入園"
-						value={funnel.enrolled}
-						maxValue={funnel.total}
-						color="bg-brand-600"
-						subLabel={
-							funnel.total > 0
-								? `${Math.round((funnel.enrolled / funnel.total) * 100)}%`
-								: ""
-						}
-					/>
-					<div className="border-t border-gray-100 pt-2 mt-2">
-						<FunnelBar
-							label="未対応"
-							value={funnel.unanswered}
-							maxValue={funnel.total}
-							color="bg-red-500"
-							subLabel={
-								funnel.total > 0
-									? `${Math.round((funnel.unanswered / funnel.total) * 100)}%`
-									: ""
-							}
-						/>
-						<div className="mt-2">
-							<FunnelBar
-								label="辞退"
-								value={funnel.declined}
-								maxValue={funnel.total}
-								color="bg-gray-400"
-								subLabel={
-									funnel.total > 0
-										? `${Math.round((funnel.declined / funnel.total) * 100)}%`
-										: ""
-								}
-							/>
-						</div>
+				<div className="bg-white border border-gray-200 rounded-xl p-4">
+					<FunnelChart data={funnelData} height={260} />
+					{/* 未対応・辞退を下段に */}
+					<div className="border-t border-gray-100 mt-3 pt-3 grid grid-cols-2 gap-2">
+						{[
+							{
+								label: "未対応",
+								count: funnel.unanswered,
+								color: "#dc2626",
+							},
+							{ label: "辞退", count: funnel.declined, color: "#9ca3af" },
+						].map((item) => (
+							<div key={item.label} className="flex items-center gap-2 text-sm">
+								<span
+									className="w-2 h-2 rounded-full shrink-0"
+									style={{ backgroundColor: item.color }}
+								/>
+								<span className="text-gray-500">{item.label}:</span>
+								<span className="font-semibold text-gray-800">
+									{item.count}
+								</span>
+								<span className="text-gray-400 text-xs">
+									(
+									{funnel.total > 0
+										? `${Math.round((item.count / funnel.total) * 100)}%`
+										: "-"}
+									)
+								</span>
+							</div>
+						))}
 					</div>
 				</div>
 			</section>
 
-			{/* 転換率サマリー */}
+			{/* 主要転換率 */}
 			<section>
 				<h3 className="text-base font-bold text-gray-800 mb-3 flex items-center gap-2">
 					<span className="w-1 h-5 bg-brand-500 rounded-full" />
@@ -235,7 +189,7 @@ export default function FunnelView({ inquiries }: FunnelViewProps) {
 					].map((item) => (
 						<div
 							key={item.label}
-							className="bg-white border border-gray-200 rounded-lg p-3 text-center"
+							className="bg-white border border-gray-200 rounded-xl p-3 text-center"
 						>
 							<div className="text-xs text-gray-500 mb-1">{item.label}</div>
 							<div className="text-xl font-bold text-gray-900">
