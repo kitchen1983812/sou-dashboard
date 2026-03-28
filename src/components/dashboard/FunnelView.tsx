@@ -100,15 +100,6 @@ export default function FunnelView({ inquiries }: FunnelViewProps) {
 			{/* インサイト */}
 			<InsightPanel inquiries={fyData} />
 
-			{/* 説明 */}
-			<div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-				<p className="text-sm text-blue-700">
-					現在のステータスデータから問い合わせ→入園のフローを可視化しています。
-					「見学日」「見学結果」列をGoogle
-					Sheetsに追加すると、見学ステップを含む完全なファネルが表示されます。
-				</p>
-			</div>
-
 			{/* 現行データファネル */}
 			<section>
 				<h3 className="text-base font-bold text-gray-800 mb-3 flex items-center gap-2">
@@ -253,53 +244,6 @@ export default function FunnelView({ inquiries }: FunnelViewProps) {
 							<div className="text-xs text-gray-400">{item.desc}</div>
 						</div>
 					))}
-				</div>
-			</section>
-
-			{/* 見学ファネル（プレースホルダー） */}
-			<section>
-				<h3 className="text-base font-bold text-gray-800 mb-3 flex items-center gap-2">
-					<span className="w-1 h-5 bg-brand-500 rounded-full" />
-					見学ファネル（準備中）
-				</h3>
-				<div className="bg-gray-50 border border-dashed border-gray-300 rounded-lg p-6">
-					<p className="text-sm text-gray-500 mb-4">
-						見学データの追加後に以下が表示されます：
-					</p>
-					<ul className="text-sm text-gray-600 space-y-1 list-disc list-inside mb-4">
-						<li>問い合わせ → 見学予約率</li>
-						<li>見学予約 → 見学実施率（キャンセル率）</li>
-						<li>見学実施 → 申込率</li>
-						<li>申込 → 入園率</li>
-						<li>園別ファネル比較</li>
-					</ul>
-					<div className="space-y-2 opacity-40">
-						{[
-							{ label: "問い合わせ", pct: 100 },
-							{ label: "見学予約", pct: 54 },
-							{ label: "見学実施", pct: 42 },
-							{ label: "申込", pct: 23 },
-							{ label: "入園", pct: 15 },
-						].map((step) => (
-							<div key={step.label} className="flex items-center gap-3">
-								<span className="text-sm text-gray-600 w-24 shrink-0 text-right">
-									{step.label}
-								</span>
-								<div className="flex-1 h-6 bg-gray-200 rounded overflow-hidden">
-									<div
-										className="h-full bg-brand-300 rounded"
-										style={{ width: `${step.pct}%` }}
-									/>
-								</div>
-								<span className="text-xs text-gray-400 w-10 text-right">
-									{step.pct}%
-								</span>
-							</div>
-						))}
-					</div>
-					<p className="text-xs text-gray-400 mt-3 text-center">
-						※ サンプル表示（実データではありません）
-					</p>
 				</div>
 			</section>
 		</div>
