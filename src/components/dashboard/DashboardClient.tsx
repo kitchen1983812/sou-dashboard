@@ -55,14 +55,6 @@ interface DashboardClientProps {
 	recruitCosts: RecruitCost[];
 }
 
-function formatDateRange(start: Date, end: Date): string {
-	const fmt = (d: Date) =>
-		`${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, "0")}/${String(
-			d.getDate(),
-		).padStart(2, "0")}`;
-	return `${fmt(start)} - ${fmt(end)}`;
-}
-
 /** URL同期を行う内部コンポーネント（useSearchParams用にSuspense内で実行） */
 function DashboardClientInner({
 	inquiries,

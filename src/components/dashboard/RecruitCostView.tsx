@@ -12,7 +12,6 @@ import {
 } from "@/lib/recruitUtils";
 import { getCurrentFY, parseDate, getFiscalYear } from "@/lib/dashboardUtils";
 import {
-	BarChart,
 	Bar,
 	XAxis,
 	YAxis,
