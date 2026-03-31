@@ -44,7 +44,6 @@ import GA4View from "./GA4View";
 import ReviewsView from "./ReviewsView";
 import ExecutiveSummaryView from "./ExecutiveSummaryView";
 import OccupancyView from "./OccupancyView";
-import FunnelView from "./FunnelView";
 import InsightPanel from "./InsightPanel";
 import SectionErrorBoundary from "@/components/ui/SectionErrorBoundary";
 
@@ -259,10 +258,6 @@ function DashboardClientInner({
 					) : activeTab === "occupancy" ? (
 						<SectionErrorBoundary sectionName="定員充足率">
 							<OccupancyView />
-						</SectionErrorBoundary>
-					) : activeTab === "funnel" ? (
-						<SectionErrorBoundary sectionName="入園ファネル">
-							<FunnelView inquiries={filteredInquiries} />
 						</SectionErrorBoundary>
 					) : activeTab === "reviews" ? (
 						<SectionErrorBoundary sectionName="Google口コミ">

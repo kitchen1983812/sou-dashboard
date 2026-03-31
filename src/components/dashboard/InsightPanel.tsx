@@ -134,32 +134,6 @@ function generateInsights(
 	const insights: Insight[] = [];
 	const current = computeScoreCards(inquiries);
 
-	// --- Critical: nursery-level unanswered rate > 50% ---
-	const nurseryMap = new Map<string, { total: number; unanswered: number }>();
-	for (const inq of inquiries) {
-		const name = inq.sheetName || inq.nursery || "";
-		if (!name) continue;
-		if (!nurseryMap.has(name)) {
-			nurseryMap.set(name, { total: 0, unanswered: 0 });
-		}
-		const entry = nurseryMap.get(name)!;
-		entry.total++;
-		const s = inq.status || "";
-		if (s === STATUS.UNANSWERED || s === "") {
-			entry.unanswered++;
-		}
-	}
-	nurseryMap.forEach((data, nursery) => {
-		if (data.total === 0) return;
-		const rate = Math.round((data.unanswered / data.total) * 100);
-		if (rate > 50) {
-			insights.push({
-				level: "critical",
-				message: `${nursery}: 未対応${data.unanswered}件（${rate}%）→ フォローアップ優先`,
-			});
-		}
-	});
-
 	// --- Warning: enrollment rate < 5% when total > 10 ---
 	if (current.totalInquiries > 10 && current.enrollmentRate < 5) {
 		const prevRate =
@@ -171,14 +145,6 @@ function generateInsights(
 		insights.push({
 			level: "warning",
 			message: `入園率${Math.round(current.enrollmentRate * 10) / 10}%（${prevLabel}）→ 見学促進策の検討を`,
-		});
-	}
-
-	// --- Warning: overall unanswered rate > 30% ---
-	if (current.unansweredRate > 30) {
-		insights.push({
-			level: "warning",
-			message: `全体未対応率${Math.round(current.unansweredRate)}% → 対応スピード改善が必要`,
 		});
 	}
 
@@ -195,18 +161,39 @@ function generateInsights(
 		}
 	}
 
-	// --- Success: > 20% improvement vs previous period ---
+	// --- Success: positive growth vs previous period ---
 	if (prevInquiries && prevInquiries.length > 0) {
 		const prev = computeScoreCards(prevInquiries);
 		if (prev.totalInquiries > 0) {
 			const diff = current.totalInquiries - prev.totalInquiries;
 			const rate = Math.round((diff / prev.totalInquiries) * 100);
-			if (rate > 20) {
+			if (rate > 0) {
 				insights.push({
 					level: "success",
-					message: `問い合わせ数+${diff}件（前期比+${rate}%）→ 好調`,
+					message: `問い合わせ数+${diff}件（前期比+${rate}%）`,
 				});
 			}
+		}
+		// Enrollment rate improvement
+		if (
+			prev.enrollmentRate > 0 &&
+			current.enrollmentRate > prev.enrollmentRate
+		) {
+			const diff =
+				Math.round((current.enrollmentRate - prev.enrollmentRate) * 10) / 10;
+			insights.push({
+				level: "success",
+				message: `入園率${Math.round(current.enrollmentRate * 10) / 10}%（前期比+${diff}pt）`,
+			});
+		}
+		// Decline rate improvement (lower is better)
+		if (prev.declineRate > 0 && current.declineRate < prev.declineRate) {
+			const diff =
+				Math.round((prev.declineRate - current.declineRate) * 10) / 10;
+			insights.push({
+				level: "success",
+				message: `辞退率${Math.round(current.declineRate * 10) / 10}%に改善（前期比-${diff}pt）`,
+			});
 		}
 	}
 

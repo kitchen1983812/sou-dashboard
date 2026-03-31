@@ -22,7 +22,6 @@ export const TABS: TabDef[] = [
 	{ id: "googleAds", label: "Google広告", title: "Google広告パフォーマンス" },
 	{ id: "weeklyReport", label: "週次レポート", title: "週次レポート" },
 	{ id: "occupancy", label: "定員充足率", title: "定員充足率" },
-	{ id: "funnel", label: "入園ファネル", title: "入園ファネル分析" },
 	{ id: "recruitReport", label: "採用レポート", title: "採用レポート" },
 	{ id: "recruitCost", label: "採用費分析", title: "採用費分析" },
 	{ id: "ga4", label: "GA4", title: "サイトパフォーマンス (GA4)" },

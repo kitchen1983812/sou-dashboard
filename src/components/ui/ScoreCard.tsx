@@ -42,7 +42,7 @@ export default function ScoreCard({
 
 	return (
 		<div
-			className={`bg-white rounded-xl shadow-sm ${
+			className={`bg-white shadow-sm ${
 				isCompact ? "px-3 py-2.5" : "p-4 sm:p-5"
 			}`}
 		>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useEffect, useState } from "react";
 import { Inquiry } from "@/types/inquiry";
 import {
 	STATUS,
@@ -146,6 +146,46 @@ function GaugeBar({
 export default function ExecutiveSummaryView({
 	inquiries,
 }: ExecutiveSummaryViewProps) {
+	// 定員充足率データ取得
+	const [occupancyData, setOccupancyData] = useState<{
+		nurseries: {
+			nursery: string;
+			area: string;
+			ages: { enrolled: number; capacity: number }[];
+			totalEnrolled: number;
+			totalCapacity: number;
+		}[];
+	} | null>(null);
+	useEffect(() => {
+		fetch("/api/occupancy")
+			.then((res) => res.json())
+			.then((d) => {
+				if (!d.error && d.nurseries?.length) setOccupancyData(d);
+			})
+			.catch(() => {});
+	}, []);
+
+	const occupancySummary = useMemo(() => {
+		if (!occupancyData) return null;
+		let totalEnrolled = 0;
+		let totalCapacity = 0;
+		const ageTotals: { enrolled: number; capacity: number }[] = Array.from(
+			{ length: 6 },
+			() => ({ enrolled: 0, capacity: 0 }),
+		);
+		for (const n of occupancyData.nurseries) {
+			totalEnrolled += n.totalEnrolled;
+			totalCapacity += n.totalCapacity;
+			n.ages.forEach((a, i) => {
+				if (i < 6) {
+					ageTotals[i].enrolled += a.enrolled;
+					ageTotals[i].capacity += a.capacity;
+				}
+			});
+		}
+		return { totalEnrolled, totalCapacity, ageTotals };
+	}, [occupancyData]);
+
 	// 今年度データ
 	const fyRange = useMemo(() => getFYRange(getCurrentFY()), []);
 	const fyData = useMemo(
@@ -256,28 +296,56 @@ export default function ExecutiveSummaryView({
 				</div>
 			</section>
 
-			{/* 定員充足率プレースホルダー */}
+			{/* 定員充足率 */}
 			<section>
-				<h3 className="text-base font-bold text-gray-800 mb-3 flex items-center gap-2">
-					<span className="w-1 h-5 bg-brand-500 rounded-full" />
-					定員充足率
-				</h3>
-				<div className="bg-gray-50 border border-dashed border-gray-300 rounded-lg p-6">
-					<p className="text-sm text-gray-500 mb-4">
-						定員マスタデータの登録後に表示されます。 Google
-						Sheetsに「定員マスタ」シートを追加してください。
-					</p>
-					<div className="space-y-2 opacity-50">
-						<GaugeBar label="全体" value={92} max={100} />
-						<GaugeBar label="0歳" value={75} max={100} warn />
-						<GaugeBar label="1歳" value={95} max={100} />
-						<GaugeBar label="2歳" value={100} max={100} />
-						<GaugeBar label="3歳" value={88} max={100} />
+				<h3 className="text-base font-bold text-gray-800 mb-3">定員充足率</h3>
+				{occupancySummary ? (
+					<div className="bg-white rounded-xl shadow-sm p-5">
+						<div className="space-y-2">
+							<GaugeBar
+								label="全体"
+								value={
+									occupancySummary.totalCapacity > 0
+										? Math.round(
+												(occupancySummary.totalEnrolled /
+													occupancySummary.totalCapacity) *
+													100,
+											)
+										: 0
+								}
+								max={100}
+								warn={
+									occupancySummary.totalCapacity > 0 &&
+									occupancySummary.totalEnrolled /
+										occupancySummary.totalCapacity <
+										0.8
+								}
+							/>
+							{occupancySummary.ageTotals.map((age, i) => {
+								if (age.capacity === 0 && age.enrolled === 0) return null;
+								const pct =
+									age.capacity > 0
+										? Math.round((age.enrolled / age.capacity) * 100)
+										: 0;
+								return (
+									<GaugeBar
+										key={i}
+										label={`${i}歳`}
+										value={pct}
+										max={100}
+										warn={age.capacity > 0 && age.enrolled / age.capacity < 0.8}
+									/>
+								);
+							})}
+						</div>
 					</div>
-					<p className="text-xs text-gray-400 mt-3 text-center">
-						※ サンプル表示（実データではありません）
-					</p>
-				</div>
+				) : (
+					<div className="bg-white rounded-xl shadow-sm p-5">
+						<p className="text-sm text-gray-500">
+							定員充足率データを読み込み中...
+						</p>
+					</div>
+				)}
 			</section>
 
 			{/* エリア別パフォーマンス */}
@@ -337,53 +405,6 @@ export default function ExecutiveSummaryView({
 							))}
 						</tbody>
 					</table>
-				</div>
-			</section>
-
-			{/* 入園ファネル プレースホルダー */}
-			<section>
-				<h3 className="text-base font-bold text-gray-800 mb-3 flex items-center gap-2">
-					<span className="w-1 h-5 bg-brand-500 rounded-full" />
-					入園ファネル
-				</h3>
-				<div className="bg-gray-50 border border-dashed border-gray-300 rounded-lg p-6">
-					<p className="text-sm text-gray-500 mb-4">
-						見学データの追加後に表示されます。 Google
-						Sheetsに「見学日」「見学結果」列を追加してください。
-					</p>
-					<div className="space-y-3 opacity-50">
-						{[
-							{ label: "問い合わせ", value: 52, pct: 100 },
-							{ label: "見学予約", value: 28, pct: 54 },
-							{ label: "見学実施", value: 22, pct: 42 },
-							{ label: "申込", value: 12, pct: 23 },
-							{ label: "入園", value: 8, pct: 15 },
-						].map((step) => (
-							<div key={step.label} className="flex items-center gap-3">
-								<span className="text-sm text-gray-600 w-20 shrink-0">
-									{step.label}
-								</span>
-								<div className="flex-1 h-6 bg-gray-100 rounded overflow-hidden">
-									<div
-										className="h-full bg-brand-400 rounded flex items-center justify-end pr-2"
-										style={{ width: `${step.pct}%` }}
-									>
-										{step.pct > 15 && (
-											<span className="text-xs text-white font-bold">
-												{step.value}
-											</span>
-										)}
-									</div>
-								</div>
-								<span className="text-xs text-gray-500 w-10 text-right">
-									{step.pct}%
-								</span>
-							</div>
-						))}
-					</div>
-					<p className="text-xs text-gray-400 mt-3 text-center">
-						※ サンプル表示（実データではありません）
-					</p>
 				</div>
 			</section>
 		</div>
