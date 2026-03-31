@@ -151,9 +151,8 @@ export default function ExecutiveSummaryView({
 		nurseries: {
 			nursery: string;
 			area: string;
-			ages: { enrolled: number; capacity: number }[];
-			totalEnrolled: number;
-			totalCapacity: number;
+			capacity: number[];
+			enrolled: number[];
 		}[];
 	} | null>(null);
 	useEffect(() => {
@@ -174,13 +173,15 @@ export default function ExecutiveSummaryView({
 			() => ({ enrolled: 0, capacity: 0 }),
 		);
 		for (const n of occupancyData.nurseries) {
-			totalEnrolled += n.totalEnrolled;
-			totalCapacity += n.totalCapacity;
-			n.ages.forEach((a, i) => {
-				if (i < 6) {
-					ageTotals[i].enrolled += a.enrolled;
-					ageTotals[i].capacity += a.capacity;
-				}
+			const ne = n.enrolled.reduce((a, b) => a + b, 0);
+			const nc = n.capacity.reduce((a, b) => a + b, 0);
+			totalEnrolled += ne;
+			totalCapacity += nc;
+			n.enrolled.forEach((v, i) => {
+				if (i < 6) ageTotals[i].enrolled += v;
+			});
+			n.capacity.forEach((v, i) => {
+				if (i < 6) ageTotals[i].capacity += v;
 			});
 		}
 		return { totalEnrolled, totalCapacity, ageTotals };
