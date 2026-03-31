@@ -309,7 +309,7 @@ export default function GoogleAdsView({
 			</div>
 
 			{/* 月次サマリーテーブル */}
-			<div className="bg-white rounded-xl border border-gray-200 p-4">
+			<div className="bg-white rounded-xl shadow-sm p-5">
 				<h3 className="text-sm font-semibold text-gray-700 mb-3">
 					月次広告パフォーマンス（FY{String(selectedFY).slice(2)}）
 				</h3>
@@ -392,7 +392,7 @@ export default function GoogleAdsView({
 
 			{/* ComposedChart: 棒グラフ（件数）+ 折れ線（単価） */}
 			{monthlySummary.length > 0 && (
-				<div className="bg-white rounded-xl border border-gray-200 p-4">
+				<div className="bg-white rounded-xl shadow-sm p-5">
 					<h3 className="text-sm font-semibold text-gray-700 mb-3">
 						件数 / 単価 推移
 					</h3>
@@ -468,7 +468,7 @@ export default function GoogleAdsView({
 			)}
 
 			{/* 問い合わせ詳細テーブル */}
-			<div className="bg-white rounded-xl border border-gray-200 p-4">
+			<div className="bg-white rounded-xl shadow-sm p-5">
 				<h3 className="text-sm font-semibold text-gray-700 mb-3">
 					Google広告経由 問い合わせ一覧（{linkedInquiries.length}件）
 				</h3>

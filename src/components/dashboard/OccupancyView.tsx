@@ -159,7 +159,7 @@ export default function OccupancyView() {
 					return (
 						<div
 							key={label}
-							className="bg-white border border-gray-200 rounded-lg p-3 text-center"
+							className="bg-white rounded-lg shadow-sm p-3 text-center"
 						>
 							<div className="text-xs text-gray-500 mb-1">{label}</div>
 							<div className="text-xl font-bold text-gray-900">{pct}%</div>
@@ -206,7 +206,7 @@ export default function OccupancyView() {
 			)}
 
 			{/* フィルタ + テーブル */}
-			<div className="bg-white border border-gray-200 rounded-xl p-4 overflow-x-auto">
+			<div className="bg-white rounded-xl shadow-sm p-5 overflow-x-auto">
 				<div className="flex items-center justify-between mb-3">
 					<h3 className="text-base font-bold text-gray-700">
 						園別×年齢クラス（{data.yearMonth}）

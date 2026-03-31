@@ -217,11 +217,10 @@ function DashboardClientInner({
 		<div className="flex min-h-screen">
 			<TabNavigation activeTab={activeTab} onTabChange={handleTabChange} />
 
-			<div className="flex-1 overflow-auto">
-				<div className="p-5 sm:p-6 space-y-6">
+			<div className="flex-1 overflow-auto bg-gray-50">
+				<div className="p-5 sm:p-8 space-y-6">
 					{/* Title */}
-					<h2 className="text-xl font-bold text-gray-800 flex items-center gap-2">
-						<span className="w-1.5 h-6 bg-brand-500 rounded-full" />
+					<h2 className="text-lg font-bold text-gray-800">
 						{currentTab?.title}
 					</h2>
 

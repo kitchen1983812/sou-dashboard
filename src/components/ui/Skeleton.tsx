@@ -21,7 +21,7 @@ function Shimmer({
 /** ScoreCard skeleton — matches compact variant */
 export function ScoreCardSkeleton() {
 	return (
-		<div className="bg-white rounded-xl border border-gray-200 p-3">
+		<div className="bg-white rounded-xl shadow-sm p-3">
 			<Shimmer className="h-3 w-20 mb-2" />
 			<Shimmer className="h-6 w-24 mb-2" />
 			<Shimmer className="h-3 w-16" />
@@ -43,7 +43,7 @@ export function ScoreCardsRowSkeleton({ count = 7 }: { count?: number }) {
 /** Chart card skeleton: title + chart area */
 export function ChartCardSkeleton({ height = 260 }: { height?: number }) {
 	return (
-		<div className="bg-white rounded-xl border border-gray-200 p-4">
+		<div className="bg-white rounded-xl shadow-sm p-5">
 			<Shimmer className="h-4 w-36 mb-4" />
 			<Shimmer className="w-full" style={{ height }} />
 		</div>
@@ -63,7 +63,7 @@ export function ChartRowSkeleton() {
 /** DataTable skeleton */
 export function TableSkeleton({ rows = 5 }: { rows?: number }) {
 	return (
-		<div className="bg-white rounded-xl border border-gray-200 p-4">
+		<div className="bg-white rounded-xl shadow-sm p-5">
 			<Shimmer className="h-4 w-40 mb-4" />
 			<div className="space-y-2">
 				<Shimmer className="h-8 w-full" />

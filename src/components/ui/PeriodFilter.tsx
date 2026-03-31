@@ -186,7 +186,7 @@ export default function PeriodFilter({
 			{isOpen && (
 				<div
 					ref={popoverRef}
-					className="absolute left-0 top-full mt-2 z-50 bg-white rounded-xl border border-gray-200 p-4 w-[320px]"
+					className="absolute left-0 top-full mt-2 z-50 bg-white rounded-xl shadow-sm p-5 w-[320px]"
 					style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.12)" }}
 				>
 					{/* プリセット */}

@@ -103,7 +103,7 @@ function MonthlyComparisonChart({
 	if (data.length === 0 || recentFYs.length === 0) return null;
 
 	return (
-		<div className="bg-white rounded-xl border border-gray-200 p-4">
+		<div className="bg-white rounded-xl shadow-sm p-5">
 			<h3 className="text-sm font-semibold text-gray-700 mb-3">
 				直近{recentFYs.length}年度 月次推移比較
 			</h3>
@@ -191,7 +191,7 @@ const SCORE_COLS: {
 
 function FYScoreTable({ rows }: { rows: FYRowData[] }) {
 	return (
-		<div className="bg-white rounded-xl border border-gray-200 overflow-x-auto">
+		<div className="bg-white rounded-xl shadow-sm overflow-x-auto">
 			<table className="w-full text-sm border-collapse table-fixed">
 				<thead>
 					<tr className="border-b-2 border-gray-300 bg-gray-50">
@@ -287,7 +287,7 @@ function ComparisonTable({
 	);
 
 	return (
-		<div className="bg-white rounded-xl border border-gray-200 p-4 overflow-x-auto">
+		<div className="bg-white rounded-xl shadow-sm p-5 overflow-x-auto">
 			<h3 className="text-sm font-semibold text-gray-700 mb-3">
 				FY / 総数 / 入園数 / 入園率
 			</h3>

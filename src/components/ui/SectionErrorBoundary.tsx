@@ -24,7 +24,7 @@ export default class SectionErrorBoundary extends Component<Props, State> {
 	render() {
 		if (this.state.hasError) {
 			return (
-				<div className="bg-white rounded-xl border border-gray-200 p-4">
+				<div className="bg-white rounded-xl shadow-sm p-5">
 					<div className="flex flex-col items-center justify-center py-8 text-center gap-3">
 						<svg
 							className="w-8 h-8 text-gray-300"

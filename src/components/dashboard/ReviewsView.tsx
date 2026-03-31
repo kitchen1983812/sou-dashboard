@@ -322,20 +322,20 @@ export default function ReviewsView() {
 		<div className="space-y-5">
 			{/* スコアカード */}
 			<div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-				<div className="bg-white border border-gray-200 rounded-xl p-4">
+				<div className="bg-white rounded-xl shadow-sm p-5">
 					<div className="text-sm text-gray-500">全園平均</div>
 					<div className="text-3xl font-bold text-brand-700 mt-1">
 						★ {kpi.avgRating.toFixed(2)}
 					</div>
 				</div>
-				<div className="bg-white border border-gray-200 rounded-xl p-4">
+				<div className="bg-white rounded-xl shadow-sm p-5">
 					<div className="text-sm text-gray-500">口コミ総数</div>
 					<div className="text-3xl font-bold text-gray-800 mt-1">
 						{kpi.totalReviews}
 						<span className="text-base font-normal text-gray-500 ml-1">件</span>
 					</div>
 				</div>
-				<div className="bg-white border border-gray-200 rounded-xl p-4">
+				<div className="bg-white rounded-xl shadow-sm p-5">
 					<div className="text-sm text-gray-500">今月の増加数</div>
 					<div className="text-3xl font-bold text-green-600 mt-1">
 						{kpi.totalIncrease !== null ? (
@@ -350,7 +350,7 @@ export default function ReviewsView() {
 						)}
 					</div>
 				</div>
-				<div className="bg-white border border-gray-200 rounded-xl p-4">
+				<div className="bg-white rounded-xl shadow-sm p-5">
 					<div className="text-sm text-gray-500">目標達成園数</div>
 					<div className="text-3xl font-bold text-amber-600 mt-1">
 						{kpi.achievedCount !== null ? (
@@ -474,7 +474,7 @@ export default function ReviewsView() {
 
 			{/* 今月のMVPランキング */}
 			{hasSnapshot && (
-				<div className="bg-white border border-gray-200 rounded-xl p-4">
+				<div className="bg-white rounded-xl shadow-sm p-5">
 					<h3 className="text-base font-bold text-gray-700 mb-3">
 						今月の口コミ獲得ランキング
 						<span className="text-xs font-normal text-gray-400 ml-2">
@@ -535,7 +535,7 @@ export default function ReviewsView() {
 			)}
 
 			{/* 評価分布 */}
-			<div className="bg-white border border-gray-200 rounded-xl p-4">
+			<div className="bg-white rounded-xl shadow-sm p-5">
 				<h3 className="text-base font-bold text-gray-700 mb-3">評価分布</h3>
 				<div className="space-y-2">
 					{distribution.map((b) => (
@@ -559,7 +559,7 @@ export default function ReviewsView() {
 			</div>
 
 			{/* エリア別ベンチマーク */}
-			<div className="bg-white border border-gray-200 rounded-xl p-4">
+			<div className="bg-white rounded-xl shadow-sm p-5">
 				<h3 className="text-base font-bold text-gray-700 mb-3">
 					エリア別ベンチマーク
 					{data.competitors.length === 0 && (
@@ -634,7 +634,7 @@ export default function ReviewsView() {
 			</div>
 
 			{/* フィルタ + テーブル */}
-			<div className="bg-white border border-gray-200 rounded-xl p-4 overflow-x-auto">
+			<div className="bg-white rounded-xl shadow-sm p-5 overflow-x-auto">
 				<div className="flex items-center justify-between mb-3">
 					<h3 className="text-base font-bold text-gray-700">園別口コミ一覧</h3>
 					<div className="flex items-center gap-3">
