@@ -230,7 +230,7 @@ export default function RecruitReportView({
 			</div>
 
 			{/* ファネル */}
-			<div className="bg-white rounded-xl shadow-sm p-5">
+			<div className="bg-white shadow-sm p-5">
 				<h3 className="text-sm font-semibold text-gray-700 mb-3">
 					採用ファネル（FY{String(selectedFY).slice(2)}）
 				</h3>
@@ -286,10 +286,7 @@ export default function RecruitReportView({
 					{ label: "面接後辞退", value: funnel.postInterviewDecline },
 					{ label: "内定後辞退", value: funnel.postOfferDecline },
 				].map((item, i) => (
-					<div
-						key={i}
-						className="bg-white rounded-xl shadow-sm p-3 text-center"
-					>
+					<div key={i} className="bg-white shadow-sm p-3 text-center">
 						<div className="text-sm text-gray-500">{item.label}</div>
 						<div className="text-lg font-bold text-red-600">{item.value}</div>
 					</div>
@@ -297,7 +294,7 @@ export default function RecruitReportView({
 			</div>
 
 			{/* 不採用カード */}
-			<div className="bg-white rounded-xl shadow-sm p-3 w-fit">
+			<div className="bg-white shadow-sm p-3 w-fit">
 				<span className="text-sm text-gray-500 mr-2">不採用:</span>
 				<span className="text-lg font-bold text-gray-700">
 					{funnel.rejected}
@@ -307,7 +304,7 @@ export default function RecruitReportView({
 			{/* 2列: 応募経路ドーナツ + 園別バー */}
 			<div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
 				{/* 応募経路ドーナツ */}
-				<div className="bg-white rounded-xl shadow-sm p-5">
+				<div className="bg-white shadow-sm p-5">
 					<h3 className="text-sm font-semibold text-gray-700 mb-3">
 						応募経路別
 					</h3>
@@ -333,7 +330,7 @@ export default function RecruitReportView({
 				</div>
 
 				{/* 園別応募数バー */}
-				<div className="bg-white rounded-xl shadow-sm p-5">
+				<div className="bg-white shadow-sm p-5">
 					<h3 className="text-sm font-semibold text-gray-700 mb-3">
 						園別応募数
 					</h3>
@@ -360,7 +357,7 @@ export default function RecruitReportView({
 
 			{/* 2列: 応募件数推移 + 採用件数推移 */}
 			<div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-				<div className="bg-white rounded-xl shadow-sm p-5">
+				<div className="bg-white shadow-sm p-5">
 					<h3 className="text-sm font-semibold text-gray-700 mb-3">
 						月別応募数推移
 					</h3>
@@ -393,7 +390,7 @@ export default function RecruitReportView({
 					</ResponsiveContainer>
 				</div>
 
-				<div className="bg-white rounded-xl shadow-sm p-5">
+				<div className="bg-white shadow-sm p-5">
 					<h3 className="text-sm font-semibold text-gray-700 mb-3">
 						月別入社数推移
 					</h3>
@@ -517,7 +514,7 @@ function CostTable({
 	);
 
 	return (
-		<div className="bg-white rounded-xl shadow-sm p-5">
+		<div className="bg-white shadow-sm p-5">
 			<h3 className="text-sm font-semibold text-gray-700 mb-3">{title}</h3>
 			<div className="overflow-x-auto">
 				<table className="w-full text-sm">
@@ -612,7 +609,7 @@ function CrosstabTable({
 	};
 
 	return (
-		<div className="bg-white rounded-xl shadow-sm p-5">
+		<div className="bg-white shadow-sm p-5">
 			<h3 className="text-sm font-semibold text-gray-700 mb-3">{title}</h3>
 			<div className="overflow-x-auto">
 				<table className="w-full text-sm">

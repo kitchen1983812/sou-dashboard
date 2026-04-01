@@ -118,7 +118,7 @@ export default function FunnelView({ inquiries }: FunnelViewProps) {
 					<span className="w-1 h-5 bg-brand-500 rounded-full" />
 					ステータス別フロー（FY{String(getCurrentFY()).slice(2)}）
 				</h3>
-				<div className="bg-white rounded-xl shadow-sm p-5">
+				<div className="bg-white shadow-sm p-5">
 					<FunnelChart data={funnelData} height={260} />
 					{/* 未対応・辞退を下段に */}
 					<div className="border-t border-gray-100 mt-3 pt-3 grid grid-cols-2 gap-2">
@@ -189,7 +189,7 @@ export default function FunnelView({ inquiries }: FunnelViewProps) {
 					].map((item) => (
 						<div
 							key={item.label}
-							className="bg-white rounded-xl shadow-sm p-3 text-center"
+							className="bg-white shadow-sm p-3 text-center"
 						>
 							<div className="text-xs text-gray-500 mb-1">{item.label}</div>
 							<div className="text-xl font-bold text-gray-900">

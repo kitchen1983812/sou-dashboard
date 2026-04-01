@@ -73,7 +73,7 @@ function SummaryCard({ label, value, prev, unit = "" }: SummaryCardProps) {
 	const { diff, pct } = calcDiff(value, prev);
 	const direction = diff > 0 ? "up" : diff < 0 ? "down" : "none";
 	return (
-		<div className="bg-white rounded-xl shadow-sm px-4 py-3">
+		<div className="bg-white shadow-sm px-4 py-3">
 			<div className="text-sm text-gray-500 mb-1">{label}</div>
 			<div className="text-2xl font-bold text-gray-900">
 				{value.toLocaleString()}
@@ -159,7 +159,7 @@ export default function GA4View() {
 			</div>
 
 			{error && (
-				<div className="bg-red-50 border border-brand-200 rounded-xl p-3 text-sm text-red-700">
+				<div className="bg-red-50 border border-brand-200 p-3 text-sm text-red-700">
 					データ取得エラー: {error}
 					<div className="text-sm mt-1 text-red-500">
 						サービスアカウントにGA4プロパティのアクセス権が付与されているか確認してください。
@@ -199,7 +199,7 @@ export default function GA4View() {
 						<span className="w-1 h-4 bg-brand-500 rounded-full inline-block" />
 						チャネル別セッション
 					</h3>
-					<div className="bg-white rounded-xl shadow-sm p-5">
+					<div className="bg-white shadow-sm p-5">
 						<ResponsiveContainer width="100%" height={260}>
 							<BarChart
 								data={channelChartData}
@@ -250,7 +250,7 @@ export default function GA4View() {
 						<span className="w-1 h-4 bg-brand-500 rounded-full inline-block" />
 						日次セッション推移
 					</h3>
-					<div className="bg-white rounded-xl shadow-sm p-5">
+					<div className="bg-white shadow-sm p-5">
 						<ResponsiveContainer width="100%" height={220}>
 							<LineChart
 								data={dailyChartData}
@@ -304,7 +304,7 @@ export default function GA4View() {
 						<span className="w-1 h-4 bg-brand-500 rounded-full inline-block" />
 						デバイス別セッション
 					</h3>
-					<div className="bg-white rounded-xl shadow-sm p-5">
+					<div className="bg-white shadow-sm p-5">
 						<table className="w-full text-sm">
 							<thead>
 								<tr className="border-b-2 border-gray-200">

@@ -56,7 +56,7 @@ function WeeklySummaryCard({
 	const { diff, direction } = computeWeeklyDiff(value, prev);
 	return (
 		<div
-			className={`rounded-xl border px-4 py-3 ${
+			className={`border px-4 py-3 ${
 				highlight ? "bg-brand-50 border-brand-200" : "bg-white border-gray-200"
 			}`}
 		>
@@ -486,7 +486,7 @@ export default function WeeklyReportView({
 					<span className="w-1 h-4 bg-brand-500 rounded-full inline-block" />
 					FY{String(currentFY).slice(2)} 年度通年サマリー（今週の変動）
 				</h3>
-				<div className="bg-white rounded-xl shadow-sm p-5">
+				<div className="bg-white shadow-sm p-5">
 					<table className="w-full text-sm">
 						<thead>
 							<tr className="border-b-2 border-gray-200">
@@ -575,7 +575,7 @@ export default function WeeklyReportView({
 					<span className="w-1 h-4 bg-brand-500 rounded-full inline-block" />
 					0歳児 エリア別（前週比）
 				</h3>
-				<div className="bg-white rounded-xl shadow-sm p-5">
+				<div className="bg-white shadow-sm p-5">
 					{ageAreaRows.length > 0 ? (
 						<table className="w-full text-sm">
 							<thead>
@@ -670,7 +670,7 @@ export default function WeeklyReportView({
 					<span className="w-1 h-4 bg-brand-500 rounded-full inline-block" />
 					Google広告 週次サマリー
 				</h3>
-				<div className="bg-white rounded-xl shadow-sm p-5 space-y-4">
+				<div className="bg-white shadow-sm p-5 space-y-4">
 					{/* 今週 vs 前週 */}
 					<div className="overflow-x-auto">
 						<table className="w-full text-sm">
@@ -821,7 +821,7 @@ export default function WeeklyReportView({
 					<span className="w-1 h-4 bg-brand-500 rounded-full inline-block" />
 					FY{String(currentFY).slice(2)} 各園ステータス一覧
 				</h3>
-				<div className="bg-white rounded-xl shadow-sm overflow-x-auto">
+				<div className="bg-white shadow-sm overflow-x-auto">
 					<table className="w-full text-sm">
 						<thead>
 							<tr className="border-b-2 border-gray-200 bg-gray-50">
@@ -932,10 +932,7 @@ export default function WeeklyReportView({
 					</h3>
 					<div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
 						{brandSummary.map((b) => (
-							<div
-								key={b.brand}
-								className="bg-white rounded-xl shadow-sm px-4 py-3"
-							>
+							<div key={b.brand} className="bg-white shadow-sm px-4 py-3">
 								<div className="text-sm text-gray-500 mb-1">{b.brand}</div>
 								<div className="text-2xl font-bold text-gray-900">
 									{b.enrolled}

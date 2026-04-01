@@ -24,7 +24,7 @@ export default function AreaStackedBar({ data }: AreaStackedBarProps) {
 	);
 
 	return (
-		<div className="bg-white rounded-xl shadow-sm p-5">
+		<div className="bg-white shadow-sm p-5">
 			<h3 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
 				<span className="w-1 h-4 bg-brand-500 rounded-full" />
 				エリア別ステータス

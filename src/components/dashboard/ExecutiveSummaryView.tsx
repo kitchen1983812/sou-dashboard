@@ -86,7 +86,7 @@ function MiniKPI({
 					: "bg-white border-gray-200";
 
 	return (
-		<div className={`rounded-lg border px-4 py-3 ${bgClass}`}>
+		<div className={`rounded border px-4 py-3 ${bgClass}`}>
 			<div className="text-xs text-gray-500 font-medium mb-1">{label}</div>
 			<div className="text-2xl font-bold text-gray-900">
 				{value.toLocaleString()}
@@ -301,7 +301,7 @@ export default function ExecutiveSummaryView({
 			<section>
 				<h3 className="text-base font-bold text-gray-800 mb-3">定員充足率</h3>
 				{occupancySummary ? (
-					<div className="bg-white rounded-xl shadow-sm p-5">
+					<div className="bg-white shadow-sm p-5">
 						<div className="space-y-2">
 							<GaugeBar
 								label="全体"
@@ -341,7 +341,7 @@ export default function ExecutiveSummaryView({
 						</div>
 					</div>
 				) : (
-					<div className="bg-white rounded-xl shadow-sm p-5">
+					<div className="bg-white shadow-sm p-5">
 						<p className="text-sm text-gray-500">
 							定員充足率データを読み込み中...
 						</p>

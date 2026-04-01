@@ -307,7 +307,7 @@ export default function ReviewsView() {
 
 	if (error) {
 		return (
-			<div className="bg-red-50 border border-red-200 rounded-xl p-4 text-red-700">
+			<div className="bg-red-50 border border-red-200 p-4 text-red-700">
 				エラー: {error}
 			</div>
 		);
@@ -322,20 +322,20 @@ export default function ReviewsView() {
 		<div className="space-y-5">
 			{/* スコアカード */}
 			<div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-				<div className="bg-white rounded-xl shadow-sm p-5">
+				<div className="bg-white shadow-sm p-5">
 					<div className="text-sm text-gray-500">全園平均</div>
 					<div className="text-3xl font-bold text-brand-700 mt-1">
 						★ {kpi.avgRating.toFixed(2)}
 					</div>
 				</div>
-				<div className="bg-white rounded-xl shadow-sm p-5">
+				<div className="bg-white shadow-sm p-5">
 					<div className="text-sm text-gray-500">口コミ総数</div>
 					<div className="text-3xl font-bold text-gray-800 mt-1">
 						{kpi.totalReviews}
 						<span className="text-base font-normal text-gray-500 ml-1">件</span>
 					</div>
 				</div>
-				<div className="bg-white rounded-xl shadow-sm p-5">
+				<div className="bg-white shadow-sm p-5">
 					<div className="text-sm text-gray-500">今月の増加数</div>
 					<div className="text-3xl font-bold text-green-600 mt-1">
 						{kpi.totalIncrease !== null ? (
@@ -350,7 +350,7 @@ export default function ReviewsView() {
 						)}
 					</div>
 				</div>
-				<div className="bg-white rounded-xl shadow-sm p-5">
+				<div className="bg-white shadow-sm p-5">
 					<div className="text-sm text-gray-500">目標達成園数</div>
 					<div className="text-3xl font-bold text-amber-600 mt-1">
 						{kpi.achievedCount !== null ? (
@@ -369,7 +369,7 @@ export default function ReviewsView() {
 
 			{/* 口コミ施策 進捗（ベースライン比） */}
 			{hasBaseline && (
-				<div className="bg-gradient-to-r from-brand-50 to-green-50 border border-brand-200 rounded-xl p-4">
+				<div className="bg-gradient-to-r from-brand-50 to-green-50 border border-brand-200 p-4">
 					<h3 className="text-base font-bold text-brand-800 mb-3">
 						口コミ施策 進捗
 						<span className="text-xs font-normal text-brand-500 ml-2">
@@ -377,7 +377,7 @@ export default function ReviewsView() {
 						</span>
 					</h3>
 					<div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
-						<div className="bg-white/80 rounded-lg p-3">
+						<div className="bg-white/80 rounded p-3">
 							<div className="text-xs text-gray-500">全園 増加合計</div>
 							<div className="text-2xl font-bold text-green-600 mt-1">
 								{kpi.totalBaselineIncrease !== null
@@ -388,7 +388,7 @@ export default function ReviewsView() {
 								</span>
 							</div>
 						</div>
-						<div className="bg-white/80 rounded-lg p-3">
+						<div className="bg-white/80 rounded p-3">
 							<div className="text-xs text-gray-500">半年目標</div>
 							<div className="text-2xl font-bold text-brand-700 mt-1">
 								{data.halfYearGoal}
@@ -397,7 +397,7 @@ export default function ReviewsView() {
 								</span>
 							</div>
 						</div>
-						<div className="bg-white/80 rounded-lg p-3">
+						<div className="bg-white/80 rounded p-3">
 							<div className="text-xs text-gray-500">目標達成園数</div>
 							<div className="text-2xl font-bold text-amber-600 mt-1">
 								{kpi.baselineAchievedCount ?? 0}
@@ -406,7 +406,7 @@ export default function ReviewsView() {
 								</span>
 							</div>
 						</div>
-						<div className="bg-white/80 rounded-lg p-3">
+						<div className="bg-white/80 rounded p-3">
 							<div className="text-xs text-gray-500">目標期限</div>
 							<div className="text-lg font-bold text-gray-700 mt-1">
 								{data.goalDeadline ?? "-"}
@@ -434,7 +434,7 @@ export default function ReviewsView() {
 									return (
 										<div
 											key={r.placeId}
-											className="flex items-center gap-3 bg-white/70 rounded-lg px-3 py-2"
+											className="flex items-center gap-3 bg-white/70 rounded px-3 py-2"
 										>
 											<span className="text-lg w-6 text-center font-bold text-brand-600">
 												{i + 1}
@@ -474,7 +474,7 @@ export default function ReviewsView() {
 
 			{/* 今月のMVPランキング */}
 			{hasSnapshot && (
-				<div className="bg-white rounded-xl shadow-sm p-5">
+				<div className="bg-white shadow-sm p-5">
 					<h3 className="text-base font-bold text-gray-700 mb-3">
 						今月の口コミ獲得ランキング
 						<span className="text-xs font-normal text-gray-400 ml-2">
@@ -490,7 +490,7 @@ export default function ReviewsView() {
 							{ranking.map((r, i) => (
 								<div
 									key={r.placeId}
-									className={`flex items-center gap-3 rounded-lg px-3 py-2.5 ${i === 0 ? "bg-amber-50 border border-amber-200" : "bg-gray-50"}`}
+									className={`flex items-center gap-3 rounded px-3 py-2.5 ${i === 0 ? "bg-amber-50 border border-amber-200" : "bg-gray-50"}`}
 								>
 									<span className="text-2xl w-8 text-center">
 										{rankMedal(i)}
@@ -535,7 +535,7 @@ export default function ReviewsView() {
 			)}
 
 			{/* 評価分布 */}
-			<div className="bg-white rounded-xl shadow-sm p-5">
+			<div className="bg-white shadow-sm p-5">
 				<h3 className="text-base font-bold text-gray-700 mb-3">評価分布</h3>
 				<div className="space-y-2">
 					{distribution.map((b) => (
@@ -559,7 +559,7 @@ export default function ReviewsView() {
 			</div>
 
 			{/* エリア別ベンチマーク */}
-			<div className="bg-white rounded-xl shadow-sm p-5">
+			<div className="bg-white shadow-sm p-5">
 				<h3 className="text-base font-bold text-gray-700 mb-3">
 					エリア別ベンチマーク
 					{data.competitors.length === 0 && (
@@ -634,7 +634,7 @@ export default function ReviewsView() {
 			</div>
 
 			{/* フィルタ + テーブル */}
-			<div className="bg-white rounded-xl shadow-sm p-5 overflow-x-auto">
+			<div className="bg-white shadow-sm p-5 overflow-x-auto">
 				<div className="flex items-center justify-between mb-3">
 					<h3 className="text-base font-bold text-gray-700">園別口コミ一覧</h3>
 					<div className="flex items-center gap-3">

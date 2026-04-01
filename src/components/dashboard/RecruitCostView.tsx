@@ -185,7 +185,7 @@ export default function RecruitCostView({
 			</div>
 
 			{/* サマリーグリッド */}
-			<div className="bg-white rounded-xl shadow-sm p-5">
+			<div className="bg-white shadow-sm p-5">
 				<h3 className="text-sm font-semibold text-gray-700 mb-3">
 					採用費サマリー（FY{String(selectedFY).slice(2)}）
 				</h3>
@@ -193,7 +193,7 @@ export default function RecruitCostView({
 					{summaryGrid.map((row) => (
 						<div
 							key={row.category}
-							className={`rounded-xl p-3 border ${
+							className={`p-3 border ${
 								row.category === "合計"
 									? "border-gray-400 bg-gray-50"
 									: "border-gray-200 bg-white"
@@ -222,7 +222,7 @@ export default function RecruitCostView({
 			</div>
 
 			{/* 月次コスト × 採用人数（二軸チャート） */}
-			<div className="bg-white rounded-xl shadow-sm p-5">
+			<div className="bg-white shadow-sm p-5">
 				<h3 className="text-sm font-semibold text-gray-700 mb-3">
 					月次採用コスト × 採用人数
 				</h3>
@@ -252,7 +252,7 @@ export default function RecruitCostView({
 			</div>
 
 			{/* 採用単価推移 */}
-			<div className="bg-white rounded-xl shadow-sm p-5">
+			<div className="bg-white shadow-sm p-5">
 				<h3 className="text-sm font-semibold text-gray-700 mb-3">
 					カテゴリ別 採用単価推移
 				</h3>
@@ -287,7 +287,7 @@ export default function RecruitCostView({
 			</div>
 
 			{/* 全体月次推移 */}
-			<div className="bg-white rounded-xl shadow-sm p-5">
+			<div className="bg-white shadow-sm p-5">
 				<h3 className="text-sm font-semibold text-gray-700 mb-3">
 					全体 — 月次推移
 				</h3>
@@ -339,7 +339,7 @@ export default function RecruitCostView({
 
 			{/* 媒体別コスト */}
 			{agencyCosts.length > 0 && (
-				<div className="bg-white rounded-xl shadow-sm p-5 overflow-x-auto">
+				<div className="bg-white shadow-sm p-5 overflow-x-auto">
 					<h3 className="text-sm font-semibold text-gray-700 mb-3">
 						媒体別コスト（FY{String(selectedFY).slice(2)}）
 					</h3>
@@ -400,7 +400,7 @@ export default function RecruitCostView({
 
 			{/* 園×雇用形態別コスト */}
 			{nurseryPivot.length > 0 && (
-				<div className="bg-white rounded-xl shadow-sm p-5 overflow-x-auto">
+				<div className="bg-white shadow-sm p-5 overflow-x-auto">
 					<h3 className="text-sm font-semibold text-gray-700 mb-3">
 						園×雇用形態別コスト（FY{String(selectedFY).slice(2)}）
 					</h3>
@@ -472,7 +472,7 @@ export default function RecruitCostView({
 			{/* カテゴリ別月次チャート（4パネル） */}
 			<div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
 				{categories.map((cat) => (
-					<div key={cat} className="bg-white rounded-xl shadow-sm p-5">
+					<div key={cat} className="bg-white shadow-sm p-5">
 						<h3 className="text-sm font-semibold text-gray-700 mb-3">
 							{cat} — 月次推移
 						</h3>

@@ -109,7 +109,7 @@ export default function OccupancyView() {
 
 	if (error) {
 		return (
-			<div className="bg-red-50 border border-red-200 rounded-xl p-4 text-red-700">
+			<div className="bg-red-50 border border-red-200 p-4 text-red-700">
 				エラー: {error}
 			</div>
 		);
@@ -117,7 +117,7 @@ export default function OccupancyView() {
 
 	if (!data || data.nurseries.length === 0) {
 		return (
-			<div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+			<div className="bg-gray-50 border border-gray-200 rounded p-4">
 				<p className="text-sm text-gray-600">
 					定員充足率データがありません。「園児数」シートにデータを追加してください。
 				</p>
@@ -159,7 +159,7 @@ export default function OccupancyView() {
 					return (
 						<div
 							key={label}
-							className="bg-white rounded-lg shadow-sm p-3 text-center"
+							className="bg-white rounded shadow-sm p-3 text-center"
 						>
 							<div className="text-xs text-gray-500 mb-1">{label}</div>
 							<div className="text-xl font-bold text-gray-900">{pct}%</div>
@@ -176,7 +176,7 @@ export default function OccupancyView() {
 					);
 				})}
 				{/* 全体ゲージ */}
-				<div className="bg-brand-50 border border-brand-200 rounded-xl p-3 text-center col-span-2 sm:col-span-1">
+				<div className="bg-brand-50 border border-brand-200 p-3 text-center col-span-2 sm:col-span-1">
 					<div className="text-xs text-brand-600 mb-0.5 font-semibold">
 						全体
 					</div>
@@ -190,7 +190,7 @@ export default function OccupancyView() {
 
 			{/* 超過アラート */}
 			{alerts.length > 0 && (
-				<div className="bg-red-50 border border-red-200 rounded-lg p-3">
+				<div className="bg-red-50 border border-red-200 rounded p-3">
 					<div className="text-sm font-semibold text-red-700 mb-1">
 						定員超過の園
 					</div>
@@ -206,7 +206,7 @@ export default function OccupancyView() {
 			)}
 
 			{/* フィルタ + テーブル */}
-			<div className="bg-white rounded-xl shadow-sm p-5 overflow-x-auto">
+			<div className="bg-white shadow-sm p-5 overflow-x-auto">
 				<div className="flex items-center justify-between mb-3">
 					<h3 className="text-base font-bold text-gray-700">
 						園別×年齢クラス（{data.yearMonth}）

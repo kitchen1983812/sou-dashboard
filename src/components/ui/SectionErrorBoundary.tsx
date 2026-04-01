@@ -24,7 +24,7 @@ export default class SectionErrorBoundary extends Component<Props, State> {
 	render() {
 		if (this.state.hasError) {
 			return (
-				<div className="bg-white rounded-xl shadow-sm p-5">
+				<div className="bg-white shadow-sm p-5">
 					<div className="flex flex-col items-center justify-center py-8 text-center gap-3">
 						<svg
 							className="w-8 h-8 text-gray-300"
@@ -46,7 +46,7 @@ export default class SectionErrorBoundary extends Component<Props, State> {
 						</p>
 						<button
 							onClick={() => this.setState({ hasError: false })}
-							className="text-sm px-3 py-1.5 bg-brand-500 text-white rounded-lg hover:bg-brand-600 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2"
+							className="text-sm px-3 py-1.5 bg-brand-500 text-white rounded hover:bg-brand-600 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2"
 						>
 							再試行
 						</button>

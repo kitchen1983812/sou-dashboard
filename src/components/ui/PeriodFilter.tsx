@@ -150,7 +150,7 @@ export default function PeriodFilter({
 					setSelectingField("from");
 					setIsOpen((o) => !o);
 				}}
-				className="flex items-center gap-2 px-3 py-1.5 bg-white border border-gray-300 rounded-lg hover:border-gray-400 transition-colors text-sm font-medium text-gray-700"
+				className="flex items-center gap-2 px-3 py-1.5 bg-white border border-gray-300 rounded hover:border-gray-400 transition-colors text-sm font-medium text-gray-700"
 			>
 				<svg
 					className="w-4 h-4 text-gray-500"
@@ -186,7 +186,7 @@ export default function PeriodFilter({
 			{isOpen && (
 				<div
 					ref={popoverRef}
-					className="absolute left-0 top-full mt-2 z-50 bg-white rounded-xl shadow-sm p-5 w-[320px]"
+					className="absolute left-0 top-full mt-2 z-50 bg-white shadow-sm p-5 w-[320px]"
 					style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.12)" }}
 				>
 					{/* プリセット */}
@@ -309,7 +309,7 @@ export default function PeriodFilter({
 					<div className="mt-4 flex justify-end">
 						<button
 							onClick={() => apply(localFrom, localTo)}
-							className="px-5 py-2 bg-brand-500 text-white text-sm font-medium rounded-lg hover:bg-brand-600 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2"
+							className="px-5 py-2 bg-brand-500 text-white text-sm font-medium rounded hover:bg-brand-600 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2"
 						>
 							適用
 						</button>

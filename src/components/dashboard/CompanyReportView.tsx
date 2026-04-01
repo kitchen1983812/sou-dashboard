@@ -621,7 +621,7 @@ export default function CompanyReportView({
 			</div>
 
 			{/* テーブル */}
-			<div className="bg-white rounded-xl shadow-sm p-5 overflow-x-auto">
+			<div className="bg-white shadow-sm p-5 overflow-x-auto">
 				{displayData.length === 0 ? (
 					<p className="text-sm text-gray-500 text-center py-8">
 						該当データがありません
