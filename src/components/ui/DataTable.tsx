@@ -113,6 +113,16 @@ export default function DataTable<T = Record<string, unknown>>({
 							))}
 						</tr>
 					))}
+					{sortedData.length > 0 && (
+						<tr>
+							<td
+								colSpan={columns.length}
+								className="px-3 py-2 sm:px-4 text-xs text-gray-400 border-b border-gray-100"
+							>
+								全 {data.length} 件
+							</td>
+						</tr>
+					)}
 					{sortedData.length === 0 && (
 						<tr>
 							<td

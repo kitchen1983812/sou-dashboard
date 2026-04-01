@@ -217,7 +217,7 @@ function DashboardClientInner({
 			<TabNavigation activeTab={activeTab} onTabChange={handleTabChange} />
 
 			<div className="flex-1 overflow-auto bg-gray-50">
-				<div className="p-5 sm:p-8 space-y-6">
+				<div className="p-5 sm:p-8 space-y-8">
 					{/* Title */}
 					<h2 className="text-lg font-bold text-gray-800">
 						{currentTab?.title}

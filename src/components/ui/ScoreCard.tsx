@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 
 /** Size: "default" (full) or "compact" (reduced padding, no annotation) */
 export type ScoreCardSize = "default" | "compact";
@@ -14,6 +14,8 @@ export interface ScoreCardProps {
 	previousValue?: string;
 	icon?: ReactNode;
 	annotation?: string;
+	/** Hover tooltip text (shown on hover instead of cluttering the card surface) */
+	tooltip?: string;
 	/** Invert colors: negative → green, positive → red (e.g. unanswered rate) */
 	invertColor?: boolean;
 	/** @deprecated variant is no longer used (flat card design) */
@@ -30,9 +32,11 @@ export default function ScoreCard({
 	previousValue,
 	icon,
 	annotation,
+	tooltip,
 	invertColor = false,
 	size = "default",
 }: ScoreCardProps) {
+	const [showTooltip, setShowTooltip] = useState(false);
 	const isCompact = size === "compact";
 	const isPositive = change !== undefined && change >= 0;
 
@@ -42,9 +46,11 @@ export default function ScoreCard({
 
 	return (
 		<div
-			className={`bg-white shadow-sm ${
+			className={`bg-white shadow-sm relative group ${
 				isCompact ? "px-3 py-2.5" : "p-4 sm:p-5"
 			}`}
+			onMouseEnter={() => tooltip && setShowTooltip(true)}
+			onMouseLeave={() => setShowTooltip(false)}
 		>
 			<div className="flex items-center gap-1.5">
 				{icon && <div className="text-gray-400 shrink-0">{icon}</div>}
@@ -52,6 +58,11 @@ export default function ScoreCard({
 					{title}
 				</p>
 			</div>
+			{showTooltip && tooltip && (
+				<div className="absolute z-20 left-1/2 -translate-x-1/2 bottom-full mb-2 px-3 py-2 bg-gray-800 text-white text-xs rounded shadow-md whitespace-pre-wrap max-w-[220px] pointer-events-none">
+					{tooltip}
+				</div>
+			)}
 			<p
 				className={`font-bold text-gray-900 ${
 					isCompact ? "text-lg mt-0.5" : "text-xl sm:text-2xl mt-1.5"
