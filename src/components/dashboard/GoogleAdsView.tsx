@@ -92,15 +92,14 @@ function computeChildAge(
 // --- ステータス行色（3色に集約: ポジティブ/ネガティブ/ニュートラル） ---
 function getStatusRowClass(status: string): string {
 	// ポジティブ（入園・待ちリスト）
-	if (status === STATUS.ENROLLED || status === STATUS.WAITLISTED)
-		return "bg-blue-50";
+	if (status === STATUS.ENROLLED || status === STATUS.WAITLISTED) return "";
 	// ネガティブ（未対応・辞退・連絡つかない）
 	if (
 		status === STATUS.UNANSWERED ||
 		status === STATUS.DECLINED ||
 		status === STATUS.CANNOT_REACH
 	)
-		return "bg-red-50";
+		return "";
 	// その他は背景なし（対応中・検討中・案内済み等）
 	return "";
 }
@@ -365,7 +364,7 @@ export default function GoogleAdsView({
 							))}
 						</tbody>
 						<tfoot>
-							<tr className="bg-brand-50 font-bold border-t-2 border-brand-300">
+							<tr className="bg-gray-50 font-bold border-t-2 border-gray-300">
 								<td className="px-3 py-2 text-brand-800">合計</td>
 								<td className="px-3 py-2 text-right text-brand-800">
 									&yen;{totals.adSpend.toLocaleString()}

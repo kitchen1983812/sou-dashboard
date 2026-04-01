@@ -273,9 +273,9 @@ function ComparisonTable({
 	function getCellBg(value: number, max: number): string {
 		if (value === 0 || max === 0) return "";
 		const ratio = value / max;
-		if (ratio > 0.6) return "bg-blue-200";
-		if (ratio > 0.4) return "bg-blue-100";
-		if (ratio > 0.2) return "bg-blue-50";
+		if (ratio > 0.6) return "font-semibold";
+		if (ratio > 0.4) return "";
+		if (ratio > 0.2) return "";
 		return "";
 	}
 

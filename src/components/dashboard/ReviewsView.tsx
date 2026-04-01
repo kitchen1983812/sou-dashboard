@@ -18,10 +18,10 @@ interface ReviewsResponse {
 /** ★バーの色を評価に応じて返す */
 function ratingColor(rating: number | null): string {
 	if (rating === null) return "bg-gray-200";
-	if (rating >= 4.5) return "bg-green-500";
+	if (rating >= 4.5) return "bg-brand-500";
 	if (rating >= 4.0) return "bg-brand-500";
-	if (rating >= 3.0) return "bg-amber-400";
-	return "bg-red-400";
+	if (rating >= 3.0) return "bg-gray-400";
+	return "bg-gray-300";
 }
 
 /** 今月増加数の表示色 */
@@ -220,10 +220,10 @@ export default function ReviewsView() {
 	const distribution = useMemo(() => {
 		if (!data) return [];
 		const buckets: { label: string; count: number; color: string }[] = [
-			{ label: "★5", count: 0, color: "bg-green-500" },
+			{ label: "★5", count: 0, color: "bg-brand-500" },
 			{ label: "★4", count: 0, color: "bg-brand-500" },
-			{ label: "★3", count: 0, color: "bg-amber-400" },
-			{ label: "★2以下", count: 0, color: "bg-red-400" },
+			{ label: "★3", count: 0, color: "bg-gray-400" },
+			{ label: "★2以下", count: 0, color: "bg-gray-300" },
 			{ label: "未評価", count: 0, color: "bg-gray-300" },
 		];
 		for (const r of data.reviews) {
@@ -455,7 +455,7 @@ export default function ReviewsView() {
 											<div className="w-20">
 												<div className="bg-gray-200 rounded-full h-2">
 													<div
-														className={`${pct >= 100 ? "bg-green-500" : "bg-brand-400"} h-2 rounded-full`}
+														className={`bg-brand-500 h-2 rounded-full`}
 														style={{ width: `${pct}%` }}
 													/>
 												</div>
@@ -490,7 +490,7 @@ export default function ReviewsView() {
 							{ranking.map((r, i) => (
 								<div
 									key={r.placeId}
-									className={`flex items-center gap-3 rounded px-3 py-2.5 ${i === 0 ? "bg-amber-50 border border-amber-200" : "bg-gray-50"}`}
+									className={`flex items-center gap-3 rounded px-3 py-2.5 ${i === 0 ? "bg-gray-100 border border-gray-200" : "bg-gray-50"}`}
 								>
 									<span className="text-2xl w-8 text-center">
 										{rankMedal(i)}
@@ -511,7 +511,7 @@ export default function ReviewsView() {
 									<div className="w-24">
 										<div className="bg-gray-200 rounded-full h-2">
 											<div
-												className="bg-green-500 h-2 rounded-full"
+												className="bg-brand-500 h-2 rounded-full"
 												style={{
 													width: `${Math.min(
 														((r.monthlyIncrease ?? 0) / r.monthlyGoal) * 100,
@@ -777,7 +777,7 @@ export default function ReviewsView() {
 												<div className="flex items-center gap-1">
 													<div className="flex-1 bg-gray-100 rounded-full h-2">
 														<div
-															className={`${baselineAchieved ? "bg-green-500" : "bg-brand-400"} h-2 rounded-full`}
+															className={`bg-brand-500 h-2 rounded-full`}
 															style={{ width: `${baselineGoalPct}%` }}
 														/>
 													</div>
@@ -809,7 +809,7 @@ export default function ReviewsView() {
 												<div className="flex items-center gap-1">
 													<div className="flex-1 bg-gray-100 rounded-full h-2">
 														<div
-															className={`${achieved ? "bg-green-500" : "bg-brand-400"} h-2 rounded-full`}
+															className={`bg-brand-500 h-2 rounded-full`}
 															style={{ width: `${goalPct}%` }}
 														/>
 													</div>
@@ -845,7 +845,7 @@ export default function ReviewsView() {
 										</td>
 									</tr>
 									{isExpanded && r.nurseryCompetitors.length > 0 && (
-										<tr key={`${r.placeId}-comp`} className="bg-blue-50">
+										<tr key={`${r.placeId}-comp`} className="bg-gray-50">
 											<td colSpan={colSpan} className="px-4 py-2">
 												<table className="w-full text-xs">
 													<thead>
@@ -906,7 +906,7 @@ export default function ReviewsView() {
 					</tbody>
 					{/* 合計行 */}
 					<tfoot>
-						<tr className="bg-brand-50 font-bold border-t-2 border-brand-300">
+						<tr className="bg-gray-50 font-bold border-t-2 border-gray-300">
 							<td className="px-3 py-2.5 text-brand-800" colSpan={2}>
 								合計 / 平均
 							</td>

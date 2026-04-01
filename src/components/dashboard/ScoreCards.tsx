@@ -91,7 +91,7 @@ function RateChip({
 	return (
 		<span
 			className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold ${
-				warn ? "bg-amber-50 text-amber-700" : "bg-brand-50 text-brand-600"
+				warn ? "bg-gray-100 text-red-600" : "bg-gray-100 text-gray-700"
 			}`}
 		>
 			{label}

@@ -78,11 +78,11 @@ function MiniKPI({
 	const diff = prevValue !== undefined ? value - prevValue : null;
 	const bgClass =
 		highlight === "brand"
-			? "bg-brand-50 border-brand-200"
+			? "bg-white border-gray-200"
 			: highlight === "danger"
-				? "bg-red-50 border-red-200"
+				? "bg-white border-gray-200"
 				: highlight === "success"
-					? "bg-green-50 border-green-200"
+					? "bg-white border-gray-200"
 					: "bg-white border-gray-200";
 
 	return (
@@ -124,7 +124,7 @@ function GaugeBar({
 	const color = warn
 		? "bg-red-500"
 		: pct >= 90
-			? "bg-green-500"
+			? "bg-brand-500"
 			: "bg-brand-500";
 
 	return (

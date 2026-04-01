@@ -190,9 +190,9 @@ function computePrevData(inquiries: Inquiry[]): Map<string, PrevData> {
 
 /** 入園率ヒートマップ色（blue系に統一） */
 function getEnrollmentBg(rate: number): string {
-	if (rate >= 20) return "bg-blue-200";
-	if (rate >= 10) return "bg-blue-100";
-	if (rate >= 5) return "bg-blue-50";
+	if (rate >= 20) return "text-brand-700 font-semibold";
+	if (rate >= 10) return "text-brand-600";
+	if (rate >= 5) return "";
 	return "";
 }
 
@@ -472,7 +472,7 @@ function CompanyTable({
 						})}
 					</tr>
 					{/* 合計行 */}
-					<tr className="bg-brand-50 font-bold border-t-2 border-brand-300">
+					<tr className="bg-gray-50 font-bold border-t-2 border-gray-300">
 						<td className="px-2 py-1.5 text-brand-800" colSpan={2}>
 							{summary.company} 合計
 						</td>
