@@ -15,11 +15,9 @@ const AGE_LABELS = ["0歳", "1歳", "2歳", "3歳", "4歳", "5歳"] as const;
 function rateColor(enrolled: number, capacity: number): string {
 	if (capacity === 0) return "text-gray-400";
 	const rate = enrolled / capacity;
-	if (rate > 1) return "bg-red-100 text-red-800 font-bold";
-	if (rate >= 0.95) return "bg-green-100 text-green-800";
-	if (rate >= 0.8) return "bg-blue-50 text-blue-800";
-	if (rate >= 0.6) return "bg-amber-50 text-amber-800";
-	return "bg-red-50 text-red-800 font-bold";
+	if (rate > 1) return "text-red-600 font-bold";
+	if (rate < 0.6) return "text-red-600";
+	return "text-gray-700";
 }
 
 function cellDisplay(enrolled: number, capacity: number): string {
@@ -166,9 +164,9 @@ export default function OccupancyView() {
 							<div className="text-xs text-gray-400">
 								{enr}/{cap}
 							</div>
-							<div className="mt-2 h-2 bg-gray-100 rounded-full overflow-hidden">
+							<div className="mt-2 h-1.5 bg-gray-100 rounded-full overflow-hidden">
 								<div
-									className={`h-full rounded-full ${pct >= 95 ? "bg-green-500" : pct >= 80 ? "bg-brand-500" : "bg-red-500"}`}
+									className={`h-full rounded-full ${pct > 100 ? "bg-red-500" : "bg-brand-500"}`}
 									style={{ width: `${Math.min(pct, 100)}%` }}
 								/>
 							</div>
@@ -176,10 +174,8 @@ export default function OccupancyView() {
 					);
 				})}
 				{/* 全体ゲージ */}
-				<div className="bg-brand-50 border border-brand-200 p-3 text-center col-span-2 sm:col-span-1">
-					<div className="text-xs text-brand-600 mb-0.5 font-semibold">
-						全体
-					</div>
+				<div className="bg-white shadow-sm p-3 text-center col-span-2 sm:col-span-1">
+					<div className="text-xs text-gray-500 mb-0.5 font-semibold">全体</div>
 					<GaugeChart
 						value={grandCap > 0 ? Math.round((grandEnr / grandCap) * 100) : 0}
 						label={`${grandEnr}/${grandCap}名`}
@@ -190,8 +186,8 @@ export default function OccupancyView() {
 
 			{/* 超過アラート */}
 			{alerts.length > 0 && (
-				<div className="bg-red-50 border border-red-200 rounded p-3">
-					<div className="text-sm font-semibold text-red-700 mb-1">
+				<div className="bg-gray-50 border border-gray-200 p-3">
+					<div className="text-sm font-semibold text-gray-700 mb-1">
 						定員超過の園
 					</div>
 					<div className="text-sm text-red-600 space-y-0.5">
@@ -298,8 +294,8 @@ export default function OccupancyView() {
 						})}
 					</tbody>
 					<tfoot>
-						<tr className="bg-brand-50 font-bold border-t-2 border-brand-300">
-							<td className="px-3 py-2 text-brand-800" colSpan={2}>
+						<tr className="bg-gray-50 font-bold border-t-2 border-gray-300">
+							<td className="px-3 py-2 text-gray-800" colSpan={2}>
 								合計（{filtered.length}園）
 							</td>
 							{AGE_LABELS.map((_, i) => {
@@ -308,7 +304,7 @@ export default function OccupancyView() {
 								return (
 									<td
 										key={i}
-										className="px-3 py-2 text-center tabular-nums text-brand-800"
+										className="px-3 py-2 text-center tabular-nums text-gray-800"
 									>
 										{enr}/{cap}
 									</td>
@@ -325,10 +321,10 @@ export default function OccupancyView() {
 								);
 								return (
 									<>
-										<td className="px-3 py-2 text-center tabular-nums text-brand-800">
+										<td className="px-3 py-2 text-center tabular-nums text-gray-800">
 											{fEnr}/{fCap}
 										</td>
-										<td className="px-3 py-2 text-center tabular-nums text-brand-800">
+										<td className="px-3 py-2 text-center tabular-nums text-gray-800">
 											{fCap > 0 ? `${Math.round((fEnr / fCap) * 100)}%` : "-"}
 										</td>
 									</>
