@@ -7,16 +7,16 @@ interface ChannelDonutProps {
 	data: ChannelData[];
 }
 
-// Core palette (8 colors: distinguishable, accessible, consistent with dashboard theme)
+// brand系グラデーション + グレー（色数を抑えて視覚的ノイズを軽減）
 const COLORS = [
-	"#2563EB", // blue-600
 	"#008cc9", // brand-500
-	"#16A34A", // green-600
-	"#F59E0B", // amber-500
-	"#8B5CF6", // violet-500
-	"#94A3B8", // slate-400
-	"#0EA5E9", // sky-500
-	"#6B7280", // gray-500
+	"#4db5e3", // brand-300
+	"#0078ab", // brand-600
+	"#80caeb", // brand-200
+	"#005f8a", // brand-700
+	"#b3dff3", // brand-100
+	"#9ca3af", // gray-400
+	"#d1d5db", // gray-300
 ];
 
 export default function ChannelDonut({ data }: ChannelDonutProps) {

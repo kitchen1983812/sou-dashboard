@@ -55,16 +55,17 @@ export const STATUS = {
 } as const;
 
 export const STATUS_COLORS: Record<string, string> = {
+	// 3トーン配色: brand系(ポジティブ) / 赤(要アクション) / グレー系(その他)
+	[STATUS.ENROLLED]: "#008cc9", // brand-500: 成約
+	[STATUS.GUIDED]: "#4db5e3", // brand-300: 案内済
+	[STATUS.WAITLISTED]: "#0078ab", // brand-600: 待ちリスト
 	[STATUS.UNANSWERED]: "#DC2626", // red-600: 要アクション
 	[STATUS.IN_PROGRESS]: "#F59E0B", // amber-500: 進行中
-	[STATUS.GUIDED]: "#0EA5E9", // sky-500: 案内済
-	[STATUS.CONSIDERING]: "#16A34A", // green-600: 検討中
-	[STATUS.WAITLISTED]: "#8B5CF6", // violet-500: 待ち
-	[STATUS.ENROLLED]: "#008cc9", // brand: 成約
-	[STATUS.DECLINED]: "#6B7280", // gray-500: クローズ
-	[STATUS.CANNOT_REACH]: "#94A3B8", // gray-400: 連絡不可
-	[STATUS.CANNOT_ACCEPT]: "#6B7280", // gray-500: 受入不可
-	[STATUS.DUPLICATE]: "#A16207", // yellow-700: 重複
+	[STATUS.CONSIDERING]: "#9ca3af", // gray-400: 検討中
+	[STATUS.DECLINED]: "#6B7280", // gray-500: 辞退
+	[STATUS.CANNOT_REACH]: "#d1d5db", // gray-300: 連絡不可
+	[STATUS.CANNOT_ACCEPT]: "#d1d5db", // gray-300: 受入不可
+	[STATUS.DUPLICATE]: "#9ca3af", // gray-400: 重複
 };
 
 export const ALL_STATUSES = [

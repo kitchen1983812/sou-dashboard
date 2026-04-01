@@ -32,7 +32,6 @@ const INQUIRY_TABS: { id: TabId; label: string }[] = [
 
 const OPERATIONS_TABS: { id: TabId; label: string }[] = [
 	{ id: "occupancy", label: "定員充足率" },
-	{ id: "funnel", label: "入園ファネル" },
 ];
 
 const RECRUIT_TABS: { id: TabId; label: string }[] = [
