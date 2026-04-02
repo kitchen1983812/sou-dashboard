@@ -1,5 +1,5 @@
 {
-  "date": "2026-04-01",
+  "date": "2026-04-02",
   "nurseries": {
     "ChIJAT_un8j6GGARRJDWMAye3XE": {
       "name": "稲城長沼園",
@@ -70,7 +70,7 @@
     "ChIJ6XMEHgaVGGARGzFHI1-Ly_o": {
       "name": "東川口園",
       "area": "埼玉県",
-      "count": 1,
+      "count": 2,
       "rating": 5
     },
     "ChIJxfYClqmHGGARNxWFyGrt2Mg": {
@@ -88,8 +88,8 @@
     "ChIJ02cMqmOUGGARQmncmaR1mXE": {
       "name": "鳩ヶ谷園",
       "area": "埼玉県",
-      "count": 0,
-      "rating": null
+      "count": 1,
+      "rating": 5
     },
     "ChIJTVVcNZ71GGARS1eDY7Ubf8A": {
       "name": "武蔵中原園",
@@ -727,7 +727,7 @@
       "name": "スクルドエンジェル保育園中央林間園",
       "area": "神奈川県",
       "count": 5,
-      "rating": 3.2
+      "rating": 2.8
     },
     "ChIJs4JiyjL5GGAR8_bSaufq9cc": {
       "name": "Tsukiminoshonan Nursery",
