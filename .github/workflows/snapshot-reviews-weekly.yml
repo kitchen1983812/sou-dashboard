@@ -1,0 +1,34 @@
+name: Weekly Review Snapshot (with competitors)
+
+on:
+  # 毎週日曜 23:00 JST（14:00 UTC）— 自園+競合（133コール/週、月~¥100）
+  schedule:
+    - cron: "0 14 * * 0"
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Update current.json (nurseries + competitors)
+        run: node scripts/snapshot-reviews.js
+        env:
+          GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
+          INCLUDE_COMPETITORS: "true"
+
+      - name: Commit and push
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: weekly review snapshot [skip ci]"
+          file_pattern: "public/snapshots/current.json"
+          commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"

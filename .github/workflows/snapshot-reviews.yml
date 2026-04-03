@@ -1,16 +1,20 @@
 name: Snapshot Reviews
 
 on:
-  # 毎日 23:00 JST（14:00 UTC）に自動実行
+  # 毎日 23:00 JST（14:00 UTC）— 自園のみ（25コール/日、月~¥100）
   schedule:
     - cron: "0 14 * * *"
-  # 手動実行（初回セットアップや再取得時）
+  # 手動実行
   workflow_dispatch:
     inputs:
       snapshot_name:
         description: "カスタムファイル名（例: baseline-20260327）。空欄なら当日YYYY-MM-DD"
         required: false
         default: ""
+      include_competitors:
+        description: "競合データも取得してcurrent.jsonを更新する（APIコスト+133コール）"
+        type: boolean
+        default: false
 
 jobs:
   snapshot:
@@ -27,14 +31,15 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Take snapshot (dated)
+      - name: Take snapshot (dated, nurseries only)
         run: node scripts/snapshot-reviews.js
         env:
           GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
-          # 手動入力があればそれを使用、なければ当日YYYY-MM-DD
           SNAPSHOT_NAME: ${{ github.event.inputs.snapshot_name || '' }}
 
+      # 手動トリガーで include_competitors=true の場合のみ current.json も更新
       - name: Update current.json (nurseries + competitors)
+        if: github.event.inputs.include_competitors == 'true'
         run: node scripts/snapshot-reviews.js
         env:
           GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
@@ -43,6 +48,6 @@ jobs:
       - name: Commit and push snapshot
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore: snapshot reviews $(date +'%Y-%m') [skip ci]"
+          commit_message: "chore: snapshot reviews [skip ci]"
           file_pattern: "public/snapshots/*.json"
           commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
