@@ -1,0 +1,155 @@
+{
+  "date": "2026-04-05",
+  "counts": {
+    "ChIJAT_un8j6GGARRJDWMAye3XE": {
+      "name": "稲城長沼園",
+      "area": "東京都",
+      "count": 2,
+      "rating": 4.5
+    },
+    "ChIJq30EnM-GGGARwtXJOrPeADY": {
+      "name": "京成八幡園",
+      "area": "千葉県",
+      "count": 9,
+      "rating": 5
+    },
+    "ChIJc2MR3muHGGARhHtG6RP1dKU": {
+      "name": "行徳園",
+      "area": "千葉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJt9t-ubLpGGARbSs4iZCwOMU": {
+      "name": "新座園",
+      "area": "埼玉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJmfaEZpz_GGARzgWS_10r0o8": {
+      "name": "相武台前園",
+      "area": "神奈川県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJq9CYz9kDGWARvC3WXdkbKpA": {
+      "name": "相模原園",
+      "area": "神奈川県",
+      "count": 7,
+      "rating": 4.6
+    },
+    "ChIJ0QP_5KGKGGAR2U-hrZrUCZA": {
+      "name": "大田馬込園",
+      "area": "東京都",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJsbeGEa34GGARRaVauXzbF0g": {
+      "name": "大和園",
+      "area": "神奈川県",
+      "count": 3,
+      "rating": 5
+    },
+    "ChIJWVLe3xP_GGARPjPg9pKfdsM": {
+      "name": "中央林間園",
+      "area": "神奈川県",
+      "count": 2,
+      "rating": 3
+    },
+    "ChIJ-7i0-efyGGAR2Zm6giP_Fdc": {
+      "name": "中野新橋園",
+      "area": "東京都",
+      "count": 5,
+      "rating": 5
+    },
+    "ChIJgbwKmXfpGGARsTdBJiV-YpU": {
+      "name": "朝霞園",
+      "area": "埼玉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJ6XMEHgaVGGARGzFHI1-Ly_o": {
+      "name": "東川口園",
+      "area": "埼玉県",
+      "count": 2,
+      "rating": 5
+    },
+    "ChIJxfYClqmHGGARNxWFyGrt2Mg": {
+      "name": "南行徳園",
+      "area": "千葉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJYf0QStOdGGARaQzhDXeDgiA": {
+      "name": "柏II園",
+      "area": "千葉県",
+      "count": 5,
+      "rating": 4.8
+    },
+    "ChIJ02cMqmOUGGARQmncmaR1mXE": {
+      "name": "鳩ヶ谷園",
+      "area": "埼玉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJTVVcNZ71GGARS1eDY7Ubf8A": {
+      "name": "武蔵中原園",
+      "area": "神奈川県",
+      "count": 2,
+      "rating": 5
+    },
+    "ChIJ7akCmzyLGGARdDt5sc19MYQ": {
+      "name": "目黒園",
+      "area": "東京都",
+      "count": 10,
+      "rating": 4.6
+    },
+    "ChIJF5cU6rHtGGARE3OZgLrHKBs": {
+      "name": "練馬中村橋園",
+      "area": "東京都",
+      "count": 4,
+      "rating": 4.8
+    },
+    "ChIJ21XWI-DrGGARJjwrKXbBVx8": {
+      "name": "和光園",
+      "area": "埼玉県",
+      "count": 1,
+      "rating": 4
+    },
+    "ChIJUboxFebrGGAR4wU8-2A2zno": {
+      "name": "和光II園",
+      "area": "埼玉県",
+      "count": 0,
+      "rating": null
+    },
+    "ChIJm_dqt2_rGGARZOwV9-OkTxQ": {
+      "name": "蕨園",
+      "area": "埼玉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJlzqtUpfrGGARUsZBMphXEXA": {
+      "name": "蕨II園",
+      "area": "埼玉県",
+      "count": 1,
+      "rating": 5
+    },
+    "ChIJ80xh1ceEImARJ_hE_nHvtvM": {
+      "name": "ふぇりーちぇほいくえん",
+      "area": "千葉県",
+      "count": 4,
+      "rating": 4.5
+    },
+    "ChIJK9MxgKLrGGARUiRQk2GgMaU": {
+      "name": "病児保育室にじのへや",
+      "area": "埼玉県",
+      "count": 0,
+      "rating": null
+    },
+    "ChIJLZnrOpn_GGARulv_-cYUkSM": {
+      "name": "座間II園",
+      "area": "神奈川県",
+      "count": 4,
+      "rating": 5
+    }
+  }
+}
