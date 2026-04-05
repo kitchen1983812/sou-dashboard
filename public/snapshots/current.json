@@ -1,5 +1,5 @@
 {
-  "date": "2026-04-02",
+  "date": "2026-04-05",
   "nurseries": {
     "ChIJAT_un8j6GGARRJDWMAye3XE": {
       "name": "稲城長沼園",
@@ -10,7 +10,7 @@
     "ChIJq30EnM-GGGARwtXJOrPeADY": {
       "name": "京成八幡園",
       "area": "千葉県",
-      "count": 7,
+      "count": 9,
       "rating": 5
     },
     "ChIJc2MR3muHGGARhHtG6RP1dKU": {
@@ -106,8 +106,8 @@
     "ChIJF5cU6rHtGGARE3OZgLrHKBs": {
       "name": "練馬中村橋園",
       "area": "東京都",
-      "count": 3,
-      "rating": 4.7
+      "count": 4,
+      "rating": 4.8
     },
     "ChIJ21XWI-DrGGARJjwrKXbBVx8": {
       "name": "和光園",
