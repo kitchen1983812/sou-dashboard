@@ -1,5 +1,5 @@
 {
-  "date": "2026-04-05",
+  "date": "2026-04-06",
   "nurseries": {
     "ChIJAT_un8j6GGARRJDWMAye3XE": {
       "name": "稲城長沼園",
@@ -40,7 +40,7 @@
     "ChIJ0QP_5KGKGGAR2U-hrZrUCZA": {
       "name": "大田馬込園",
       "area": "東京都",
-      "count": 1,
+      "count": 2,
       "rating": 5
     },
     "ChIJsbeGEa34GGARRaVauXzbF0g": {
@@ -156,8 +156,8 @@
     "ChIJjwuqU876GGARettnhJBINR8": {
       "name": "Oomaru-Yushi Nursery",
       "area": "東京都",
-      "count": 7,
-      "rating": 4.3
+      "count": 8,
+      "rating": 3.9
     },
     "ChIJs0jA2VT7GGARxI_y1qKk09E": {
       "name": "Inagi Nozomi Nursery",
