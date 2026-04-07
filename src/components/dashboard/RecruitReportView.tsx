@@ -32,27 +32,29 @@ import {
 	ResponsiveContainer,
 } from "recharts";
 
-// Unified 8-color palette
+// 3トーン: brand系グラデーション + グレー
 const COLORS = [
-	"#2563EB", // blue-600
 	"#008cc9", // brand-500
-	"#16A34A", // green-600
-	"#F59E0B", // amber-500
-	"#8B5CF6", // violet-500
-	"#94A3B8", // slate-400
-	"#0EA5E9", // sky-500
-	"#6B7280", // gray-500
+	"#4db5e3", // brand-300
+	"#0078ab", // brand-600
+	"#80caeb", // brand-200
+	"#005f8a", // brand-700
+	"#b3dff3", // brand-100
+	"#9ca3af", // gray-400
+	"#d1d5db", // gray-300
 ];
 
 const STATUS_GROUP_COLORS: Record<string, string> = {
-	応募: "#94A3B8", // slate-400
-	面接見学: "#0EA5E9", // sky-500
-	合格: "#16A34A", // green-600
-	内定: "#8B5CF6", // violet-500
-	入社: "#2563EB", // blue-600
-	辞退: "#F59E0B", // amber-500
+	// ポジティブ(brand系濃淡)
+	入社: "#008cc9", // brand-500
+	内定: "#4db5e3", // brand-300
+	合格: "#0078ab", // brand-600
+	面接見学: "#80caeb", // brand-200
+	応募: "#b3dff3", // brand-100
+	// ネガティブ
 	不採用: "#DC2626", // red-600
-	その他: "#6B7280", // gray-500
+	辞退: "#9ca3af", // gray-400
+	その他: "#d1d5db", // gray-300
 };
 
 interface RecruitReportViewProps {
@@ -611,11 +613,11 @@ function CrosstabTable({
 	return (
 		<div className="bg-white shadow-sm p-5">
 			<h3 className="text-sm font-semibold text-gray-700 mb-3">{title}</h3>
-			<div className="overflow-x-auto">
+			<div className="overflow-auto max-h-[500px]">
 				<table className="w-full text-sm">
-					<thead>
-						<tr className="border-b border-gray-200 text-gray-500">
-							<th className="text-left py-2 px-2 sticky left-0 bg-white">
+					<thead className="sticky top-0 z-10 bg-white">
+						<tr className="border-b border-gray-200 text-gray-500 bg-white">
+							<th className="text-left py-2 px-2 sticky left-0 bg-white z-20">
 								{labelHeader}
 							</th>
 							{statusCols.map((s) => (

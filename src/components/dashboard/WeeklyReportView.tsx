@@ -28,6 +28,7 @@ import {
 	STATUS_COLORS,
 } from "@/lib/dashboardUtils";
 import ScoreCards from "./ScoreCards";
+import CollapsibleSection from "@/components/ui/CollapsibleSection";
 import ChannelDonut from "./ChannelDonut";
 import TimelineChart from "./TimelineChart";
 import AreaStackedBar from "./AreaStackedBar";
@@ -429,8 +430,7 @@ export default function WeeklyReportView({
 
 			{/* ======= セクション1: 今週のサマリー ======= */}
 			<section>
-				<h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center gap-2">
-					<span className="w-1 h-4 bg-brand-500 rounded-full inline-block" />
+				<h3 className="text-base font-semibold text-gray-700 mb-3">
 					今週のサマリー（{formatWeekLabel(selectedWed)}
 					{isCurrentWeek && " 進行中"}）
 				</h3>
@@ -466,8 +466,7 @@ export default function WeeklyReportView({
 
 			{/* ======= セクション2: 直近30日 ======= */}
 			<section>
-				<h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center gap-2">
-					<span className="w-1 h-4 bg-brand-500 rounded-full inline-block" />
+				<h3 className="text-base font-semibold text-gray-700 mb-3">
 					直近30日 問い合わせ状況
 				</h3>
 				<ScoreCards data={scoreCards30d} />
@@ -482,8 +481,7 @@ export default function WeeklyReportView({
 
 			{/* ======= セクション3: FY通年サマリー ======= */}
 			<section>
-				<h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center gap-2">
-					<span className="w-1 h-4 bg-brand-500 rounded-full inline-block" />
+				<h3 className="text-base font-semibold text-gray-700 mb-3">
 					FY{String(currentFY).slice(2)} 年度通年サマリー（今週の変動）
 				</h3>
 				<div className="bg-white shadow-sm p-5">
@@ -562,8 +560,7 @@ export default function WeeklyReportView({
 
 			{/* ======= セクション4: FY月次推移 ======= */}
 			<section>
-				<h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center gap-2">
-					<span className="w-1 h-4 bg-brand-500 rounded-full inline-block" />
+				<h3 className="text-base font-semibold text-gray-700 mb-3">
 					FY{String(currentFY).slice(2)} 月次推移
 				</h3>
 				<MonthlyStackedBar data={monthlyData} />
@@ -571,8 +568,7 @@ export default function WeeklyReportView({
 
 			{/* ======= セクション5: 0歳児 エリア別 ======= */}
 			<section>
-				<h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center gap-2">
-					<span className="w-1 h-4 bg-brand-500 rounded-full inline-block" />
+				<h3 className="text-base font-semibold text-gray-700 mb-3">
 					0歳児 エリア別（前週比）
 				</h3>
 				<div className="bg-white shadow-sm p-5">
@@ -628,11 +624,11 @@ export default function WeeklyReportView({
 								))}
 								{/* 合計行 */}
 								<tr className="bg-brand-50 font-bold border-t-2 border-brand-300">
-									<td className="px-3 py-2 text-brand-800">合計</td>
-									<td className="px-3 py-2 text-right text-brand-800">
+									<td className="px-3 py-2 text-gray-800">合計</td>
+									<td className="px-3 py-2 text-right text-gray-800">
 										{ageAreaRows.reduce((s, r) => s + r.thisWeek, 0)}
 									</td>
-									<td className="px-3 py-2 text-right text-brand-800">
+									<td className="px-3 py-2 text-right text-gray-800">
 										{ageAreaRows.reduce((s, r) => s + r.prevWeek, 0)}
 									</td>
 									<td
@@ -664,12 +660,8 @@ export default function WeeklyReportView({
 				</div>
 			</section>
 
-			{/* ======= セクション6: Google広告 週次 ======= */}
-			<section>
-				<h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center gap-2">
-					<span className="w-1 h-4 bg-brand-500 rounded-full inline-block" />
-					Google広告 週次サマリー
-				</h3>
+			{/* ======= セクション6: Google広告 週次（折りたたみ） ======= */}
+			<CollapsibleSection title="Google広告 週次サマリー">
 				<div className="bg-white shadow-sm p-5 space-y-4">
 					{/* 今週 vs 前週 */}
 					<div className="overflow-x-auto">
@@ -694,7 +686,7 @@ export default function WeeklyReportView({
 								</tr>
 							</thead>
 							<tbody>
-								<tr className="border-b border-gray-100 bg-red-50">
+								<tr className="border-b border-gray-100 bg-gray-50">
 									<td className="px-3 py-2 font-medium text-gray-700">
 										今週（{formatWeekLabel(selectedWed)}）
 									</td>
@@ -791,17 +783,17 @@ export default function WeeklyReportView({
 									</tbody>
 									<tfoot>
 										<tr className="bg-brand-50 font-bold border-t-2 border-brand-300">
-											<td className="px-3 py-2 text-brand-800">合計</td>
-											<td className="px-3 py-2 text-right text-brand-800">
+											<td className="px-3 py-2 text-gray-800">合計</td>
+											<td className="px-3 py-2 text-right text-gray-800">
 												¥{adTotals.adSpend.toLocaleString()}
 											</td>
-											<td className="px-3 py-2 text-right text-brand-800">
+											<td className="px-3 py-2 text-right text-gray-800">
 												{adTotals.conversions}
 											</td>
-											<td className="px-3 py-2 text-right text-brand-800">
+											<td className="px-3 py-2 text-right text-gray-800">
 												{adTotals.inquiryCount}
 											</td>
-											<td className="px-3 py-2 text-right text-brand-800">
+											<td className="px-3 py-2 text-right text-gray-800">
 												{adTotals.unitCost > 0
 													? `¥${adTotals.unitCost.toLocaleString()}`
 													: "-"}
@@ -813,17 +805,16 @@ export default function WeeklyReportView({
 						</>
 					)}
 				</div>
-			</section>
+			</CollapsibleSection>
 
 			{/* ======= セクション7: 各園×ステータス ======= */}
 			<section>
-				<h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center gap-2">
-					<span className="w-1 h-4 bg-brand-500 rounded-full inline-block" />
+				<h3 className="text-base font-semibold text-gray-700 mb-3">
 					FY{String(currentFY).slice(2)} 各園ステータス一覧
 				</h3>
-				<div className="bg-white shadow-sm overflow-x-auto">
+				<div className="bg-white shadow-sm overflow-auto max-h-[600px]">
 					<table className="w-full text-sm">
-						<thead>
+						<thead className="sticky top-0 z-10">
 							<tr className="border-b-2 border-gray-200 bg-gray-50">
 								<th className="px-2 py-2 text-left font-semibold text-gray-600 sticky left-0 bg-gray-50">
 									園名
@@ -897,20 +888,20 @@ export default function WeeklyReportView({
 											? Math.round((grandEnrolled / grandTotal) * 1000) / 10
 											: 0;
 									return (
-										<tr className="bg-brand-50 font-bold border-t-2 border-brand-300">
-											<td className="px-2 py-2 text-brand-800 sticky left-0 bg-red-50">
+										<tr className="bg-gray-50 font-bold border-t-2 border-gray-300">
+											<td className="px-2 py-2 text-gray-800 sticky left-0 bg-gray-50">
 												合計
 											</td>
-											<td className="px-2 py-2 text-right text-brand-800">
+											<td className="px-2 py-2 text-right text-gray-800">
 												{grandTotal}
 											</td>
-											<td className="px-2 py-2 text-right text-brand-800">
+											<td className="px-2 py-2 text-right text-gray-800">
 												{grandRate}%
 											</td>
 											{ALL_STATUSES.map((s) => (
 												<td
 													key={s}
-													className="px-2 py-2 text-right text-brand-800"
+													className="px-2 py-2 text-right text-gray-800"
 												>
 													{totals[s] || 0}
 												</td>
@@ -923,13 +914,9 @@ export default function WeeklyReportView({
 				</div>
 			</section>
 
-			{/* ======= セクション8: ブランド別サマリー ======= */}
+			{/* ======= セクション8: ブランド別サマリー（折りたたみ） ======= */}
 			{brandSummary.length > 0 && (
-				<section>
-					<h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center gap-2">
-						<span className="w-1 h-4 bg-brand-500 rounded-full inline-block" />
-						FY{String(currentFY).slice(2)} ブランド別入園数
-					</h3>
+				<CollapsibleSection title={`FY${String(currentFY).slice(2)} ブランド別入園数`}>
 					<div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
 						{brandSummary.map((b) => (
 							<div key={b.brand} className="bg-white shadow-sm px-4 py-3">
@@ -950,7 +937,7 @@ export default function WeeklyReportView({
 							</div>
 						))}
 					</div>
-				</section>
+				</CollapsibleSection>
 			)}
 		</div>
 	);

@@ -159,7 +159,7 @@ export default function GA4View() {
 			</div>
 
 			{error && (
-				<div className="bg-red-50 border border-brand-200 p-3 text-sm text-red-700">
+				<div className="bg-red-50 border border-red-200 p-3 text-sm text-red-700">
 					データ取得エラー: {error}
 					<div className="text-sm mt-1 text-red-500">
 						サービスアカウントにGA4プロパティのアクセス権が付与されているか確認してください。
@@ -169,8 +169,7 @@ export default function GA4View() {
 
 			{/* サマリーカード */}
 			<section>
-				<h3 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
-					<span className="w-1 h-4 bg-brand-500 rounded-full inline-block" />
+				<h3 className="text-sm font-semibold text-gray-700 mb-3">
 					サマリー
 				</h3>
 				<div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -195,8 +194,7 @@ export default function GA4View() {
 			{/* チャネル別セッション */}
 			{channelChartData.length > 0 && (
 				<section>
-					<h3 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
-						<span className="w-1 h-4 bg-brand-500 rounded-full inline-block" />
+					<h3 className="text-sm font-semibold text-gray-700 mb-3">
 						チャネル別セッション
 					</h3>
 					<div className="bg-white shadow-sm p-5">
@@ -235,8 +233,8 @@ export default function GA4View() {
 									wrapperStyle={{ fontSize: 11 }}
 								/>
 								<Bar dataKey="sessions" fill="#008cc9" name="sessions" />
-								<Bar dataKey="users" fill="#f59e0b" name="users" />
-								<Bar dataKey="keyEvents" fill="#3b82f6" name="keyEvents" />
+								<Bar dataKey="users" fill="#4db5e3" name="users" />
+								<Bar dataKey="keyEvents" fill="#9ca3af" name="keyEvents" />
 							</BarChart>
 						</ResponsiveContainer>
 					</div>
@@ -246,8 +244,7 @@ export default function GA4View() {
 			{/* 日次セッション推移 */}
 			{dailyChartData.length > 0 && (
 				<section>
-					<h3 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
-						<span className="w-1 h-4 bg-brand-500 rounded-full inline-block" />
+					<h3 className="text-sm font-semibold text-gray-700 mb-3">
 						日次セッション推移
 					</h3>
 					<div className="bg-white shadow-sm p-5">
@@ -286,7 +283,7 @@ export default function GA4View() {
 								<Line
 									type="monotone"
 									dataKey="keyEvents"
-									stroke="#3b82f6"
+									stroke="#9ca3af"
 									strokeWidth={1.5}
 									dot={false}
 									name="keyEvents"
@@ -300,8 +297,7 @@ export default function GA4View() {
 			{/* デバイス別 */}
 			{(data?.devices || []).length > 0 && (
 				<section>
-					<h3 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
-						<span className="w-1 h-4 bg-brand-500 rounded-full inline-block" />
+					<h3 className="text-sm font-semibold text-gray-700 mb-3">
 						デバイス別セッション
 					</h3>
 					<div className="bg-white shadow-sm p-5">

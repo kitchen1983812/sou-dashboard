@@ -114,8 +114,7 @@ export default function FunnelView({ inquiries }: FunnelViewProps) {
 
 			{/* ステータス別フロー */}
 			<section>
-				<h3 className="text-base font-bold text-gray-800 mb-3 flex items-center gap-2">
-					<span className="w-1 h-5 bg-brand-500 rounded-full" />
+				<h3 className="text-base font-bold text-gray-800 mb-3">
 					ステータス別フロー（FY{String(getCurrentFY()).slice(2)}）
 				</h3>
 				<div className="bg-white shadow-sm p-5">
@@ -154,8 +153,7 @@ export default function FunnelView({ inquiries }: FunnelViewProps) {
 
 			{/* 主要転換率 */}
 			<section>
-				<h3 className="text-base font-bold text-gray-800 mb-3 flex items-center gap-2">
-					<span className="w-1 h-5 bg-brand-500 rounded-full" />
+				<h3 className="text-base font-bold text-gray-800 mb-3">
 					主要転換率
 				</h3>
 				<div className="grid grid-cols-2 sm:grid-cols-4 gap-3">

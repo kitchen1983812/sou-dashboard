@@ -26,11 +26,11 @@ import {
 import DualAxisChart from "@/components/charts/DualAxisChart";
 
 const CATEGORY_COLORS: Record<string, string> = {
-	"保育:正社員": "#2563EB",
-	"保育:パート": "#60A5FA",
-	"他:正社員": "#16A34A",
-	"他:パート": "#86EFAC",
-	合計: "#6B7280",
+	"保育:正社員": "#008cc9", // brand-500
+	"保育:パート": "#4db5e3", // brand-300
+	"他:正社員": "#0078ab", // brand-600
+	"他:パート": "#80caeb", // brand-200
+	合計: "#6B7280", // gray-500
 };
 
 interface RecruitCostViewProps {
@@ -193,10 +193,8 @@ export default function RecruitCostView({
 					{summaryGrid.map((row) => (
 						<div
 							key={row.category}
-							className={`p-3 border ${
-								row.category === "合計"
-									? "border-gray-400 bg-gray-50"
-									: "border-gray-200 bg-white"
+							className={`p-3 shadow-sm ${
+								row.category === "合計" ? "bg-gray-50" : "bg-white"
 							}`}
 						>
 							<div className="text-sm text-gray-500 mb-1">

@@ -225,8 +225,7 @@ export default function ExecutiveSummaryView({
 
 			{/* 直近30日 KPI */}
 			<section>
-				<h3 className="text-base font-bold text-gray-800 mb-3 flex items-center gap-2">
-					<span className="w-1 h-5 bg-brand-500 rounded-full" />
+				<h3 className="text-base font-bold text-gray-800 mb-3">
 					直近30日 KPI
 				</h3>
 				<div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3">
@@ -268,8 +267,7 @@ export default function ExecutiveSummaryView({
 
 			{/* 年度累計 vs 前年度 */}
 			<section>
-				<h3 className="text-base font-bold text-gray-800 mb-3 flex items-center gap-2">
-					<span className="w-1 h-5 bg-brand-500 rounded-full" />
+				<h3 className="text-base font-bold text-gray-800 mb-3">
 					年度累計（FY{String(getCurrentFY()).slice(2)}）vs 前年度
 				</h3>
 				<div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -351,8 +349,7 @@ export default function ExecutiveSummaryView({
 
 			{/* エリア別パフォーマンス */}
 			<section>
-				<h3 className="text-base font-bold text-gray-800 mb-3 flex items-center gap-2">
-					<span className="w-1 h-5 bg-brand-500 rounded-full" />
+				<h3 className="text-base font-bold text-gray-800 mb-3">
 					エリア別パフォーマンス（直近30日）
 				</h3>
 				<div className="overflow-x-auto">

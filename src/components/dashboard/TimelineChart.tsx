@@ -27,8 +27,7 @@ export default function TimelineChart({
 
 	return (
 		<div className="bg-white shadow-sm p-5">
-			<h3 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
-				<span className="w-1 h-4 bg-brand-500 rounded-full" />
+			<h3 className="text-sm font-semibold text-gray-700 mb-3">
 				{title}
 			</h3>
 			<ResponsiveContainer width="100%" height={280}>

@@ -528,7 +528,7 @@ export default function GoogleAdsView({
 									</td>
 									<td className="px-2 py-1.5 text-center">
 										{row.isBrand ? (
-											<span className="inline-block px-1.5 py-0.5 bg-amber-100 text-amber-700 rounded text-[10px] font-medium">
+											<span className="inline-block px-1.5 py-0.5 bg-gray-100 text-gray-700 rounded text-[10px] font-medium">
 												指名
 											</span>
 										) : (

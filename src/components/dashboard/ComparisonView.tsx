@@ -272,11 +272,7 @@ function ComparisonTable({
 
 	function getCellBg(value: number, max: number): string {
 		if (value === 0 || max === 0) return "";
-		const ratio = value / max;
-		if (ratio > 0.6) return "font-semibold";
-		if (ratio > 0.4) return "";
-		if (ratio > 0.2) return "";
-		return "";
+		return value / max > 0.6 ? "font-semibold" : "";
 	}
 
 	const maxTotal = Math.max(
@@ -287,12 +283,13 @@ function ComparisonTable({
 	);
 
 	return (
-		<div className="bg-white shadow-sm p-5 overflow-x-auto">
+		<div className="bg-white shadow-sm p-5">
 			<h3 className="text-sm font-semibold text-gray-700 mb-3">
 				FY / 総数 / 入園数 / 入園率
 			</h3>
+			<div className="overflow-auto max-h-[600px]">
 			<table className="w-full text-sm">
-				<thead>
+				<thead className="sticky top-0 z-10 bg-white">
 					<tr className="border-b-2 border-gray-300">
 						<th className="px-2 py-1.5 text-left" rowSpan={2}>
 							エリア
@@ -437,6 +434,7 @@ function ComparisonTable({
 					))}
 				</tbody>
 			</table>
+			</div>
 		</div>
 	);
 }
