@@ -9,7 +9,7 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-	title: "問い合わせ分析ダッシュボード",
+	title: "経営ダッシュボード",
 	description:
 		"コーポレートサイト問い合わせデータを可視化する分析ダッシュボード",
 	icons: {
