@@ -14,10 +14,9 @@ const AGE_LABELS = ["0歳", "1歳", "2歳", "3歳", "4歳", "5歳"] as const;
 
 function rateColor(enrolled: number, capacity: number): string {
 	if (capacity === 0) return "text-gray-400";
-	const rate = enrolled / capacity;
-	if (rate > 1) return "text-red-600 font-bold";
-	if (rate < 0.6) return "text-red-600";
-	return "text-gray-700";
+	if (enrolled > capacity) return "text-blue-600 font-bold"; // 定員超過
+	if (enrolled === capacity) return "text-gray-900 font-semibold"; // 定員一致
+	return "text-red-600"; // 定員割れ
 }
 
 function cellDisplay(enrolled: number, capacity: number): string {
@@ -166,7 +165,7 @@ export default function OccupancyView() {
 							</div>
 							<div className="mt-2 h-1.5 bg-gray-100 rounded-full overflow-hidden">
 								<div
-									className={`h-full rounded-full ${pct > 100 ? "bg-red-500" : "bg-brand-500"}`}
+									className={`h-full rounded-full ${pct > 100 ? "bg-blue-500" : "bg-brand-500"}`}
 									style={{ width: `${Math.min(pct, 100)}%` }}
 								/>
 							</div>
@@ -190,7 +189,7 @@ export default function OccupancyView() {
 					<div className="text-sm font-semibold text-gray-700 mb-1">
 						定員超過の園
 					</div>
-					<div className="text-sm text-red-600 space-y-0.5">
+					<div className="text-sm text-blue-600 space-y-0.5">
 						{alerts.map((a) => (
 							<div key={a.nursery}>
 								{a.nursery}: {a.enr}/{a.cap}名（
