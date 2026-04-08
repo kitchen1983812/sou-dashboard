@@ -44,6 +44,7 @@ import GA4View from "./GA4View";
 import ReviewsView from "./ReviewsView";
 import ExecutiveSummaryView from "./ExecutiveSummaryView";
 import OccupancyView from "./OccupancyView";
+import StaffView from "./StaffView";
 import InsightPanel from "./InsightPanel";
 import SectionErrorBoundary from "@/components/ui/SectionErrorBoundary";
 
@@ -191,6 +192,7 @@ function DashboardClientInner({
 		activeTab === "recruitReport" ||
 		activeTab === "recruitCost" ||
 		activeTab === "occupancy" ||
+		activeTab === "staff" ||
 		activeTab === "funnel" ||
 		activeTab === "ga4" ||
 		activeTab === "reviews";
@@ -258,6 +260,10 @@ function DashboardClientInner({
 					) : activeTab === "occupancy" ? (
 						<SectionErrorBoundary sectionName="定員充足率">
 							<OccupancyView />
+						</SectionErrorBoundary>
+					) : activeTab === "staff" ? (
+						<SectionErrorBoundary sectionName="正社員比率">
+							<StaffView />
 						</SectionErrorBoundary>
 					) : activeTab === "reviews" ? (
 						<SectionErrorBoundary sectionName="Google口コミ">

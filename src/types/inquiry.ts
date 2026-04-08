@@ -50,6 +50,7 @@ export type TabId =
 	| "googleAds"
 	| "weeklyReport"
 	| "occupancy"
+	| "staff"
 	| "funnel"
 	| "recruitReport"
 	| "recruitCost"
