@@ -19,7 +19,7 @@ function getAuth() {
   authClient = new google.auth.JWT({
     email,
     key,
-    scopes: ["https://www.googleapis.com/auth/spreadsheets.readonly"],
+    scopes: ["https://www.googleapis.com/auth/spreadsheets"],
   });
 
   return authClient;
@@ -49,4 +49,42 @@ export async function getSheetData(
   });
 
   return (res.data.values || []) as string[][];
+}
+
+/**
+ * 指定シートに行を上書き書き込みする（既存データをクリアして全行置換）
+ */
+export async function writeSheetData(
+  sheetName: string,
+  values: string[][],
+  spreadsheetIdOverride?: string,
+): Promise<void> {
+  const spreadsheetId = spreadsheetIdOverride || process.env.GOOGLE_SHEET_ID;
+  if (!spreadsheetId) throw new Error("GOOGLE_SHEET_ID is not set.");
+
+  const auth = getAuth();
+  const sheets = google.sheets({ version: "v4", auth });
+
+  // シートが存在しない場合は作成
+  const meta = await sheets.spreadsheets.get({ spreadsheetId });
+  const exists = meta.data.sheets?.some(
+    (s) => s.properties?.title === sheetName,
+  );
+  if (!exists) {
+    await sheets.spreadsheets.batchUpdate({
+      spreadsheetId,
+      requestBody: {
+        requests: [{ addSheet: { properties: { title: sheetName } } }],
+      },
+    });
+  }
+
+  // 既存データをクリアして書き込み
+  await sheets.spreadsheets.values.clear({ spreadsheetId, range: sheetName });
+  await sheets.spreadsheets.values.update({
+    spreadsheetId,
+    range: `${sheetName}!A1`,
+    valueInputOption: "RAW",
+    requestBody: { values },
+  });
 }

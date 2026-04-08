@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useRef } from "react";
 import type { StaffNursery } from "@/app/api/staff/route";
 
 interface StaffResponse {
@@ -33,6 +33,9 @@ export default function StaffView() {
 	const [sortKey, setSortKey] = useState<SortKey>("rate");
 	const [sortDir, setSortDir] = useState<SortDir>("desc");
 	const [areaFilter, setAreaFilter] = useState("all");
+	const [uploading, setUploading] = useState(false);
+	const [uploadMsg, setUploadMsg] = useState<{ type: "success" | "error"; text: string } | null>(null);
+	const fileInputRef = useRef<HTMLInputElement>(null);
 
 	useEffect(() => {
 		fetch("/api/staff")
@@ -66,6 +69,28 @@ export default function StaffView() {
 			return (a.rate - b.rate) * dir;
 		});
 	}, [data, sortKey, sortDir, areaFilter]);
+
+	const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+		const file = e.target.files?.[0];
+		if (!file) return;
+		setUploading(true);
+		setUploadMsg(null);
+		try {
+			const formData = new FormData();
+			formData.append("file", file);
+			const res = await fetch("/api/staff", { method: "POST", body: formData });
+			const json = await res.json();
+			if (!res.ok) throw new Error(json.error ?? "アップロード失敗");
+			setData(json.data);
+			const warn = json.warnings?.length ? `（警告: ${json.warnings.join(" / ")}）` : "";
+			setUploadMsg({ type: "success", text: `更新しました${warn}` });
+		} catch (err) {
+			setUploadMsg({ type: "error", text: String(err) });
+		} finally {
+			setUploading(false);
+			if (fileInputRef.current) fileInputRef.current.value = "";
+		}
+	};
 
 	const handleSort = (key: SortKey) => {
 		if (sortKey === key) setSortDir(sortDir === "asc" ? "desc" : "asc");
@@ -151,22 +176,55 @@ export default function StaffView() {
 					<h3 className="text-base font-bold text-gray-700">
 						園別 正社員比率（{data.exportedAt}時点）
 					</h3>
-					<div className="flex items-center gap-2">
-						<span className="text-sm text-gray-500">エリア:</span>
-						<select
-							value={areaFilter}
-							onChange={(e) => setAreaFilter(e.target.value)}
-							className="text-sm border border-gray-300 rounded-md px-2 py-1"
+					<div className="flex items-center gap-3">
+						<div className="flex items-center gap-2">
+							<span className="text-sm text-gray-500">エリア:</span>
+							<select
+								value={areaFilter}
+								onChange={(e) => setAreaFilter(e.target.value)}
+								className="text-sm border border-gray-300 rounded-md px-2 py-1"
+							>
+								<option value="all">全て</option>
+								{areas.map((a) => (
+									<option key={a} value={a}>
+										{a}
+									</option>
+								))}
+							</select>
+						</div>
+						<input
+							ref={fileInputRef}
+							type="file"
+							accept=".csv"
+							className="hidden"
+							onChange={handleUpload}
+						/>
+						<button
+							onClick={() => fileInputRef.current?.click()}
+							disabled={uploading}
+							className="flex items-center gap-1.5 text-sm px-3 py-1.5 border border-gray-300 text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
 						>
-							<option value="all">全て</option>
-							{areas.map((a) => (
-								<option key={a} value={a}>
-									{a}
-								</option>
-							))}
-						</select>
+							{uploading ? (
+								<>
+									<span className="animate-spin inline-block w-3.5 h-3.5 border border-gray-400 border-t-gray-700 rounded-full" />
+									更新中...
+								</>
+							) : (
+								<>
+									<svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+									</svg>
+									CSVを更新
+								</>
+							)}
+						</button>
 					</div>
 				</div>
+				{uploadMsg && (
+					<div className={`mx-5 mb-3 px-3 py-2 text-sm ${uploadMsg.type === "success" ? "bg-gray-50 text-gray-700" : "bg-red-50 text-red-700"}`}>
+						{uploadMsg.text}
+					</div>
+				)}
 				<table className="w-full text-sm">
 					<thead>
 						<tr className="bg-gray-50 border-b-2 border-gray-200 text-gray-600">
