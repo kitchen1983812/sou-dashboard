@@ -14,8 +14,8 @@ const AGE_LABELS = ["0歳", "1歳", "2歳", "3歳", "4歳", "5歳"] as const;
 
 function rateColor(enrolled: number, capacity: number): string {
 	if (capacity === 0) return "text-gray-400";
-	if (enrolled > capacity) return "text-blue-600 font-bold"; // 定員超過
-	if (enrolled === capacity) return "text-gray-900 font-semibold"; // 定員一致
+	if (enrolled > capacity) return "text-blue-600"; // 定員超過
+	if (enrolled === capacity) return "text-gray-900"; // 定員一致
 	return "text-red-600"; // 定員割れ
 }
 
