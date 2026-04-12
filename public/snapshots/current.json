@@ -1,5 +1,5 @@
 {
-  "date": "2026-04-06",
+  "date": "2026-04-12",
   "nurseries": {
     "ChIJAT_un8j6GGARRJDWMAye3XE": {
       "name": "稲城長沼園",
@@ -46,14 +46,14 @@
     "ChIJsbeGEa34GGARRaVauXzbF0g": {
       "name": "大和園",
       "area": "神奈川県",
-      "count": 3,
+      "count": 4,
       "rating": 5
     },
     "ChIJWVLe3xP_GGARPjPg9pKfdsM": {
       "name": "中央林間園",
       "area": "神奈川県",
-      "count": 2,
-      "rating": 3
+      "count": 4,
+      "rating": 4
     },
     "ChIJ-7i0-efyGGAR2Zm6giP_Fdc": {
       "name": "中野新橋園",
@@ -76,7 +76,7 @@
     "ChIJxfYClqmHGGARNxWFyGrt2Mg": {
       "name": "南行徳園",
       "area": "千葉県",
-      "count": 1,
+      "count": 2,
       "rating": 5
     },
     "ChIJYf0QStOdGGARaQzhDXeDgiA": {
@@ -94,7 +94,7 @@
     "ChIJTVVcNZ71GGARS1eDY7Ubf8A": {
       "name": "武蔵中原園",
       "area": "神奈川県",
-      "count": 2,
+      "count": 4,
       "rating": 5
     },
     "ChIJ7akCmzyLGGARdDt5sc19MYQ": {
@@ -148,7 +148,7 @@
     "ChIJLZnrOpn_GGARulv_-cYUkSM": {
       "name": "座間II園",
       "area": "神奈川県",
-      "count": 4,
+      "count": 5,
       "rating": 5
     }
   },
@@ -432,7 +432,7 @@
     "ChIJcT7ktTeFImARy-oAosDZdcM": {
       "name": "Nestいんない保育園",
       "area": "千葉県",
-      "count": 6,
+      "count": 7,
       "rating": 5
     },
     "ChIJca4GiEjoGGAR-Xqd06iGIg8": {
@@ -678,7 +678,7 @@
     "ChIJ8b4vMF79GGAR_dHtHt7aK_M": {
       "name": "Yotsuba Nursery Sagamihara",
       "area": "神奈川県",
-      "count": 3,
+      "count": 4,
       "rating": 5
     },
     "ChIJZS4C2Wb9GGAR84Q_-00wBSQ": {
@@ -720,8 +720,8 @@
     "ChIJw-m-oMz4GGARN6VUW7q5elk": {
       "name": "ほいくえん虹の子",
       "area": "神奈川県",
-      "count": 8,
-      "rating": 2.9
+      "count": 7,
+      "rating": 2.6
     },
     "ChIJn479rbL5GGAR5BK-2fne-D0": {
       "name": "スクルドエンジェル保育園中央林間園",
