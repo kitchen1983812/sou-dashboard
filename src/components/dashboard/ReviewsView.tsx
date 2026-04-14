@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useMemo, useCallback } from "react";
 import type { ReviewData, CompetitorReviewData } from "@/app/api/reviews/route";
+import GroupReviewsPanel from "./GroupReviewsPanel";
 
 interface ReviewsResponse {
 	reviews: ReviewData[];
@@ -936,6 +937,9 @@ export default function ReviewsView() {
 					</tfoot>
 				</table>
 			</div>
+
+			{/* グループ園サマリー */}
+			<GroupReviewsPanel />
 
 			{/* 更新時刻 */}
 			<div className="text-xs text-gray-400 text-right space-y-0.5">
