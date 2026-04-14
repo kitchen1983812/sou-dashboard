@@ -19,7 +19,10 @@ export default function GroupReviewsPanel() {
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
 	const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>("all");
+	const [brandFilter, setBrandFilter] = useState<string>("all");
 	const [expandedBrand, setExpandedBrand] = useState<string | null>(null);
+	const [nurserySortKey, setNurserySortKey] = useState<"count" | "rating" | "name">("count");
+	const [nurserySortDir, setNurserySortDir] = useState<"asc" | "desc">("desc");
 	const [uploading, setUploading] = useState(false);
 	const [uploadMsg, setUploadMsg] = useState<{ type: "success" | "error"; text: string } | null>(null);
 	const fileInputRef = useRef<HTMLInputElement>(null);
@@ -43,6 +46,41 @@ export default function GroupReviewsPanel() {
 		if (categoryFilter === "all") return data.brands;
 		return data.brands.filter((b) => b.category === categoryFilter);
 	}, [data, categoryFilter]);
+
+	// 全園一覧（フィルタ適用後）
+	const allNurseries = useMemo(() => {
+		const list: GroupNursery[] = [];
+		for (const b of filteredBrands) {
+			if (brandFilter !== "all" && b.brand !== brandFilter) continue;
+			for (const n of b.nurseries) list.push(n);
+		}
+		const dir = nurserySortDir === "asc" ? 1 : -1;
+		list.sort((a, b) => {
+			if (nurserySortKey === "name") return a.name.localeCompare(b.name) * dir;
+			if (nurserySortKey === "rating") {
+				return ((a.rating ?? -1) - (b.rating ?? -1)) * dir;
+			}
+			return (a.count - b.count) * dir;
+		});
+		return list;
+	}, [filteredBrands, brandFilter, nurserySortKey, nurserySortDir]);
+
+	const brandOptions = useMemo(() => {
+		return filteredBrands.map((b) => b.brand);
+	}, [filteredBrands]);
+
+	const handleNurserySort = (key: "count" | "rating" | "name") => {
+		if (nurserySortKey === key) setNurserySortDir(nurserySortDir === "asc" ? "desc" : "asc");
+		else {
+			setNurserySortKey(key);
+			setNurserySortDir(key === "name" ? "asc" : "desc");
+		}
+	};
+
+	const nurserySortIcon = (key: "count" | "rating" | "name") => {
+		if (nurserySortKey !== key) return "↕";
+		return nurserySortDir === "asc" ? "↑" : "↓";
+	};
 
 	const totals = useMemo(() => {
 		const count = filteredBrands.reduce((s, b) => s + b.nurseryCount, 0);
@@ -161,7 +199,10 @@ export default function GroupReviewsPanel() {
 			</div>
 
 			{/* ブランド別テーブル */}
-			<div className="overflow-x-auto">
+			<div className="overflow-x-auto border-t border-gray-100">
+				<div className="px-5 py-3 text-sm font-semibold text-gray-700">
+					ブランド別サマリー
+				</div>
 				<table className="w-full text-sm">
 					<thead>
 						<tr className="bg-gray-50 border-b-2 border-gray-200 text-gray-600">
@@ -191,6 +232,79 @@ export default function GroupReviewsPanel() {
 						))}
 					</tbody>
 				</table>
+			</div>
+
+			{/* 園別一覧 */}
+			<div className="border-t border-gray-100 mt-2">
+				<div className="flex items-center justify-between px-5 py-3">
+					<div className="text-sm font-semibold text-gray-700">
+						園別一覧（{allNurseries.length}園）
+					</div>
+					<div className="flex items-center gap-2">
+						<span className="text-sm text-gray-500">ブランド:</span>
+						<select
+							value={brandFilter}
+							onChange={(e) => setBrandFilter(e.target.value)}
+							className="text-sm border border-gray-300 rounded-md px-2 py-1"
+						>
+							<option value="all">全て</option>
+							{brandOptions.map((b) => (
+								<option key={b} value={b}>
+									{b}
+								</option>
+							))}
+						</select>
+					</div>
+				</div>
+				<div className="overflow-x-auto max-h-[500px]">
+					<table className="w-full text-sm">
+						<thead className="sticky top-0 z-10 bg-gray-50 border-b-2 border-gray-200 text-gray-600">
+							<tr>
+								<th className="text-left px-4 py-2">カテゴリ</th>
+								<th className="text-left px-4 py-2">ブランド</th>
+								<th
+									className="text-left px-4 py-2 cursor-pointer hover:text-brand-600"
+									onClick={() => handleNurserySort("name")}
+								>
+									園名 {nurserySortIcon("name")}
+								</th>
+								<th
+									className="text-center px-4 py-2 cursor-pointer hover:text-brand-600"
+									onClick={() => handleNurserySort("count")}
+								>
+									クチコミ数 {nurserySortIcon("count")}
+								</th>
+								<th
+									className="text-center px-4 py-2 cursor-pointer hover:text-brand-600"
+									onClick={() => handleNurserySort("rating")}
+								>
+									評価 {nurserySortIcon("rating")}
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							{allNurseries.map((n) => (
+								<tr key={n.placeId} className="border-b border-gray-100 hover:bg-gray-50">
+									<td className="px-4 py-1.5">
+										<span
+											className={`inline-block px-2 py-0.5 text-xs ${n.category === "自社" ? "bg-brand-50 text-brand-700" : "bg-gray-100 text-gray-600"}`}
+										>
+											{n.category}
+										</span>
+									</td>
+									<td className="px-4 py-1.5 text-gray-600">{n.brand}</td>
+									<td className="px-4 py-1.5 text-gray-800">{n.name}</td>
+									<td className="px-4 py-1.5 text-center tabular-nums text-gray-700">
+										{n.count}件
+									</td>
+									<td className="px-4 py-1.5 text-center tabular-nums text-gray-800">
+										{n.rating != null ? n.rating.toFixed(1) : "-"}
+									</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	);
