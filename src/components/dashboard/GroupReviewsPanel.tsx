@@ -162,35 +162,35 @@ export default function GroupReviewsPanel() {
 	return (
 		<div className="bg-white shadow-sm">
 			{/* ヘッダー */}
-			<div className="flex items-center justify-between px-5 pt-4 pb-3 border-b border-gray-100">
-				<div>
-					<h3 className="text-base font-bold text-gray-700">
-						グループ園口コミサマリー
-					</h3>
-					<p className="text-xs text-gray-500 mt-0.5">
-						データ取得日: {data.exportedAt}（Excel受領ベース）
-					</p>
-				</div>
-				<div className="flex items-center gap-3">
-					<div className="flex items-center gap-2">
-						<span className="text-sm text-gray-500">分類:</span>
-						<select
-							value={categoryFilter}
-							onChange={(e) =>
-								setCategoryFilter(e.target.value as CategoryFilter)
-							}
-							className="text-sm border border-gray-300 rounded-md px-2 py-1"
-						>
-							<option value="all">全て</option>
-							<option value="自社">自社運営</option>
-							<option value="グループ">グループ他ブランド</option>
-						</select>
+			<div className="px-3 md:px-5 pt-4 pb-3 border-b border-gray-100 space-y-3">
+				<div className="flex items-start justify-between gap-3">
+					<div className="min-w-0">
+						<h3 className="text-base font-bold text-gray-700">
+							グループ園口コミサマリー
+						</h3>
+						<p className="text-xs text-gray-500 mt-0.5">
+							データ取得日: {data.exportedAt}（Excel受領ベース）
+						</p>
 					</div>
 					<UploadButton
 						uploading={uploading}
 						fileInputRef={fileInputRef}
 						onChange={handleUpload}
 					/>
+				</div>
+				<div className="flex items-center gap-2">
+					<span className="text-xs text-gray-500 whitespace-nowrap">分類:</span>
+					<select
+						value={categoryFilter}
+						onChange={(e) =>
+							setCategoryFilter(e.target.value as CategoryFilter)
+						}
+						className="text-sm border border-gray-300 rounded-md px-2 py-1.5 min-h-11 flex-1 sm:flex-none"
+					>
+						<option value="all">全て</option>
+						<option value="自社">自社運営</option>
+						<option value="グループ">グループ他ブランド</option>
+					</select>
 				</div>
 			</div>
 			{uploadMsg && (
@@ -224,62 +224,70 @@ export default function GroupReviewsPanel() {
 			</div>
 
 			{/* ブランド別テーブル */}
-			<div className="overflow-x-auto border-t border-gray-100">
-				<div className="px-5 py-3 text-sm font-semibold text-gray-700">
+			<div className="border-t border-gray-100">
+				<div className="px-3 md:px-5 py-3 text-sm font-semibold text-gray-700">
 					ブランド別サマリー
 				</div>
-				<table className="w-full text-sm">
-					<thead>
-						<tr className="bg-gray-50 border-b-2 border-gray-200 text-gray-600">
-							<th className="text-left px-4 py-2">カテゴリ</th>
-							<th className="text-left px-4 py-2">ブランド</th>
-							<th className="text-center px-4 py-2 whitespace-nowrap">園数</th>
-							<th className="text-center px-4 py-2 whitespace-nowrap">
-								総クチコミ
-							</th>
-							<th className="text-center px-4 py-2 whitespace-nowrap">
-								1園平均
-							</th>
-							<th className="text-center px-4 py-2 whitespace-nowrap">
-								平均評価
-							</th>
-						</tr>
-					</thead>
-					<tbody>
-						{filteredBrands.map((b) => (
-							<tr
-								key={`${b.category}|${b.brand}`}
-								className="border-b border-gray-100 hover:bg-gray-50"
-							>
-								<td className="px-4 py-2">
-									<span
-										className={`inline-block px-2 py-0.5 text-xs ${b.category === "自社" ? "bg-brand-50 text-brand-700" : "bg-gray-100 text-gray-600"}`}
-									>
-										{b.category}
-									</span>
-								</td>
-								<td className="px-4 py-2 font-medium text-gray-800 whitespace-nowrap">
-									{b.brand}
-								</td>
-								<td className="px-4 py-2 text-center tabular-nums text-gray-700">
-									{b.nurseryCount}園
-								</td>
-								<td className="px-4 py-2 text-center tabular-nums text-gray-700">
-									{b.totalReviews}件
-								</td>
-								<td className="px-4 py-2 text-center tabular-nums text-gray-500">
-									{b.nurseryCount > 0
-										? (b.totalReviews / b.nurseryCount).toFixed(1)
-										: "-"}
-									件
-								</td>
-								<td className="px-4 py-2 text-center tabular-nums font-semibold text-gray-800">
-									{b.avgRating != null ? b.avgRating.toFixed(2) : "-"}
-								</td>
+				<ScrollableTable minWidth={640} maxHeight={500} showScrollHint={false}>
+					<table className="w-full text-sm">
+						<thead className="sticky top-0 z-10 bg-gray-50 border-b-2 border-gray-200 text-gray-600">
+							<tr>
+								<th className="text-left px-4 py-2 whitespace-nowrap">
+									カテゴリ
+								</th>
+								<th className="text-left px-4 py-2 whitespace-nowrap">
+									ブランド
+								</th>
+								<th className="text-center px-4 py-2 whitespace-nowrap">
+									園数
+								</th>
+								<th className="text-center px-4 py-2 whitespace-nowrap">
+									総クチコミ
+								</th>
+								<th className="text-center px-4 py-2 whitespace-nowrap">
+									1園平均
+								</th>
+								<th className="text-center px-4 py-2 whitespace-nowrap">
+									平均評価
+								</th>
 							</tr>
-						))}
-					</tbody>
-				</table>
+						</thead>
+						<tbody>
+							{filteredBrands.map((b) => (
+								<tr
+									key={`${b.category}|${b.brand}`}
+									className="border-b border-gray-100 hover:bg-gray-50"
+								>
+									<td className="px-4 py-2">
+										<span
+											className={`inline-block px-2 py-0.5 text-xs ${b.category === "自社" ? "bg-brand-50 text-brand-700" : "bg-gray-100 text-gray-600"}`}
+										>
+											{b.category}
+										</span>
+									</td>
+									<td className="px-4 py-2 font-medium text-gray-800 whitespace-nowrap">
+										{b.brand}
+									</td>
+									<td className="px-4 py-2 text-center tabular-nums text-gray-700">
+										{b.nurseryCount}園
+									</td>
+									<td className="px-4 py-2 text-center tabular-nums text-gray-700">
+										{b.totalReviews}件
+									</td>
+									<td className="px-4 py-2 text-center tabular-nums text-gray-500">
+										{b.nurseryCount > 0
+											? (b.totalReviews / b.nurseryCount).toFixed(1)
+											: "-"}
+										件
+									</td>
+									<td className="px-4 py-2 text-center tabular-nums font-semibold text-gray-800">
+										{b.avgRating != null ? b.avgRating.toFixed(2) : "-"}
+									</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</ScrollableTable>
 			</div>
 
 			{/* 園別一覧 */}

@@ -1,9 +1,11 @@
 name: Weekly Review Snapshot (with competitors)
 
 on:
-  # 毎週日曜 23:00 JST（14:00 UTC）— 自園+競合（133コール/週、月~¥100）
-  schedule:
-    - cron: "0 14 * * 0"
+  # 自動実行を停止（Excel統一運用に移行。2026-04-16）
+  # 必要になった場合は下記コメントを解除
+  # schedule:
+  #   - cron: "0 14 * * 0"
+  workflow_dispatch:
 
 jobs:
   snapshot:

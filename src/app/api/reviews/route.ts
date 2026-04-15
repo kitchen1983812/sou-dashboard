@@ -7,8 +7,7 @@ import {
 	getMonthlyGoal,
 	BASELINE_CONFIG,
 } from "@/config/reviewConfig";
-import { getSheetData } from "@/lib/googleSheets";
-import { GROUP_REVIEWS_SHEET_NAME, classifyBrand } from "@/config/brandConfig";
+import { classifyBrand } from "@/config/brandConfig";
 
 export const dynamic = "force-dynamic";
 
@@ -85,34 +84,46 @@ function loadCurrentData(): CurrentFile | null {
 	}
 }
 
-/** group-reviewsデータからフェリーチェ自社データを構築 */
-async function loadCurrentFromGroupReviews(): Promise<CurrentFile | null> {
+/** group-reviews JSONからフェリーチェ自社データを構築 */
+function loadCurrentFromGroupReviewsJson(): CurrentFile | null {
+	const filePath = path.join(
+		process.cwd(),
+		"public",
+		"group-reviews",
+		"data.json",
+	);
 	try {
-		const rows = await getSheetData(
-			GROUP_REVIEWS_SHEET_NAME,
-			process.env.GOOGLE_SHEET_ID,
-		);
-		if (rows.length < 2) return null;
-		const exportedAt = rows[1]?.[0] ?? new Date().toISOString().slice(0, 10);
+		const raw = fs.readFileSync(filePath, "utf-8");
+		const parsed = JSON.parse(raw) as {
+			exportedAt: string;
+			brands: Array<{
+				category: string;
+				brand: string;
+				nurseries: Array<{
+					name: string;
+					placeId: string;
+					count: number;
+					rating: number | null;
+				}>;
+			}>;
+		};
 		const nurseries: Record<string, SnapshotEntry> = {};
-		// 列順: [取得日, 園名, Place ID, クチコミ数, 星評価, ブランド, カテゴリ]
-		for (const row of rows.slice(1)) {
-			const name = row[1] ?? "";
-			const placeId = row[2] ?? "";
-			if (!placeId) continue;
-			const { brand, category } = classifyBrand(name);
-			// 自社のみ（フェリーチェ・わくわく・ことり）
-			if (category !== "自社") continue;
-			void brand;
-			nurseries[placeId] = {
-				name,
-				area: NURSERIES.find((n) => n.placeId === placeId)?.area ?? "",
-				count: Number(row[3] ?? 0),
-				rating: row[4] ? Number(row[4]) : null,
-			};
+		for (const b of parsed.brands ?? []) {
+			for (const n of b.nurseries ?? []) {
+				const { category } = classifyBrand(n.name);
+				// フェリーチェのみ（既存 NURSERIES.placeId に一致するもの）
+				if (category !== "自社") continue;
+				if (!NURSERIES.find((x) => x.placeId === n.placeId)) continue;
+				nurseries[n.placeId] = {
+					name: n.name,
+					area: NURSERIES.find((x) => x.placeId === n.placeId)?.area ?? "",
+					count: n.count,
+					rating: n.rating,
+				};
+			}
 		}
 		if (Object.keys(nurseries).length === 0) return null;
-		return { date: exportedAt, nurseries, competitors: {} };
+		return { date: parsed.exportedAt, nurseries, competitors: {} };
 	} catch {
 		return null;
 	}
@@ -142,7 +153,7 @@ export interface CompetitorReviewData {
 export async function GET() {
 	// 優先: group-reviews（Excel経由で更新）からフェリーチェデータを取得
 	// フォールバック: 旧 current.json（Places API日次取得）
-	const current = (await loadCurrentFromGroupReviews()) ?? loadCurrentData();
+	const current = loadCurrentFromGroupReviewsJson() ?? loadCurrentData();
 	if (!current) {
 		return NextResponse.json(
 			{

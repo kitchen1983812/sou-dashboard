@@ -1,10 +1,11 @@
 name: Snapshot Reviews
 
 on:
-  # 毎日 23:00 JST（14:00 UTC）— 自園のみ（25コール/日、月~¥100）
-  schedule:
-    - cron: "0 14 * * *"
-  # 手動実行
+  # 自動実行を停止（Excel統一運用に移行。2026-04-16）
+  # 必要になった場合は下記コメントを解除
+  # schedule:
+  #   - cron: "0 14 * * *"
+  # 手動実行のみ有効
   workflow_dispatch:
     inputs:
       snapshot_name:
