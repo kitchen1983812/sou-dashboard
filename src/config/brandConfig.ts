@@ -13,25 +13,18 @@ export const BRAND_RULES: BrandRule[] = [
 	{ match: (n) => n.startsWith("フェリーチェ"), brand: "フェリーチェ", category: "自社" },
 	{ match: (n) => n.startsWith("わくわく保育園"), brand: "わくわく保育園", category: "自社" },
 	{ match: (n) => n.startsWith("ことり保育園"), brand: "ことり保育園", category: "自社" },
-	// グループ他ブランド
+	// グループ他ブランド（スクルドエンジェル系は保育園に統合、キッズキッズ系も保育園に統合）
 	{
-		match: (n) => n.startsWith("スクルドエンジェル保育園"),
+		match: (n) => n.startsWith("スクルドエンジェル"),
 		brand: "スクルドエンジェル保育園",
 		category: "グループ",
 	},
-	{
-		match: (n) => n.startsWith("スクルドエンジェル保育室"),
-		brand: "スクルドエンジェル保育室",
-		category: "グループ",
-	},
-	{
-		match: (n) => n.startsWith("スクルドエンジェル "),
-		brand: "スクルドエンジェル",
-		category: "グループ",
-	},
 	{ match: (n) => n.startsWith("あーす保育園"), brand: "あーす保育園", category: "グループ" },
-	{ match: (n) => n.startsWith("キッズキッズ保育園"), brand: "キッズキッズ保育園", category: "グループ" },
-	{ match: (n) => n.startsWith("キッズキッズ "), brand: "キッズキッズ", category: "グループ" },
+	{
+		match: (n) => n.startsWith("キッズキッズ"),
+		brand: "キッズキッズ保育園",
+		category: "グループ",
+	},
 	{
 		match: (n) => n.startsWith("イオンゆめみらい保育園"),
 		brand: "イオンゆめみらい保育園",

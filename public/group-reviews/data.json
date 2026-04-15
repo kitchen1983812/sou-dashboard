@@ -2,117 +2,786 @@
   "exportedAt": "2026-04-14",
   "brands": [
     {
-      "category": "グループ",
-      "brand": "あーす保育園",
-      "nurseryCount": 18,
-      "totalReviews": 35,
-      "avgRating": 4.09,
+      "category": "自社",
+      "brand": "フェリーチェ",
+      "nurseryCount": 25,
+      "totalReviews": 77,
+      "avgRating": 4.82,
       "nurseries": [
         {
-          "name": "あーす保育園 保田窪",
-          "placeId": "ChIJKbL5VmLxQDUR6cn1FTlVaUI",
+          "name": "フェリーチェ 目黒園",
+          "placeId": "ChIJ7akCmzyLGGARdDt5sc19MYQ",
+          "count": 10,
+          "rating": 4.6
+        },
+        {
+          "name": "フェリーチェ 京成八幡園",
+          "placeId": "ChIJq30EnM-GGGARwtXJOrPeADY",
           "count": 9,
-          "rating": 4.4
+          "rating": 5.0
         },
         {
-          "name": "あーす保育園 中野坂上",
-          "placeId": "ChIJZY0zHNLyGGARkXm2-L00fF4",
+          "name": "フェリーチェ 相模原園",
+          "placeId": "ChIJq9CYz9kDGWARvC3WXdkbKpA",
+          "count": 7,
+          "rating": 4.6
+        },
+        {
+          "name": "フェリーチェ 座間Ⅱ園",
+          "placeId": "ChIJLZnrOpn_GGARulv_-cYUkSM",
+          "count": 5,
+          "rating": 5.0
+        },
+        {
+          "name": "フェリーチェ 柏Ⅱ園",
+          "placeId": "ChIJYf0QStOdGGARaQzhDXeDgiA",
+          "count": 5,
+          "rating": 4.8
+        },
+        {
+          "name": "フェリーチェ 中野新橋園",
+          "placeId": "ChIJ-7i0-efyGGAR2Zm6giP_Fdc",
+          "count": 5,
+          "rating": 5.0
+        },
+        {
+          "name": "フェリーチェ 武蔵中原園",
+          "placeId": "ChIJTVVcNZ71GGARS1eDY7Ubf8A",
           "count": 4,
-          "rating": 3.0
+          "rating": 5.0
         },
         {
-          "name": "あーす保育園 平尾",
-          "placeId": "ChIJN8pbr4WRQTUR4rj2LYHoiOE",
+          "name": "フェリーチェ 大和園",
+          "placeId": "ChIJsbeGEa34GGARRaVauXzbF0g",
+          "count": 4,
+          "rating": 5.0
+        },
+        {
+          "name": "フェリーチェ 中央林間園",
+          "placeId": "ChIJWVLe3xP_GGARPjPg9pKfdsM",
+          "count": 4,
+          "rating": 4.0
+        },
+        {
+          "name": "フェリーチェ 東千葉園",
+          "placeId": "ChIJ80xh1ceEImARJ_hE_nHvtvM",
           "count": 4,
           "rating": 4.5
         },
         {
-          "name": "あーす保育園 イオンモール川口",
-          "placeId": "ChIJN3RBVGCVGGARuz7EOfsyfME",
-          "count": 3,
-          "rating": 3.7
+          "name": "フェリーチェ 練馬中村橋園",
+          "placeId": "ChIJF5cU6rHtGGARE3OZgLrHKBs",
+          "count": 4,
+          "rating": 4.8
         },
         {
-          "name": "あーす保育園 警固",
-          "placeId": "ChIJifCrVYGRQTUR_vxbsK8Uegs",
-          "count": 3,
-          "rating": 3.7
-        },
-        {
-          "name": "あーす保育園 力合西",
-          "placeId": "ChIJ0Z3ckbr1QDURc-XE0LODlos",
+          "name": "フェリーチェ 南行徳園",
+          "placeId": "ChIJxfYClqmHGGARNxWFyGrt2Mg",
           "count": 2,
           "rating": 5.0
         },
         {
-          "name": "あーす保育園 保土ヶ谷",
-          "placeId": "ChIJAQEMXIVbGGARM2pMTKz6ZtU",
+          "name": "フェリーチェ 東川口園",
+          "placeId": "ChIJ6XMEHgaVGGARGzFHI1-Ly_o",
           "count": 2,
           "rating": 5.0
         },
         {
-          "name": "あーす保育園 中野新橋",
-          "placeId": "ChIJ-0ZdwtvyGGARXBu2fFPvwyo",
+          "name": "フェリーチェ 稲城長沼園",
+          "placeId": "ChIJAT_un8j6GGARRJDWMAye3XE",
           "count": 2,
+          "rating": 4.5
+        },
+        {
+          "name": "フェリーチェ 大田馬込園",
+          "placeId": "ChIJ0QP_5KGKGGAR2U-hrZrUCZA",
+          "count": 2,
+          "rating": 5.0
+        },
+        {
+          "name": "フェリーチェ 相武台前園",
+          "placeId": "ChIJmfaEZpz_GGARzgWS_10r0o8",
+          "count": 1,
+          "rating": 5.0
+        },
+        {
+          "name": "フェリーチェ 行徳園",
+          "placeId": "ChIJc2MR3muHGGARhHtG6RP1dKU",
+          "count": 1,
+          "rating": 5.0
+        },
+        {
+          "name": "フェリーチェ 朝霞園",
+          "placeId": "ChIJgbwKmXfpGGARsTdBJiV-YpU",
+          "count": 1,
+          "rating": 5.0
+        },
+        {
+          "name": "フェリーチェ 鳩ヶ谷園",
+          "placeId": "ChIJ02cMqmOUGGARQmncmaR1mXE",
+          "count": 1,
+          "rating": 5.0
+        },
+        {
+          "name": "フェリーチェ 新座園",
+          "placeId": "ChIJt9t-ubLpGGARbSs4iZCwOMU",
+          "count": 1,
+          "rating": 5.0
+        },
+        {
+          "name": "フェリーチェ 和光園",
+          "placeId": "ChIJ21XWI-DrGGARJjwrKXbBVx8",
+          "count": 1,
           "rating": 4.0
         },
         {
-          "name": "あーす保育園 戸塚",
-          "placeId": "ChIJU6bR2oVaGGARuIDgybnwBeo",
-          "count": 1,
-          "rating": 3.0
-        },
-        {
-          "name": "あーす保育園 戸塚Annex",
-          "placeId": "ChIJj57i5UlbGGARfq1D0z-mWYE",
-          "count": 1,
-          "rating": 3.0
-        },
-        {
-          "name": "あーす保育園 横濱戸塚",
-          "placeId": "ChIJU6bR2oVaGGARuIDgybnwBeo",
-          "count": 1,
-          "rating": 3.0
-        },
-        {
-          "name": "あーす保育園 中央林間",
-          "placeId": "ChIJYeybdd_5GGARYRRa2H-IzJ0",
+          "name": "フェリーチェ 蕨園",
+          "placeId": "ChIJm_dqt2_rGGARZOwV9-OkTxQ",
           "count": 1,
           "rating": 5.0
         },
         {
-          "name": "あーす保育園 東油山",
-          "placeId": "ChIJB69gCteVQTUR9bROoQYsx9U",
+          "name": "フェリーチェ 蕨Ⅱ園",
+          "placeId": "ChIJlzqtUpfrGGARUsZBMphXEXA",
           "count": 1,
           "rating": 5.0
         },
         {
-          "name": "あーす保育園 六本松",
-          "placeId": "ChIJAQAwk8WTQTURm4qpDqofc00",
+          "name": "フェリーチェ 和光Ⅱ園",
+          "placeId": "ChIJUboxFebrGGAR4wU8-2A2zno",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "フェリーチェ 病児保育室にじのへや",
+          "placeId": "ChIJK9MxgKLrGGARUiRQk2GgMaU",
+          "count": 0,
+          "rating": null
+        }
+      ]
+    },
+    {
+      "category": "自社",
+      "brand": "わくわく保育園",
+      "nurseryCount": 5,
+      "totalReviews": 12,
+      "avgRating": 4.9,
+      "nurseries": [
+        {
+          "name": "わくわく保育園 並木町園",
+          "placeId": "ChIJVVWRzX-LImARAN1EDhHQi38",
+          "count": 4,
+          "rating": 5.0
+        },
+        {
+          "name": "わくわく保育園 成田園",
+          "placeId": "ChIJYxZ4q3SLImAROcvCK-5uFWs",
+          "count": 3,
+          "rating": 5.0
+        },
+        {
+          "name": "わくわく保育園 久住園",
+          "placeId": "ChIJOdH9aB1gImAR-z9aHK-yMew",
+          "count": 2,
+          "rating": 4.5
+        },
+        {
+          "name": "わくわく保育園 もねの里園",
+          "placeId": "ChIJ2Z9MPW6PImAREYq_4TjnSlk",
+          "count": 2,
+          "rating": 5.0
+        },
+        {
+          "name": "わくわく保育園 東金園",
+          "placeId": "ChIJnbDclSrrImAR6aioAej2NQ0",
+          "count": 1,
+          "rating": 5.0
+        }
+      ]
+    },
+    {
+      "category": "自社",
+      "brand": "ことり保育園",
+      "nurseryCount": 4,
+      "totalReviews": 2,
+      "avgRating": 5.0,
+      "nurseries": [
+        {
+          "name": "ことり保育園 公津の杜園",
+          "placeId": "ChIJDb3xbYaLImARJwYZ_XgxnhQ",
           "count": 1,
           "rating": 5.0
         },
         {
-          "name": "あーす保育園 宇土",
-          "placeId": "ChIJxX9WEuGLQDURljCdYUIvgTA",
+          "name": "ことり保育園 勝田台園",
+          "placeId": "ChIJq6oagWuLImARWixe--PsMA0",
+          "count": 1,
+          "rating": 5.0
+        },
+        {
+          "name": "ことり保育園 日吉台園",
+          "placeId": "ChIJ_woRgWuLImARNLQX7jtvkig",
           "count": 0,
           "rating": null
         },
         {
-          "name": "あーす保育園 鶴見中央",
-          "placeId": "ChIJqweNjXxfGGAREKNKVFdf4m8",
+          "name": "ことり保育園 スカイタウン園",
+          "placeId": "ChIJj_Go-QyLImARuZtMrGZCuok",
+          "count": 0,
+          "rating": null
+        }
+      ]
+    },
+    {
+      "category": "グループ",
+      "brand": "スクルドエンジェル保育園",
+      "nurseryCount": 91,
+      "totalReviews": 176,
+      "avgRating": 4.14,
+      "nurseries": [
+        {
+          "name": "スクルドエンジェル保育園 三郷中央園",
+          "placeId": "ChIJxSp0_d-bGGARZLUxJzMz8cs",
+          "count": 15,
+          "rating": 4.9
+        },
+        {
+          "name": "スクルドエンジェル保育園 高座渋谷園",
+          "placeId": "ChIJbW-3gL5WGGARkklLyJco9Cg",
+          "count": 11,
+          "rating": 3.2
+        },
+        {
+          "name": "スクルドエンジェル保育園 ひとつやま園",
+          "placeId": "ChIJd8tXqLRkA2ARKia5pdf10rk",
+          "count": 10,
+          "rating": 4.2
+        },
+        {
+          "name": "スクルドエンジェル保育園 梶ヶ谷園",
+          "placeId": "ChIJIRi2UoH2GGARMNTBRv_RUS4",
+          "count": 9,
+          "rating": 3.9
+        },
+        {
+          "name": "スクルドエンジェル保育園 御殿場東田中",
+          "placeId": "ChIJwZ4agEJ2GWARVc_AAoLop4Y",
+          "count": 9,
+          "rating": 4.2
+        },
+        {
+          "name": "スクルドエンジェル保育園 市川新田園",
+          "placeId": "ChIJf7a1y-qGGGAR2Ry_qbYPvsQ",
+          "count": 7,
+          "rating": 5.0
+        },
+        {
+          "name": "スクルドエンジェル保育室 さきょうやま園",
+          "placeId": "ChIJ11rJJZZ8A2ARIXROesxdB2g",
+          "count": 6,
+          "rating": 4.7
+        },
+        {
+          "name": "スクルドエンジェル保育園 辻堂元町園",
+          "placeId": "ChIJ4WSaSxdOGGARG7vFaGjmP2U",
+          "count": 6,
+          "rating": 3.0
+        },
+        {
+          "name": "スクルドエンジェル保育園 浦安園",
+          "placeId": "ChIJ4xe4X4KHGGARTRSluhhtfQs",
+          "count": 6,
+          "rating": 4.7
+        },
+        {
+          "name": "スクルドエンジェル保育園 仙台宮城野原園",
+          "placeId": "ChIJE2pAgfGHiV8RcWXmqWhf_6E",
+          "count": 6,
+          "rating": 3.0
+        },
+        {
+          "name": "スクルドエンジェル保育園 中央林間園",
+          "placeId": "ChIJn479rbL5GGAR5BK-2fne-D0",
+          "count": 5,
+          "rating": 2.8
+        },
+        {
+          "name": "スクルドエンジェル保育園 仙台長町園",
+          "placeId": "ChIJm_PnaMUnil8R8iHv76vCNyc",
+          "count": 5,
+          "rating": 5.0
+        },
+        {
+          "name": "スクルドエンジェル保育園 盛岡園",
+          "placeId": "ChIJQRz2hX6dhV8R8Egsg84WCq0",
+          "count": 5,
+          "rating": 4.2
+        },
+        {
+          "name": "スクルドエンジェル保育園 検見川浜園",
+          "placeId": "ChIJ_3nlALWDImARX5i4TBjKxO4",
+          "count": 5,
+          "rating": 2.0
+        },
+        {
+          "name": "スクルドエンジェル保育園 高等町園",
+          "placeId": "ChIJ4-1nQI9XGGARkFd1LoKBqsw",
+          "count": 4,
+          "rating": 2.3
+        },
+        {
+          "name": "スクルドエンジェル保育園 神納園",
+          "placeId": "ChIJPWDc25B1GGARxOQDHT8IF_c",
+          "count": 4,
+          "rating": 5.0
+        },
+        {
+          "name": "スクルドエンジェル保育園 稲毛園",
+          "placeId": "ChIJSTb-qfKDImARSYQsyE_KKZw",
+          "count": 4,
+          "rating": 5.0
+        },
+        {
+          "name": "スクルドエンジェル保育園 大和代官園",
+          "placeId": "ChIJv-hRjshXGGARO_RK0RTntaM",
+          "count": 4,
+          "rating": 4.8
+        },
+        {
+          "name": "スクルドエンジェル保育園 藤沢駅北口園",
+          "placeId": "ChIJD2cX2I5PGGARfCYupYNqelQ",
+          "count": 4,
+          "rating": 4.3
+        },
+        {
+          "name": "スクルドエンジェル保育室 こまき園",
+          "placeId": "ChIJoaNxZ48NA2ARu5Zk7KkWRRY",
+          "count": 4,
+          "rating": 3.8
+        },
+        {
+          "name": "スクルドエンジェル保育園 大宮園",
+          "placeId": "ChIJ6-JqZazBGGARvc7zF7FQDRc",
+          "count": 3,
+          "rating": 4.0
+        },
+        {
+          "name": "スクルドエンジェル保育園 御殿場西田中",
+          "placeId": "ChIJjS6rW_J2GWARNcUZMNaaUcM",
+          "count": 3,
+          "rating": 3.7
+        },
+        {
+          "name": "スクルドエンジェル保育園 かまいし園",
+          "placeId": "ChIJo_BlMFgPhl8RvhmyX6Fe098",
+          "count": 2,
+          "rating": 5.0
+        },
+        {
+          "name": "スクルドエンジェル保育室 一宮平和園",
+          "placeId": "ChIJuVQf5RChA2ARiGrDvIP13TY",
+          "count": 2,
+          "rating": 3.0
+        },
+        {
+          "name": "スクルドエンジェル保育園 あじま園",
+          "placeId": "ChIJZ1Ux5N1zA2AR10HyrRnUr7E",
+          "count": 2,
+          "rating": 4.5
+        },
+        {
+          "name": "スクルドエンジェル保育室 あらこ園",
+          "placeId": "ChIJ89Rreb53A2ARrZktfDLa0es",
+          "count": 2,
+          "rating": 4.5
+        },
+        {
+          "name": "スクルドエンジェル保育園 川崎園",
+          "placeId": "ChIJ1ZyP_rlgGGARectqKggV29w",
+          "count": 2,
+          "rating": 5.0
+        },
+        {
+          "name": "スクルドエンジェル保育園 望海園",
+          "placeId": "ChIJQ-y2R1p1GGARnaiduqWyVnU",
+          "count": 2,
+          "rating": 3.0
+        },
+        {
+          "name": "スクルドエンジェル保育園 柿の木坂園",
+          "placeId": "ChIJAy2SB3r1GGARbhuB7ZQqJI8",
+          "count": 2,
+          "rating": 3.5
+        },
+        {
+          "name": "スクルドエンジェル保育園 月寒園",
+          "placeId": "ChIJsVivJdkrC18RopTRD6FJEuc",
+          "count": 2,
+          "rating": 1.0
+        },
+        {
+          "name": "スクルドエンジェル保育園 新琴似園",
+          "placeId": "ChIJZTo4kwYmC18RcLsxlAbizNA",
+          "count": 2,
+          "rating": 5.0
+        },
+        {
+          "name": "スクルドエンジェル保育園 浜松園",
+          "placeId": "ChIJWQigk3bfGmARR2YJtbyw8xE",
+          "count": 2,
+          "rating": 5.0
+        },
+        {
+          "name": "スクルドエンジェル保育園 久保稲荷園",
+          "placeId": "ChIJf0gXyyjfGGAR-vmmX85Tw4o",
+          "count": 2,
+          "rating": 5.0
+        },
+        {
+          "name": "スクルドエンジェル保育室 みなと園",
+          "placeId": "ChIJP3IcgCt4A2ARMdWM7cyKylQ",
+          "count": 1,
+          "rating": 5.0
+        },
+        {
+          "name": "スクルドエンジェル保育室 ふじがおか園",
+          "placeId": "ChIJj5wQBIBvA2ARvyTss1Wt-ZM",
+          "count": 1,
+          "rating": 5.0
+        },
+        {
+          "name": "スクルドエンジェル保育室 ごきそ園",
+          "placeId": "ChIJGbYKnNVxA2ARaf0xDu3CQx0",
+          "count": 1,
+          "rating": 4.0
+        },
+        {
+          "name": "スクルドエンジェル保育園 坂本園",
+          "placeId": "ChIJI5mOjB0LAWARL6tmOc8XSBg",
+          "count": 1,
+          "rating": 5.0
+        },
+        {
+          "name": "スクルドエンジェル保育園 南行徳園",
+          "placeId": "ChIJ5WLsTkqHGGAR-HpMPfz3Ud8",
+          "count": 1,
+          "rating": 4.0
+        },
+        {
+          "name": "スクルドエンジェル保育園 古市場園",
+          "placeId": "ChIJ-wmuIgCbImARPYHufgy5jTs",
+          "count": 1,
+          "rating": 5.0
+        },
+        {
+          "name": "スクルドエンジェル保育園 鎌ヶ谷大仏園",
+          "placeId": "ChIJV0433iWBGGARqcOQSuP0Jfs",
+          "count": 1,
+          "rating": 5.0
+        },
+        {
+          "name": "スクルドエンジェル保育園 南久保園",
+          "placeId": "ChIJldau908MGGARy-7wuDcMXSk",
+          "count": 1,
+          "rating": 5.0
+        },
+        {
+          "name": "スクルドエンジェル保育園 袖ヶ浦園Ⅰ",
+          "placeId": "ChIJ8bFGYWB0GGAR6XnD1q9RsYQ",
+          "count": 1,
+          "rating": 5.0
+        },
+        {
+          "name": "スクルドエンジェル保育園 袖ヶ浦園Ⅱ",
+          "placeId": "ChIJ8bFGYWB0GGAR6XnD1q9RsYQ",
+          "count": 1,
+          "rating": 5.0
+        },
+        {
+          "name": "スクルドエンジェル保育園 袖ヶ浦園Ⅲ",
+          "placeId": "ChIJ8bFGYWB0GGAR6XnD1q9RsYQ",
+          "count": 1,
+          "rating": 5.0
+        },
+        {
+          "name": "スクルドエンジェル 稲毛駅前園",
+          "placeId": "ChIJm-DaMZuDImARNIXToI5IWUA",
+          "count": 1,
+          "rating": 5.0
+        },
+        {
+          "name": "スクルドエンジェル保育園 下高井戸園",
+          "placeId": "ChIJVVUhw0ryGGARNhNxGgC8sok",
+          "count": 1,
+          "rating": 5.0
+        },
+        {
+          "name": "スクルドエンジェル保育園 本八幡園",
+          "placeId": "ChIJObXRoQuHGGARQgIUeMecHw4",
+          "count": 1,
+          "rating": 5.0
+        },
+        {
+          "name": "スクルドエンジェル保育室 かなや園",
+          "placeId": "ChIJq6ouPLdxA2ARfXZC24l4ihs",
+          "count": 1,
+          "rating": 1.0
+        },
+        {
+          "name": "スクルドエンジェル保育園 吉野ケ里園",
+          "placeId": "ChIJtaSs9wC7QTUR1_wnh6faYdU",
+          "count": 1,
+          "rating": 2.0
+        },
+        {
+          "name": "スクルドエンジェル保育園 加茂名園",
+          "placeId": "ChIJH0ZMCSkNUzURg19WbgMsPoc",
+          "count": 1,
+          "rating": 4.0
+        },
+        {
+          "name": "スクルドエンジェル保育園 八千代台園",
+          "placeId": "ChIJYQkyLWqBImARnMFgdG7rSmo",
+          "count": 1,
+          "rating": 3.0
+        },
+        {
+          "name": "スクルドエンジェル保育園 香芝園",
+          "placeId": "ChIJk0nCkFwvAWARHc3mV4AY7YY",
+          "count": 1,
+          "rating": 5.0
+        },
+        {
+          "name": "スクルドエンジェル保育室 たから園",
+          "placeId": "ChIJCQZBS717A2ARur1ZDtLC0zc",
           "count": 0,
           "rating": null
         },
         {
-          "name": "あーす保育園 南林間",
-          "placeId": "ChIJoQzbIDb5GGARbrve70Bcbp0",
+          "name": "スクルドエンジェル保育室 一宮観音寺園",
+          "placeId": "ChIJW6hiOcihA2AR8KmVjZH5SIM",
           "count": 0,
           "rating": null
         },
         {
-          "name": "あーす保育園 鷺ノ宮",
-          "placeId": "ChIJxTDVqJftGGARKN66tLYEOvs",
+          "name": "スクルドエンジェル保育室 北名古屋園",
+          "placeId": "ChIJlVrmtlZ1A2ARP3d6WzAKTNw",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育園 なんよう園",
+          "placeId": "ChIJcdlizpSdA2ARkM21dlDHkQY",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育室 太平通園",
+          "placeId": "ChIJBRFZT3F3A2AR8Q0azZAy93U",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育室 おばた園",
+          "placeId": "ChIJ8ZZ2p6NxA2ARhnfymMq6-Ic",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育室 たかばり園",
+          "placeId": "ChIJ__8jogRlA2ARbO29inZvSzQ",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育園 蓮田駅前園",
+          "placeId": "ChIJn0yfe23HGGARBoAsW0tXs7w",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育園 五井園",
+          "placeId": "ChIJTe-X7qKeImARuDfgcwFRmf4",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育園 猫実園",
+          "placeId": "ChIJfVwfStd9GGAR4pF-YqGwVRQ",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育園 新鎌ヶ谷園",
+          "placeId": "ChIJ5xmjjR-CGGARVm6B2U6j1bE",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育園 アクアゲート",
+          "placeId": "ChIJGRwaRutzGGAR3ty-XgSpb1c",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育園 もくし園",
+          "placeId": "ChIJGUE9KxoNGGARTZuhEvQbSFA",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育園 四街道園",
+          "placeId": "ChIJj2rFQJeFImARrc8wjlvHHRk",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育園 幕張園",
+          "placeId": "ChIJO9pdg7yBImARi2w4svCY9Tg",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育園 北砂園",
+          "placeId": "ChIJ44eEC_CIGGARGa0dGSvt1ro",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育園 方南町園",
+          "placeId": "ChIJVevSZPzyGGARcvCYM6_rZcA",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育園 そうま園",
+          "placeId": "ChIJfVgB3i-fIGARoL5Soi6Jzgk",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育園 なとり園",
+          "placeId": "ChIJRRKuiwMkil8ROBTFa8oYyb0",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育園 札幌北円山園",
+          "placeId": "ChIJg9FBabgpC18RADVX48CvHJA",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育園 三郷園",
+          "placeId": "ChIJ__9DEUxvA2AR_hW-odzxfbg",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育室 しらとり園",
+          "placeId": "ChIJcRFa9h16A2ARlwEORTQlD08",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育室 東白壁園",
+          "placeId": "ChIJ7_pTIetxA2ARuoLPnKblrI0",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育室 だいこう園",
+          "placeId": "ChIJfeoQQORxA2ARmTE5t7Gupus",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育室 城北園",
+          "placeId": "ChIJY6zEJplzA2ARCGmNyGZARAQ",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育室 ときわ園",
+          "placeId": "ChIJbaU3uQ53A2ARipawrJppBBk",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育室 おおすぎ園",
+          "placeId": "ChIJpeK1-iZxA2ARaYiDnJxUapQ",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育室 とよとみ園",
+          "placeId": "ChIJf7ELruV3A2ARgvscGhtnvI4",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育室 弥富通園",
+          "placeId": "ChIJ13eMo3t7A2ARPTunmFRSc0E",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育園 上大岡園",
+          "placeId": "ChIJMYtxDy5bGGAR2FSg6ejZczU",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育園 三門園",
+          "placeId": "ChIJoVEX8Wb7GmAReDNjvnJ9TCs",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育園 若宮園",
+          "placeId": "ChIJB3qcBxp1IGAReArJ8diCb1g",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育園 池田駅前園",
+          "placeId": "ChIJTXZnKQDxAGAR3yS9P_qCCX8",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育園 富里七栄園",
+          "placeId": "ChIJ0TOOWj6NImAR5slUnbqhPKQ",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育園 安曇野豊科園",
+          "placeId": "ChIJlSgKQGMTHWARLrx8QvKtr38",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育園 船橋日大前園",
+          "placeId": "ChIJcwShjMmBImARjeN-O7KmCVs",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育園 二ツ宮園",
+          "placeId": "ChIJ0yOSrsLFGGARvFmPGTqJCfQ",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育園 佐久岩田村園",
+          "placeId": "ChIJdRPv0I_LHWARdgeGDWUi6oc",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "スクルドエンジェル保育園 諏訪中洲園",
+          "placeId": "ChIJKTerMqpVHGARFaTmFlgdP6U",
           "count": 0,
           "rating": null
         }
@@ -315,59 +984,116 @@
     },
     {
       "category": "グループ",
-      "brand": "イオンゆめみらい保育園",
-      "nurseryCount": 5,
-      "totalReviews": 2,
-      "avgRating": 5.0,
+      "brand": "あーす保育園",
+      "nurseryCount": 18,
+      "totalReviews": 35,
+      "avgRating": 4.09,
       "nurseries": [
         {
-          "name": "イオンゆめみらい保育園 富士南",
-          "placeId": "ChIJVdlxRT0rGmARbtO41DjsXf4",
+          "name": "あーす保育園 保田窪",
+          "placeId": "ChIJKbL5VmLxQDUR6cn1FTlVaUI",
+          "count": 9,
+          "rating": 4.4
+        },
+        {
+          "name": "あーす保育園 中野坂上",
+          "placeId": "ChIJZY0zHNLyGGARkXm2-L00fF4",
+          "count": 4,
+          "rating": 3.0
+        },
+        {
+          "name": "あーす保育園 平尾",
+          "placeId": "ChIJN8pbr4WRQTUR4rj2LYHoiOE",
+          "count": 4,
+          "rating": 4.5
+        },
+        {
+          "name": "あーす保育園 イオンモール川口",
+          "placeId": "ChIJN3RBVGCVGGARuz7EOfsyfME",
+          "count": 3,
+          "rating": 3.7
+        },
+        {
+          "name": "あーす保育園 警固",
+          "placeId": "ChIJifCrVYGRQTUR_vxbsK8Uegs",
+          "count": 3,
+          "rating": 3.7
+        },
+        {
+          "name": "あーす保育園 力合西",
+          "placeId": "ChIJ0Z3ckbr1QDURc-XE0LODlos",
           "count": 2,
           "rating": 5.0
         },
         {
-          "name": "イオンゆめみらい保育園 水戸内原",
-          "placeId": "ChIJkcNDfZQhImARdPaYG5m7e8w",
-          "count": 0,
-          "rating": null
+          "name": "あーす保育園 保土ヶ谷",
+          "placeId": "ChIJAQEMXIVbGGARM2pMTKz6ZtU",
+          "count": 2,
+          "rating": 5.0
         },
         {
-          "name": "イオンゆめみらい保育園 宇城",
-          "placeId": "ChIJ492aBJaJQDUR_0LZon8uhF8",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "イオンゆめみらい保育園 熊本",
-          "placeId": "ChIJ2R-crE_zQDURDXaJvniJRF4",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "イオンゆめみらい保育園 松本",
-          "placeId": "ChIJI8ED2ZQOHWARGEZmtImkqIU",
-          "count": 0,
-          "rating": null
-        }
-      ]
-    },
-    {
-      "category": "グループ",
-      "brand": "キッズキッズ",
-      "nurseryCount": 2,
-      "totalReviews": 4,
-      "avgRating": 4.0,
-      "nurseries": [
-        {
-          "name": "キッズキッズ 筑紫野",
-          "placeId": "ChIJVyVgrdmYQTURzQvses3pvAQ",
-          "count": 4,
+          "name": "あーす保育園 中野新橋",
+          "placeId": "ChIJ-0ZdwtvyGGARXBu2fFPvwyo",
+          "count": 2,
           "rating": 4.0
         },
         {
-          "name": "キッズキッズ アイム",
-          "placeId": "ChIJ1eDGJUy_QzURTSxMrdBlTRU",
+          "name": "あーす保育園 戸塚",
+          "placeId": "ChIJU6bR2oVaGGARuIDgybnwBeo",
+          "count": 1,
+          "rating": 3.0
+        },
+        {
+          "name": "あーす保育園 戸塚Annex",
+          "placeId": "ChIJj57i5UlbGGARfq1D0z-mWYE",
+          "count": 1,
+          "rating": 3.0
+        },
+        {
+          "name": "あーす保育園 横濱戸塚",
+          "placeId": "ChIJU6bR2oVaGGARuIDgybnwBeo",
+          "count": 1,
+          "rating": 3.0
+        },
+        {
+          "name": "あーす保育園 中央林間",
+          "placeId": "ChIJYeybdd_5GGARYRRa2H-IzJ0",
+          "count": 1,
+          "rating": 5.0
+        },
+        {
+          "name": "あーす保育園 東油山",
+          "placeId": "ChIJB69gCteVQTUR9bROoQYsx9U",
+          "count": 1,
+          "rating": 5.0
+        },
+        {
+          "name": "あーす保育園 六本松",
+          "placeId": "ChIJAQAwk8WTQTURm4qpDqofc00",
+          "count": 1,
+          "rating": 5.0
+        },
+        {
+          "name": "あーす保育園 宇土",
+          "placeId": "ChIJxX9WEuGLQDURljCdYUIvgTA",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "あーす保育園 鶴見中央",
+          "placeId": "ChIJqweNjXxfGGAREKNKVFdf4m8",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "あーす保育園 南林間",
+          "placeId": "ChIJoQzbIDb5GGARbrve70Bcbp0",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "あーす保育園 鷺ノ宮",
+          "placeId": "ChIJxTDVqJftGGARKN66tLYEOvs",
           "count": 0,
           "rating": null
         }
@@ -376,9 +1102,9 @@
     {
       "category": "グループ",
       "brand": "キッズキッズ保育園",
-      "nurseryCount": 8,
-      "totalReviews": 27,
-      "avgRating": 4.9,
+      "nurseryCount": 10,
+      "totalReviews": 31,
+      "avgRating": 4.79,
       "nurseries": [
         {
           "name": "キッズキッズ保育園 博多",
@@ -391,6 +1117,12 @@
           "placeId": "ChIJr2PIUjmZQTURlroTJJlqqNc",
           "count": 4,
           "rating": 4.8
+        },
+        {
+          "name": "キッズキッズ 筑紫野",
+          "placeId": "ChIJVyVgrdmYQTURzQvses3pvAQ",
+          "count": 4,
+          "rating": 4.0
         },
         {
           "name": "キッズキッズ保育園 長丘",
@@ -427,436 +1159,10 @@
           "placeId": "ChIJVQrYB0y_QzUREcG089P1EsM",
           "count": 0,
           "rating": null
-        }
-      ]
-    },
-    {
-      "category": "グループ",
-      "brand": "スクルドエンジェル",
-      "nurseryCount": 1,
-      "totalReviews": 1,
-      "avgRating": 5.0,
-      "nurseries": [
-        {
-          "name": "スクルドエンジェル 稲毛駅前園",
-          "placeId": "ChIJm-DaMZuDImARNIXToI5IWUA",
-          "count": 1,
-          "rating": 5.0
-        }
-      ]
-    },
-    {
-      "category": "グループ",
-      "brand": "スクルドエンジェル保育園",
-      "nurseryCount": 68,
-      "totalReviews": 157,
-      "avgRating": 4.17,
-      "nurseries": [
-        {
-          "name": "スクルドエンジェル保育園 三郷中央園",
-          "placeId": "ChIJxSp0_d-bGGARZLUxJzMz8cs",
-          "count": 15,
-          "rating": 4.9
-        },
-        {
-          "name": "スクルドエンジェル保育園 高座渋谷園",
-          "placeId": "ChIJbW-3gL5WGGARkklLyJco9Cg",
-          "count": 11,
-          "rating": 3.2
-        },
-        {
-          "name": "スクルドエンジェル保育園 ひとつやま園",
-          "placeId": "ChIJd8tXqLRkA2ARKia5pdf10rk",
-          "count": 10,
-          "rating": 4.2
-        },
-        {
-          "name": "スクルドエンジェル保育園 梶ヶ谷園",
-          "placeId": "ChIJIRi2UoH2GGARMNTBRv_RUS4",
-          "count": 9,
-          "rating": 3.9
-        },
-        {
-          "name": "スクルドエンジェル保育園 御殿場東田中",
-          "placeId": "ChIJwZ4agEJ2GWARVc_AAoLop4Y",
-          "count": 9,
-          "rating": 4.2
-        },
-        {
-          "name": "スクルドエンジェル保育園 市川新田園",
-          "placeId": "ChIJf7a1y-qGGGAR2Ry_qbYPvsQ",
-          "count": 7,
-          "rating": 5.0
-        },
-        {
-          "name": "スクルドエンジェル保育園 辻堂元町園",
-          "placeId": "ChIJ4WSaSxdOGGARG7vFaGjmP2U",
-          "count": 6,
-          "rating": 3.0
-        },
-        {
-          "name": "スクルドエンジェル保育園 浦安園",
-          "placeId": "ChIJ4xe4X4KHGGARTRSluhhtfQs",
-          "count": 6,
-          "rating": 4.7
-        },
-        {
-          "name": "スクルドエンジェル保育園 仙台宮城野原園",
-          "placeId": "ChIJE2pAgfGHiV8RcWXmqWhf_6E",
-          "count": 6,
-          "rating": 3.0
-        },
-        {
-          "name": "スクルドエンジェル保育園 中央林間園",
-          "placeId": "ChIJn479rbL5GGAR5BK-2fne-D0",
-          "count": 5,
-          "rating": 2.8
-        },
-        {
-          "name": "スクルドエンジェル保育園 仙台長町園",
-          "placeId": "ChIJm_PnaMUnil8R8iHv76vCNyc",
-          "count": 5,
-          "rating": 5.0
-        },
-        {
-          "name": "スクルドエンジェル保育園 盛岡園",
-          "placeId": "ChIJQRz2hX6dhV8R8Egsg84WCq0",
-          "count": 5,
-          "rating": 4.2
-        },
-        {
-          "name": "スクルドエンジェル保育園 検見川浜園",
-          "placeId": "ChIJ_3nlALWDImARX5i4TBjKxO4",
-          "count": 5,
-          "rating": 2.0
-        },
-        {
-          "name": "スクルドエンジェル保育園 高等町園",
-          "placeId": "ChIJ4-1nQI9XGGARkFd1LoKBqsw",
-          "count": 4,
-          "rating": 2.3
-        },
-        {
-          "name": "スクルドエンジェル保育園 神納園",
-          "placeId": "ChIJPWDc25B1GGARxOQDHT8IF_c",
-          "count": 4,
-          "rating": 5.0
-        },
-        {
-          "name": "スクルドエンジェル保育園 稲毛園",
-          "placeId": "ChIJSTb-qfKDImARSYQsyE_KKZw",
-          "count": 4,
-          "rating": 5.0
-        },
-        {
-          "name": "スクルドエンジェル保育園 大和代官園",
-          "placeId": "ChIJv-hRjshXGGARO_RK0RTntaM",
-          "count": 4,
-          "rating": 4.8
-        },
-        {
-          "name": "スクルドエンジェル保育園 藤沢駅北口園",
-          "placeId": "ChIJD2cX2I5PGGARfCYupYNqelQ",
-          "count": 4,
-          "rating": 4.3
-        },
-        {
-          "name": "スクルドエンジェル保育園 大宮園",
-          "placeId": "ChIJ6-JqZazBGGARvc7zF7FQDRc",
-          "count": 3,
-          "rating": 4.0
-        },
-        {
-          "name": "スクルドエンジェル保育園 御殿場西田中",
-          "placeId": "ChIJjS6rW_J2GWARNcUZMNaaUcM",
-          "count": 3,
-          "rating": 3.7
-        },
-        {
-          "name": "スクルドエンジェル保育園 かまいし園",
-          "placeId": "ChIJo_BlMFgPhl8RvhmyX6Fe098",
-          "count": 2,
-          "rating": 5.0
-        },
-        {
-          "name": "スクルドエンジェル保育園 あじま園",
-          "placeId": "ChIJZ1Ux5N1zA2AR10HyrRnUr7E",
-          "count": 2,
-          "rating": 4.5
-        },
-        {
-          "name": "スクルドエンジェル保育園 川崎園",
-          "placeId": "ChIJ1ZyP_rlgGGARectqKggV29w",
-          "count": 2,
-          "rating": 5.0
-        },
-        {
-          "name": "スクルドエンジェル保育園 望海園",
-          "placeId": "ChIJQ-y2R1p1GGARnaiduqWyVnU",
-          "count": 2,
-          "rating": 3.0
-        },
-        {
-          "name": "スクルドエンジェル保育園 柿の木坂園",
-          "placeId": "ChIJAy2SB3r1GGARbhuB7ZQqJI8",
-          "count": 2,
-          "rating": 3.5
-        },
-        {
-          "name": "スクルドエンジェル保育園 月寒園",
-          "placeId": "ChIJsVivJdkrC18RopTRD6FJEuc",
-          "count": 2,
-          "rating": 1.0
-        },
-        {
-          "name": "スクルドエンジェル保育園 新琴似園",
-          "placeId": "ChIJZTo4kwYmC18RcLsxlAbizNA",
-          "count": 2,
-          "rating": 5.0
-        },
-        {
-          "name": "スクルドエンジェル保育園 浜松園",
-          "placeId": "ChIJWQigk3bfGmARR2YJtbyw8xE",
-          "count": 2,
-          "rating": 5.0
-        },
-        {
-          "name": "スクルドエンジェル保育園 久保稲荷園",
-          "placeId": "ChIJf0gXyyjfGGAR-vmmX85Tw4o",
-          "count": 2,
-          "rating": 5.0
-        },
-        {
-          "name": "スクルドエンジェル保育園 坂本園",
-          "placeId": "ChIJI5mOjB0LAWARL6tmOc8XSBg",
-          "count": 1,
-          "rating": 5.0
-        },
-        {
-          "name": "スクルドエンジェル保育園 南行徳園",
-          "placeId": "ChIJ5WLsTkqHGGAR-HpMPfz3Ud8",
-          "count": 1,
-          "rating": 4.0
-        },
-        {
-          "name": "スクルドエンジェル保育園 古市場園",
-          "placeId": "ChIJ-wmuIgCbImARPYHufgy5jTs",
-          "count": 1,
-          "rating": 5.0
-        },
-        {
-          "name": "スクルドエンジェル保育園 鎌ヶ谷大仏園",
-          "placeId": "ChIJV0433iWBGGARqcOQSuP0Jfs",
-          "count": 1,
-          "rating": 5.0
-        },
-        {
-          "name": "スクルドエンジェル保育園 南久保園",
-          "placeId": "ChIJldau908MGGARy-7wuDcMXSk",
-          "count": 1,
-          "rating": 5.0
-        },
-        {
-          "name": "スクルドエンジェル保育園 袖ヶ浦園Ⅰ",
-          "placeId": "ChIJ8bFGYWB0GGAR6XnD1q9RsYQ",
-          "count": 1,
-          "rating": 5.0
-        },
-        {
-          "name": "スクルドエンジェル保育園 袖ヶ浦園Ⅱ",
-          "placeId": "ChIJ8bFGYWB0GGAR6XnD1q9RsYQ",
-          "count": 1,
-          "rating": 5.0
-        },
-        {
-          "name": "スクルドエンジェル保育園 袖ヶ浦園Ⅲ",
-          "placeId": "ChIJ8bFGYWB0GGAR6XnD1q9RsYQ",
-          "count": 1,
-          "rating": 5.0
-        },
-        {
-          "name": "スクルドエンジェル保育園 下高井戸園",
-          "placeId": "ChIJVVUhw0ryGGARNhNxGgC8sok",
-          "count": 1,
-          "rating": 5.0
-        },
-        {
-          "name": "スクルドエンジェル保育園 本八幡園",
-          "placeId": "ChIJObXRoQuHGGARQgIUeMecHw4",
-          "count": 1,
-          "rating": 5.0
-        },
-        {
-          "name": "スクルドエンジェル保育園 吉野ケ里園",
-          "placeId": "ChIJtaSs9wC7QTUR1_wnh6faYdU",
-          "count": 1,
-          "rating": 2.0
-        },
-        {
-          "name": "スクルドエンジェル保育園 加茂名園",
-          "placeId": "ChIJH0ZMCSkNUzURg19WbgMsPoc",
-          "count": 1,
-          "rating": 4.0
-        },
-        {
-          "name": "スクルドエンジェル保育園 八千代台園",
-          "placeId": "ChIJYQkyLWqBImARnMFgdG7rSmo",
-          "count": 1,
-          "rating": 3.0
-        },
-        {
-          "name": "スクルドエンジェル保育園 香芝園",
-          "placeId": "ChIJk0nCkFwvAWARHc3mV4AY7YY",
-          "count": 1,
-          "rating": 5.0
-        },
-        {
-          "name": "スクルドエンジェル保育園 なんよう園",
-          "placeId": "ChIJcdlizpSdA2ARkM21dlDHkQY",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育園 蓮田駅前園",
-          "placeId": "ChIJn0yfe23HGGARBoAsW0tXs7w",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育園 五井園",
-          "placeId": "ChIJTe-X7qKeImARuDfgcwFRmf4",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育園 猫実園",
-          "placeId": "ChIJfVwfStd9GGAR4pF-YqGwVRQ",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育園 新鎌ヶ谷園",
-          "placeId": "ChIJ5xmjjR-CGGARVm6B2U6j1bE",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育園 アクアゲート",
-          "placeId": "ChIJGRwaRutzGGAR3ty-XgSpb1c",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育園 もくし園",
-          "placeId": "ChIJGUE9KxoNGGARTZuhEvQbSFA",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育園 四街道園",
-          "placeId": "ChIJj2rFQJeFImARrc8wjlvHHRk",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育園 幕張園",
-          "placeId": "ChIJO9pdg7yBImARi2w4svCY9Tg",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育園 北砂園",
-          "placeId": "ChIJ44eEC_CIGGARGa0dGSvt1ro",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育園 方南町園",
-          "placeId": "ChIJVevSZPzyGGARcvCYM6_rZcA",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育園 そうま園",
-          "placeId": "ChIJfVgB3i-fIGARoL5Soi6Jzgk",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育園 なとり園",
-          "placeId": "ChIJRRKuiwMkil8ROBTFa8oYyb0",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育園 札幌北円山園",
-          "placeId": "ChIJg9FBabgpC18RADVX48CvHJA",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育園 三郷園",
-          "placeId": "ChIJ__9DEUxvA2AR_hW-odzxfbg",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育園 上大岡園",
-          "placeId": "ChIJMYtxDy5bGGAR2FSg6ejZczU",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育園 三門園",
-          "placeId": "ChIJoVEX8Wb7GmAReDNjvnJ9TCs",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育園 若宮園",
-          "placeId": "ChIJB3qcBxp1IGAReArJ8diCb1g",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育園 池田駅前園",
-          "placeId": "ChIJTXZnKQDxAGAR3yS9P_qCCX8",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育園 富里七栄園",
-          "placeId": "ChIJ0TOOWj6NImAR5slUnbqhPKQ",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育園 安曇野豊科園",
-          "placeId": "ChIJlSgKQGMTHWARLrx8QvKtr38",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育園 船橋日大前園",
-          "placeId": "ChIJcwShjMmBImARjeN-O7KmCVs",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育園 二ツ宮園",
-          "placeId": "ChIJ0yOSrsLFGGARvFmPGTqJCfQ",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育園 佐久岩田村園",
-          "placeId": "ChIJdRPv0I_LHWARdgeGDWUi6oc",
-          "count": 0,
-          "rating": null
         },
         {
-          "name": "スクルドエンジェル保育園 諏訪中洲園",
-          "placeId": "ChIJKTerMqpVHGARFaTmFlgdP6U",
+          "name": "キッズキッズ アイム",
+          "placeId": "ChIJ1eDGJUy_QzURTSxMrdBlTRU",
           "count": 0,
           "rating": null
         }
@@ -864,371 +1170,38 @@
     },
     {
       "category": "グループ",
-      "brand": "スクルドエンジェル保育室",
-      "nurseryCount": 22,
-      "totalReviews": 18,
-      "avgRating": 3.88,
-      "nurseries": [
-        {
-          "name": "スクルドエンジェル保育室 さきょうやま園",
-          "placeId": "ChIJ11rJJZZ8A2ARIXROesxdB2g",
-          "count": 6,
-          "rating": 4.7
-        },
-        {
-          "name": "スクルドエンジェル保育室 こまき園",
-          "placeId": "ChIJoaNxZ48NA2ARu5Zk7KkWRRY",
-          "count": 4,
-          "rating": 3.8
-        },
-        {
-          "name": "スクルドエンジェル保育室 一宮平和園",
-          "placeId": "ChIJuVQf5RChA2ARiGrDvIP13TY",
-          "count": 2,
-          "rating": 3.0
-        },
-        {
-          "name": "スクルドエンジェル保育室 あらこ園",
-          "placeId": "ChIJ89Rreb53A2ARrZktfDLa0es",
-          "count": 2,
-          "rating": 4.5
-        },
-        {
-          "name": "スクルドエンジェル保育室 みなと園",
-          "placeId": "ChIJP3IcgCt4A2ARMdWM7cyKylQ",
-          "count": 1,
-          "rating": 5.0
-        },
-        {
-          "name": "スクルドエンジェル保育室 ふじがおか園",
-          "placeId": "ChIJj5wQBIBvA2ARvyTss1Wt-ZM",
-          "count": 1,
-          "rating": 5.0
-        },
-        {
-          "name": "スクルドエンジェル保育室 ごきそ園",
-          "placeId": "ChIJGbYKnNVxA2ARaf0xDu3CQx0",
-          "count": 1,
-          "rating": 4.0
-        },
-        {
-          "name": "スクルドエンジェル保育室 かなや園",
-          "placeId": "ChIJq6ouPLdxA2ARfXZC24l4ihs",
-          "count": 1,
-          "rating": 1.0
-        },
-        {
-          "name": "スクルドエンジェル保育室 たから園",
-          "placeId": "ChIJCQZBS717A2ARur1ZDtLC0zc",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育室 一宮観音寺園",
-          "placeId": "ChIJW6hiOcihA2AR8KmVjZH5SIM",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育室 北名古屋園",
-          "placeId": "ChIJlVrmtlZ1A2ARP3d6WzAKTNw",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育室 太平通園",
-          "placeId": "ChIJBRFZT3F3A2AR8Q0azZAy93U",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育室 おばた園",
-          "placeId": "ChIJ8ZZ2p6NxA2ARhnfymMq6-Ic",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育室 たかばり園",
-          "placeId": "ChIJ__8jogRlA2ARbO29inZvSzQ",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育室 しらとり園",
-          "placeId": "ChIJcRFa9h16A2ARlwEORTQlD08",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育室 東白壁園",
-          "placeId": "ChIJ7_pTIetxA2ARuoLPnKblrI0",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育室 だいこう園",
-          "placeId": "ChIJfeoQQORxA2ARmTE5t7Gupus",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育室 城北園",
-          "placeId": "ChIJY6zEJplzA2ARCGmNyGZARAQ",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育室 ときわ園",
-          "placeId": "ChIJbaU3uQ53A2ARipawrJppBBk",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育室 おおすぎ園",
-          "placeId": "ChIJpeK1-iZxA2ARaYiDnJxUapQ",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育室 とよとみ園",
-          "placeId": "ChIJf7ELruV3A2ARgvscGhtnvI4",
-          "count": 0,
-          "rating": null
-        },
-        {
-          "name": "スクルドエンジェル保育室 弥富通園",
-          "placeId": "ChIJ13eMo3t7A2ARPTunmFRSc0E",
-          "count": 0,
-          "rating": null
-        }
-      ]
-    },
-    {
-      "category": "自社",
-      "brand": "ことり保育園",
-      "nurseryCount": 4,
+      "brand": "イオンゆめみらい保育園",
+      "nurseryCount": 5,
       "totalReviews": 2,
       "avgRating": 5.0,
       "nurseries": [
         {
-          "name": "ことり保育園 公津の杜園",
-          "placeId": "ChIJDb3xbYaLImARJwYZ_XgxnhQ",
-          "count": 1,
+          "name": "イオンゆめみらい保育園 富士南",
+          "placeId": "ChIJVdlxRT0rGmARbtO41DjsXf4",
+          "count": 2,
           "rating": 5.0
         },
         {
-          "name": "ことり保育園 勝田台園",
-          "placeId": "ChIJq6oagWuLImARWixe--PsMA0",
-          "count": 1,
-          "rating": 5.0
-        },
-        {
-          "name": "ことり保育園 日吉台園",
-          "placeId": "ChIJ_woRgWuLImARNLQX7jtvkig",
+          "name": "イオンゆめみらい保育園 水戸内原",
+          "placeId": "ChIJkcNDfZQhImARdPaYG5m7e8w",
           "count": 0,
           "rating": null
         },
         {
-          "name": "ことり保育園 スカイタウン園",
-          "placeId": "ChIJj_Go-QyLImARuZtMrGZCuok",
-          "count": 0,
-          "rating": null
-        }
-      ]
-    },
-    {
-      "category": "自社",
-      "brand": "わくわく保育園",
-      "nurseryCount": 5,
-      "totalReviews": 12,
-      "avgRating": 4.9,
-      "nurseries": [
-        {
-          "name": "わくわく保育園 並木町園",
-          "placeId": "ChIJVVWRzX-LImARAN1EDhHQi38",
-          "count": 4,
-          "rating": 5.0
-        },
-        {
-          "name": "わくわく保育園 成田園",
-          "placeId": "ChIJYxZ4q3SLImAROcvCK-5uFWs",
-          "count": 3,
-          "rating": 5.0
-        },
-        {
-          "name": "わくわく保育園 久住園",
-          "placeId": "ChIJOdH9aB1gImAR-z9aHK-yMew",
-          "count": 2,
-          "rating": 4.5
-        },
-        {
-          "name": "わくわく保育園 もねの里園",
-          "placeId": "ChIJ2Z9MPW6PImAREYq_4TjnSlk",
-          "count": 2,
-          "rating": 5.0
-        },
-        {
-          "name": "わくわく保育園 東金園",
-          "placeId": "ChIJnbDclSrrImAR6aioAej2NQ0",
-          "count": 1,
-          "rating": 5.0
-        }
-      ]
-    },
-    {
-      "category": "自社",
-      "brand": "フェリーチェ",
-      "nurseryCount": 25,
-      "totalReviews": 77,
-      "avgRating": 4.82,
-      "nurseries": [
-        {
-          "name": "フェリーチェ 目黒園",
-          "placeId": "ChIJ7akCmzyLGGARdDt5sc19MYQ",
-          "count": 10,
-          "rating": 4.6
-        },
-        {
-          "name": "フェリーチェ 京成八幡園",
-          "placeId": "ChIJq30EnM-GGGARwtXJOrPeADY",
-          "count": 9,
-          "rating": 5.0
-        },
-        {
-          "name": "フェリーチェ 相模原園",
-          "placeId": "ChIJq9CYz9kDGWARvC3WXdkbKpA",
-          "count": 7,
-          "rating": 4.6
-        },
-        {
-          "name": "フェリーチェ 座間Ⅱ園",
-          "placeId": "ChIJLZnrOpn_GGARulv_-cYUkSM",
-          "count": 5,
-          "rating": 5.0
-        },
-        {
-          "name": "フェリーチェ 柏Ⅱ園",
-          "placeId": "ChIJYf0QStOdGGARaQzhDXeDgiA",
-          "count": 5,
-          "rating": 4.8
-        },
-        {
-          "name": "フェリーチェ 中野新橋園",
-          "placeId": "ChIJ-7i0-efyGGAR2Zm6giP_Fdc",
-          "count": 5,
-          "rating": 5.0
-        },
-        {
-          "name": "フェリーチェ 武蔵中原園",
-          "placeId": "ChIJTVVcNZ71GGARS1eDY7Ubf8A",
-          "count": 4,
-          "rating": 5.0
-        },
-        {
-          "name": "フェリーチェ 大和園",
-          "placeId": "ChIJsbeGEa34GGARRaVauXzbF0g",
-          "count": 4,
-          "rating": 5.0
-        },
-        {
-          "name": "フェリーチェ 中央林間園",
-          "placeId": "ChIJWVLe3xP_GGARPjPg9pKfdsM",
-          "count": 4,
-          "rating": 4.0
-        },
-        {
-          "name": "フェリーチェ 東千葉園",
-          "placeId": "ChIJ80xh1ceEImARJ_hE_nHvtvM",
-          "count": 4,
-          "rating": 4.5
-        },
-        {
-          "name": "フェリーチェ 練馬中村橋園",
-          "placeId": "ChIJF5cU6rHtGGARE3OZgLrHKBs",
-          "count": 4,
-          "rating": 4.8
-        },
-        {
-          "name": "フェリーチェ 南行徳園",
-          "placeId": "ChIJxfYClqmHGGARNxWFyGrt2Mg",
-          "count": 2,
-          "rating": 5.0
-        },
-        {
-          "name": "フェリーチェ 東川口園",
-          "placeId": "ChIJ6XMEHgaVGGARGzFHI1-Ly_o",
-          "count": 2,
-          "rating": 5.0
-        },
-        {
-          "name": "フェリーチェ 稲城長沼園",
-          "placeId": "ChIJAT_un8j6GGARRJDWMAye3XE",
-          "count": 2,
-          "rating": 4.5
-        },
-        {
-          "name": "フェリーチェ 大田馬込園",
-          "placeId": "ChIJ0QP_5KGKGGAR2U-hrZrUCZA",
-          "count": 2,
-          "rating": 5.0
-        },
-        {
-          "name": "フェリーチェ 相武台前園",
-          "placeId": "ChIJmfaEZpz_GGARzgWS_10r0o8",
-          "count": 1,
-          "rating": 5.0
-        },
-        {
-          "name": "フェリーチェ 行徳園",
-          "placeId": "ChIJc2MR3muHGGARhHtG6RP1dKU",
-          "count": 1,
-          "rating": 5.0
-        },
-        {
-          "name": "フェリーチェ 朝霞園",
-          "placeId": "ChIJgbwKmXfpGGARsTdBJiV-YpU",
-          "count": 1,
-          "rating": 5.0
-        },
-        {
-          "name": "フェリーチェ 鳩ヶ谷園",
-          "placeId": "ChIJ02cMqmOUGGARQmncmaR1mXE",
-          "count": 1,
-          "rating": 5.0
-        },
-        {
-          "name": "フェリーチェ 新座園",
-          "placeId": "ChIJt9t-ubLpGGARbSs4iZCwOMU",
-          "count": 1,
-          "rating": 5.0
-        },
-        {
-          "name": "フェリーチェ 和光園",
-          "placeId": "ChIJ21XWI-DrGGARJjwrKXbBVx8",
-          "count": 1,
-          "rating": 4.0
-        },
-        {
-          "name": "フェリーチェ 蕨園",
-          "placeId": "ChIJm_dqt2_rGGARZOwV9-OkTxQ",
-          "count": 1,
-          "rating": 5.0
-        },
-        {
-          "name": "フェリーチェ 蕨Ⅱ園",
-          "placeId": "ChIJlzqtUpfrGGARUsZBMphXEXA",
-          "count": 1,
-          "rating": 5.0
-        },
-        {
-          "name": "フェリーチェ 和光Ⅱ園",
-          "placeId": "ChIJUboxFebrGGAR4wU8-2A2zno",
+          "name": "イオンゆめみらい保育園 宇城",
+          "placeId": "ChIJ492aBJaJQDUR_0LZon8uhF8",
           "count": 0,
           "rating": null
         },
         {
-          "name": "フェリーチェ 病児保育室にじのへや",
-          "placeId": "ChIJK9MxgKLrGGARUiRQk2GgMaU",
+          "name": "イオンゆめみらい保育園 熊本",
+          "placeId": "ChIJ2R-crE_zQDURDXaJvniJRF4",
+          "count": 0,
+          "rating": null
+        },
+        {
+          "name": "イオンゆめみらい保育園 松本",
+          "placeId": "ChIJI8ED2ZQOHWARGEZmtImkqIU",
           "count": 0,
           "rating": null
         }

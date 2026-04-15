@@ -68,12 +68,13 @@ function aggregateByBrand(nurseries: GroupNursery[]): GroupBrandSummary[] {
 	});
 }
 
-/** シートデータ → JSON */
+/** シートデータ → JSON（brand/categoryはclassifyBrandで再計算） */
 function parseSheetRows(rows: string[][]): GroupReviewsData | null {
 	if (rows.length < 2) return null;
 	const exportedAt = rows[1]?.[0] ?? "";
 	const nurseries: GroupNursery[] = rows.slice(1).map((row) => {
 		const name = row[1] ?? "";
+		// 保存済みのbrand/categoryは無視して現行ロジックで再分類
 		const { brand, category } = classifyBrand(name);
 		return {
 			name,
