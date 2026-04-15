@@ -20,11 +20,15 @@ export default function GroupReviewsPanel() {
 	const [error, setError] = useState<string | null>(null);
 	const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>("all");
 	const [brandFilter, setBrandFilter] = useState<string>("all");
-	const [expandedBrand, setExpandedBrand] = useState<string | null>(null);
-	const [nurserySortKey, setNurserySortKey] = useState<"count" | "rating" | "name">("count");
+	const [nurserySortKey, setNurserySortKey] = useState<
+		"count" | "rating" | "name"
+	>("count");
 	const [nurserySortDir, setNurserySortDir] = useState<"asc" | "desc">("desc");
 	const [uploading, setUploading] = useState(false);
-	const [uploadMsg, setUploadMsg] = useState<{ type: "success" | "error"; text: string } | null>(null);
+	const [uploadMsg, setUploadMsg] = useState<{
+		type: "success" | "error";
+		text: string;
+	} | null>(null);
 	const fileInputRef = useRef<HTMLInputElement>(null);
 
 	useEffect(() => {
@@ -70,7 +74,8 @@ export default function GroupReviewsPanel() {
 	}, [filteredBrands]);
 
 	const handleNurserySort = (key: "count" | "rating" | "name") => {
-		if (nurserySortKey === key) setNurserySortDir(nurserySortDir === "asc" ? "desc" : "asc");
+		if (nurserySortKey === key)
+			setNurserySortDir(nurserySortDir === "asc" ? "desc" : "asc");
 		else {
 			setNurserySortKey(key);
 			setNurserySortDir(key === "name" ? "asc" : "desc");
@@ -91,7 +96,10 @@ export default function GroupReviewsPanel() {
 				if (n.rating != null) ratings.push(n.rating);
 			}
 		}
-		const avg = ratings.length > 0 ? ratings.reduce((s, v) => s + v, 0) / ratings.length : null;
+		const avg =
+			ratings.length > 0
+				? ratings.reduce((s, v) => s + v, 0) / ratings.length
+				: null;
 		return { count, reviews, avg };
 	}, [filteredBrands]);
 
@@ -103,11 +111,17 @@ export default function GroupReviewsPanel() {
 		try {
 			const formData = new FormData();
 			formData.append("file", file);
-			const res = await fetch("/api/group-reviews", { method: "POST", body: formData });
+			const res = await fetch("/api/group-reviews", {
+				method: "POST",
+				body: formData,
+			});
 			const json = await res.json();
 			if (!res.ok) throw new Error(json.error ?? "アップロード失敗");
 			setData(json.data);
-			setUploadMsg({ type: "success", text: `${json.rowCount}園のデータを更新しました` });
+			setUploadMsg({
+				type: "success",
+				text: `${json.rowCount}園のデータを更新しました`,
+			});
 		} catch (err) {
 			setUploadMsg({ type: "error", text: String(err) });
 		} finally {
@@ -128,7 +142,9 @@ export default function GroupReviewsPanel() {
 		return (
 			<div className="bg-white shadow-sm p-5">
 				<div className="flex items-center justify-between mb-3">
-					<h3 className="text-base font-bold text-gray-700">グループ園口コミサマリー</h3>
+					<h3 className="text-base font-bold text-gray-700">
+						グループ園口コミサマリー
+					</h3>
 					<UploadButton
 						uploading={uploading}
 						fileInputRef={fileInputRef}
@@ -147,7 +163,9 @@ export default function GroupReviewsPanel() {
 			{/* ヘッダー */}
 			<div className="flex items-center justify-between px-5 pt-4 pb-3 border-b border-gray-100">
 				<div>
-					<h3 className="text-base font-bold text-gray-700">グループ園口コミサマリー</h3>
+					<h3 className="text-base font-bold text-gray-700">
+						グループ園口コミサマリー
+					</h3>
 					<p className="text-xs text-gray-500 mt-0.5">
 						データ取得日: {data.exportedAt}（Excel受領ベース）
 					</p>
@@ -157,7 +175,9 @@ export default function GroupReviewsPanel() {
 						<span className="text-sm text-gray-500">分類:</span>
 						<select
 							value={categoryFilter}
-							onChange={(e) => setCategoryFilter(e.target.value as CategoryFilter)}
+							onChange={(e) =>
+								setCategoryFilter(e.target.value as CategoryFilter)
+							}
 							className="text-sm border border-gray-300 rounded-md px-2 py-1"
 						>
 							<option value="all">全て</option>
@@ -184,11 +204,15 @@ export default function GroupReviewsPanel() {
 			<div className="grid grid-cols-3 gap-4 p-5">
 				<div className="text-center">
 					<div className="text-xs text-gray-500 mb-1">園数</div>
-					<div className="text-2xl font-bold text-gray-900">{totals.count}園</div>
+					<div className="text-2xl font-bold text-gray-900">
+						{totals.count}園
+					</div>
 				</div>
 				<div className="text-center">
 					<div className="text-xs text-gray-500 mb-1">総クチコミ数</div>
-					<div className="text-2xl font-bold text-gray-900">{totals.reviews}件</div>
+					<div className="text-2xl font-bold text-gray-900">
+						{totals.reviews}件
+					</div>
 				</div>
 				<div className="text-center">
 					<div className="text-xs text-gray-500 mb-1">平均評価</div>
@@ -212,23 +236,40 @@ export default function GroupReviewsPanel() {
 							<th className="text-center px-4 py-2">総クチコミ</th>
 							<th className="text-center px-4 py-2">1園平均</th>
 							<th className="text-center px-4 py-2">平均評価</th>
-							<th className="text-center px-4 py-2">詳細</th>
 						</tr>
 					</thead>
 					<tbody>
 						{filteredBrands.map((b) => (
-							<BrandRow
+							<tr
 								key={`${b.category}|${b.brand}`}
-								brand={b}
-								expanded={expandedBrand === `${b.category}|${b.brand}`}
-								onToggle={() =>
-									setExpandedBrand(
-										expandedBrand === `${b.category}|${b.brand}`
-											? null
-											: `${b.category}|${b.brand}`,
-									)
-								}
-							/>
+								className="border-b border-gray-100 hover:bg-gray-50"
+							>
+								<td className="px-4 py-2">
+									<span
+										className={`inline-block px-2 py-0.5 text-xs ${b.category === "自社" ? "bg-brand-50 text-brand-700" : "bg-gray-100 text-gray-600"}`}
+									>
+										{b.category}
+									</span>
+								</td>
+								<td className="px-4 py-2 font-medium text-gray-800">
+									{b.brand}
+								</td>
+								<td className="px-4 py-2 text-center tabular-nums text-gray-700">
+									{b.nurseryCount}園
+								</td>
+								<td className="px-4 py-2 text-center tabular-nums text-gray-700">
+									{b.totalReviews}件
+								</td>
+								<td className="px-4 py-2 text-center tabular-nums text-gray-500">
+									{b.nurseryCount > 0
+										? (b.totalReviews / b.nurseryCount).toFixed(1)
+										: "-"}
+									件
+								</td>
+								<td className="px-4 py-2 text-center tabular-nums font-semibold text-gray-800">
+									{b.avgRating != null ? b.avgRating.toFixed(2) : "-"}
+								</td>
+							</tr>
 						))}
 					</tbody>
 				</table>
@@ -256,7 +297,7 @@ export default function GroupReviewsPanel() {
 						</select>
 					</div>
 				</div>
-				<div className="overflow-x-auto max-h-[500px]">
+				<div className="overflow-auto max-h-[500px]">
 					<table className="w-full text-sm">
 						<thead className="sticky top-0 z-10 bg-gray-50 border-b-2 border-gray-200 text-gray-600">
 							<tr>
@@ -284,7 +325,10 @@ export default function GroupReviewsPanel() {
 						</thead>
 						<tbody>
 							{allNurseries.map((n) => (
-								<tr key={n.placeId} className="border-b border-gray-100 hover:bg-gray-50">
+								<tr
+									key={n.placeId}
+									className="border-b border-gray-100 hover:bg-gray-50"
+								>
 									<td className="px-4 py-1.5">
 										<span
 											className={`inline-block px-2 py-0.5 text-xs ${n.category === "自社" ? "bg-brand-50 text-brand-700" : "bg-gray-100 text-gray-600"}`}
@@ -340,7 +384,12 @@ function UploadButton({
 					</>
 				) : (
 					<>
-						<svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<svg
+							className="w-3.5 h-3.5"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+						>
 							<path
 								strokeLinecap="round"
 								strokeLinejoin="round"
@@ -353,85 +402,5 @@ function UploadButton({
 				)}
 			</button>
 		</>
-	);
-}
-
-function BrandRow({
-	brand,
-	expanded,
-	onToggle,
-}: {
-	brand: GroupBrandSummary;
-	expanded: boolean;
-	onToggle: () => void;
-}) {
-	const perNursery = brand.nurseryCount > 0 ? (brand.totalReviews / brand.nurseryCount).toFixed(1) : "-";
-	return (
-		<>
-			<tr className="border-b border-gray-100 hover:bg-gray-50">
-				<td className="px-4 py-2">
-					<span
-						className={`inline-block px-2 py-0.5 text-xs ${brand.category === "自社" ? "bg-brand-50 text-brand-700" : "bg-gray-100 text-gray-600"}`}
-					>
-						{brand.category}
-					</span>
-				</td>
-				<td className="px-4 py-2 font-medium text-gray-800">{brand.brand}</td>
-				<td className="px-4 py-2 text-center tabular-nums text-gray-700">
-					{brand.nurseryCount}園
-				</td>
-				<td className="px-4 py-2 text-center tabular-nums text-gray-700">
-					{brand.totalReviews}件
-				</td>
-				<td className="px-4 py-2 text-center tabular-nums text-gray-500">{perNursery}件</td>
-				<td className="px-4 py-2 text-center tabular-nums font-semibold text-gray-800">
-					{brand.avgRating != null ? brand.avgRating.toFixed(2) : "-"}
-				</td>
-				<td className="px-4 py-2 text-center">
-					<button
-						onClick={onToggle}
-						className="text-xs text-brand-600 hover:text-brand-700"
-					>
-						{expanded ? "閉じる" : "展開"}
-					</button>
-				</td>
-			</tr>
-			{expanded && (
-				<tr>
-					<td colSpan={7} className="bg-gray-50 px-5 py-3">
-						<NurseryList nurseries={brand.nurseries} />
-					</td>
-				</tr>
-			)}
-		</>
-	);
-}
-
-function NurseryList({ nurseries }: { nurseries: GroupNursery[] }) {
-	return (
-		<div className="overflow-x-auto">
-			<table className="w-full text-xs">
-				<thead>
-					<tr className="text-gray-500 border-b border-gray-200">
-						<th className="text-left px-2 py-1">園名</th>
-						<th className="text-center px-2 py-1">クチコミ数</th>
-						<th className="text-center px-2 py-1">評価</th>
-					</tr>
-				</thead>
-				<tbody>
-					{nurseries.map((n) => (
-						<tr key={n.placeId} className="border-b border-gray-100">
-							<td className="px-2 py-1 text-gray-700">{n.name}</td>
-							<td className="px-2 py-1 text-center tabular-nums text-gray-700">
-								{n.count}件
-							</td>
-							<td className="px-2 py-1 text-center tabular-nums text-gray-700">
-								{n.rating != null ? n.rating.toFixed(1) : "-"}
-							</td>
-						</tr>
-					))}
-				</tbody>
-			</table>
-		</div>
 	);
 }

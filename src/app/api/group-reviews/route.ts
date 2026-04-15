@@ -50,13 +50,20 @@ function aggregateByBrand(nurseries: GroupNursery[]): GroupBrandSummary[] {
 	const result: GroupBrandSummary[] = [];
 	grouped.forEach((list: GroupNursery[], key: string) => {
 		const [category, brand] = key.split("|");
-		const totalReviews = list.reduce((s: number, n: GroupNursery) => s + n.count, 0);
+		const totalReviews = list.reduce(
+			(s: number, n: GroupNursery) => s + n.count,
+			0,
+		);
 		const ratings = list
 			.filter((n: GroupNursery) => n.rating != null)
 			.map((n: GroupNursery) => n.rating as number);
 		const avgRating =
 			ratings.length > 0
-				? Math.round((ratings.reduce((s: number, v: number) => s + v, 0) / ratings.length) * 100) / 100
+				? Math.round(
+						(ratings.reduce((s: number, v: number) => s + v, 0) /
+							ratings.length) *
+							100,
+					) / 100
 				: null;
 		result.push({
 			category: category as BrandCategory,
@@ -64,7 +71,9 @@ function aggregateByBrand(nurseries: GroupNursery[]): GroupBrandSummary[] {
 			nurseryCount: list.length,
 			totalReviews,
 			avgRating,
-			nurseries: [...list].sort((a: GroupNursery, b: GroupNursery) => b.count - a.count),
+			nurseries: [...list].sort(
+				(a: GroupNursery, b: GroupNursery) => b.count - a.count,
+			),
 		});
 	});
 	return result.sort((a, b) => {
@@ -102,7 +111,10 @@ interface UploadRow {
 	rating: number | null;
 }
 
-function buildFromRows(rows: UploadRow[], exportedAt: string): GroupReviewsData {
+function buildFromRows(
+	rows: UploadRow[],
+	exportedAt: string,
+): GroupReviewsData {
 	const nurseries: GroupNursery[] = rows.map((r) => {
 		const { brand, category } = classifyBrand(r.name);
 		return { ...r, brand, category };
@@ -111,7 +123,15 @@ function buildFromRows(rows: UploadRow[], exportedAt: string): GroupReviewsData 
 }
 
 function toSheetRows(data: GroupReviewsData): string[][] {
-	const header = ["取得日", "園名", "Place ID", "クチコミ数", "星評価", "ブランド", "カテゴリ"];
+	const header = [
+		"取得日",
+		"園名",
+		"Place ID",
+		"クチコミ数",
+		"星評価",
+		"ブランド",
+		"カテゴリ",
+	];
 	const rows: string[][] = [header];
 	for (const b of data.brands) {
 		for (const n of b.nurseries) {
@@ -130,8 +150,13 @@ function toSheetRows(data: GroupReviewsData): string[][] {
 }
 
 export async function GET() {
-	// 優先: public/group-reviews/data.json (Sheetsより信頼できる静的データ)
-	const filePath = path.join(process.cwd(), "public", "group-reviews", "data.json");
+	// public/group-reviews/data.json のみを使用（Sheetsは使わない）
+	const filePath = path.join(
+		process.cwd(),
+		"public",
+		"group-reviews",
+		"data.json",
+	);
 	try {
 		const raw = fs.readFileSync(filePath, "utf-8");
 		const parsed = JSON.parse(raw) as GroupReviewsData;
@@ -149,31 +174,19 @@ export async function GET() {
 				});
 			}
 		}
-		if (flat.length > 0) {
-			return NextResponse.json({
-				exportedAt: parsed.exportedAt,
-				brands: aggregateByBrand(flat),
-			});
-		}
+		return NextResponse.json({
+			exportedAt: parsed.exportedAt,
+			brands: aggregateByBrand(flat),
+		});
 	} catch {
-		// JSONがない場合はSheetsへフォールバック
+		return NextResponse.json(
+			{
+				error:
+					"グループ園データがありません。Excelをアップロードしてください。",
+			},
+			{ status: 500 },
+		);
 	}
-
-	// フォールバック: Google Sheets
-	try {
-		const rows = await getSheetData(GROUP_REVIEWS_SHEET_NAME, process.env.GOOGLE_SHEET_ID);
-		const data = parseSheetRows(rows);
-		if (data && data.brands.length > 0) {
-			return NextResponse.json(data);
-		}
-	} catch {
-		// fall through
-	}
-
-	return NextResponse.json(
-		{ error: "グループ園データがありません。Excelをアップロードしてください。" },
-		{ status: 500 },
-	);
 }
 
 /** Excelを解析してグループ園データを更新 */
@@ -182,7 +195,10 @@ export async function POST(req: NextRequest) {
 		const formData = await req.formData();
 		const file = formData.get("file");
 		if (!file || typeof file === "string") {
-			return NextResponse.json({ error: "ファイルが添付されていません" }, { status: 400 });
+			return NextResponse.json(
+				{ error: "ファイルが添付されていません" },
+				{ status: 400 },
+			);
 		}
 
 		// ExcelJSで読み取り
@@ -220,7 +236,8 @@ export async function POST(req: NextRequest) {
 			if (!placeId) return;
 			const countCell = row.getCell(18).value;
 			const ratingCell = row.getCell(30).value;
-			const count = typeof countCell === "number" ? countCell : Number(countCell) || 0;
+			const count =
+				typeof countCell === "number" ? countCell : Number(countCell) || 0;
 			const rating =
 				typeof ratingCell === "number" && ratingCell > 0
 					? ratingCell
@@ -231,7 +248,10 @@ export async function POST(req: NextRequest) {
 		});
 
 		if (rows.length === 0) {
-			return NextResponse.json({ error: "有効なデータ行が見つかりませんでした" }, { status: 400 });
+			return NextResponse.json(
+				{ error: "有効なデータ行が見つかりませんでした" },
+				{ status: 400 },
+			);
 		}
 
 		const today = new Date().toISOString().slice(0, 10);
