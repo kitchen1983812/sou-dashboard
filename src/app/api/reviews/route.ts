@@ -7,8 +7,10 @@ import {
 	getMonthlyGoal,
 	BASELINE_CONFIG,
 } from "@/config/reviewConfig";
+import { getSheetData } from "@/lib/googleSheets";
+import { GROUP_REVIEWS_SHEET_NAME, classifyBrand } from "@/config/brandConfig";
 
-/** 5分間キャッシュ（current.jsonはファイル読み込みのみ、API呼び出しなし） */
+/** 5分間キャッシュ */
 export const revalidate = 300;
 
 /** スナップショットファイルの型 */
@@ -68,7 +70,7 @@ function loadBaselineSnapshot() {
 	return loadSnapshot(BASELINE_CONFIG.snapshotName);
 }
 
-/** current.json を読み込む（自園+競合の最新データ） */
+/** current.json を読み込む（フォールバック用） */
 function loadCurrentData(): CurrentFile | null {
 	const filePath = path.join(
 		process.cwd(),
@@ -79,6 +81,39 @@ function loadCurrentData(): CurrentFile | null {
 	try {
 		const raw = fs.readFileSync(filePath, "utf-8");
 		return JSON.parse(raw);
+	} catch {
+		return null;
+	}
+}
+
+/** group-reviewsデータからフェリーチェ自社データを構築 */
+async function loadCurrentFromGroupReviews(): Promise<CurrentFile | null> {
+	try {
+		const rows = await getSheetData(
+			GROUP_REVIEWS_SHEET_NAME,
+			process.env.GOOGLE_SHEET_ID,
+		);
+		if (rows.length < 2) return null;
+		const exportedAt = rows[1]?.[0] ?? new Date().toISOString().slice(0, 10);
+		const nurseries: Record<string, SnapshotEntry> = {};
+		// 列順: [取得日, 園名, Place ID, クチコミ数, 星評価, ブランド, カテゴリ]
+		for (const row of rows.slice(1)) {
+			const name = row[1] ?? "";
+			const placeId = row[2] ?? "";
+			if (!placeId) continue;
+			const { brand, category } = classifyBrand(name);
+			// 自社のみ（フェリーチェ・わくわく・ことり）
+			if (category !== "自社") continue;
+			void brand;
+			nurseries[placeId] = {
+				name,
+				area: NURSERIES.find((n) => n.placeId === placeId)?.area ?? "",
+				count: Number(row[3] ?? 0),
+				rating: row[4] ? Number(row[4]) : null,
+			};
+		}
+		if (Object.keys(nurseries).length === 0) return null;
+		return { date: exportedAt, nurseries, competitors: {} };
 	} catch {
 		return null;
 	}
@@ -106,7 +141,9 @@ export interface CompetitorReviewData {
 }
 
 export async function GET() {
-	const current = loadCurrentData();
+	// 優先: group-reviews（Excel経由で更新）からフェリーチェデータを取得
+	// フォールバック: 旧 current.json（Places API日次取得）
+	const current = (await loadCurrentFromGroupReviews()) ?? loadCurrentData();
 	if (!current) {
 		return NextResponse.json(
 			{

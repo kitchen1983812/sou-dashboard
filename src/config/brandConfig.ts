@@ -30,6 +30,11 @@ export const BRAND_RULES: BrandRule[] = [
 		brand: "イオンゆめみらい保育園",
 		category: "グループ",
 	},
+	{
+		match: (n) => n.startsWith("ドリームキッズグローバルアカデミー"),
+		brand: "ドリームキッズグローバルアカデミー",
+		category: "グループ",
+	},
 ];
 
 export function classifyBrand(name: string): { brand: string; category: BrandCategory } {

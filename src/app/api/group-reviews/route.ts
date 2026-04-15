@@ -33,10 +33,16 @@ interface GroupReviewsData {
 	brands: GroupBrandSummary[];
 }
 
-/** 園リスト → ブランド別に集計 */
+/** 園リスト → ブランド別に集計（各nurseryにbrand/category保証） */
 function aggregateByBrand(nurseries: GroupNursery[]): GroupBrandSummary[] {
+	// brand/categoryが未設定のnurseryは再分類
+	const normalized = nurseries.map((n) => {
+		if (n.brand && n.category) return n;
+		const { brand, category } = classifyBrand(n.name);
+		return { ...n, brand, category };
+	});
 	const grouped = new Map<string, GroupNursery[]>();
-	for (const n of nurseries) {
+	for (const n of normalized) {
 		const key = `${n.category}|${n.brand}`;
 		if (!grouped.has(key)) grouped.set(key, []);
 		grouped.get(key)!.push(n);
@@ -139,7 +145,26 @@ export async function GET() {
 	const filePath = path.join(process.cwd(), "public", "group-reviews", "data.json");
 	try {
 		const raw = fs.readFileSync(filePath, "utf-8");
-		return NextResponse.json(JSON.parse(raw));
+		const parsed = JSON.parse(raw) as GroupReviewsData;
+		// 各nurseryにbrand/categoryを必ず付与（古いJSONフォーマット対応）
+		const flat: GroupNursery[] = [];
+		for (const b of parsed.brands ?? []) {
+			for (const n of b.nurseries ?? []) {
+				const { brand, category } = classifyBrand(n.name);
+				flat.push({
+					name: n.name,
+					placeId: n.placeId,
+					count: n.count,
+					rating: n.rating,
+					brand,
+					category,
+				});
+			}
+		}
+		return NextResponse.json({
+			exportedAt: parsed.exportedAt,
+			brands: aggregateByBrand(flat),
+		});
 	} catch {
 		return NextResponse.json(
 			{ error: "グループ園データがありません。Excelをアップロードしてください。" },

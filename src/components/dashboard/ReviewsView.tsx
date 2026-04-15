@@ -150,12 +150,12 @@ export default function ReviewsView() {
 		};
 	}, [data]);
 
-	// --- MVPランキング（今月増加数 top 3）---
+	// --- MVPランキング（施策開始3/28比 top 3）---
 	const ranking = useMemo(() => {
 		if (!data) return [];
 		return [...data.reviews]
-			.filter((r) => r.monthlyIncrease !== null && r.monthlyIncrease > 0)
-			.sort((a, b) => (b.monthlyIncrease ?? 0) - (a.monthlyIncrease ?? 0))
+			.filter((r) => r.baselineIncrease !== null && r.baselineIncrease > 0)
+			.sort((a, b) => (b.baselineIncrease ?? 0) - (a.baselineIncrease ?? 0))
 			.slice(0, 3);
 	}, [data]);
 
@@ -473,18 +473,18 @@ export default function ReviewsView() {
 				</div>
 			)}
 
-			{/* 今月のMVPランキング */}
-			{hasSnapshot && (
+			{/* 施策開始比 MVPランキング */}
+			{hasBaseline && (
 				<div className="bg-white shadow-sm p-5">
 					<h3 className="text-base font-bold text-gray-700 mb-3">
-						今月の口コミ獲得ランキング
+						口コミ獲得ランキング
 						<span className="text-xs font-normal text-gray-400 ml-2">
-							（{data.snapshotDate} 比較）
+							（施策開始 {data.baselineStartDate} 比較）
 						</span>
 					</h3>
 					{ranking.length === 0 ? (
 						<p className="text-sm text-gray-400">
-							今月の増加がある園はまだありません
+							施策開始後の増加がある園はまだありません
 						</p>
 					) : (
 						<div className="space-y-2">
@@ -502,10 +502,10 @@ export default function ReviewsView() {
 									</div>
 									<div className="text-right">
 										<div className="text-lg font-bold text-green-600">
-											+{r.monthlyIncrease}件
+											+{r.baselineIncrease}件
 										</div>
 										<div className="text-xs text-gray-400">
-											目標 {r.monthlyGoal}件
+											半年目標 {data.halfYearGoal}件
 										</div>
 									</div>
 									{/* 目標達成率バー */}
@@ -515,7 +515,7 @@ export default function ReviewsView() {
 												className="bg-brand-500 h-2 rounded-full"
 												style={{
 													width: `${Math.min(
-														((r.monthlyIncrease ?? 0) / r.monthlyGoal) * 100,
+														((r.baselineIncrease ?? 0) / (data.halfYearGoal || 10)) * 100,
 														100,
 													)}%`,
 												}}
@@ -523,7 +523,7 @@ export default function ReviewsView() {
 										</div>
 										<div className="text-xs text-gray-400 text-right mt-0.5">
 											{Math.round(
-												((r.monthlyIncrease ?? 0) / r.monthlyGoal) * 100,
+												((r.baselineIncrease ?? 0) / (data.halfYearGoal || 10)) * 100,
 											)}
 											%
 										</div>
