@@ -33,7 +33,7 @@ export default function GroupReviewsPanel() {
 	const fileInputRef = useRef<HTMLInputElement>(null);
 
 	useEffect(() => {
-		fetch("/api/group-reviews")
+		fetch(`/api/group-reviews?_=${Date.now()}`, { cache: "no-store" })
 			.then((r) => r.json())
 			.then((d) => {
 				if (d.error) setError(d.error);
@@ -233,10 +233,16 @@ export default function GroupReviewsPanel() {
 						<tr className="bg-gray-50 border-b-2 border-gray-200 text-gray-600">
 							<th className="text-left px-4 py-2">カテゴリ</th>
 							<th className="text-left px-4 py-2">ブランド</th>
-							<th className="text-center px-4 py-2">園数</th>
-							<th className="text-center px-4 py-2">総クチコミ</th>
-							<th className="text-center px-4 py-2">1園平均</th>
-							<th className="text-center px-4 py-2">平均評価</th>
+							<th className="text-center px-4 py-2 whitespace-nowrap">園数</th>
+							<th className="text-center px-4 py-2 whitespace-nowrap">
+								総クチコミ
+							</th>
+							<th className="text-center px-4 py-2 whitespace-nowrap">
+								1園平均
+							</th>
+							<th className="text-center px-4 py-2 whitespace-nowrap">
+								平均評価
+							</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -252,7 +258,7 @@ export default function GroupReviewsPanel() {
 										{b.category}
 									</span>
 								</td>
-								<td className="px-4 py-2 font-medium text-gray-800">
+								<td className="px-4 py-2 font-medium text-gray-800 whitespace-nowrap">
 									{b.brand}
 								</td>
 								<td className="px-4 py-2 text-center tabular-nums text-gray-700">
@@ -278,16 +284,18 @@ export default function GroupReviewsPanel() {
 
 			{/* 園別一覧 */}
 			<div className="border-t border-gray-100 mt-2">
-				<div className="flex items-center justify-between px-5 py-3">
-					<div className="text-sm font-semibold text-gray-700">
+				<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 px-3 md:px-5 py-3">
+					<div className="text-sm font-semibold text-gray-700 whitespace-nowrap">
 						園別一覧（{allNurseries.length}園）
 					</div>
 					<div className="flex items-center gap-2">
-						<span className="text-sm text-gray-500">ブランド:</span>
+						<span className="text-sm text-gray-500 whitespace-nowrap">
+							ブランド:
+						</span>
 						<select
 							value={brandFilter}
 							onChange={(e) => setBrandFilter(e.target.value)}
-							className="text-sm border border-gray-300 rounded-md px-2 py-1"
+							className="text-sm border border-gray-300 rounded-md px-2 py-1 min-h-11 flex-1 sm:flex-none"
 						>
 							<option value="all">全て</option>
 							{brandOptions.map((b) => (
@@ -298,7 +306,7 @@ export default function GroupReviewsPanel() {
 						</select>
 					</div>
 				</div>
-				<ScrollableTable minWidth={640} maxHeight={500} showScrollHint={false}>
+				<ScrollableTable minWidth={720} maxHeight={500} showScrollHint={true}>
 					<table className="w-full text-sm">
 						<thead className="sticky top-0 z-10 bg-gray-50 border-b-2 border-gray-200 text-gray-600">
 							<tr>
@@ -337,8 +345,12 @@ export default function GroupReviewsPanel() {
 											{n.category}
 										</span>
 									</td>
-									<td className="px-4 py-1.5 text-gray-600">{n.brand}</td>
-									<td className="px-4 py-1.5 text-gray-800">{n.name}</td>
+									<td className="px-4 py-1.5 text-gray-600 whitespace-nowrap">
+										{n.brand}
+									</td>
+									<td className="px-4 py-1.5 text-gray-800 whitespace-nowrap">
+										{n.name}
+									</td>
 									<td className="px-4 py-1.5 text-center tabular-nums text-gray-700">
 										{n.count}件
 									</td>
