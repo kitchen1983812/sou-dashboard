@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useMemo, useRef } from "react";
 import type { StaffNursery } from "@/app/api/staff/route";
+import ScrollableTable from "@/components/ui/ScrollableTable";
 
 interface StaffResponse {
 	exportedAt: string;
@@ -34,7 +35,10 @@ export default function StaffView() {
 	const [sortDir, setSortDir] = useState<SortDir>("desc");
 	const [areaFilter, setAreaFilter] = useState("all");
 	const [uploading, setUploading] = useState(false);
-	const [uploadMsg, setUploadMsg] = useState<{ type: "success" | "error"; text: string } | null>(null);
+	const [uploadMsg, setUploadMsg] = useState<{
+		type: "success" | "error";
+		text: string;
+	} | null>(null);
 	const fileInputRef = useRef<HTMLInputElement>(null);
 
 	useEffect(() => {
@@ -82,7 +86,9 @@ export default function StaffView() {
 			const json = await res.json();
 			if (!res.ok) throw new Error(json.error ?? "アップロード失敗");
 			setData(json.data);
-			const warn = json.warnings?.length ? `（警告: ${json.warnings.join(" / ")}）` : "";
+			const warn = json.warnings?.length
+				? `（警告: ${json.warnings.join(" / ")}）`
+				: "";
 			setUploadMsg({ type: "success", text: `更新しました${warn}` });
 		} catch (err) {
 			setUploadMsg({ type: "error", text: String(err) });
@@ -129,22 +135,31 @@ export default function StaffView() {
 	// フィルター後の集計
 	const filtTotal = sorted.reduce((s, n) => s + n.total, 0);
 	const filtSeishain = sorted.reduce((s, n) => s + n.seishain, 0);
-	const filtRate = filtTotal > 0 ? Math.round((filtSeishain / filtTotal) * 100 * 10) / 10 : 0;
+	const filtRate =
+		filtTotal > 0 ? Math.round((filtSeishain / filtTotal) * 100 * 10) / 10 : 0;
 
 	return (
 		<div className="space-y-5">
 			{/* サマリーカード */}
-			<div className="grid grid-cols-3 gap-4">
+			<div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
 				<div className="bg-white shadow-sm p-4 text-center">
 					<div className="text-xs text-gray-500 mb-1">全職員数</div>
-					<div className="text-2xl font-bold text-gray-900">{summary.total}名</div>
+					<div className="text-2xl font-bold text-gray-900">
+						{summary.total}名
+					</div>
 				</div>
 				<div className="bg-white shadow-sm p-4 text-center">
-					<div className="text-xs text-gray-500 mb-1">正社員数（正社員＋管理監督者）</div>
-					<div className="text-2xl font-bold text-gray-900">{summary.seishain}名</div>
+					<div className="text-xs text-gray-500 mb-1">
+						正社員数（正社員＋管理監督者）
+					</div>
+					<div className="text-2xl font-bold text-gray-900">
+						{summary.seishain}名
+					</div>
 				</div>
 				<div className="bg-white shadow-sm p-4 text-center">
-					<div className="text-xs text-gray-500 mb-1">正社員比率（全園平均）</div>
+					<div className="text-xs text-gray-500 mb-1">
+						正社員比率（全園平均）
+					</div>
 					<div className={`text-2xl font-bold ${rateColor(summary.rate)}`}>
 						{summary.rate}%
 					</div>
@@ -153,7 +168,9 @@ export default function StaffView() {
 
 			{/* 雇用形態内訳（全体） */}
 			<div className="bg-white shadow-sm p-4">
-				<h3 className="text-sm font-bold text-gray-700 mb-3">雇用形態内訳（全園合計）</h3>
+				<h3 className="text-sm font-bold text-gray-700 mb-3">
+					雇用形態内訳（全園合計）
+				</h3>
 				<div className="flex gap-6 flex-wrap">
 					{Object.keys(EMP_LABELS).map((emp) => {
 						const count = data.nurseries.reduce(
@@ -163,7 +180,9 @@ export default function StaffView() {
 						return (
 							<div key={emp} className="text-center">
 								<div className="text-xs text-gray-500">{EMP_LABELS[emp]}</div>
-								<div className="text-lg font-semibold text-gray-800">{count}名</div>
+								<div className="text-lg font-semibold text-gray-800">
+									{count}名
+								</div>
 							</div>
 						);
 					})}
@@ -171,8 +190,8 @@ export default function StaffView() {
 			</div>
 
 			{/* テーブル */}
-			<div className="bg-white shadow-sm overflow-x-auto">
-				<div className="flex items-center justify-between px-5 pt-4 pb-3">
+			<div className="bg-white shadow-sm">
+				<div className="flex items-center justify-between px-3 md:px-5 pt-4 pb-3 flex-wrap gap-2">
 					<h3 className="text-base font-bold text-gray-700">
 						園別 正社員比率（{data.exportedAt}時点）
 					</h3>
@@ -211,8 +230,18 @@ export default function StaffView() {
 								</>
 							) : (
 								<>
-									<svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-										<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+									<svg
+										className="w-3.5 h-3.5"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24"
+									>
+										<path
+											strokeLinecap="round"
+											strokeLinejoin="round"
+											strokeWidth={2}
+											d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+										/>
 									</svg>
 									CSVを更新
 								</>
@@ -221,112 +250,132 @@ export default function StaffView() {
 					</div>
 				</div>
 				{uploadMsg && (
-					<div className={`mx-5 mb-3 px-3 py-2 text-sm ${uploadMsg.type === "success" ? "bg-gray-50 text-gray-700" : "bg-red-50 text-red-700"}`}>
+					<div
+						className={`mx-5 mb-3 px-3 py-2 text-sm ${uploadMsg.type === "success" ? "bg-gray-50 text-gray-700" : "bg-red-50 text-red-700"}`}
+					>
 						{uploadMsg.text}
 					</div>
 				)}
-				<table className="w-full text-sm">
-					<thead>
-						<tr className="bg-gray-50 border-b-2 border-gray-200 text-gray-600">
-							<th
-								className="text-left px-4 py-2 cursor-pointer hover:text-brand-600"
-								onClick={() => handleSort("name")}
-							>
-								園名 {sortIcon("name")}
-							</th>
-							<th
-								className="text-left px-4 py-2 cursor-pointer hover:text-brand-600"
-								onClick={() => handleSort("area")}
-							>
-								エリア {sortIcon("area")}
-							</th>
-							<th
-								className="text-center px-4 py-2 cursor-pointer hover:text-brand-600"
-								onClick={() => handleSort("total")}
-							>
-								全職員 {sortIcon("total")}
-							</th>
-							<th
-								className="text-center px-4 py-2 cursor-pointer hover:text-brand-600"
-								onClick={() => handleSort("seishain")}
-							>
-								正社員 {sortIcon("seishain")}
-							</th>
-							{Object.keys(EMP_LABELS)
-								.filter((e) => e !== "正社員" && e !== "管理監督者")
-								.map((emp) => (
-									<th key={emp} className="text-center px-4 py-2 text-gray-500 font-normal">
-										{EMP_LABELS[emp]}
-									</th>
-								))}
-							<th
-								className="text-center px-4 py-2 cursor-pointer hover:text-brand-600"
-								onClick={() => handleSort("rate")}
-							>
-								正社員比率 {sortIcon("rate")}
-							</th>
-						</tr>
-					</thead>
-					<tbody>
-						{sorted.map((row) => (
-							<tr key={row.name} className="border-b border-gray-100 hover:bg-gray-50">
-								<td className="px-4 py-2 font-medium text-gray-800">{row.name}</td>
-								<td className="px-4 py-2 text-gray-500">{row.area}</td>
-								<td className="px-4 py-2 text-center tabular-nums text-gray-800">
-									{row.total}名
+				<ScrollableTable minWidth={780} maxHeight={600}>
+					<table className="w-full text-sm">
+						<thead>
+							<tr className="bg-gray-50 border-b-2 border-gray-200 text-gray-600">
+								<th
+									className="text-left px-4 py-2 cursor-pointer hover:text-brand-600"
+									onClick={() => handleSort("name")}
+								>
+									園名 {sortIcon("name")}
+								</th>
+								<th
+									className="text-left px-4 py-2 cursor-pointer hover:text-brand-600"
+									onClick={() => handleSort("area")}
+								>
+									エリア {sortIcon("area")}
+								</th>
+								<th
+									className="text-center px-4 py-2 cursor-pointer hover:text-brand-600"
+									onClick={() => handleSort("total")}
+								>
+									全職員 {sortIcon("total")}
+								</th>
+								<th
+									className="text-center px-4 py-2 cursor-pointer hover:text-brand-600"
+									onClick={() => handleSort("seishain")}
+								>
+									正社員 {sortIcon("seishain")}
+								</th>
+								{Object.keys(EMP_LABELS)
+									.filter((e) => e !== "正社員" && e !== "管理監督者")
+									.map((emp) => (
+										<th
+											key={emp}
+											className="text-center px-4 py-2 text-gray-500 font-normal"
+										>
+											{EMP_LABELS[emp]}
+										</th>
+									))}
+								<th
+									className="text-center px-4 py-2 cursor-pointer hover:text-brand-600"
+									onClick={() => handleSort("rate")}
+								>
+									正社員比率 {sortIcon("rate")}
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							{sorted.map((row) => (
+								<tr
+									key={row.name}
+									className="border-b border-gray-100 hover:bg-gray-50"
+								>
+									<td className="px-4 py-2 font-medium text-gray-800">
+										{row.name}
+									</td>
+									<td className="px-4 py-2 text-gray-500">{row.area}</td>
+									<td className="px-4 py-2 text-center tabular-nums text-gray-800">
+										{row.total}名
+									</td>
+									<td className="px-4 py-2 text-center tabular-nums text-gray-800">
+										{row.seishain}名
+									</td>
+									{Object.keys(EMP_LABELS)
+										.filter((e) => e !== "正社員" && e !== "管理監督者")
+										.map((emp) => (
+											<td
+												key={emp}
+												className="px-4 py-2 text-center tabular-nums text-gray-500"
+											>
+												{row.breakdown[emp] ?? 0}名
+											</td>
+										))}
+									<td
+										className={`px-4 py-2 text-center tabular-nums font-semibold ${rateColor(row.rate)}`}
+									>
+										{/* プログレスバー付き */}
+										<div className="flex items-center gap-2 justify-end">
+											<div className="w-16 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+												<div
+													className="h-full bg-brand-500 rounded-full"
+													style={{ width: `${Math.min(row.rate, 100)}%` }}
+												/>
+											</div>
+											<span className="w-12 text-right">{row.rate}%</span>
+										</div>
+									</td>
+								</tr>
+							))}
+						</tbody>
+						<tfoot>
+							<tr className="bg-gray-50 font-bold border-t-2 border-gray-300">
+								<td className="px-4 py-2 text-gray-800" colSpan={2}>
+									合計（{sorted.length}園）
 								</td>
 								<td className="px-4 py-2 text-center tabular-nums text-gray-800">
-									{row.seishain}名
+									{filtTotal}名
+								</td>
+								<td className="px-4 py-2 text-center tabular-nums text-gray-800">
+									{filtSeishain}名
 								</td>
 								{Object.keys(EMP_LABELS)
 									.filter((e) => e !== "正社員" && e !== "管理監督者")
 									.map((emp) => (
 										<td
 											key={emp}
-											className="px-4 py-2 text-center tabular-nums text-gray-500"
+											className="px-4 py-2 text-center tabular-nums text-gray-600"
 										>
-											{row.breakdown[emp] ?? 0}名
+											{sorted.reduce((s, n) => s + (n.breakdown[emp] ?? 0), 0)}
+											名
 										</td>
 									))}
-								<td className={`px-4 py-2 text-center tabular-nums font-semibold ${rateColor(row.rate)}`}>
-									{/* プログレスバー付き */}
-									<div className="flex items-center gap-2 justify-end">
-										<div className="w-16 h-1.5 bg-gray-100 rounded-full overflow-hidden">
-											<div
-												className="h-full bg-brand-500 rounded-full"
-												style={{ width: `${Math.min(row.rate, 100)}%` }}
-											/>
-										</div>
-										<span className="w-12 text-right">{row.rate}%</span>
-									</div>
+								<td
+									className={`px-4 py-2 text-center tabular-nums font-bold ${rateColor(filtRate)}`}
+								>
+									{filtRate}%
 								</td>
 							</tr>
-						))}
-					</tbody>
-					<tfoot>
-						<tr className="bg-gray-50 font-bold border-t-2 border-gray-300">
-							<td className="px-4 py-2 text-gray-800" colSpan={2}>
-								合計（{sorted.length}園）
-							</td>
-							<td className="px-4 py-2 text-center tabular-nums text-gray-800">
-								{filtTotal}名
-							</td>
-							<td className="px-4 py-2 text-center tabular-nums text-gray-800">
-								{filtSeishain}名
-							</td>
-							{Object.keys(EMP_LABELS)
-								.filter((e) => e !== "正社員" && e !== "管理監督者")
-								.map((emp) => (
-									<td key={emp} className="px-4 py-2 text-center tabular-nums text-gray-600">
-										{sorted.reduce((s, n) => s + (n.breakdown[emp] ?? 0), 0)}名
-									</td>
-								))}
-							<td className={`px-4 py-2 text-center tabular-nums font-bold ${rateColor(filtRate)}`}>
-								{filtRate}%
-							</td>
-						</tr>
-					</tfoot>
-				</table>
+						</tfoot>
+					</table>
+				</ScrollableTable>
 			</div>
 
 			<div className="text-xs text-gray-400 text-right">

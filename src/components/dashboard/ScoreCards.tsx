@@ -106,7 +106,7 @@ export default function ScoreCards({ data, fyLabel }: ScoreCardsProps) {
 			{fyLabel && (
 				<div className="text-sm text-gray-500 font-medium">{fyLabel}</div>
 			)}
-			<div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
+			<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-2 md:gap-3">
 				<ScoreCard
 					title="問い合わせ数"
 					value={data.totalInquiries.toLocaleString()}

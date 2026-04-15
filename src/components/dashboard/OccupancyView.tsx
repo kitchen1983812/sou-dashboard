@@ -3,6 +3,7 @@
 import { useEffect, useState, useMemo } from "react";
 import type { OccupancyNursery } from "@/app/api/occupancy/route";
 import GaugeChart from "@/components/charts/GaugeChart";
+import ScrollableTable from "@/components/ui/ScrollableTable";
 
 interface OccupancyResponse {
 	nurseries: OccupancyNursery[];
@@ -201,17 +202,17 @@ export default function OccupancyView() {
 			)}
 
 			{/* フィルタ + テーブル */}
-			<div className="bg-white shadow-sm p-5 overflow-x-auto">
-				<div className="flex items-center justify-between mb-3">
-					<h3 className="text-base font-bold text-gray-700">
+			<div className="bg-white shadow-sm p-3 md:p-5">
+				<div className="flex items-center justify-between mb-3 flex-wrap gap-2">
+					<h3 className="text-sm md:text-base font-bold text-gray-700">
 						園別×年齢クラス（{data.yearMonth}）
 					</h3>
 					<div className="flex items-center gap-2">
-						<span className="text-sm text-gray-500">エリア:</span>
+						<span className="text-xs md:text-sm text-gray-500">エリア:</span>
 						<select
 							value={areaFilter}
 							onChange={(e) => setAreaFilter(e.target.value)}
-							className="text-sm border border-gray-300 rounded-md px-2 py-1"
+							className="text-sm border border-gray-300 rounded-md px-2 py-1 min-h-11"
 						>
 							<option value="all">全て</option>
 							{areas.map((a) => (
@@ -222,116 +223,120 @@ export default function OccupancyView() {
 						</select>
 					</div>
 				</div>
-
-				<table className="w-full text-sm">
-					<thead>
-						<tr className="bg-gray-50 border-b-2 border-gray-200 text-gray-600">
-							<th
-								className="text-left px-3 py-2 cursor-pointer hover:text-brand-600"
-								onClick={() => handleSort("nursery")}
-							>
-								園名 {sortIcon("nursery")}
-							</th>
-							<th
-								className="text-left px-3 py-2 cursor-pointer hover:text-brand-600"
-								onClick={() => handleSort("area")}
-							>
-								エリア {sortIcon("area")}
-							</th>
-							{AGE_LABELS.map((label) => (
-								<th key={label} className="text-center px-3 py-2 font-semibold">
-									{label}
-								</th>
-							))}
-							<th
-								className="text-center px-3 py-2 cursor-pointer hover:text-brand-600"
-								onClick={() => handleSort("total")}
-							>
-								合計 {sortIcon("total")}
-							</th>
-							<th
-								className="text-center px-3 py-2 cursor-pointer hover:text-brand-600"
-								onClick={() => handleSort("rate")}
-							>
-								充足率 {sortIcon("rate")}
-							</th>
-						</tr>
-					</thead>
-					<tbody>
-						{filtered.map((row) => {
-							const totalCap = row.capacity.reduce((a, b) => a + b, 0);
-							const totalEnr = row.enrolled.reduce((a, b) => a + b, 0);
-							const rate =
-								totalCap > 0 ? Math.round((totalEnr / totalCap) * 100) : 0;
-							return (
-								<tr
-									key={row.nursery}
-									className="border-b border-gray-100 hover:bg-gray-50"
+				<ScrollableTable minWidth={720} maxHeight={600}>
+					<table className="w-full text-sm">
+						<thead>
+							<tr className="bg-gray-50 border-b-2 border-gray-200 text-gray-600">
+								<th
+									className="text-left px-3 py-2 cursor-pointer hover:text-brand-600"
+									onClick={() => handleSort("nursery")}
 								>
-									<td className="px-3 py-2 font-medium text-gray-800">
-										{row.nursery}
-									</td>
-									<td className="px-3 py-2 text-gray-500">{row.area}</td>
-									{AGE_LABELS.map((_, i) => (
-										<td
-											key={i}
-											className={`px-3 py-2 text-center tabular-nums ${rateColor(row.enrolled[i], row.capacity[i])}`}
-										>
-											{cellDisplay(row.enrolled[i], row.capacity[i])}
-										</td>
-									))}
-									<td className="px-3 py-2 text-center tabular-nums font-semibold">
-										{totalEnr}/{totalCap}
-									</td>
-									<td
-										className={`px-3 py-2 text-center tabular-nums font-bold ${rateColor(totalEnr, totalCap)}`}
+									園名 {sortIcon("nursery")}
+								</th>
+								<th
+									className="text-left px-3 py-2 cursor-pointer hover:text-brand-600"
+									onClick={() => handleSort("area")}
+								>
+									エリア {sortIcon("area")}
+								</th>
+								{AGE_LABELS.map((label) => (
+									<th
+										key={label}
+										className="text-center px-3 py-2 font-semibold"
 									>
-										{totalCap > 0 ? `${rate}%` : "-"}
-									</td>
-								</tr>
-							);
-						})}
-					</tbody>
-					<tfoot>
-						<tr className="bg-gray-50 font-bold border-t-2 border-gray-300">
-							<td className="px-3 py-2 text-gray-800" colSpan={2}>
-								合計（{filtered.length}園）
-							</td>
-							{AGE_LABELS.map((_, i) => {
-								const cap = filtered.reduce((s, n) => s + n.capacity[i], 0);
-								const enr = filtered.reduce((s, n) => s + n.enrolled[i], 0);
+										{label}
+									</th>
+								))}
+								<th
+									className="text-center px-3 py-2 cursor-pointer hover:text-brand-600"
+									onClick={() => handleSort("total")}
+								>
+									合計 {sortIcon("total")}
+								</th>
+								<th
+									className="text-center px-3 py-2 cursor-pointer hover:text-brand-600"
+									onClick={() => handleSort("rate")}
+								>
+									充足率 {sortIcon("rate")}
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							{filtered.map((row) => {
+								const totalCap = row.capacity.reduce((a, b) => a + b, 0);
+								const totalEnr = row.enrolled.reduce((a, b) => a + b, 0);
+								const rate =
+									totalCap > 0 ? Math.round((totalEnr / totalCap) * 100) : 0;
 								return (
-									<td
-										key={i}
-										className="px-3 py-2 text-center tabular-nums text-gray-800"
+									<tr
+										key={row.nursery}
+										className="border-b border-gray-100 hover:bg-gray-50"
 									>
-										{enr}/{cap}
-									</td>
+										<td className="px-3 py-2 font-medium text-gray-800">
+											{row.nursery}
+										</td>
+										<td className="px-3 py-2 text-gray-500">{row.area}</td>
+										{AGE_LABELS.map((_, i) => (
+											<td
+												key={i}
+												className={`px-3 py-2 text-center tabular-nums ${rateColor(row.enrolled[i], row.capacity[i])}`}
+											>
+												{cellDisplay(row.enrolled[i], row.capacity[i])}
+											</td>
+										))}
+										<td className="px-3 py-2 text-center tabular-nums font-semibold">
+											{totalEnr}/{totalCap}
+										</td>
+										<td
+											className={`px-3 py-2 text-center tabular-nums font-bold ${rateColor(totalEnr, totalCap)}`}
+										>
+											{totalCap > 0 ? `${rate}%` : "-"}
+										</td>
+									</tr>
 								);
 							})}
-							{(() => {
-								const fCap = filtered.reduce(
-									(s, n) => s + n.capacity.reduce((a, b) => a + b, 0),
-									0,
-								);
-								const fEnr = filtered.reduce(
-									(s, n) => s + n.enrolled.reduce((a, b) => a + b, 0),
-									0,
-								);
-								return (
-									<>
-										<td className="px-3 py-2 text-center tabular-nums text-gray-800">
-											{fEnr}/{fCap}
+						</tbody>
+						<tfoot>
+							<tr className="bg-gray-50 font-bold border-t-2 border-gray-300">
+								<td className="px-3 py-2 text-gray-800" colSpan={2}>
+									合計（{filtered.length}園）
+								</td>
+								{AGE_LABELS.map((_, i) => {
+									const cap = filtered.reduce((s, n) => s + n.capacity[i], 0);
+									const enr = filtered.reduce((s, n) => s + n.enrolled[i], 0);
+									return (
+										<td
+											key={i}
+											className="px-3 py-2 text-center tabular-nums text-gray-800"
+										>
+											{enr}/{cap}
 										</td>
-										<td className="px-3 py-2 text-center tabular-nums text-gray-800">
-											{fCap > 0 ? `${Math.round((fEnr / fCap) * 100)}%` : "-"}
-										</td>
-									</>
-								);
-							})()}
-						</tr>
-					</tfoot>
-				</table>
+									);
+								})}
+								{(() => {
+									const fCap = filtered.reduce(
+										(s, n) => s + n.capacity.reduce((a, b) => a + b, 0),
+										0,
+									);
+									const fEnr = filtered.reduce(
+										(s, n) => s + n.enrolled.reduce((a, b) => a + b, 0),
+										0,
+									);
+									return (
+										<>
+											<td className="px-3 py-2 text-center tabular-nums text-gray-800">
+												{fEnr}/{fCap}
+											</td>
+											<td className="px-3 py-2 text-center tabular-nums text-gray-800">
+												{fCap > 0 ? `${Math.round((fEnr / fCap) * 100)}%` : "-"}
+											</td>
+										</>
+									);
+								})()}
+							</tr>
+						</tfoot>
+					</table>
+				</ScrollableTable>
 			</div>
 
 			{/* 更新時刻 */}

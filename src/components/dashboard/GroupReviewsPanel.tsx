@@ -6,6 +6,7 @@ import type {
 	GroupNursery,
 } from "@/app/api/group-reviews/route";
 import type { BrandCategory } from "@/config/brandConfig";
+import ScrollableTable from "@/components/ui/ScrollableTable";
 
 interface GroupReviewsData {
 	exportedAt: string;
@@ -201,7 +202,7 @@ export default function GroupReviewsPanel() {
 			)}
 
 			{/* サマリーKPI */}
-			<div className="grid grid-cols-3 gap-4 p-5">
+			<div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4 p-3 md:p-5">
 				<div className="text-center">
 					<div className="text-xs text-gray-500 mb-1">園数</div>
 					<div className="text-2xl font-bold text-gray-900">
@@ -297,7 +298,7 @@ export default function GroupReviewsPanel() {
 						</select>
 					</div>
 				</div>
-				<div className="overflow-auto max-h-[500px]">
+				<ScrollableTable minWidth={640} maxHeight={500} showScrollHint={false}>
 					<table className="w-full text-sm">
 						<thead className="sticky top-0 z-10 bg-gray-50 border-b-2 border-gray-200 text-gray-600">
 							<tr>
@@ -348,7 +349,7 @@ export default function GroupReviewsPanel() {
 							))}
 						</tbody>
 					</table>
-				</div>
+				</ScrollableTable>
 			</div>
 		</div>
 	);

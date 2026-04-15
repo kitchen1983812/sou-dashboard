@@ -27,6 +27,7 @@ import {
 import TabNavigation from "./TabNavigation";
 import Filters from "./Filters";
 import PeriodFilter from "@/components/ui/PeriodFilter";
+import MobileCollapse from "@/components/ui/MobileCollapse";
 import ScoreCards from "./ScoreCards";
 import ChannelDonut from "./ChannelDonut";
 import TimelineChart from "./TimelineChart";
@@ -218,8 +219,8 @@ function DashboardClientInner({
 		<div className="flex min-h-screen">
 			<TabNavigation activeTab={activeTab} onTabChange={handleTabChange} />
 
-			<div className="flex-1 overflow-auto bg-gray-50">
-				<div className="p-5 sm:p-8 space-y-8">
+			<div className="flex-1 overflow-auto bg-gray-50 min-w-0">
+				<div className="p-3 md:p-5 lg:p-8 space-y-4 md:space-y-6 lg:space-y-8">
 					{/* Title */}
 					<h2 className="text-lg font-bold text-gray-800">
 						{currentTab?.title}
@@ -227,29 +228,33 @@ function DashboardClientInner({
 
 					{/* Filters (集客タブのみ表示) */}
 					{!isRecruitTab && (
-						<div className="flex flex-wrap items-center gap-3">
-							<Filters
-								filters={filters}
-								onFilterChange={setFilters}
-								companies={companies}
-								nurseries={nurseries}
-								areas={areas}
-								contactMethods={contactMethods}
-								statuses={statuses}
-								duplicateChecks={duplicateChecks}
-								showContactMethod={showContactMethod}
-								showStatus={showStatus}
-							/>
-							{showPeriodFilter && (
-								<PeriodFilter
-									from={periodFilterFrom}
-									to={periodFilterTo}
-									minMonth={minMonth}
-									maxMonth={maxMonth}
-									onChange={(f, t) => setCustomDateRange({ from: f, to: t })}
+						<MobileCollapse
+							summary={`絞り込みフィルター${filters.company !== "all" || filters.nursery !== "all" || filters.area !== "all" ? " (適用中)" : ""}`}
+						>
+							<div className="flex flex-wrap items-center gap-3">
+								<Filters
+									filters={filters}
+									onFilterChange={setFilters}
+									companies={companies}
+									nurseries={nurseries}
+									areas={areas}
+									contactMethods={contactMethods}
+									statuses={statuses}
+									duplicateChecks={duplicateChecks}
+									showContactMethod={showContactMethod}
+									showStatus={showStatus}
 								/>
-							)}
-						</div>
+								{showPeriodFilter && (
+									<PeriodFilter
+										from={periodFilterFrom}
+										to={periodFilterTo}
+										minMonth={minMonth}
+										maxMonth={maxMonth}
+										onChange={(f, t) => setCustomDateRange({ from: f, to: t })}
+									/>
+								)}
+							</div>
+						</MobileCollapse>
 					)}
 
 					{/* Content based on active tab */}
