@@ -130,23 +130,11 @@ function toSheetRows(data: GroupReviewsData): string[][] {
 }
 
 export async function GET() {
-	// まずSheetsから読む
-	try {
-		const rows = await getSheetData(GROUP_REVIEWS_SHEET_NAME, process.env.GOOGLE_SHEET_ID);
-		const data = parseSheetRows(rows);
-		if (data && data.brands.length > 0) {
-			return NextResponse.json(data);
-		}
-	} catch {
-		// シート未作成時はフォールバック
-	}
-
-	// フォールバック: public/group-reviews/data.json
+	// 優先: public/group-reviews/data.json (Sheetsより信頼できる静的データ)
 	const filePath = path.join(process.cwd(), "public", "group-reviews", "data.json");
 	try {
 		const raw = fs.readFileSync(filePath, "utf-8");
 		const parsed = JSON.parse(raw) as GroupReviewsData;
-		// 各nurseryにbrand/categoryを必ず付与（古いJSONフォーマット対応）
 		const flat: GroupNursery[] = [];
 		for (const b of parsed.brands ?? []) {
 			for (const n of b.nurseries ?? []) {
@@ -161,16 +149,31 @@ export async function GET() {
 				});
 			}
 		}
-		return NextResponse.json({
-			exportedAt: parsed.exportedAt,
-			brands: aggregateByBrand(flat),
-		});
+		if (flat.length > 0) {
+			return NextResponse.json({
+				exportedAt: parsed.exportedAt,
+				brands: aggregateByBrand(flat),
+			});
+		}
 	} catch {
-		return NextResponse.json(
-			{ error: "グループ園データがありません。Excelをアップロードしてください。" },
-			{ status: 500 },
-		);
+		// JSONがない場合はSheetsへフォールバック
 	}
+
+	// フォールバック: Google Sheets
+	try {
+		const rows = await getSheetData(GROUP_REVIEWS_SHEET_NAME, process.env.GOOGLE_SHEET_ID);
+		const data = parseSheetRows(rows);
+		if (data && data.brands.length > 0) {
+			return NextResponse.json(data);
+		}
+	} catch {
+		// fall through
+	}
+
+	return NextResponse.json(
+		{ error: "グループ園データがありません。Excelをアップロードしてください。" },
+		{ status: 500 },
+	);
 }
 
 /** Excelを解析してグループ園データを更新 */

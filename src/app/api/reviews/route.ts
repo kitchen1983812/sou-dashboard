@@ -10,8 +10,7 @@ import {
 import { getSheetData } from "@/lib/googleSheets";
 import { GROUP_REVIEWS_SHEET_NAME, classifyBrand } from "@/config/brandConfig";
 
-/** 5分間キャッシュ */
-export const revalidate = 300;
+export const dynamic = "force-dynamic";
 
 /** スナップショットファイルの型 */
 interface SnapshotEntry {
