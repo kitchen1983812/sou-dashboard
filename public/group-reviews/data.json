@@ -1,11 +1,11 @@
 {
-  "exportedAt": "2026-04-16",
+  "exportedAt": "2026-04-21",
   "brands": [
     {
       "category": "自社",
       "brand": "フェリーチェ",
       "nurseryCount": 25,
-      "totalReviews": 77,
+      "totalReviews": 79,
       "avgRating": 4.82,
       "nurseries": [
         {
@@ -27,7 +27,7 @@
         {
           "name": "フェリーチェ 相模原園",
           "placeId": "ChIJq9CYz9kDGWARvC3WXdkbKpA",
-          "count": 7,
+          "count": 8,
           "rating": 4.6,
           "brand": "フェリーチェ",
           "category": "自社"
@@ -105,6 +105,14 @@
           "category": "自社"
         },
         {
+          "name": "フェリーチェ 鳩ヶ谷園",
+          "placeId": "ChIJ02cMqmOUGGARQmncmaR1mXE",
+          "count": 2,
+          "rating": 5.0,
+          "brand": "フェリーチェ",
+          "category": "自社"
+        },
+        {
           "name": "フェリーチェ 東川口園",
           "placeId": "ChIJ6XMEHgaVGGARGzFHI1-Ly_o",
           "count": 2,
@@ -147,14 +155,6 @@
         {
           "name": "フェリーチェ 朝霞園",
           "placeId": "ChIJgbwKmXfpGGARsTdBJiV-YpU",
-          "count": 1,
-          "rating": 5.0,
-          "brand": "フェリーチェ",
-          "category": "自社"
-        },
-        {
-          "name": "フェリーチェ 鳩ヶ谷園",
-          "placeId": "ChIJ02cMqmOUGGARQmncmaR1mXE",
           "count": 1,
           "rating": 5.0,
           "brand": "フェリーチェ",
@@ -214,7 +214,7 @@
       "category": "自社",
       "brand": "わくわく保育園",
       "nurseryCount": 5,
-      "totalReviews": 12,
+      "totalReviews": 14,
       "avgRating": 4.9,
       "nurseries": [
         {
@@ -234,17 +234,9 @@
           "category": "自社"
         },
         {
-          "name": "わくわく保育園 久住園",
-          "placeId": "ChIJOdH9aB1gImAR-z9aHK-yMew",
-          "count": 2,
-          "rating": 4.5,
-          "brand": "わくわく保育園",
-          "category": "自社"
-        },
-        {
           "name": "わくわく保育園 もねの里園",
           "placeId": "ChIJ2Z9MPW6PImAREYq_4TjnSlk",
-          "count": 2,
+          "count": 3,
           "rating": 5.0,
           "brand": "わくわく保育園",
           "category": "自社"
@@ -252,8 +244,16 @@
         {
           "name": "わくわく保育園 東金園",
           "placeId": "ChIJnbDclSrrImAR6aioAej2NQ0",
-          "count": 1,
+          "count": 2,
           "rating": 5.0,
+          "brand": "わくわく保育園",
+          "category": "自社"
+        },
+        {
+          "name": "わくわく保育園 久住園",
+          "placeId": "ChIJOdH9aB1gImAR-z9aHK-yMew",
+          "count": 2,
+          "rating": 4.5,
           "brand": "わくわく保育園",
           "category": "自社"
         }
@@ -263,9 +263,25 @@
       "category": "自社",
       "brand": "ことり保育園",
       "nurseryCount": 4,
-      "totalReviews": 2,
+      "totalReviews": 4,
       "avgRating": 5.0,
       "nurseries": [
+        {
+          "name": "ことり保育園 日吉台園",
+          "placeId": "ChIJ_woRgWuLImARNLQX7jtvkig",
+          "count": 1,
+          "rating": 5.0,
+          "brand": "ことり保育園",
+          "category": "自社"
+        },
+        {
+          "name": "ことり保育園 スカイタウン園",
+          "placeId": "ChIJj_Go-QyLImARuZtMrGZCuok",
+          "count": 1,
+          "rating": 5.0,
+          "brand": "ことり保育園",
+          "category": "自社"
+        },
         {
           "name": "ことり保育園 公津の杜園",
           "placeId": "ChIJDb3xbYaLImARJwYZ_XgxnhQ",
@@ -281,22 +297,6 @@
           "rating": 5.0,
           "brand": "ことり保育園",
           "category": "自社"
-        },
-        {
-          "name": "ことり保育園 日吉台園",
-          "placeId": "ChIJ_woRgWuLImARNLQX7jtvkig",
-          "count": 0,
-          "rating": null,
-          "brand": "ことり保育園",
-          "category": "自社"
-        },
-        {
-          "name": "ことり保育園 スカイタウン園",
-          "placeId": "ChIJj_Go-QyLImARuZtMrGZCuok",
-          "count": 0,
-          "rating": null,
-          "brand": "ことり保育園",
-          "category": "自社"
         }
       ]
     },
@@ -304,8 +304,8 @@
       "category": "グループ",
       "brand": "スクルドエンジェル保育園",
       "nurseryCount": 91,
-      "totalReviews": 176,
-      "avgRating": 4.14,
+      "totalReviews": 177,
+      "avgRating": 4.15,
       "nurseries": [
         {
           "name": "スクルドエンジェル保育園 三郷中央園",
@@ -476,6 +476,14 @@
           "category": "グループ"
         },
         {
+          "name": "スクルドエンジェル保育園 柿の木坂園",
+          "placeId": "ChIJAy2SB3r1GGARbhuB7ZQqJI8",
+          "count": 3,
+          "rating": 4.0,
+          "brand": "スクルドエンジェル保育園",
+          "category": "グループ"
+        },
+        {
           "name": "スクルドエンジェル保育園 御殿場西田中",
           "placeId": "ChIJjS6rW_J2GWARNcUZMNaaUcM",
           "count": 3,
@@ -528,14 +536,6 @@
           "placeId": "ChIJQ-y2R1p1GGARnaiduqWyVnU",
           "count": 2,
           "rating": 3.0,
-          "brand": "スクルドエンジェル保育園",
-          "category": "グループ"
-        },
-        {
-          "name": "スクルドエンジェル保育園 柿の木坂園",
-          "placeId": "ChIJAy2SB3r1GGARbhuB7ZQqJI8",
-          "count": 2,
-          "rating": 3.5,
           "brand": "スクルドエンジェル保育園",
           "category": "グループ"
         },
@@ -1041,14 +1041,14 @@
       "category": "グループ",
       "brand": "その他",
       "nurseryCount": 30,
-      "totalReviews": 34,
-      "avgRating": 4.14,
+      "totalReviews": 36,
+      "avgRating": 4.15,
       "nurseries": [
         {
           "name": "レイクサイドインターナショナルチャイルドケア",
           "placeId": "ChIJU0nbAR6GImARFlEiUuyDQSg",
-          "count": 6,
-          "rating": 4.3,
+          "count": 7,
+          "rating": 4.4,
           "brand": "その他",
           "category": "グループ"
         },
@@ -1089,6 +1089,14 @@
           "placeId": "ChIJr8Aw16P1AGARHcNyRsyl_qA",
           "count": 2,
           "rating": 3.0,
+          "brand": "その他",
+          "category": "グループ"
+        },
+        {
+          "name": "アドバンスキッズ龍ヶ崎",
+          "placeId": "ChIJmYbANOtxImARVd7bSKD9X2U",
+          "count": 2,
+          "rating": 5.0,
           "brand": "その他",
           "category": "グループ"
         },
@@ -1143,14 +1151,6 @@
         {
           "name": "なでしこ戸田第一保育園",
           "placeId": "ChIJ__87lK2UGGARAvWkm2S26rw",
-          "count": 1,
-          "rating": 5.0,
-          "brand": "その他",
-          "category": "グループ"
-        },
-        {
-          "name": "アドバンスキッズ龍ヶ崎",
-          "placeId": "ChIJmYbANOtxImARVd7bSKD9X2U",
           "count": 1,
           "rating": 5.0,
           "brand": "その他",
@@ -1290,7 +1290,7 @@
       "category": "グループ",
       "brand": "あーす保育園",
       "nurseryCount": 18,
-      "totalReviews": 35,
+      "totalReviews": 36,
       "avgRating": 4.09,
       "nurseries": [
         {
@@ -1358,6 +1358,14 @@
           "category": "グループ"
         },
         {
+          "name": "あーす保育園 六本松",
+          "placeId": "ChIJAQAwk8WTQTURm4qpDqofc00",
+          "count": 2,
+          "rating": 5.0,
+          "brand": "あーす保育園",
+          "category": "グループ"
+        },
+        {
           "name": "あーす保育園 戸塚",
           "placeId": "ChIJU6bR2oVaGGARuIDgybnwBeo",
           "count": 1,
@@ -1392,14 +1400,6 @@
         {
           "name": "あーす保育園 東油山",
           "placeId": "ChIJB69gCteVQTUR9bROoQYsx9U",
-          "count": 1,
-          "rating": 5.0,
-          "brand": "あーす保育園",
-          "category": "グループ"
-        },
-        {
-          "name": "あーす保育園 六本松",
-          "placeId": "ChIJAQAwk8WTQTURm4qpDqofc00",
           "count": 1,
           "rating": 5.0,
           "brand": "あーす保育園",
@@ -1443,13 +1443,13 @@
       "category": "グループ",
       "brand": "キッズキッズ保育園",
       "nurseryCount": 10,
-      "totalReviews": 31,
+      "totalReviews": 32,
       "avgRating": 4.79,
       "nurseries": [
         {
           "name": "キッズキッズ保育園 博多",
           "placeId": "ChIJ3RIYVL-RQTUR9jKY1MCD2v8",
-          "count": 8,
+          "count": 9,
           "rating": 5.0,
           "brand": "キッズキッズ保育園",
           "category": "グループ"

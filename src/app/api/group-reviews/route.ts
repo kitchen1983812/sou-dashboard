@@ -59,7 +59,9 @@ function aggregateByBrand(nurseries: RawNursery[]): GroupBrandSummary[] {
 			.map((n) => n.rating as number);
 		const avgRating =
 			ratings.length > 0
-				? Math.round((ratings.reduce((s, v) => s + v, 0) / ratings.length) * 100) / 100
+				? Math.round(
+						(ratings.reduce((s, v) => s + v, 0) / ratings.length) * 100,
+					) / 100
 				: null;
 		result.push({
 			category: category as BrandCategory,
@@ -79,7 +81,12 @@ function aggregateByBrand(nurseries: RawNursery[]): GroupBrandSummary[] {
 
 /** JSONファイルを読む（public/group-reviews/data.json） */
 function loadJsonData(): GroupReviewsData | null {
-	const filePath = path.join(process.cwd(), "public", "group-reviews", "data.json");
+	const filePath = path.join(
+		process.cwd(),
+		"public",
+		"group-reviews",
+		"data.json",
+	);
 	try {
 		const raw = fs.readFileSync(filePath, "utf-8");
 		const parsed = JSON.parse(raw) as GroupReviewsData;
@@ -105,7 +112,10 @@ export async function GET() {
 	const data = loadJsonData();
 	if (!data) {
 		return NextResponse.json(
-			{ error: "グループ園データがありません。Excelをアップロードしてください。" },
+			{
+				error:
+					"グループ園データがありません。Excelをアップロードしてください。",
+			},
 			{
 				status: 500,
 				headers: { "Cache-Control": "no-store, max-age=0" },
@@ -152,7 +162,33 @@ export async function POST(req: NextRequest) {
 			if (name && placeId) placeIdMap.set(name, placeId);
 		});
 
-		// 集計シート: R列(18)=最新数、AD列(30)=最新星
+		// ヘッダーから「数(YYYY/MM/DD)」「星(YYYY/MM/DD)」の最新列を動的検出
+		const headerRow = aggSheet.getRow(1);
+		const countCols: { col: number; date: string }[] = [];
+		const ratingCols: { col: number; date: string }[] = [];
+		headerRow.eachCell({ includeEmpty: false }, (cell, col) => {
+			const s = String(cell.value ?? "");
+			const mCount = s.match(/数\((\d{2}\/\d{2}\/\d{2})\)/);
+			const mRating = s.match(/星\((\d{2}\/\d{2}\/\d{2})\)/);
+			if (mCount) countCols.push({ col, date: mCount[1] });
+			if (mRating) ratingCols.push({ col, date: mRating[1] });
+		});
+		if (countCols.length === 0 || ratingCols.length === 0) {
+			return NextResponse.json(
+				{
+					error:
+						"集計シートに「数(YYYY/MM/DD)」「星(YYYY/MM/DD)」列が見つかりません",
+				},
+				{ status: 400 },
+			);
+		}
+		const countColIdx = countCols.sort((a, b) =>
+			b.date.localeCompare(a.date),
+		)[0].col;
+		const ratingColIdx = ratingCols.sort((a, b) =>
+			b.date.localeCompare(a.date),
+		)[0].col;
+
 		const rows: RawNursery[] = [];
 		aggSheet.eachRow({ includeEmpty: false }, (row, rowNum) => {
 			if (rowNum === 1) return;
@@ -160,12 +196,17 @@ export async function POST(req: NextRequest) {
 			if (!name) return;
 			const placeId = placeIdMap.get(name);
 			if (!placeId) return;
-			const countCell = row.getCell(18).value;
-			const ratingCell = row.getCell(30).value;
-			const count = typeof countCell === "number" ? countCell : Number(countCell) || 0;
+			const countCell = row.getCell(countColIdx).value;
+			const ratingCell = row.getCell(ratingColIdx).value;
+			const count =
+				typeof countCell === "number" ? countCell : Number(countCell) || 0;
 			let rating: number | null = null;
 			if (typeof ratingCell === "number" && ratingCell > 0) rating = ratingCell;
-			else if (ratingCell && !isNaN(Number(ratingCell)) && Number(ratingCell) > 0) {
+			else if (
+				ratingCell &&
+				!isNaN(Number(ratingCell)) &&
+				Number(ratingCell) > 0
+			) {
 				rating = Number(ratingCell);
 			}
 			rows.push({ name, placeId, count, rating });
