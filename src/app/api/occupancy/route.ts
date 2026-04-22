@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getSheetData } from "@/lib/googleSheets";
 import { NURSERIES } from "@/config/reviewConfig";
 
-export const revalidate = 300;
+export const dynamic = "force-dynamic";
 
 const OCCUPANCY_SHEET_ID = process.env.GOOGLE_SHEET_ID_OCCUPANCY || "";
 
@@ -109,11 +109,14 @@ export async function GET() {
 				return a.nursery.localeCompare(b.nursery);
 			});
 
-		return NextResponse.json({
-			nurseries,
-			yearMonth: latestYearMonth,
-			fetchedAt: new Date().toISOString(),
-		});
+		return NextResponse.json(
+			{
+				nurseries,
+				yearMonth: latestYearMonth,
+				fetchedAt: new Date().toISOString(),
+			},
+			{ headers: { "Cache-Control": "no-store, max-age=0" } },
+		);
 	} catch (error) {
 		console.error("Failed to fetch occupancy:", error);
 		return NextResponse.json(
