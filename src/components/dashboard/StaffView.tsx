@@ -19,9 +19,9 @@ const EMP_LABELS: Record<string, string> = {
 };
 
 function rateColor(rate: number): string {
-	if (rate >= 70) return "text-gray-900";
-	if (rate >= 50) return "text-gray-700";
-	return "text-red-600";
+	// 60%以上は固定費リスク = 赤字表示
+	if (rate >= 60) return "text-red-600";
+	return "text-gray-900";
 }
 
 type SortKey = "name" | "area" | "total" | "seishain" | "rate";
