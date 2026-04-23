@@ -4,6 +4,7 @@ import { useEffect, useState, useMemo } from "react";
 import type { OccupancyNursery } from "@/app/api/occupancy/route";
 import GaugeChart from "@/components/charts/GaugeChart";
 import ScrollableTable from "@/components/ui/ScrollableTable";
+import GroupCapacityPanel from "./GroupCapacityPanel";
 
 interface OccupancyResponse {
 	nurseries: OccupancyNursery[];
@@ -148,6 +149,10 @@ export default function OccupancyView() {
 
 	return (
 		<div className="space-y-5">
+			{/* 自社フェリーチェ見出し */}
+			<div className="text-xs text-gray-500">
+				自社フェリーチェ（年齢別粒度、ソース: 園児数シート）
+			</div>
 			{/* サマリーゲージ */}
 			<div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3">
 				{AGE_LABELS.map((label, i) => {
@@ -344,6 +349,9 @@ export default function OccupancyView() {
 				データ年月: {data.yearMonth} / 最終取得:{" "}
 				{new Date(data.fetchedAt).toLocaleString("ja-JP")}
 			</div>
+
+			{/* グループ定員（SOU本部CSVベース、全158園） */}
+			<GroupCapacityPanel />
 		</div>
 	);
 }

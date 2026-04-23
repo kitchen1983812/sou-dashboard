@@ -1,0 +1,6642 @@
+{
+  "exportedAt": "2026-04-23",
+  "yearMonth": "202605",
+  "nurseries": [
+    {
+      "name": "ことり保育園スカイタウン園",
+      "rawName": "ことり保育園スカイタウン園",
+      "company": "株式会社give&give",
+      "brand": "ことり保育園",
+      "category": "自社",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 16,
+      "totalEnrolled": 11,
+      "prevExited": 5,
+      "prevEntered": 4,
+      "fillRate": 68,
+      "ages": [
+        {
+          "capacity": 3,
+          "enrolled": 0
+        },
+        {
+          "capacity": 6,
+          "enrolled": 5
+        },
+        {
+          "capacity": 7,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/2 12:32:10"
+    },
+    {
+      "name": "ことり保育園公津の杜園",
+      "rawName": "ことり保育園公津の杜園",
+      "company": "株式会社give&give",
+      "brand": "ことり保育園",
+      "category": "自社",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 12,
+      "totalEnrolled": 7,
+      "prevExited": 12,
+      "prevEntered": 7,
+      "fillRate": 58,
+      "ages": [
+        {
+          "capacity": 2,
+          "enrolled": 1
+        },
+        {
+          "capacity": 5,
+          "enrolled": 1
+        },
+        {
+          "capacity": 5,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/2 8:15:56"
+    },
+    {
+      "name": "ことり保育園勝田台園",
+      "rawName": "ことり保育園勝田台園",
+      "company": "株式会社give&give",
+      "brand": "ことり保育園",
+      "category": "自社",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 19,
+      "prevExited": 0,
+      "prevEntered": 4,
+      "fillRate": 100,
+      "ages": [
+        {
+          "capacity": 3,
+          "enrolled": 3
+        },
+        {
+          "capacity": 8,
+          "enrolled": 8
+        },
+        {
+          "capacity": 8,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/2 18:56:3"
+    },
+    {
+      "name": "わくわく保育園もねの里園",
+      "rawName": "わくわく保育園もねの里園",
+      "company": "SOUキッズケア株式会社（ＰＯＰ）",
+      "brand": "わくわく保育園",
+      "category": "自社",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202604",
+      "totalCapacity": 60,
+      "totalEnrolled": 62,
+      "prevExited": 11,
+      "prevEntered": 12,
+      "fillRate": 103,
+      "ages": [
+        {
+          "capacity": 3,
+          "enrolled": 3
+        },
+        {
+          "capacity": 11,
+          "enrolled": 11
+        },
+        {
+          "capacity": 11,
+          "enrolled": 12
+        },
+        {
+          "capacity": 11,
+          "enrolled": 12
+        },
+        {
+          "capacity": 12,
+          "enrolled": 12
+        },
+        {
+          "capacity": 12,
+          "enrolled": 12
+        }
+      ],
+      "updatedAt": "2026/4/3 7:9:26"
+    },
+    {
+      "name": "わくわく保育園並木町園",
+      "rawName": "わくわく保育園並木町園",
+      "company": "SOUキッズケア株式会社（ＰＯＰ）",
+      "brand": "わくわく保育園",
+      "category": "自社",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 17,
+      "prevExited": 5,
+      "prevEntered": 2,
+      "fillRate": 89,
+      "ages": [
+        {
+          "capacity": 3,
+          "enrolled": 0
+        },
+        {
+          "capacity": 8,
+          "enrolled": 8
+        },
+        {
+          "capacity": 8,
+          "enrolled": 9
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/6 15:23:43"
+    },
+    {
+      "name": "わくわく保育園久住園",
+      "rawName": "わくわく保育園久住園",
+      "company": "SOUキッズケア株式会社（ＰＯＰ）",
+      "brand": "わくわく保育園",
+      "category": "自社",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 12,
+      "totalEnrolled": 9,
+      "prevExited": 13,
+      "prevEntered": 9,
+      "fillRate": 75,
+      "ages": [
+        {
+          "capacity": 3,
+          "enrolled": 0
+        },
+        {
+          "capacity": 4,
+          "enrolled": 4
+        },
+        {
+          "capacity": 5,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/3 11:58:3"
+    },
+    {
+      "name": "わくわく保育園成田園",
+      "rawName": "わくわく保育園成田園",
+      "company": "SOUキッズケア株式会社（ＰＯＰ）",
+      "brand": "わくわく保育園",
+      "category": "自社",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 12,
+      "prevExited": 16,
+      "prevEntered": 12,
+      "fillRate": 63,
+      "ages": [
+        {
+          "capacity": 3,
+          "enrolled": 1
+        },
+        {
+          "capacity": 8,
+          "enrolled": 4
+        },
+        {
+          "capacity": 8,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/3 11:28:10"
+    },
+    {
+      "name": "わくわく保育園東金園",
+      "rawName": "わくわく保育園東金園",
+      "company": "SOUキッズケア株式会社（ＰＯＰ）",
+      "brand": "わくわく保育園",
+      "category": "自社",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202604",
+      "totalCapacity": 67,
+      "totalEnrolled": 64,
+      "prevExited": 60,
+      "prevEntered": 64,
+      "fillRate": 95,
+      "ages": [
+        {
+          "capacity": 8,
+          "enrolled": 8
+        },
+        {
+          "capacity": 12,
+          "enrolled": 12
+        },
+        {
+          "capacity": 11,
+          "enrolled": 11
+        },
+        {
+          "capacity": 12,
+          "enrolled": 11
+        },
+        {
+          "capacity": 12,
+          "enrolled": 11
+        },
+        {
+          "capacity": 12,
+          "enrolled": 11
+        }
+      ],
+      "updatedAt": "2026/4/10 14:54:5"
+    },
+    {
+      "name": "フェリーチェ 中央林間園",
+      "rawName": "保育ルームフェリーチェ中央林間園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202605",
+      "totalCapacity": 19,
+      "totalEnrolled": 17,
+      "prevExited": 0,
+      "prevEntered": 0,
+      "fillRate": 89,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/22 9:12:50"
+    },
+    {
+      "name": "フェリーチェ 中央林間園",
+      "rawName": "保育ルームフェリーチェ中央林間園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 17,
+      "prevExited": 19,
+      "prevEntered": 17,
+      "fillRate": 89,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/3/17 15:13:40"
+    },
+    {
+      "name": "フェリーチェ 中野新橋園",
+      "rawName": "保育ルームフェリーチェ中野新橋園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "企業主導型保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 12,
+      "totalEnrolled": 6,
+      "prevExited": 7,
+      "prevEntered": 5,
+      "fillRate": 50,
+      "ages": [
+        {
+          "capacity": 2,
+          "enrolled": 1
+        },
+        {
+          "capacity": 5,
+          "enrolled": 3
+        },
+        {
+          "capacity": 5,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/3/17 14:6:57"
+    },
+    {
+      "name": "フェリーチェ 京成八幡園",
+      "rawName": "保育ルームフェリーチェ京成八幡園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202604",
+      "totalCapacity": 39,
+      "totalEnrolled": 30,
+      "prevExited": 6,
+      "prevEntered": 7,
+      "fillRate": 76,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 11
+        },
+        {
+          "capacity": 0,
+          "enrolled": 11
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/16 16:43:10"
+    },
+    {
+      "name": "フェリーチェ 南行徳園",
+      "rawName": "保育ルームフェリーチェ南行徳園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202605",
+      "totalCapacity": 30,
+      "totalEnrolled": 27,
+      "prevExited": 0,
+      "prevEntered": 1,
+      "fillRate": 90,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 2
+        }
+      ],
+      "updatedAt": "2026/4/20 13:2:4"
+    },
+    {
+      "name": "フェリーチェ 南行徳園",
+      "rawName": "保育ルームフェリーチェ南行徳園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202604",
+      "totalCapacity": 30,
+      "totalEnrolled": 26,
+      "prevExited": 28,
+      "prevEntered": 26,
+      "fillRate": 86,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 2
+        }
+      ],
+      "updatedAt": "2026/3/23 15:52:48"
+    },
+    {
+      "name": "フェリーチェ 和光Ⅱ園",
+      "rawName": "保育ルームフェリーチェ和光Ⅱ園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202605",
+      "totalCapacity": 18,
+      "totalEnrolled": 8,
+      "prevExited": 0,
+      "prevEntered": 0,
+      "fillRate": 44,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/21 10:32:33"
+    },
+    {
+      "name": "フェリーチェ 和光Ⅱ園",
+      "rawName": "保育ルームフェリーチェ和光Ⅱ園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 18,
+      "totalEnrolled": 8,
+      "prevExited": 4,
+      "prevEntered": 8,
+      "fillRate": 44,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/3/25 15:54:16"
+    },
+    {
+      "name": "フェリーチェ 和光園",
+      "rawName": "保育ルームフェリーチェ和光園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202605",
+      "totalCapacity": 18,
+      "totalEnrolled": 11,
+      "prevExited": 0,
+      "prevEntered": 0,
+      "fillRate": 61,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/16 16:14:47"
+    },
+    {
+      "name": "フェリーチェ 和光園",
+      "rawName": "保育ルームフェリーチェ和光園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 18,
+      "totalEnrolled": 11,
+      "prevExited": 13,
+      "prevEntered": 10,
+      "fillRate": 61,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/3/24 14:25:42"
+    },
+    {
+      "name": "フェリーチェ 大和園",
+      "rawName": "保育ルームフェリーチェ大和園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 16,
+      "prevExited": 17,
+      "prevEntered": 14,
+      "fillRate": 84,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/3/18 14:24:42"
+    },
+    {
+      "name": "フェリーチェ 大田馬込園",
+      "rawName": "保育ルームフェリーチェ大田馬込園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "東京都認証保育所A",
+      "yearMonth": "202605",
+      "totalCapacity": 34,
+      "totalEnrolled": 10,
+      "prevExited": 0,
+      "prevEntered": 0,
+      "fillRate": 29,
+      "ages": [
+        {
+          "capacity": 5,
+          "enrolled": 0
+        },
+        {
+          "capacity": 12,
+          "enrolled": 4
+        },
+        {
+          "capacity": 12,
+          "enrolled": 5
+        },
+        {
+          "capacity": 5,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/16 13:23:12"
+    },
+    {
+      "name": "フェリーチェ 大田馬込園",
+      "rawName": "保育ルームフェリーチェ大田馬込園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "東京都認証保育所A",
+      "yearMonth": "202604",
+      "totalCapacity": 34,
+      "totalEnrolled": 10,
+      "prevExited": 16,
+      "prevEntered": 10,
+      "fillRate": 29,
+      "ages": [
+        {
+          "capacity": 5,
+          "enrolled": 0
+        },
+        {
+          "capacity": 12,
+          "enrolled": 4
+        },
+        {
+          "capacity": 12,
+          "enrolled": 5
+        },
+        {
+          "capacity": 5,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/3/23 14:40:36"
+    },
+    {
+      "name": "フェリーチェ 座間Ⅱ園",
+      "rawName": "保育ルームフェリーチェ座間Ⅱ園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "企業主導型保育事業",
+      "yearMonth": "202605",
+      "totalCapacity": 18,
+      "totalEnrolled": 17,
+      "prevExited": 2,
+      "prevEntered": 3,
+      "fillRate": 94,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 13
+        },
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/20 10:34:5"
+    },
+    {
+      "name": "フェリーチェ 座間Ⅱ園",
+      "rawName": "保育ルームフェリーチェ座間Ⅱ園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "企業主導型保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 18,
+      "totalEnrolled": 16,
+      "prevExited": 18,
+      "prevEntered": 16,
+      "fillRate": 88,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 12
+        },
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/20 10:32:44"
+    },
+    {
+      "name": "フェリーチェ 新座園",
+      "rawName": "保育ルームフェリーチェ新座園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202605",
+      "totalCapacity": 19,
+      "totalEnrolled": 18,
+      "prevExited": 0,
+      "prevEntered": 2,
+      "fillRate": 94,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/16 16:44:49"
+    },
+    {
+      "name": "フェリーチェ 新座園",
+      "rawName": "保育ルームフェリーチェ新座園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 16,
+      "prevExited": 16,
+      "prevEntered": 16,
+      "fillRate": 84,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/3/19 14:46:36"
+    },
+    {
+      "name": "フェリーチェ 朝霞園",
+      "rawName": "保育ルームフェリーチェ朝霞園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "小規模保育事業B",
+      "yearMonth": "202605",
+      "totalCapacity": 19,
+      "totalEnrolled": 17,
+      "prevExited": 1,
+      "prevEntered": 0,
+      "fillRate": 89,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/16 16:43:46"
+    },
+    {
+      "name": "フェリーチェ 朝霞園",
+      "rawName": "保育ルームフェリーチェ朝霞園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "小規模保育事業B",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 18,
+      "prevExited": 17,
+      "prevEntered": 18,
+      "fillRate": 94,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/3/25 13:25:24"
+    },
+    {
+      "name": "フェリーチェ 東川口園",
+      "rawName": "保育ルームフェリーチェ東川口園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202605",
+      "totalCapacity": 17,
+      "totalEnrolled": 16,
+      "prevExited": 0,
+      "prevEntered": 0,
+      "fillRate": 94,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/17 15:48:52"
+    },
+    {
+      "name": "フェリーチェ 東川口園",
+      "rawName": "保育ルームフェリーチェ東川口園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 17,
+      "totalEnrolled": 16,
+      "prevExited": 17,
+      "prevEntered": 16,
+      "fillRate": 94,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/3/23 8:45:8"
+    },
+    {
+      "name": "フェリーチェ 柏Ⅱ園",
+      "rawName": "保育ルームフェリーチェ柏Ⅱ園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "企業主導型保育事業",
+      "yearMonth": "202605",
+      "totalCapacity": 16,
+      "totalEnrolled": 12,
+      "prevExited": 1,
+      "prevEntered": 2,
+      "fillRate": 75,
+      "ages": [
+        {
+          "capacity": 3,
+          "enrolled": 0
+        },
+        {
+          "capacity": 6,
+          "enrolled": 6
+        },
+        {
+          "capacity": 7,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/16 14:7:21"
+    },
+    {
+      "name": "フェリーチェ 柏Ⅱ園",
+      "rawName": "保育ルームフェリーチェ柏Ⅱ園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "企業主導型保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 16,
+      "totalEnrolled": 11,
+      "prevExited": 14,
+      "prevEntered": 11,
+      "fillRate": 68,
+      "ages": [
+        {
+          "capacity": 3,
+          "enrolled": 0
+        },
+        {
+          "capacity": 6,
+          "enrolled": 6
+        },
+        {
+          "capacity": 7,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/3/17 17:55:27"
+    },
+    {
+      "name": "フェリーチェ 武蔵中原園",
+      "rawName": "保育ルームフェリーチェ武蔵中原園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202605",
+      "totalCapacity": 19,
+      "totalEnrolled": 12,
+      "prevExited": 0,
+      "prevEntered": 0,
+      "fillRate": 63,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/17 9:15:14"
+    },
+    {
+      "name": "フェリーチェ 武蔵中原園",
+      "rawName": "保育ルームフェリーチェ武蔵中原園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 12,
+      "prevExited": 17,
+      "prevEntered": 12,
+      "fillRate": 63,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/3/17 12:12:20"
+    },
+    {
+      "name": "フェリーチェ 目黒園",
+      "rawName": "保育ルームフェリーチェ目黒園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "企業主導型保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 12,
+      "totalEnrolled": 6,
+      "prevExited": 11,
+      "prevEntered": 6,
+      "fillRate": 50,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/3/26 17:48:45"
+    },
+    {
+      "name": "フェリーチェ 相模原園",
+      "rawName": "保育ルームフェリーチェ相模原園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202604",
+      "totalCapacity": 60,
+      "totalEnrolled": 53,
+      "prevExited": 17,
+      "prevEntered": 14,
+      "fillRate": 88,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 10
+        },
+        {
+          "capacity": 0,
+          "enrolled": 11
+        },
+        {
+          "capacity": 0,
+          "enrolled": 13
+        },
+        {
+          "capacity": 0,
+          "enrolled": 13
+        }
+      ],
+      "updatedAt": "2026/3/17 10:21:58"
+    },
+    {
+      "name": "フェリーチェ 相武台前園",
+      "rawName": "保育ルームフェリーチェ相武台前園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202605",
+      "totalCapacity": 19,
+      "totalEnrolled": 22,
+      "prevExited": 0,
+      "prevEntered": 0,
+      "fillRate": 115,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 9
+        },
+        {
+          "capacity": 0,
+          "enrolled": 9
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/16 16:20:48"
+    },
+    {
+      "name": "フェリーチェ 相武台前園",
+      "rawName": "保育ルームフェリーチェ相武台前園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 22,
+      "prevExited": 0,
+      "prevEntered": 0,
+      "fillRate": 115,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 9
+        },
+        {
+          "capacity": 0,
+          "enrolled": 9
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/3/17 11:50:58"
+    },
+    {
+      "name": "フェリーチェ 稲城長沼園",
+      "rawName": "保育ルームフェリーチェ稲城長沼園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "東京都認証保育所A",
+      "yearMonth": "202605",
+      "totalCapacity": 24,
+      "totalEnrolled": 20,
+      "prevExited": 0,
+      "prevEntered": 0,
+      "fillRate": 83,
+      "ages": [
+        {
+          "capacity": 3,
+          "enrolled": 2
+        },
+        {
+          "capacity": 8,
+          "enrolled": 7
+        },
+        {
+          "capacity": 7,
+          "enrolled": 8
+        },
+        {
+          "capacity": 6,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/16 15:6:57"
+    },
+    {
+      "name": "フェリーチェ 稲城長沼園",
+      "rawName": "保育ルームフェリーチェ稲城長沼園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "東京都認証保育所A",
+      "yearMonth": "202604",
+      "totalCapacity": 24,
+      "totalEnrolled": 19,
+      "prevExited": 17,
+      "prevEntered": 19,
+      "fillRate": 79,
+      "ages": [
+        {
+          "capacity": 3,
+          "enrolled": 2
+        },
+        {
+          "capacity": 8,
+          "enrolled": 6
+        },
+        {
+          "capacity": 7,
+          "enrolled": 8
+        },
+        {
+          "capacity": 6,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/16 15:9:4"
+    },
+    {
+      "name": "フェリーチェ 練馬中村橋園",
+      "rawName": "保育ルームフェリーチェ練馬中村橋園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "東京都認証保育所A",
+      "yearMonth": "202605",
+      "totalCapacity": 40,
+      "totalEnrolled": 38,
+      "prevExited": 0,
+      "prevEntered": 1,
+      "fillRate": 95,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 14
+        },
+        {
+          "capacity": 0,
+          "enrolled": 13
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 1
+        }
+      ],
+      "updatedAt": "2026/4/16 16:35:49"
+    },
+    {
+      "name": "フェリーチェ 練馬中村橋園",
+      "rawName": "保育ルームフェリーチェ練馬中村橋園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "東京都認証保育所A",
+      "yearMonth": "202604",
+      "totalCapacity": 40,
+      "totalEnrolled": 37,
+      "prevExited": 40,
+      "prevEntered": 37,
+      "fillRate": 92,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 13
+        },
+        {
+          "capacity": 0,
+          "enrolled": 13
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 1
+        }
+      ],
+      "updatedAt": "2026/3/23 10:51:46"
+    },
+    {
+      "name": "フェリーチェ 蕨Ⅱ園",
+      "rawName": "保育ルームフェリーチェ蕨Ⅱ園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202605",
+      "totalCapacity": 17,
+      "totalEnrolled": 15,
+      "prevExited": 0,
+      "prevEntered": 1,
+      "fillRate": 88,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/17 14:38:10"
+    },
+    {
+      "name": "フェリーチェ 蕨Ⅱ園",
+      "rawName": "保育ルームフェリーチェ蕨Ⅱ園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 17,
+      "totalEnrolled": 14,
+      "prevExited": 17,
+      "prevEntered": 14,
+      "fillRate": 82,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/3/19 11:53:27"
+    },
+    {
+      "name": "フェリーチェ 蕨園",
+      "rawName": "保育ルームフェリーチェ蕨園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202605",
+      "totalCapacity": 19,
+      "totalEnrolled": 13,
+      "prevExited": 0,
+      "prevEntered": 1,
+      "fillRate": 68,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/16 14:12:0"
+    },
+    {
+      "name": "フェリーチェ 蕨園",
+      "rawName": "保育ルームフェリーチェ蕨園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 12,
+      "prevExited": 16,
+      "prevEntered": 12,
+      "fillRate": 63,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/3/26 9:43:58"
+    },
+    {
+      "name": "フェリーチェ 行徳園",
+      "rawName": "保育ルームフェリーチェ行徳園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202605",
+      "totalCapacity": 30,
+      "totalEnrolled": 12,
+      "prevExited": 0,
+      "prevEntered": 0,
+      "fillRate": 40,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/21 17:18:52"
+    },
+    {
+      "name": "フェリーチェ 行徳園",
+      "rawName": "保育ルームフェリーチェ行徳園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202604",
+      "totalCapacity": 30,
+      "totalEnrolled": 12,
+      "prevExited": 12,
+      "prevEntered": 12,
+      "fillRate": 40,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/3/19 12:43:26"
+    },
+    {
+      "name": "フェリーチェ 鳩ヶ谷園",
+      "rawName": "保育ルームフェリーチェ鳩ヶ谷園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202605",
+      "totalCapacity": 19,
+      "totalEnrolled": 19,
+      "prevExited": 0,
+      "prevEntered": 1,
+      "fillRate": 100,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/17 10:15:23"
+    },
+    {
+      "name": "フェリーチェ 鳩ヶ谷園",
+      "rawName": "保育ルームフェリーチェ鳩ヶ谷園",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 18,
+      "prevExited": 19,
+      "prevEntered": 18,
+      "fillRate": 94,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/3/17 11:10:41"
+    },
+    {
+      "name": "あーす保育園イオンモール川口",
+      "rawName": "あーす保育園イオンモール川口",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "あーす保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "事業所内保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 14,
+      "prevExited": 5,
+      "prevEntered": 3,
+      "fillRate": 73,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/14 12:0:6"
+    },
+    {
+      "name": "あーす保育園中央林間",
+      "rawName": "あーす保育園中央林間",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "あーす保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202604",
+      "totalCapacity": 80,
+      "totalEnrolled": 70,
+      "prevExited": 7,
+      "prevEntered": 6,
+      "fillRate": 87,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 19
+        },
+        {
+          "capacity": 0,
+          "enrolled": 18
+        },
+        {
+          "capacity": 0,
+          "enrolled": 14
+        }
+      ],
+      "updatedAt": "2026/4/14 12:6:17"
+    },
+    {
+      "name": "あーす保育園中野坂上",
+      "rawName": "あーす保育園中野坂上",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "あーす保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業B",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 11,
+      "prevExited": 6,
+      "prevEntered": 0,
+      "fillRate": 57,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/14 11:45:31"
+    },
+    {
+      "name": "あーす保育園中野新橋",
+      "rawName": "あーす保育園中野新橋",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "あーす保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 11,
+      "prevExited": 5,
+      "prevEntered": 0,
+      "fillRate": 57,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/14 11:48:34"
+    },
+    {
+      "name": "あーす保育園保土ヶ谷",
+      "rawName": "あーす保育園保土ヶ谷",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "あーす保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202604",
+      "totalCapacity": 80,
+      "totalEnrolled": 64,
+      "prevExited": 4,
+      "prevEntered": 7,
+      "fillRate": 80,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 14
+        },
+        {
+          "capacity": 0,
+          "enrolled": 14
+        },
+        {
+          "capacity": 0,
+          "enrolled": 14
+        },
+        {
+          "capacity": 0,
+          "enrolled": 9
+        },
+        {
+          "capacity": 0,
+          "enrolled": 13
+        }
+      ],
+      "updatedAt": "2026/4/14 11:51:29"
+    },
+    {
+      "name": "あーす保育園保田窪",
+      "rawName": "あーす保育園保田窪",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "あーす保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 8,
+      "prevExited": 9,
+      "prevEntered": 0,
+      "fillRate": 42,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/14 11:32:37"
+    },
+    {
+      "name": "あーす保育園六本松",
+      "rawName": "あーす保育園六本松",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "あーす保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 14,
+      "prevExited": 4,
+      "prevEntered": 1,
+      "fillRate": 73,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/14 11:13:19"
+    },
+    {
+      "name": "あーす保育園力合西",
+      "rawName": "あーす保育園力合西",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "あーす保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 15,
+      "prevExited": 4,
+      "prevEntered": 0,
+      "fillRate": 78,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/14 11:29:29"
+    },
+    {
+      "name": "あーす保育園南林間",
+      "rawName": "あーす保育園南林間",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "あーす保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202604",
+      "totalCapacity": 80,
+      "totalEnrolled": 76,
+      "prevExited": 3,
+      "prevEntered": 2,
+      "fillRate": 95,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 12
+        },
+        {
+          "capacity": 0,
+          "enrolled": 14
+        },
+        {
+          "capacity": 0,
+          "enrolled": 16
+        },
+        {
+          "capacity": 0,
+          "enrolled": 14
+        },
+        {
+          "capacity": 0,
+          "enrolled": 16
+        }
+      ],
+      "updatedAt": "2026/4/14 11:54:51"
+    },
+    {
+      "name": "あーす保育園宇土",
+      "rawName": "あーす保育園宇土",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "あーす保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 10,
+      "prevExited": 3,
+      "prevEntered": 2,
+      "fillRate": 52,
+      "ages": [
+        {
+          "capacity": 5,
+          "enrolled": 2
+        },
+        {
+          "capacity": 7,
+          "enrolled": 4
+        },
+        {
+          "capacity": 7,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/14 11:33:21"
+    },
+    {
+      "name": "あーす保育園平尾",
+      "rawName": "あーす保育園平尾",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "あーす保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202604",
+      "totalCapacity": 80,
+      "totalEnrolled": 87,
+      "prevExited": 21,
+      "prevEntered": 18,
+      "fillRate": 108,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 9
+        },
+        {
+          "capacity": 0,
+          "enrolled": 12
+        },
+        {
+          "capacity": 0,
+          "enrolled": 12
+        },
+        {
+          "capacity": 0,
+          "enrolled": 18
+        },
+        {
+          "capacity": 0,
+          "enrolled": 18
+        },
+        {
+          "capacity": 0,
+          "enrolled": 18
+        }
+      ],
+      "updatedAt": "2026/4/4 9:51:16"
+    },
+    {
+      "name": "あーす保育園戸塚",
+      "rawName": "あーす保育園戸塚",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "あーす保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 19,
+      "prevExited": 0,
+      "prevEntered": 0,
+      "fillRate": 100,
+      "ages": [
+        {
+          "capacity": 3,
+          "enrolled": 3
+        },
+        {
+          "capacity": 8,
+          "enrolled": 8
+        },
+        {
+          "capacity": 8,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/14 11:59:7"
+    },
+    {
+      "name": "あーす保育園戸塚Annex",
+      "rawName": "あーす保育園戸塚Annex",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "あーす保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 19,
+      "prevExited": 0,
+      "prevEntered": 0,
+      "fillRate": 100,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/14 11:58:41"
+    },
+    {
+      "name": "あーす保育園東油山",
+      "rawName": "あーす保育園東油山",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "あーす保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202604",
+      "totalCapacity": 90,
+      "totalEnrolled": 90,
+      "prevExited": 0,
+      "prevEntered": 0,
+      "fillRate": 100,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 10
+        },
+        {
+          "capacity": 0,
+          "enrolled": 15
+        },
+        {
+          "capacity": 0,
+          "enrolled": 19
+        },
+        {
+          "capacity": 0,
+          "enrolled": 19
+        },
+        {
+          "capacity": 0,
+          "enrolled": 20
+        }
+      ],
+      "updatedAt": "2026/4/15 9:39:3"
+    },
+    {
+      "name": "あーす保育園横濱戸塚",
+      "rawName": "あーす保育園横濱戸塚",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "あーす保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202604",
+      "totalCapacity": 72,
+      "totalEnrolled": 67,
+      "prevExited": 2,
+      "prevEntered": 1,
+      "fillRate": 93,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 10
+        },
+        {
+          "capacity": 0,
+          "enrolled": 18
+        },
+        {
+          "capacity": 0,
+          "enrolled": 16
+        },
+        {
+          "capacity": 0,
+          "enrolled": 15
+        }
+      ],
+      "updatedAt": "2026/4/14 12:4:10"
+    },
+    {
+      "name": "あーす保育園警固",
+      "rawName": "あーす保育園警固",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "あーす保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 12,
+      "totalEnrolled": 9,
+      "prevExited": 3,
+      "prevEntered": 2,
+      "fillRate": 75,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/14 11:8:51"
+    },
+    {
+      "name": "あーす保育園鶴見中央",
+      "rawName": "あーす保育園鶴見中央",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "あーす保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202604",
+      "totalCapacity": 51,
+      "totalEnrolled": 34,
+      "prevExited": 6,
+      "prevEntered": 9,
+      "fillRate": 66,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 6,
+          "enrolled": 6
+        },
+        {
+          "capacity": 9,
+          "enrolled": 8
+        },
+        {
+          "capacity": 12,
+          "enrolled": 2
+        },
+        {
+          "capacity": 12,
+          "enrolled": 9
+        },
+        {
+          "capacity": 12,
+          "enrolled": 9
+        }
+      ],
+      "updatedAt": "2026/4/14 11:56:42"
+    },
+    {
+      "name": "あーす保育園鷺ノ宮",
+      "rawName": "あーす保育園鷺ノ宮",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "あーす保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 16,
+      "prevExited": 3,
+      "prevEntered": 0,
+      "fillRate": 84,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/14 11:47:4"
+    },
+    {
+      "name": "SUMCOいまり保育園",
+      "rawName": "SUMCOいまり保育園",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "事業所内保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 40,
+      "totalEnrolled": 14,
+      "prevExited": 15,
+      "prevEntered": 0,
+      "fillRate": 35,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/14 11:25:59"
+    },
+    {
+      "name": "TMPHピーポ保育園",
+      "rawName": "TMPHピーポ保育園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "",
+      "yearMonth": "202604",
+      "totalCapacity": 21,
+      "totalEnrolled": 12,
+      "prevExited": 10,
+      "prevEntered": 12,
+      "fillRate": 57,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/1 17:1:50"
+    },
+    {
+      "name": "YUYAMA NURSERY",
+      "rawName": "YUYAMA NURSERY",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "事業所内保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 6,
+      "totalEnrolled": 8,
+      "prevExited": 3,
+      "prevEntered": 3,
+      "fillRate": 133,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/6 14:42:28"
+    },
+    {
+      "name": "いるか保育園",
+      "rawName": "いるか保育園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "企業主導型保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 12,
+      "totalEnrolled": 3,
+      "prevExited": 8,
+      "prevEntered": 1,
+      "fillRate": 25,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/6 14:45:22"
+    },
+    {
+      "name": "うみかぜ保育園",
+      "rawName": "うみかぜ保育園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "直営",
+      "form": "企業主導型保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 30,
+      "totalEnrolled": 15,
+      "prevExited": 22,
+      "prevEntered": 15,
+      "fillRate": 50,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 2
+        }
+      ],
+      "updatedAt": "2026/4/10 15:17:46"
+    },
+    {
+      "name": "うみかぜ保育園仙台港",
+      "rawName": "うみかぜ保育園仙台港",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "直営",
+      "form": "企業主導型保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 30,
+      "totalEnrolled": 22,
+      "prevExited": 24,
+      "prevEntered": 22,
+      "fillRate": 73,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 3
+        }
+      ],
+      "updatedAt": "2026/4/10 14:47:19"
+    },
+    {
+      "name": "おひさま保育園",
+      "rawName": "おひさま保育園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "院内保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 10,
+      "totalEnrolled": 6,
+      "prevExited": 3,
+      "prevEntered": 1,
+      "fillRate": 60,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/6 14:46:2"
+    },
+    {
+      "name": "げんきっず",
+      "rawName": "げんきっず",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "院内保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 45,
+      "totalEnrolled": 31,
+      "prevExited": 21,
+      "prevEntered": 10,
+      "fillRate": 68,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 12
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 1
+        }
+      ],
+      "updatedAt": "2026/4/6 14:56:7"
+    },
+    {
+      "name": "さくら保育園",
+      "rawName": "さくら保育園",
+      "company": "株式会社キッズ・プランニング",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "",
+      "yearMonth": "202604",
+      "totalCapacity": 14,
+      "totalEnrolled": 10,
+      "prevExited": 13,
+      "prevEntered": 8,
+      "fillRate": 71,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/2 19:27:46"
+    },
+    {
+      "name": "さんさん保育園",
+      "rawName": "さんさん保育園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "企業主導型保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 8,
+      "totalEnrolled": 4,
+      "prevExited": 4,
+      "prevEntered": 0,
+      "fillRate": 50,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/6 14:56:37"
+    },
+    {
+      "name": "なでしこ保育園",
+      "rawName": "なでしこ保育園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "",
+      "yearMonth": "202604",
+      "totalCapacity": 34,
+      "totalEnrolled": 8,
+      "prevExited": 17,
+      "prevEntered": 8,
+      "fillRate": 23,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/3/30 7:34:19"
+    },
+    {
+      "name": "なでしこ戸田第一保育園",
+      "rawName": "なでしこ戸田第一保育園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "直営",
+      "form": "",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 12,
+      "prevExited": 18,
+      "prevEntered": 12,
+      "fillRate": 63,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/10 15:3:57"
+    },
+    {
+      "name": "にじの森保育園苦楽園口",
+      "rawName": "にじの森保育園苦楽園口",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 13,
+      "prevExited": 3,
+      "prevEntered": 0,
+      "fillRate": 68,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/14 11:41:49"
+    },
+    {
+      "name": "にじの森保育園西宮北口",
+      "rawName": "にじの森保育園西宮北口",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 19,
+      "prevExited": 6,
+      "prevEntered": 6,
+      "fillRate": 100,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 12
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/14 11:38:58"
+    },
+    {
+      "name": "のびのびぞうさん保育園",
+      "rawName": "のびのびぞうさん保育園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "企業主導型保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 7,
+      "totalEnrolled": 4,
+      "prevExited": 2,
+      "prevEntered": 1,
+      "fillRate": 57,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/6 14:57:24"
+    },
+    {
+      "name": "ひよこ園",
+      "rawName": "ひよこ園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "院内保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 30,
+      "totalEnrolled": 18,
+      "prevExited": 10,
+      "prevEntered": 0,
+      "fillRate": 60,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 9
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/6 15:6:28"
+    },
+    {
+      "name": "ふぇりーちぇほいくえん",
+      "rawName": "ふぇりーちぇほいくえん",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202604",
+      "totalCapacity": 59,
+      "totalEnrolled": 69,
+      "prevExited": 5,
+      "prevEntered": 6,
+      "fillRate": 116,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 9
+        },
+        {
+          "capacity": 0,
+          "enrolled": 11
+        },
+        {
+          "capacity": 0,
+          "enrolled": 15
+        },
+        {
+          "capacity": 0,
+          "enrolled": 15
+        },
+        {
+          "capacity": 0,
+          "enrolled": 14
+        }
+      ],
+      "updatedAt": "2026/4/17 10:52:39"
+    },
+    {
+      "name": "ゆめっこ保育園",
+      "rawName": "ゆめっこ保育園",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "事業所内保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 20,
+      "totalEnrolled": 9,
+      "prevExited": 6,
+      "prevEntered": 2,
+      "fillRate": 45,
+      "ages": [
+        {
+          "capacity": 5,
+          "enrolled": 0
+        },
+        {
+          "capacity": 7,
+          "enrolled": 6
+        },
+        {
+          "capacity": 8,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/14 11:23:58"
+    },
+    {
+      "name": "よつば保育園",
+      "rawName": "よつば保育園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "院内保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 9,
+      "totalEnrolled": 5,
+      "prevExited": 5,
+      "prevEntered": 3,
+      "fillRate": 55,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/6 15:8:31"
+    },
+    {
+      "name": "アドバンスキッズ流山おおたかの森",
+      "rawName": "アドバンスキッズ流山おおたかの森",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "企業主導型保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 30,
+      "totalEnrolled": 9,
+      "prevExited": 5,
+      "prevEntered": 3,
+      "fillRate": 30,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/6 14:44:40"
+    },
+    {
+      "name": "アドバンスキッズ龍ケ崎",
+      "rawName": "アドバンスキッズ龍ケ崎",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "地域連携型",
+      "yearMonth": "202604",
+      "totalCapacity": 10,
+      "totalEnrolled": 11,
+      "prevExited": 3,
+      "prevEntered": 2,
+      "fillRate": 110,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/6 14:44:7"
+    },
+    {
+      "name": "オリジン保育園",
+      "rawName": "オリジン保育園",
+      "company": "株式会社キッズ・プランニング",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "",
+      "yearMonth": "202604",
+      "totalCapacity": 12,
+      "totalEnrolled": 10,
+      "prevExited": 2,
+      "prevEntered": 2,
+      "fillRate": 83,
+      "ages": [
+        {
+          "capacity": 2,
+          "enrolled": 3
+        },
+        {
+          "capacity": 2,
+          "enrolled": 3
+        },
+        {
+          "capacity": 2,
+          "enrolled": 2
+        },
+        {
+          "capacity": 2,
+          "enrolled": 2
+        },
+        {
+          "capacity": 2,
+          "enrolled": 0
+        },
+        {
+          "capacity": 2,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/2 14:53:16"
+    },
+    {
+      "name": "キッズルームえんじぇるず",
+      "rawName": "キッズルームえんじぇるず",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "事業所内保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 12,
+      "totalEnrolled": 8,
+      "prevExited": 4,
+      "prevEntered": 0,
+      "fillRate": 66,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/14 11:24:58"
+    },
+    {
+      "name": "キッズルームすばる",
+      "rawName": "キッズルームすばる",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "院内保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 45,
+      "totalEnrolled": 9,
+      "prevExited": 6,
+      "prevEntered": 1,
+      "fillRate": 20,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/14 11:27:46"
+    },
+    {
+      "name": "トマトの森保育園",
+      "rawName": "トマトの森保育園",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "企業主導型保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 8,
+      "prevExited": 6,
+      "prevEntered": 2,
+      "fillRate": 42,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/14 11:20:46"
+    },
+    {
+      "name": "トヨピーキッズ保育園",
+      "rawName": "トヨピーキッズ保育園",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "企業主導型保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 11,
+      "prevExited": 6,
+      "prevEntered": 2,
+      "fillRate": 57,
+      "ages": [
+        {
+          "capacity": 3,
+          "enrolled": 1
+        },
+        {
+          "capacity": 8,
+          "enrolled": 4
+        },
+        {
+          "capacity": 8,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/14 11:16:45"
+    },
+    {
+      "name": "ドリームキッズ・ネットワーク",
+      "rawName": "ドリームキッズ・ネットワーク",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "直営",
+      "form": "",
+      "yearMonth": "202604",
+      "totalCapacity": 60,
+      "totalEnrolled": 23,
+      "prevExited": 0,
+      "prevEntered": 23,
+      "fillRate": 38,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        }
+      ],
+      "updatedAt": "2026/4/2 18:55:12"
+    },
+    {
+      "name": "ビジョンキッズ保育園",
+      "rawName": "ビジョンキッズ保育園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "企業主導型保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 17,
+      "totalEnrolled": 4,
+      "prevExited": 6,
+      "prevEntered": 0,
+      "fillRate": 23,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/6 15:4:4"
+    },
+    {
+      "name": "ピュアキッズ",
+      "rawName": "ピュアキッズ",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "院内保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 25,
+      "totalEnrolled": 3,
+      "prevExited": 10,
+      "prevEntered": 0,
+      "fillRate": 12,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/14 11:22:52"
+    },
+    {
+      "name": "ベルキッズさっぽろ保育園",
+      "rawName": "ベルキッズさっぽろ保育園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "企業主導型保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 30,
+      "totalEnrolled": 20,
+      "prevExited": 13,
+      "prevEntered": 7,
+      "fillRate": 66,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 9
+        },
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 3
+        }
+      ],
+      "updatedAt": "2026/4/6 15:7:57"
+    },
+    {
+      "name": "マロニエ保育園",
+      "rawName": "マロニエ保育園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "院内保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 30,
+      "totalEnrolled": 13,
+      "prevExited": 7,
+      "prevEntered": 1,
+      "fillRate": 43,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        }
+      ],
+      "updatedAt": "2026/4/7 11:17:45"
+    },
+    {
+      "name": "リョーユー保育園",
+      "rawName": "リョーユー保育園",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "企業主導型保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 12,
+      "totalEnrolled": 12,
+      "prevExited": 2,
+      "prevEntered": 2,
+      "fillRate": 100,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/15 9:45:34"
+    },
+    {
+      "name": "レイクサイドインターナショナルチャイルドケア",
+      "rawName": "レイクサイドインターナショナルチャイルドケア",
+      "company": "SOUキッズケア株式会社（ＰＯＰ）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202604",
+      "totalCapacity": 60,
+      "totalEnrolled": 63,
+      "prevExited": 3,
+      "prevEntered": 2,
+      "fillRate": 105,
+      "ages": [
+        {
+          "capacity": 3,
+          "enrolled": 3
+        },
+        {
+          "capacity": 10,
+          "enrolled": 11
+        },
+        {
+          "capacity": 11,
+          "enrolled": 12
+        },
+        {
+          "capacity": 12,
+          "enrolled": 13
+        },
+        {
+          "capacity": 12,
+          "enrolled": 12
+        },
+        {
+          "capacity": 12,
+          "enrolled": 12
+        }
+      ],
+      "updatedAt": "2026/4/13 11:30:55"
+    },
+    {
+      "name": "ローシャルキッズ飯塚",
+      "rawName": "ローシャルキッズ飯塚",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "企業主導型保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 12,
+      "totalEnrolled": 8,
+      "prevExited": 5,
+      "prevEntered": 1,
+      "fillRate": 66,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/14 11:18:35"
+    },
+    {
+      "name": "一般社団法人たびと会ありんこ保育園",
+      "rawName": "一般社団法人たびと会ありんこ保育園",
+      "company": "株式会社キッズ・プランニング",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "",
+      "yearMonth": "202604",
+      "totalCapacity": 37,
+      "totalEnrolled": 33,
+      "prevExited": 37,
+      "prevEntered": 33,
+      "fillRate": 89,
+      "ages": [
+        {
+          "capacity": 2,
+          "enrolled": 0
+        },
+        {
+          "capacity": 12,
+          "enrolled": 11
+        },
+        {
+          "capacity": 6,
+          "enrolled": 10
+        },
+        {
+          "capacity": 5,
+          "enrolled": 3
+        },
+        {
+          "capacity": 5,
+          "enrolled": 5
+        },
+        {
+          "capacity": 7,
+          "enrolled": 4
+        }
+      ],
+      "updatedAt": "2026/4/17 9:11:31"
+    },
+    {
+      "name": "大池さんしょう保育園",
+      "rawName": "大池さんしょう保育園",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "企業主導型保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 15,
+      "totalEnrolled": 7,
+      "prevExited": 5,
+      "prevEntered": 4,
+      "fillRate": 46,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/14 11:15:29"
+    },
+    {
+      "name": "木の子ハウス",
+      "rawName": "木の子ハウス",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "地域連携型",
+      "yearMonth": "202604",
+      "totalCapacity": 20,
+      "totalEnrolled": 18,
+      "prevExited": 13,
+      "prevEntered": 4,
+      "fillRate": 90,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 10
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/6 15:13:38"
+    },
+    {
+      "name": "東船橋病院ひまわり保育園",
+      "rawName": "東船橋病院ひまわり保育園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "院内保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 20,
+      "totalEnrolled": 6,
+      "prevExited": 6,
+      "prevEntered": 4,
+      "fillRate": 30,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/6 15:9:52"
+    },
+    {
+      "name": "浜松労災病院タンポポ保育所",
+      "rawName": "浜松労災病院タンポポ保育所",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "院内保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 20,
+      "totalEnrolled": 4,
+      "prevExited": 3,
+      "prevEntered": 1,
+      "fillRate": 20,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/6 15:12:12"
+    },
+    {
+      "name": "福島病院たんぽぽ保育園",
+      "rawName": "福島病院たんぽぽ保育園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "その他",
+      "category": "グループ",
+      "management": "受託",
+      "form": "院内保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 7,
+      "totalEnrolled": 5,
+      "prevExited": 6,
+      "prevEntered": 2,
+      "fillRate": 71,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/6 15:13:1"
+    },
+    {
+      "name": "イオンゆめみらい保育園四日市泊",
+      "rawName": "イオンゆめみらい保育園四日市泊",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "イオンゆめみらい保育園",
+      "category": "グループ",
+      "management": "受託",
+      "form": "企業主導型保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 21,
+      "totalEnrolled": 8,
+      "prevExited": 7,
+      "prevEntered": 0,
+      "fillRate": 38,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/14 11:42:47"
+    },
+    {
+      "name": "イオンゆめみらい保育園宇城",
+      "rawName": "イオンゆめみらい保育園宇城",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "イオンゆめみらい保育園",
+      "category": "グループ",
+      "management": "受託",
+      "form": "企業主導型保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 30,
+      "totalEnrolled": 4,
+      "prevExited": 9,
+      "prevEntered": 2,
+      "fillRate": 13,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/14 11:36:20"
+    },
+    {
+      "name": "イオンゆめみらい保育園富士南",
+      "rawName": "イオンゆめみらい保育園富士南",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "イオンゆめみらい保育園",
+      "category": "グループ",
+      "management": "受託",
+      "form": "企業主導型保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 30,
+      "totalEnrolled": 15,
+      "prevExited": 5,
+      "prevEntered": 2,
+      "fillRate": 50,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/14 11:43:46"
+    },
+    {
+      "name": "イオンゆめみらい保育園松本",
+      "rawName": "イオンゆめみらい保育園松本",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "イオンゆめみらい保育園",
+      "category": "グループ",
+      "management": "受託",
+      "form": "企業主導型保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 30,
+      "totalEnrolled": 15,
+      "prevExited": 3,
+      "prevEntered": 0,
+      "fillRate": 50,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/14 11:44:30"
+    },
+    {
+      "name": "イオンゆめみらい保育園水戸内原",
+      "rawName": "イオンゆめみらい保育園水戸内原",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "イオンゆめみらい保育園",
+      "category": "グループ",
+      "management": "受託",
+      "form": "企業主導型保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 13,
+      "prevExited": 4,
+      "prevEntered": 3,
+      "fillRate": 68,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/14 12:2:4"
+    },
+    {
+      "name": "イオンゆめみらい保育園熊本",
+      "rawName": "イオンゆめみらい保育園熊本",
+      "company": "SOUキッズケア株式会社（アピカル）",
+      "brand": "イオンゆめみらい保育園",
+      "category": "グループ",
+      "management": "受託",
+      "form": "企業主導型保育事業",
+      "yearMonth": "202604",
+      "totalCapacity": 35,
+      "totalEnrolled": 27,
+      "prevExited": 7,
+      "prevEntered": 2,
+      "fillRate": 77,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        }
+      ],
+      "updatedAt": "2026/4/14 11:35:27"
+    },
+    {
+      "name": "キッズキッズ アイム",
+      "rawName": "キッズ・キッズアイム",
+      "company": "株式会社キッズ・プランニング",
+      "brand": "キッズキッズ保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 17,
+      "prevExited": 18,
+      "prevEntered": 17,
+      "fillRate": 89,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/3/27 8:3:31"
+    },
+    {
+      "name": "キッズキッズ保育園 二日市",
+      "rawName": "キッズ・キッズ保育園二日市",
+      "company": "株式会社キッズ・プランニング",
+      "brand": "キッズキッズ保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 16,
+      "prevExited": 19,
+      "prevEntered": 16,
+      "fillRate": 84,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/3/30 15:27:32"
+    },
+    {
+      "name": "キッズキッズ保育園 博多",
+      "rawName": "キッズ・キッズ保育園博多",
+      "company": "株式会社キッズ・プランニング",
+      "brand": "キッズキッズ保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 15,
+      "prevExited": 4,
+      "prevEntered": 1,
+      "fillRate": 78,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/20 12:39:31"
+    },
+    {
+      "name": "キッズキッズ保育園 天神",
+      "rawName": "キッズ・キッズ保育園天神",
+      "company": "株式会社キッズ・プランニング",
+      "brand": "キッズキッズ保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "",
+      "yearMonth": "202604",
+      "totalCapacity": 15,
+      "totalEnrolled": 15,
+      "prevExited": 15,
+      "prevEntered": 15,
+      "fillRate": 100,
+      "ages": [
+        {
+          "capacity": 5,
+          "enrolled": 3
+        },
+        {
+          "capacity": 5,
+          "enrolled": 6
+        },
+        {
+          "capacity": 5,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/16 11:18:7"
+    },
+    {
+      "name": "キッズキッズ保育園 小倉",
+      "rawName": "キッズ・キッズ保育園小倉",
+      "company": "株式会社キッズ・プランニング",
+      "brand": "キッズキッズ保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "",
+      "yearMonth": "202605",
+      "totalCapacity": 19,
+      "totalEnrolled": 17,
+      "prevExited": 0,
+      "prevEntered": 1,
+      "fillRate": 89,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/16 12:17:16"
+    },
+    {
+      "name": "キッズキッズ保育園 小倉",
+      "rawName": "キッズ・キッズ保育園小倉",
+      "company": "株式会社キッズ・プランニング",
+      "brand": "キッズキッズ保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 16,
+      "prevExited": 19,
+      "prevEntered": 16,
+      "fillRate": 84,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/3/30 16:6:44"
+    },
+    {
+      "name": "キッズキッズ保育園 浄水N",
+      "rawName": "キッズ・キッズ保育園浄水N",
+      "company": "株式会社キッズ・プランニング",
+      "brand": "キッズキッズ保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 15,
+      "prevExited": 1,
+      "prevEntered": 16,
+      "fillRate": 78,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/6 16:10:21"
+    },
+    {
+      "name": "キッズキッズ保育園 長丘",
+      "rawName": "キッズ・キッズ保育園長丘",
+      "company": "株式会社キッズ・プランニング",
+      "brand": "キッズキッズ保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "",
+      "yearMonth": "202605",
+      "totalCapacity": 19,
+      "totalEnrolled": 15,
+      "prevExited": 0,
+      "prevEntered": 0,
+      "fillRate": 78,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/21 11:49:9"
+    },
+    {
+      "name": "キッズキッズ保育園 長丘",
+      "rawName": "キッズ・キッズ保育園長丘",
+      "company": "株式会社キッズ・プランニング",
+      "brand": "キッズキッズ保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 15,
+      "prevExited": 4,
+      "prevEntered": 0,
+      "fillRate": 78,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/21 11:46:50"
+    },
+    {
+      "name": "キッズキッズ保育園 香椎",
+      "rawName": "キッズ・キッズ保育園香椎",
+      "company": "株式会社キッズ・プランニング",
+      "brand": "キッズキッズ保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 18,
+      "prevExited": 19,
+      "prevEntered": 18,
+      "fillRate": 94,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/21 10:38:6"
+    },
+    {
+      "name": "スクルドエンジェル保育園あじま園",
+      "rawName": "スクルドエンジェル保育園あじま園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202604",
+      "totalCapacity": 60,
+      "totalEnrolled": 59,
+      "prevExited": 58,
+      "prevEntered": 59,
+      "fillRate": 98,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 12
+        },
+        {
+          "capacity": 0,
+          "enrolled": 12
+        },
+        {
+          "capacity": 0,
+          "enrolled": 11
+        },
+        {
+          "capacity": 0,
+          "enrolled": 11
+        },
+        {
+          "capacity": 0,
+          "enrolled": 9
+        }
+      ],
+      "updatedAt": "2026/4/13 13:56:3"
+    },
+    {
+      "name": "スクルドエンジェル保育園かまいし園",
+      "rawName": "スクルドエンジェル保育園かまいし園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 6,
+      "prevExited": 9,
+      "prevEntered": 6,
+      "fillRate": 31,
+      "ages": [
+        {
+          "capacity": 6,
+          "enrolled": 0
+        },
+        {
+          "capacity": 6,
+          "enrolled": 3
+        },
+        {
+          "capacity": 7,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/10 14:16:4"
+    },
+    {
+      "name": "スクルドエンジェル保育園そうま園",
+      "rawName": "スクルドエンジェル保育園そうま園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202604",
+      "totalCapacity": 40,
+      "totalEnrolled": 20,
+      "prevExited": 24,
+      "prevEntered": 20,
+      "fillRate": 50,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 3
+        }
+      ],
+      "updatedAt": "2026/4/10 14:53:5"
+    },
+    {
+      "name": "スクルドエンジェル保育園なんよう園",
+      "rawName": "スクルドエンジェル保育園なんよう園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202604",
+      "totalCapacity": 60,
+      "totalEnrolled": 57,
+      "prevExited": 62,
+      "prevEntered": 57,
+      "fillRate": 95,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 12
+        },
+        {
+          "capacity": 0,
+          "enrolled": 12
+        },
+        {
+          "capacity": 0,
+          "enrolled": 10
+        },
+        {
+          "capacity": 0,
+          "enrolled": 11
+        },
+        {
+          "capacity": 0,
+          "enrolled": 10
+        }
+      ],
+      "updatedAt": "2026/4/13 13:49:49"
+    },
+    {
+      "name": "スクルドエンジェル保育園ひとつやま園",
+      "rawName": "スクルドエンジェル保育園ひとつやま園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202604",
+      "totalCapacity": 73,
+      "totalEnrolled": 60,
+      "prevExited": 64,
+      "prevEntered": 60,
+      "fillRate": 82,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 11
+        },
+        {
+          "capacity": 0,
+          "enrolled": 13
+        },
+        {
+          "capacity": 0,
+          "enrolled": 12
+        },
+        {
+          "capacity": 0,
+          "enrolled": 12
+        },
+        {
+          "capacity": 0,
+          "enrolled": 9
+        }
+      ],
+      "updatedAt": "2026/4/13 14:2:3"
+    },
+    {
+      "name": "スクルドエンジェル保育園アクアゲート",
+      "rawName": "スクルドエンジェル保育園アクアゲート",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202604",
+      "totalCapacity": 70,
+      "totalEnrolled": 60,
+      "prevExited": 62,
+      "prevEntered": 60,
+      "fillRate": 85,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 10
+        },
+        {
+          "capacity": 0,
+          "enrolled": 11
+        },
+        {
+          "capacity": 0,
+          "enrolled": 12
+        },
+        {
+          "capacity": 0,
+          "enrolled": 11
+        },
+        {
+          "capacity": 0,
+          "enrolled": 13
+        }
+      ],
+      "updatedAt": "2026/4/10 15:10:5"
+    },
+    {
+      "name": "スクルドエンジェル保育園五井園",
+      "rawName": "スクルドエンジェル保育園五井園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202604",
+      "totalCapacity": 60,
+      "totalEnrolled": 60,
+      "prevExited": 61,
+      "prevEntered": 60,
+      "fillRate": 100,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 10
+        },
+        {
+          "capacity": 0,
+          "enrolled": 11
+        },
+        {
+          "capacity": 0,
+          "enrolled": 11
+        },
+        {
+          "capacity": 0,
+          "enrolled": 13
+        },
+        {
+          "capacity": 0,
+          "enrolled": 10
+        }
+      ],
+      "updatedAt": "2026/4/10 15:24:41"
+    },
+    {
+      "name": "スクルドエンジェル保育園仙台宮城野原園",
+      "rawName": "スクルドエンジェル保育園仙台宮城野原園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 9,
+      "prevExited": 11,
+      "prevEntered": 9,
+      "fillRate": 47,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/10 14:40:47"
+    },
+    {
+      "name": "スクルドエンジェル保育園仙台長町園",
+      "rawName": "スクルドエンジェル保育園仙台長町園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 14,
+      "prevExited": 15,
+      "prevEntered": 14,
+      "fillRate": 73,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/10 14:23:12"
+    },
+    {
+      "name": "スクルドエンジェル保育園古市場園",
+      "rawName": "スクルドエンジェル保育園古市場園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202604",
+      "totalCapacity": 60,
+      "totalEnrolled": 59,
+      "prevExited": 61,
+      "prevEntered": 59,
+      "fillRate": 98,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 10
+        },
+        {
+          "capacity": 0,
+          "enrolled": 11
+        },
+        {
+          "capacity": 0,
+          "enrolled": 10
+        },
+        {
+          "capacity": 0,
+          "enrolled": 13
+        },
+        {
+          "capacity": 0,
+          "enrolled": 13
+        }
+      ],
+      "updatedAt": "2026/4/10 15:33:43"
+    },
+    {
+      "name": "スクルドエンジェル保育園坂本園",
+      "rawName": "スクルドエンジェル保育園坂本園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 15,
+      "prevExited": 14,
+      "prevEntered": 15,
+      "fillRate": 78,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/13 14:47:39"
+    },
+    {
+      "name": "スクルドエンジェル保育園大宮園",
+      "rawName": "スクルドエンジェル保育園大宮園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業B",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 11,
+      "prevExited": 18,
+      "prevEntered": 11,
+      "fillRate": 57,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/10 15:0:32"
+    },
+    {
+      "name": "スクルドエンジェル保育園新琴似園",
+      "rawName": "スクルドエンジェル保育園新琴似園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202604",
+      "totalCapacity": 30,
+      "totalEnrolled": 26,
+      "prevExited": 31,
+      "prevEntered": 26,
+      "fillRate": 86,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        }
+      ],
+      "updatedAt": "2026/4/10 14:5:6"
+    },
+    {
+      "name": "スクルドエンジェル保育園新鎌ケ谷園",
+      "rawName": "スクルドエンジェル保育園新鎌ケ谷園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 12,
+      "prevExited": 13,
+      "prevEntered": 12,
+      "fillRate": 63,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/10 15:36:43"
+    },
+    {
+      "name": "スクルドエンジェル保育園月寒園",
+      "rawName": "スクルドエンジェル保育園月寒園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202604",
+      "totalCapacity": 40,
+      "totalEnrolled": 42,
+      "prevExited": 46,
+      "prevEntered": 42,
+      "fillRate": 105,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 9
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 9
+        },
+        {
+          "capacity": 0,
+          "enrolled": 9
+        }
+      ],
+      "updatedAt": "2026/4/10 14:12:46"
+    },
+    {
+      "name": "スクルドエンジェル保育園望海園",
+      "rawName": "スクルドエンジェル保育園望海園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202604",
+      "totalCapacity": 76,
+      "totalEnrolled": 78,
+      "prevExited": 81,
+      "prevEntered": 78,
+      "fillRate": 102,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 11
+        },
+        {
+          "capacity": 0,
+          "enrolled": 11
+        },
+        {
+          "capacity": 0,
+          "enrolled": 18
+        },
+        {
+          "capacity": 0,
+          "enrolled": 17
+        },
+        {
+          "capacity": 0,
+          "enrolled": 18
+        }
+      ],
+      "updatedAt": "2026/4/13 12:7:3"
+    },
+    {
+      "name": "スクルドエンジェル保育園柿の木坂園",
+      "rawName": "スクルドエンジェル保育園柿の木坂園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202604",
+      "totalCapacity": 49,
+      "totalEnrolled": 28,
+      "prevExited": 31,
+      "prevEntered": 28,
+      "fillRate": 57,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 1
+        }
+      ],
+      "updatedAt": "2026/4/13 13:43:24"
+    },
+    {
+      "name": "スクルドエンジェル保育園神納園",
+      "rawName": "スクルドエンジェル保育園神納園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202604",
+      "totalCapacity": 70,
+      "totalEnrolled": 74,
+      "prevExited": 82,
+      "prevEntered": 74,
+      "fillRate": 105,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 12
+        },
+        {
+          "capacity": 0,
+          "enrolled": 16
+        },
+        {
+          "capacity": 0,
+          "enrolled": 18
+        },
+        {
+          "capacity": 0,
+          "enrolled": 18
+        }
+      ],
+      "updatedAt": "2026/4/13 12:12:53"
+    },
+    {
+      "name": "スクルドエンジェル保育園袖ケ浦園Ⅰ",
+      "rawName": "スクルドエンジェル保育園袖ケ浦園Ⅰ",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 16,
+      "prevExited": 16,
+      "prevEntered": 16,
+      "fillRate": 84,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 9
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/13 13:24:57"
+    },
+    {
+      "name": "スクルドエンジェル保育園袖ケ浦園Ⅱ",
+      "rawName": "スクルドエンジェル保育園袖ケ浦園Ⅱ",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 12,
+      "prevExited": 18,
+      "prevEntered": 12,
+      "fillRate": 63,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/13 13:29:23"
+    },
+    {
+      "name": "スクルドエンジェル保育園袖ケ浦園Ⅲ",
+      "rawName": "スクルドエンジェル保育園袖ケ浦園Ⅲ",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 16,
+      "prevExited": 17,
+      "prevEntered": 16,
+      "fillRate": 84,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/13 13:32:18"
+    },
+    {
+      "name": "スクルドエンジェル保育園鎌ケ谷大仏園",
+      "rawName": "スクルドエンジェル保育園鎌ケ谷大仏園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 15,
+      "prevExited": 17,
+      "prevEntered": 15,
+      "fillRate": 78,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/13 11:59:46"
+    },
+    {
+      "name": "スクルドエンジェル保育室あらこ園",
+      "rawName": "スクルドエンジェル保育室あらこ園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業B",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 18,
+      "prevExited": 19,
+      "prevEntered": 18,
+      "fillRate": 94,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/13 14:30:44"
+    },
+    {
+      "name": "スクルドエンジェル保育室おばた園",
+      "rawName": "スクルドエンジェル保育室おばた園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 9,
+      "prevExited": 14,
+      "prevEntered": 9,
+      "fillRate": 47,
+      "ages": [
+        {
+          "capacity": 3,
+          "enrolled": 0
+        },
+        {
+          "capacity": 8,
+          "enrolled": 4
+        },
+        {
+          "capacity": 8,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/13 14:14:43"
+    },
+    {
+      "name": "スクルドエンジェル保育室ごきそ園",
+      "rawName": "スクルドエンジェル保育室ごきそ園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 8,
+      "prevExited": 12,
+      "prevEntered": 8,
+      "fillRate": 42,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/13 14:9:15"
+    },
+    {
+      "name": "スクルドエンジェル保育室さきょうやま園",
+      "rawName": "スクルドエンジェル保育室さきょうやま園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業B",
+      "yearMonth": "202604",
+      "totalCapacity": 16,
+      "totalEnrolled": 12,
+      "prevExited": 12,
+      "prevEntered": 12,
+      "fillRate": 75,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/13 14:34:36"
+    },
+    {
+      "name": "スクルドエンジェル保育室たかばり園",
+      "rawName": "スクルドエンジェル保育室たかばり園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 6,
+      "prevExited": 7,
+      "prevEntered": 6,
+      "fillRate": 31,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/13 14:11:51"
+    },
+    {
+      "name": "スクルドエンジェル保育室たから園",
+      "rawName": "スクルドエンジェル保育室たから園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 3,
+      "prevExited": 7,
+      "prevEntered": 3,
+      "fillRate": 15,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/13 14:21:53"
+    },
+    {
+      "name": "スクルドエンジェル保育室ふじがおか園",
+      "rawName": "スクルドエンジェル保育室ふじがおか園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 10,
+      "prevExited": 14,
+      "prevEntered": 10,
+      "fillRate": 52,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/13 14:4:33"
+    },
+    {
+      "name": "スクルドエンジェル保育室みなと園",
+      "rawName": "スクルドエンジェル保育室みなと園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業B",
+      "yearMonth": "202604",
+      "totalCapacity": 18,
+      "totalEnrolled": 8,
+      "prevExited": 13,
+      "prevEntered": 8,
+      "fillRate": 44,
+      "ages": [
+        {
+          "capacity": 3,
+          "enrolled": 2
+        },
+        {
+          "capacity": 7,
+          "enrolled": 2
+        },
+        {
+          "capacity": 8,
+          "enrolled": 4
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/13 14:24:52"
+    },
+    {
+      "name": "スクルドエンジェル保育室一宮平和園",
+      "rawName": "スクルドエンジェル保育室一宮平和園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 14,
+      "prevExited": 17,
+      "prevEntered": 14,
+      "fillRate": 73,
+      "ages": [
+        {
+          "capacity": 3,
+          "enrolled": 1
+        },
+        {
+          "capacity": 8,
+          "enrolled": 5
+        },
+        {
+          "capacity": 8,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/13 14:40:42"
+    },
+    {
+      "name": "スクルドエンジェル保育室一宮観音寺園",
+      "rawName": "スクルドエンジェル保育室一宮観音寺園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 15,
+      "prevExited": 16,
+      "prevEntered": 15,
+      "fillRate": 78,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 1
+        },
+        {
+          "capacity": 0,
+          "enrolled": 8
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/13 14:44:42"
+    },
+    {
+      "name": "スクルドエンジェル保育室北名古屋園",
+      "rawName": "スクルドエンジェル保育室北名古屋園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業A",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 15,
+      "prevExited": 17,
+      "prevEntered": 15,
+      "fillRate": 78,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 2
+        },
+        {
+          "capacity": 0,
+          "enrolled": 7
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/13 14:37:40"
+    },
+    {
+      "name": "スクルドエンジェル保育室太平通園",
+      "rawName": "スクルドエンジェル保育室太平通園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "小規模保育事業B",
+      "yearMonth": "202604",
+      "totalCapacity": 19,
+      "totalEnrolled": 8,
+      "prevExited": 12,
+      "prevEntered": 8,
+      "fillRate": 42,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 3
+        },
+        {
+          "capacity": 0,
+          "enrolled": 5
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/13 14:27:24"
+    },
+    {
+      "name": "スクルドエンジェル北砂園",
+      "rawName": "スクルドエンジェル北砂園",
+      "company": "SOUキッズケア株式会社（スクルドアンドカンパニー）",
+      "brand": "スクルドエンジェル保育園",
+      "category": "グループ",
+      "management": "直営",
+      "form": "認可保育所",
+      "yearMonth": "202604",
+      "totalCapacity": 73,
+      "totalEnrolled": 53,
+      "prevExited": 70,
+      "prevEntered": 53,
+      "fillRate": 72,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 6
+        },
+        {
+          "capacity": 0,
+          "enrolled": 10
+        },
+        {
+          "capacity": 0,
+          "enrolled": 10
+        },
+        {
+          "capacity": 0,
+          "enrolled": 15
+        },
+        {
+          "capacity": 0,
+          "enrolled": 12
+        }
+      ],
+      "updatedAt": "2026/4/13 13:37:24"
+    }
+  ]
+}
