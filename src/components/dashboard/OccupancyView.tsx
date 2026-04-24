@@ -154,7 +154,7 @@ export default function OccupancyView() {
 				自社フェリーチェ（年齢別粒度、ソース: 園児数シート）
 			</div>
 			{/* サマリーゲージ */}
-			<div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3">
+			<div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-2 md:gap-3">
 				{AGE_LABELS.map((label, i) => {
 					const cap = totals.capacity[i];
 					const enr = totals.enrolled[i];

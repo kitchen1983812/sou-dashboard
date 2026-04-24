@@ -315,11 +315,11 @@ function MobileHamburger({ onOpen }: { onOpen: () => void }) {
 	return (
 		<button
 			onClick={onOpen}
-			className="md:hidden fixed top-3 left-3 z-40 p-2 bg-white shadow-sm border border-gray-200"
+			className="md:hidden fixed top-0 left-0 z-40 h-12 w-12 flex items-center justify-center text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
 			aria-label="メニューを開く"
 		>
 			<svg
-				className="w-5 h-5 text-gray-700"
+				className="w-6 h-6"
 				fill="none"
 				stroke="currentColor"
 				viewBox="0 0 24 24"
