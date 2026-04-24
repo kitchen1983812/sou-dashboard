@@ -2,7 +2,8 @@ import { NextResponse } from "next/server";
 import { getSheetData } from "@/lib/googleSheets";
 import { NURSERIES } from "@/config/reviewConfig";
 
-export const dynamic = "force-dynamic";
+// Sheets手動更新（週次）→ 30分キャッシュ
+export const revalidate = 1800;
 
 const OCCUPANCY_SHEET_ID = process.env.GOOGLE_SHEET_ID_OCCUPANCY || "";
 
@@ -115,7 +116,12 @@ export async function GET() {
 				yearMonth: latestYearMonth,
 				fetchedAt: new Date().toISOString(),
 			},
-			{ headers: { "Cache-Control": "no-store, max-age=0" } },
+			{
+				headers: {
+					"Cache-Control":
+						"public, max-age=0, s-maxage=1800, stale-while-revalidate=3600",
+				},
+			},
 		);
 	} catch (error) {
 		console.error("Failed to fetch occupancy:", error);

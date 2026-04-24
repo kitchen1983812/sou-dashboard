@@ -9,7 +9,8 @@ import {
 } from "@/config/reviewConfig";
 import { classifyBrand } from "@/config/brandConfig";
 
-export const dynamic = "force-dynamic";
+// JSON（週次更新）→ 1時間キャッシュ
+export const revalidate = 3600;
 
 /** スナップショットファイルの型 */
 interface SnapshotEntry {

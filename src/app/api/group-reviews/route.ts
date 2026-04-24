@@ -3,7 +3,8 @@ import path from "path";
 import { NextRequest, NextResponse } from "next/server";
 import { BrandCategory, classifyBrand } from "@/config/brandConfig";
 
-export const dynamic = "force-dynamic";
+// JSONベース（週次更新）→ 1時間キャッシュ。デプロイ時に自動失効
+export const revalidate = 3600;
 
 export interface GroupNursery {
 	name: string;
@@ -116,14 +117,14 @@ export async function GET() {
 				error:
 					"グループ園データがありません。Excelをアップロードしてください。",
 			},
-			{
-				status: 500,
-				headers: { "Cache-Control": "no-store, max-age=0" },
-			},
+			{ status: 500 },
 		);
 	}
 	return NextResponse.json(data, {
-		headers: { "Cache-Control": "no-store, max-age=0" },
+		headers: {
+			"Cache-Control":
+				"public, max-age=0, s-maxage=3600, stale-while-revalidate=86400",
+		},
 	});
 }
 

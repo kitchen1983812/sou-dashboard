@@ -29,7 +29,7 @@ export default function GroupCapacityPanel() {
 	const [sortDir, setSortDir] = useState<SortDir>("asc");
 
 	useEffect(() => {
-		fetch(`/api/group-capacity?_=${Date.now()}`, { cache: "no-store" })
+		fetch("/api/group-capacity")
 			.then((r) => r.json())
 			.then((d) => {
 				if (d.error) setError(d.error);

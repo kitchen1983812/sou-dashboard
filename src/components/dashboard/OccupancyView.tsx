@@ -38,7 +38,7 @@ export default function OccupancyView() {
 	const [areaFilter, setAreaFilter] = useState("all");
 
 	useEffect(() => {
-		fetch(`/api/occupancy?_=${Date.now()}`, { cache: "no-store" })
+		fetch("/api/occupancy")
 			.then((res) => res.json())
 			.then((d) => {
 				if (d.error) {

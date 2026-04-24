@@ -3,7 +3,8 @@ import path from "path";
 import { NextResponse } from "next/server";
 import { BrandCategory } from "@/config/brandConfig";
 
-export const dynamic = "force-dynamic";
+// JSONベース（週次更新）→ 1時間キャッシュ
+export const revalidate = 3600;
 
 export interface AgeCapacity {
 	capacity: number;
@@ -45,7 +46,10 @@ export async function GET() {
 		const raw = fs.readFileSync(filePath, "utf-8");
 		const data: GroupCapacityData = JSON.parse(raw);
 		return NextResponse.json(data, {
-			headers: { "Cache-Control": "no-store, max-age=0" },
+			headers: {
+				"Cache-Control":
+					"public, max-age=0, s-maxage=3600, stale-while-revalidate=86400",
+			},
 		});
 	} catch {
 		return NextResponse.json(

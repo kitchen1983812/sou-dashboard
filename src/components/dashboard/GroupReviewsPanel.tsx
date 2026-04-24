@@ -33,7 +33,7 @@ export default function GroupReviewsPanel() {
 	const fileInputRef = useRef<HTMLInputElement>(null);
 
 	useEffect(() => {
-		fetch(`/api/group-reviews?_=${Date.now()}`, { cache: "no-store" })
+		fetch("/api/group-reviews")
 			.then((r) => r.json())
 			.then((d) => {
 				if (d.error) setError(d.error);

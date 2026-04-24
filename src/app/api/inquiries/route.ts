@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { getSheetData } from "@/lib/googleSheets";
 import { transformInquiries } from "@/lib/transform";
 
-export const dynamic = "force-dynamic";
+// Sheets（問い合わせ、日次変動）→ 10分キャッシュ
+export const revalidate = 600;
 
 export async function GET(request: NextRequest) {
 	try {

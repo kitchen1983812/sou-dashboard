@@ -10,7 +10,8 @@ import {
 	STAFF_SHEET_NAME,
 } from "@/config/staffConfig";
 
-export const dynamic = "force-dynamic";
+// Sheets/JSON（週次更新）→ 1時間キャッシュ
+export const revalidate = 3600;
 
 export interface StaffNursery {
 	name: string;
@@ -69,7 +70,9 @@ function parseCsv(csvText: string): { data: StaffData; warnings: string[] } {
 	if (lines.length < 2) throw new Error("CSVにデータ行がありません");
 
 	// ヘッダー解析
-	const headers = lines[0].split(",").map((h) => h.trim().replace(/^"|"$/g, ""));
+	const headers = lines[0]
+		.split(",")
+		.map((h) => h.trim().replace(/^"|"$/g, ""));
 	const colOf = (name: string) => headers.indexOf(name);
 	const facilityCol = colOf("施設名");
 	const empTypeCol = colOf("雇用形態");
@@ -89,15 +92,19 @@ function parseCsv(csvText: string): { data: StaffData; warnings: string[] } {
 	}
 
 	// 施設名を正規化して集計
-	const merged: Record<string, { name: string; area: string; emps: string[] }> = {};
+	const merged: Record<string, { name: string; area: string; emps: string[] }> =
+		{};
 	for (const [facility, emps] of Object.entries(byFacility)) {
 		const mapped = FACILITY_MAP[facility];
 		if (!mapped) {
-			warnings.push(`施設名「${facility}」はマッピング未登録のためスキップしました`);
+			warnings.push(
+				`施設名「${facility}」はマッピング未登録のためスキップしました`,
+			);
 			continue;
 		}
 		const key = mapped.name;
-		if (!merged[key]) merged[key] = { name: mapped.name, area: mapped.area, emps: [] };
+		if (!merged[key])
+			merged[key] = { name: mapped.name, area: mapped.area, emps: [] };
 		merged[key].emps.push(...emps);
 	}
 
@@ -114,7 +121,9 @@ function parseCsv(csvText: string): { data: StaffData; warnings: string[] } {
 			}
 			return { name, area, total, seishain, rate, breakdown };
 		})
-		.sort((a, b) => a.area.localeCompare(b.area) || a.name.localeCompare(b.name));
+		.sort(
+			(a, b) => a.area.localeCompare(b.area) || a.name.localeCompare(b.name),
+		);
 
 	const total = nurseries.reduce((s, n) => s + n.total, 0);
 	const seishain = nurseries.reduce((s, n) => s + n.seishain, 0);
@@ -172,7 +181,12 @@ export async function GET() {
 	}
 
 	// フォールバック: public/staff/employees.json
-	const filePath = path.join(process.cwd(), "public", "staff", "employees.json");
+	const filePath = path.join(
+		process.cwd(),
+		"public",
+		"staff",
+		"employees.json",
+	);
 	try {
 		const raw = fs.readFileSync(filePath, "utf-8");
 		return NextResponse.json(JSON.parse(raw));
@@ -189,7 +203,10 @@ export async function POST(req: NextRequest) {
 		const formData = await req.formData();
 		const file = formData.get("file");
 		if (!file || typeof file === "string") {
-			return NextResponse.json({ error: "ファイルが添付されていません" }, { status: 400 });
+			return NextResponse.json(
+				{ error: "ファイルが添付されていません" },
+				{ status: 400 },
+			);
 		}
 
 		const text = await (file as File).text();
