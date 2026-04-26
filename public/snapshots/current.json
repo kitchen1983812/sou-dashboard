@@ -1,5 +1,5 @@
 {
-  "date": "2026-04-20",
+  "date": "2026-04-26",
   "nurseries": {
     "ChIJAT_un8j6GGARRJDWMAye3XE": {
       "name": "稲城長沼園",
@@ -22,7 +22,7 @@
     "ChIJt9t-ubLpGGARbSs4iZCwOMU": {
       "name": "新座園",
       "area": "埼玉県",
-      "count": 1,
+      "count": 2,
       "rating": 5
     },
     "ChIJmfaEZpz_GGARzgWS_10r0o8": {
@@ -148,7 +148,7 @@
     "ChIJLZnrOpn_GGARulv_-cYUkSM": {
       "name": "座間II園",
       "area": "神奈川県",
-      "count": 5,
+      "count": 6,
       "rating": 5
     }
   },
@@ -246,7 +246,7 @@
     "ChIJT8fMpjmLGGART1T_gKRECMw": {
       "name": "Tokyo International School Nakameguro Kinder Garden",
       "area": "東京都",
-      "count": 8,
+      "count": 9,
       "rating": 4.4
     },
     "ChIJV1Wh2hiLGGARmzzpPhiBbcs": {
