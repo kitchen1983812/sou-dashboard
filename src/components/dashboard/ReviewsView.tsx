@@ -1,8 +1,26 @@
 "use client";
 
 import { useEffect, useState, useMemo, useCallback } from "react";
+import {
+	ComposedChart,
+	Bar,
+	Line,
+	XAxis,
+	YAxis,
+	CartesianGrid,
+	Tooltip,
+	Legend,
+	ResponsiveContainer,
+} from "recharts";
 import type { ReviewData, CompetitorReviewData } from "@/app/api/reviews/route";
+import type { SnapshotPoint } from "@/app/api/review-snapshots/route";
+import type { Inquiry } from "@/types/inquiry";
+import { parseDate, STATUS } from "@/lib/dashboardUtils";
 import GroupReviewsPanel from "./GroupReviewsPanel";
+
+interface ReviewsViewProps {
+	inquiries: Inquiry[];
+}
 
 interface ReviewsResponse {
 	reviews: ReviewData[];
@@ -41,8 +59,9 @@ type SortKey =
 	| "baselineIncrease";
 type SortDir = "asc" | "desc";
 
-export default function ReviewsView() {
+export default function ReviewsView({ inquiries }: ReviewsViewProps) {
 	const [data, setData] = useState<ReviewsResponse | null>(null);
+	const [snapshots, setSnapshots] = useState<SnapshotPoint[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
 	const [sortKey, setSortKey] = useState<SortKey>("rating");
@@ -61,7 +80,76 @@ export default function ReviewsView() {
 				setError(String(e));
 				setLoading(false);
 			});
+		fetch("/api/review-snapshots")
+			.then((res) => res.json())
+			.then((d) => {
+				if (d.points) setSnapshots(d.points);
+			})
+			.catch(() => {});
 	}, []);
+
+	// 月次推移（GBP累計 vs 月次入園・問合せ）
+	const trendData = useMemo(() => {
+		if (snapshots.length === 0) return [];
+		// 月末値を取得（その月最後のスナップショット）
+		const monthEndMap = new Map<string, number>();
+		for (const p of snapshots) {
+			const ym = p.date.slice(0, 7);
+			monthEndMap.set(ym, p.totalCount);
+		}
+		// 月別 inquiries 集計（postDateで判定）
+		const monthInquiries = new Map<
+			string,
+			{ inquiries: number; enrolled: number }
+		>();
+		for (const inq of inquiries) {
+			const d = parseDate(inq.postDate);
+			if (!d) continue;
+			const ym = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+			if (!monthInquiries.has(ym))
+				monthInquiries.set(ym, { inquiries: 0, enrolled: 0 });
+			const entry = monthInquiries.get(ym)!;
+			entry.inquiries++;
+			if (inq.status === STATUS.ENROLLED) entry.enrolled++;
+		}
+		// マージ（snapshot 月のみ表示）
+		return Array.from(monthEndMap.entries())
+			.sort(([a], [b]) => a.localeCompare(b))
+			.map(([ym, gbpCount]) => {
+				const inq = monthInquiries.get(ym) ?? {
+					inquiries: 0,
+					enrolled: 0,
+				};
+				return {
+					month: ym.slice(5) + "月",
+					gbpCount,
+					inquiries: inq.inquiries,
+					enrolled: inq.enrolled,
+				};
+			});
+	}, [snapshots, inquiries]);
+
+	// ピアソン相関係数（GBP累計 vs 月次問合せ）
+	const correlation = useMemo(() => {
+		if (trendData.length < 3) return null;
+		const xs = trendData.map((d) => d.gbpCount);
+		const ys = trendData.map((d) => d.inquiries);
+		const n = xs.length;
+		const meanX = xs.reduce((s, v) => s + v, 0) / n;
+		const meanY = ys.reduce((s, v) => s + v, 0) / n;
+		let num = 0,
+			denX = 0,
+			denY = 0;
+		for (let i = 0; i < n; i++) {
+			const dx = xs[i] - meanX;
+			const dy = ys[i] - meanY;
+			num += dx * dy;
+			denX += dx * dx;
+			denY += dy * dy;
+		}
+		const den = Math.sqrt(denX * denY);
+		return den > 0 ? num / den : null;
+	}, [trendData]);
 
 	const areas = useMemo(() => {
 		if (!data) return [];
@@ -515,7 +603,9 @@ export default function ReviewsView() {
 												className="bg-brand-500 h-2 rounded-full"
 												style={{
 													width: `${Math.min(
-														((r.baselineIncrease ?? 0) / (data.halfYearGoal || 10)) * 100,
+														((r.baselineIncrease ?? 0) /
+															(data.halfYearGoal || 10)) *
+															100,
 														100,
 													)}%`,
 												}}
@@ -523,7 +613,9 @@ export default function ReviewsView() {
 										</div>
 										<div className="text-xs text-gray-400 text-right mt-0.5">
 											{Math.round(
-												((r.baselineIncrease ?? 0) / (data.halfYearGoal || 10)) * 100,
+												((r.baselineIncrease ?? 0) /
+													(data.halfYearGoal || 10)) *
+													100,
 											)}
 											%
 										</div>
@@ -937,6 +1029,110 @@ export default function ReviewsView() {
 					</tfoot>
 				</table>
 			</div>
+
+			{/* 口コミ施策×入園相関 */}
+			{trendData.length >= 2 && (
+				<div className="bg-white shadow-sm p-5">
+					<div className="flex items-baseline justify-between flex-wrap gap-2 mb-3">
+						<h3 className="text-sm font-semibold text-gray-700">
+							口コミ施策×入園・問合せ相関（月次推移）
+						</h3>
+						{correlation !== null && (
+							<div className="text-xs text-gray-500">
+								GBP×問合せ ピアソン相関係数:{" "}
+								<span
+									className={`font-semibold ${
+										correlation >= 0.5
+											? "text-brand-600"
+											: correlation >= 0
+												? "text-gray-700"
+												: "text-red-600"
+									}`}
+								>
+									{correlation.toFixed(2)}
+								</span>
+								{correlation >= 0.7 && "（強い正相関）"}
+								{correlation >= 0.5 &&
+									correlation < 0.7 &&
+									"（中程度の正相関）"}
+								{correlation >= 0 && correlation < 0.5 && "（弱い相関）"}
+								{correlation < 0 && "（負の相関）"}
+							</div>
+						)}
+					</div>
+					<ResponsiveContainer width="100%" height={300}>
+						<ComposedChart data={trendData}>
+							<CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+							<XAxis
+								dataKey="month"
+								tick={{ fontSize: 11 }}
+								tickLine={false}
+								axisLine={{ stroke: "#e5e7eb" }}
+							/>
+							<YAxis
+								yAxisId="left"
+								tick={{ fontSize: 10 }}
+								tickLine={false}
+								axisLine={{ stroke: "#e5e7eb" }}
+								label={{
+									value: "GBP累計",
+									angle: -90,
+									position: "insideLeft",
+									style: { fontSize: 10, fill: "#6b7280" },
+								}}
+							/>
+							<YAxis
+								yAxisId="right"
+								orientation="right"
+								tick={{ fontSize: 10 }}
+								tickLine={false}
+								axisLine={{ stroke: "#e5e7eb" }}
+								label={{
+									value: "件数",
+									angle: 90,
+									position: "insideRight",
+									style: { fontSize: 10, fill: "#6b7280" },
+								}}
+							/>
+							<Tooltip
+								contentStyle={{ fontSize: 12 }}
+								formatter={(value: number, name: string) => {
+									if (name === "gbpCount") return [value, "GBP累計"];
+									if (name === "inquiries") return [value, "月次問合せ"];
+									if (name === "enrolled") return [value, "月次入園"];
+									return [value, name];
+								}}
+							/>
+							<Legend wrapperStyle={{ fontSize: 11 }} />
+							<Line
+								yAxisId="left"
+								type="monotone"
+								dataKey="gbpCount"
+								name="GBP累計"
+								stroke="#008cc9"
+								strokeWidth={2}
+								dot={{ r: 4 }}
+							/>
+							<Bar
+								yAxisId="right"
+								dataKey="inquiries"
+								name="問合せ"
+								fill="#4db5e3"
+							/>
+							<Bar
+								yAxisId="right"
+								dataKey="enrolled"
+								name="入園"
+								fill="#0078ab"
+							/>
+						</ComposedChart>
+					</ResponsiveContainer>
+					<div className="text-[11px] text-gray-500 mt-2">
+						※
+						GBP施策（3/28開始）の累計件数と、月次問合せ・入園を重ねて表示。相関係数は参考値（n=月数）
+					</div>
+				</div>
+			)}
 
 			{/* グループ園サマリー */}
 			<GroupReviewsPanel />

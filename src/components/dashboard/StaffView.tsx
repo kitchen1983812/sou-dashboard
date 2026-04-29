@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useMemo, useRef } from "react";
 import type { StaffNursery } from "@/app/api/staff/route";
+import type { OccupancyNursery } from "@/app/api/occupancy/route";
 import ScrollableTable from "@/components/ui/ScrollableTable";
 
 interface StaffResponse {
@@ -9,6 +10,55 @@ interface StaffResponse {
 	nurseries: StaffNursery[];
 	summary: { total: number; seishain: number; rate: number };
 }
+
+const FILL_THRESHOLD = 80;
+const SEISHAIN_THRESHOLD = 60;
+
+interface RiskPoint {
+	name: string;
+	area: string;
+	fillRate: number;
+	seishainRate: number;
+	quadrant: "profit" | "recruit" | "risk" | "pareto";
+}
+
+function classifyQuadrant(
+	fill: number,
+	seishain: number,
+): RiskPoint["quadrant"] {
+	const fillHigh = fill >= FILL_THRESHOLD;
+	const seishainHigh = seishain >= SEISHAIN_THRESHOLD;
+	if (fillHigh && seishainHigh) return "profit";
+	if (fillHigh && !seishainHigh) return "recruit";
+	if (!fillHigh && seishainHigh) return "risk";
+	return "pareto";
+}
+
+const QUADRANT_META: Record<
+	RiskPoint["quadrant"],
+	{ label: string; color: string; desc: string }
+> = {
+	profit: {
+		label: "利益最大化",
+		color: "#008cc9",
+		desc: "充足率高×正社員率高。安定運営エリア",
+	},
+	recruit: {
+		label: "採用強化候補",
+		color: "#4db5e3",
+		desc: "充足率高×正社員率低。安定収益化のため正社員強化",
+	},
+	risk: {
+		label: "固定費リスク",
+		color: "#DC2626",
+		desc: "充足率低×正社員率高。要警戒・人件費吸収検討",
+	},
+	pareto: {
+		label: "パート活用見直し",
+		color: "#9ca3af",
+		desc: "充足率低×正社員率低。配置最適化候補",
+	},
+};
 
 const EMP_LABELS: Record<string, string> = {
 	正社員: "正社員",
@@ -29,6 +79,7 @@ type SortDir = "asc" | "desc";
 
 export default function StaffView() {
 	const [data, setData] = useState<StaffResponse | null>(null);
+	const [occupancy, setOccupancy] = useState<OccupancyNursery[] | null>(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
 	const [sortKey, setSortKey] = useState<SortKey>("rate");
@@ -53,7 +104,42 @@ export default function StaffView() {
 				setError(String(e));
 				setLoading(false);
 			});
+		fetch("/api/occupancy")
+			.then((r) => r.json())
+			.then((d) => {
+				if (!d.error && d.nurseries) setOccupancy(d.nurseries);
+			})
+			.catch(() => {});
 	}, []);
+
+	const riskPoints = useMemo<RiskPoint[]>(() => {
+		if (!data || !occupancy) return [];
+		const fillMap = new Map<string, number>();
+		for (const o of occupancy) {
+			const cap = o.capacity.reduce((a, b) => a + b, 0);
+			const enr = o.enrolled.reduce((a, b) => a + b, 0);
+			if (cap > 0) fillMap.set(o.nursery, (enr / cap) * 100);
+		}
+		const points: RiskPoint[] = [];
+		for (const s of data.nurseries) {
+			const fill = fillMap.get(s.name);
+			if (fill === undefined) continue;
+			points.push({
+				name: s.name,
+				area: s.area,
+				fillRate: fill,
+				seishainRate: s.rate,
+				quadrant: classifyQuadrant(fill, s.rate),
+			});
+		}
+		return points;
+	}, [data, occupancy]);
+
+	const quadrantCounts = useMemo(() => {
+		const c = { profit: 0, recruit: 0, risk: 0, pareto: 0 };
+		for (const p of riskPoints) c[p.quadrant]++;
+		return c;
+	}, [riskPoints]);
 
 	const areas = useMemo(() => {
 		if (!data) return [];
@@ -165,6 +251,164 @@ export default function StaffView() {
 					</div>
 				</div>
 			</div>
+
+			{/* 人材×定員リスクマップ */}
+			{riskPoints.length > 0 && (
+				<div className="bg-white shadow-sm p-4">
+					<div className="flex items-baseline justify-between flex-wrap gap-2 mb-3">
+						<h3 className="text-sm font-bold text-gray-700">
+							人材×定員リスクマップ（{riskPoints.length}園）
+						</h3>
+						<div className="text-xs text-gray-500">
+							横軸: 充足率 / 縦軸: 正社員比率 / 閾値: 充足率
+							{FILL_THRESHOLD}% & 正社員率{SEISHAIN_THRESHOLD}%
+						</div>
+					</div>
+
+					{/* 散布図 */}
+					<div className="flex gap-4 flex-col md:flex-row">
+						<div className="flex-1">
+							<div
+								className="relative bg-gray-50 border border-gray-200"
+								style={{ height: 360 }}
+							>
+								{/* 軸ラベル */}
+								<div className="absolute left-0 top-0 bottom-0 w-12 flex flex-col justify-between text-[10px] text-gray-500 px-1 py-1">
+									<span>100%</span>
+									<span>50%</span>
+									<span>0%</span>
+								</div>
+								<div className="absolute right-1 bottom-0 text-[10px] text-gray-500">
+									充足率 →
+								</div>
+								<div className="absolute left-1 top-1 text-[10px] text-gray-500">
+									↑ 正社員率
+								</div>
+								{/* 描画エリア */}
+								<div
+									className="absolute"
+									style={{
+										left: 48,
+										right: 12,
+										top: 12,
+										bottom: 24,
+									}}
+								>
+									{/* 4象限ガイドライン */}
+									<div
+										className="absolute border-l border-dashed border-gray-300"
+										style={{
+											left: `${FILL_THRESHOLD}%`,
+											top: 0,
+											bottom: 0,
+										}}
+									/>
+									<div
+										className="absolute border-t border-dashed border-gray-300"
+										style={{
+											top: `${100 - SEISHAIN_THRESHOLD}%`,
+											left: 0,
+											right: 0,
+										}}
+									/>
+									{/* 象限ラベル背景 */}
+									<div
+										className="absolute text-[10px] text-red-700 font-semibold opacity-60"
+										style={{ top: 4, left: 4 }}
+									>
+										固定費リスク
+									</div>
+									<div
+										className="absolute text-[10px] text-brand-700 font-semibold opacity-60"
+										style={{ top: 4, right: 4 }}
+									>
+										利益最大化
+									</div>
+									<div
+										className="absolute text-[10px] text-gray-500 font-semibold opacity-60"
+										style={{ bottom: 4, left: 4 }}
+									>
+										パート活用見直し
+									</div>
+									<div
+										className="absolute text-[10px] text-brand-700 font-semibold opacity-60"
+										style={{ bottom: 4, right: 4 }}
+									>
+										採用強化候補
+									</div>
+									{/* プロット */}
+									{riskPoints.map((p) => {
+										const x = Math.min(Math.max(p.fillRate, 0), 130); // overflow capped
+										const y = Math.min(Math.max(p.seishainRate, 0), 100);
+										return (
+											<div
+												key={p.name}
+												className="absolute group"
+												style={{
+													left: `${(x / 130) * 100}%`,
+													top: `${100 - y}%`,
+													transform: "translate(-50%, -50%)",
+												}}
+												title={`${p.name} (${p.area})\n充足率: ${p.fillRate.toFixed(1)}%\n正社員率: ${p.seishainRate.toFixed(1)}%`}
+											>
+												<div
+													className="w-2.5 h-2.5 rounded-full border border-white shadow-sm"
+													style={{
+														backgroundColor: QUADRANT_META[p.quadrant].color,
+													}}
+												/>
+											</div>
+										);
+									})}
+								</div>
+							</div>
+						</div>
+
+						{/* 4象限サマリー */}
+						<div className="md:w-72 space-y-2">
+							{(Object.keys(QUADRANT_META) as RiskPoint["quadrant"][]).map(
+								(q) => {
+									const meta = QUADRANT_META[q];
+									const count = quadrantCounts[q];
+									const points = riskPoints.filter((p) => p.quadrant === q);
+									return (
+										<div
+											key={q}
+											className="border border-gray-200 p-2 rounded-sm"
+											style={{ borderLeft: `3px solid ${meta.color}` }}
+										>
+											<div className="flex items-center justify-between">
+												<span className="text-xs font-semibold text-gray-700">
+													{meta.label}
+												</span>
+												<span
+													className="text-sm font-bold"
+													style={{ color: meta.color }}
+												>
+													{count}園
+												</span>
+											</div>
+											<div className="text-[11px] text-gray-500 mt-0.5">
+												{meta.desc}
+											</div>
+											{q === "risk" && points.length > 0 && (
+												<div className="text-[11px] text-red-700 mt-1 truncate">
+													例:{" "}
+													{points
+														.slice(0, 3)
+														.map((p) => p.name)
+														.join(", ")}
+													{points.length > 3 && ` 他${points.length - 3}園`}
+												</div>
+											)}
+										</div>
+									);
+								},
+							)}
+						</div>
+					</div>
+				</div>
+			)}
 
 			{/* 雇用形態内訳（全体） */}
 			<div className="bg-white shadow-sm p-4">

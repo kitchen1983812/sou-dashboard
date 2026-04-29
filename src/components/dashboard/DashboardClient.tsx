@@ -272,7 +272,7 @@ function DashboardClientInner({
 						</SectionErrorBoundary>
 					) : activeTab === "reviews" ? (
 						<SectionErrorBoundary sectionName="Google口コミ">
-							<ReviewsView />
+							<ReviewsView inquiries={filteredInquiries} />
 						</SectionErrorBoundary>
 					) : activeTab === "ga4" ? (
 						<SectionErrorBoundary sectionName="GA4">

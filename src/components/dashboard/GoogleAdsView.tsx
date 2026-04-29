@@ -26,6 +26,12 @@ import {
 	STATUS,
 	STATUS_COLORS,
 } from "@/lib/dashboardUtils";
+import {
+	LTV_CONFIG,
+	LTV_GROSS,
+	LTV_PROFIT,
+	MONTHLY_PROFIT,
+} from "@/config/ltvConfig";
 
 interface GoogleAdsViewProps {
 	inquiries: Inquiry[];
@@ -219,6 +225,30 @@ export default function GoogleAdsView({
 		};
 	}, [monthlySummary]);
 
+	// 入園CPA / LTV ROI（FY全体）
+	const enrollmentRoi = useMemo(() => {
+		const enrolled = googleInquiries.filter(
+			(inq) => inq.status === STATUS.ENROLLED,
+		).length;
+		const enrollmentCpa =
+			enrolled > 0 ? Math.round(totals.adSpend / enrolled) : 0;
+		const totalLtvProfit = enrolled * LTV_PROFIT;
+		const totalLtvGross = enrolled * LTV_GROSS;
+		const netRoi = totalLtvProfit - totals.adSpend;
+		const paybackMonths =
+			MONTHLY_PROFIT > 0 && enrollmentCpa > 0
+				? Math.round((enrollmentCpa / MONTHLY_PROFIT) * 10) / 10
+				: null;
+		return {
+			enrolled,
+			enrollmentCpa,
+			totalLtvGross,
+			totalLtvProfit,
+			netRoi,
+			paybackMonths,
+		};
+	}, [googleInquiries, totals.adSpend]);
+
 	// 問い合わせ詳細テーブル用データ
 	const linkedInquiries = useMemo((): AdLinkedInquiry[] => {
 		return googleInquiries
@@ -305,6 +335,70 @@ export default function GoogleAdsView({
 						FY{String(fy).slice(2)}
 					</button>
 				))}
+			</div>
+
+			{/* 入園ROI / LTV分析（業界相場ベース） */}
+			<div className="bg-white shadow-sm p-5">
+				<div className="flex items-baseline justify-between flex-wrap gap-2 mb-3">
+					<h3 className="text-sm font-semibold text-gray-700">
+						入園ROI / LTV（FY{String(selectedFY).slice(2)} 業界相場ベース）
+					</h3>
+					<div className="text-[11px] text-gray-500">
+						月額収益 ¥{LTV_CONFIG.avgMonthlyRevenue.toLocaleString()} ×{" "}
+						{LTV_CONFIG.avgEnrollmentMonths}ヶ月 × 営業利益率
+						{(LTV_CONFIG.operatingMarginRate * 100).toFixed(0)}% = LTV(粗利)¥
+						{LTV_PROFIT.toLocaleString()}
+					</div>
+				</div>
+				<div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+					<div className="border border-gray-200 p-3 rounded">
+						<div className="text-xs text-gray-500 mb-1">広告→入園数</div>
+						<div className="text-2xl font-bold text-gray-900">
+							{enrollmentRoi.enrolled}名
+						</div>
+						<div className="text-[11px] text-gray-400 mt-1">
+							Google広告経由のFY入園
+						</div>
+					</div>
+					<div className="border border-gray-200 p-3 rounded">
+						<div className="text-xs text-gray-500 mb-1">入園CPA</div>
+						<div className="text-2xl font-bold text-gray-900">
+							{enrollmentRoi.enrollmentCpa > 0
+								? `¥${enrollmentRoi.enrollmentCpa.toLocaleString()}`
+								: "-"}
+						</div>
+						<div className="text-[11px] text-gray-400 mt-1">
+							広告費 ÷ 入園数
+						</div>
+					</div>
+					<div className="border border-gray-200 p-3 rounded">
+						<div className="text-xs text-gray-500 mb-1">回収月数</div>
+						<div className="text-2xl font-bold text-gray-900">
+							{enrollmentRoi.paybackMonths != null
+								? `${enrollmentRoi.paybackMonths}ヶ月`
+								: "-"}
+						</div>
+						<div className="text-[11px] text-gray-400 mt-1">
+							入園CPA ÷ 月額利益
+						</div>
+					</div>
+					<div className="border border-gray-200 p-3 rounded">
+						<div className="text-xs text-gray-500 mb-1">純ROI</div>
+						<div
+							className={`text-2xl font-bold ${enrollmentRoi.netRoi >= 0 ? "text-brand-600" : "text-red-600"}`}
+						>
+							{enrollmentRoi.netRoi >= 0 ? "+" : ""}¥
+							{Math.round(enrollmentRoi.netRoi / 10000).toLocaleString()}万
+						</div>
+						<div className="text-[11px] text-gray-400 mt-1">
+							LTV利益累計 − 広告費
+						</div>
+					</div>
+				</div>
+				<div className="text-[11px] text-gray-500 mt-3">
+					※ LTV定数は業界相場（こども家庭庁
+					公定価格・東京都認証保育所相場）。実数値受領後に差し替え可能（src/config/ltvConfig.ts）
+				</div>
 			</div>
 
 			{/* 月次サマリーテーブル */}
