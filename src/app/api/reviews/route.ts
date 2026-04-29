@@ -152,9 +152,9 @@ export interface CompetitorReviewData {
 }
 
 export async function GET() {
-	// 優先: group-reviews（Excel経由で更新）からフェリーチェデータを取得
-	// フォールバック: 旧 current.json（Places API日次取得）
-	const current = loadCurrentFromGroupReviewsJson() ?? loadCurrentData();
+	// 優先: current.json（Places API手動更新）。GBP Excel未着週の自社最新値取得用
+	// フォールバック: group-reviews JSON（Excel経由）
+	const current = loadCurrentData() ?? loadCurrentFromGroupReviewsJson();
 	if (!current) {
 		return NextResponse.json(
 			{
