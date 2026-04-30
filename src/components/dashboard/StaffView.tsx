@@ -1,14 +1,16 @@
 "use client";
 
 import { useEffect, useState, useMemo, useRef } from "react";
-import type { StaffNursery } from "@/app/api/staff/route";
+import type { StaffNursery, JobBreakdown } from "@/app/api/staff/route";
 import type { OccupancyNursery } from "@/app/api/occupancy/route";
+import { JOB_CATEGORIES, type JobCategory } from "@/config/staffConfig";
 import ScrollableTable from "@/components/ui/ScrollableTable";
 
 interface StaffResponse {
 	exportedAt: string;
 	nurseries: StaffNursery[];
 	summary: { total: number; seishain: number; rate: number };
+	jobSummary?: Record<JobCategory, JobBreakdown>;
 }
 
 const FILL_THRESHOLD = 80;
@@ -226,7 +228,7 @@ export default function StaffView() {
 
 	return (
 		<div className="space-y-5">
-			{/* サマリーカード */}
+			{/* サマリーカード（全体） */}
 			<div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
 				<div className="bg-white shadow-sm p-4 text-center">
 					<div className="text-xs text-gray-500 mb-1">全職員数</div>
@@ -251,6 +253,45 @@ export default function StaffView() {
 					</div>
 				</div>
 			</div>
+
+			{/* 職種別サマリー */}
+			{data.jobSummary && (
+				<div className="bg-white shadow-sm p-4">
+					<h3 className="text-sm font-bold text-gray-700 mb-3">
+						職種別 正社員比率（全園合計）
+					</h3>
+					<div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+						{JOB_CATEGORIES.map((c) => {
+							const j = data.jobSummary?.[c];
+							if (!j) return null;
+							return (
+								<div key={c} className="border border-gray-200 p-3 rounded">
+									<div className="text-xs text-gray-500 mb-1">{c}</div>
+									<div className="flex items-baseline gap-3">
+										<span className={`text-2xl font-bold ${rateColor(j.rate)}`}>
+											{j.rate}%
+										</span>
+										<span className="text-xs text-gray-500">
+											{j.seishain} / {j.total}名
+										</span>
+									</div>
+									<div className="mt-2 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+										<div
+											className={`h-full rounded-full ${j.rate >= 60 ? "bg-red-500" : "bg-brand-500"}`}
+											style={{ width: `${Math.min(j.rate, 100)}%` }}
+										/>
+									</div>
+								</div>
+							);
+						})}
+					</div>
+					<div className="text-[11px] text-gray-500 mt-2">
+						※ 保育士＝保育士＋保育従事者(無資格) /
+						栄養士（調理師）＝栄養士＋管理栄養士＋調理(無資格)＋調理 /
+						その他＝看護師・管理職・事務職
+					</div>
+				</div>
+			)}
 
 			{/* 人材×定員リスクマップ */}
 			{riskPoints.length > 0 && (
@@ -500,7 +541,7 @@ export default function StaffView() {
 						{uploadMsg.text}
 					</div>
 				)}
-				<ScrollableTable minWidth={780} maxHeight={600}>
+				<ScrollableTable minWidth={1100} maxHeight={600}>
 					<table className="w-full text-sm">
 						<thead>
 							<tr className="bg-gray-50 border-b-2 border-gray-200 text-gray-600">
@@ -538,6 +579,14 @@ export default function StaffView() {
 											{EMP_LABELS[emp]}
 										</th>
 									))}
+								{JOB_CATEGORIES.map((c) => (
+									<th
+										key={c}
+										className="text-center px-4 py-2 text-gray-500 font-normal whitespace-nowrap"
+									>
+										{c}
+									</th>
+								))}
 								<th
 									className="text-center px-4 py-2 cursor-pointer hover:text-brand-600"
 									onClick={() => handleSort("rate")}
@@ -572,6 +621,30 @@ export default function StaffView() {
 												{row.breakdown[emp] ?? 0}名
 											</td>
 										))}
+									{JOB_CATEGORIES.map((c) => {
+										const j = row.byJob?.[c];
+										if (!j || j.total === 0) {
+											return (
+												<td
+													key={c}
+													className="px-4 py-2 text-center tabular-nums text-gray-300"
+												>
+													-
+												</td>
+											);
+										}
+										return (
+											<td
+												key={c}
+												className={`px-4 py-2 text-center tabular-nums whitespace-nowrap ${rateColor(j.rate)}`}
+											>
+												{j.rate}%
+												<span className="text-[10px] text-gray-400 ml-1">
+													({j.seishain}/{j.total})
+												</span>
+											</td>
+										);
+									})}
 									<td
 										className={`px-4 py-2 text-center tabular-nums font-semibold ${rateColor(row.rate)}`}
 									>
@@ -611,6 +684,28 @@ export default function StaffView() {
 											名
 										</td>
 									))}
+								{JOB_CATEGORIES.map((c) => {
+									const fTotal = sorted.reduce(
+										(s, n) => s + (n.byJob?.[c]?.total ?? 0),
+										0,
+									);
+									const fSeishain = sorted.reduce(
+										(s, n) => s + (n.byJob?.[c]?.seishain ?? 0),
+										0,
+									);
+									const fRate =
+										fTotal > 0
+											? Math.round((fSeishain / fTotal) * 1000) / 10
+											: 0;
+									return (
+										<td
+											key={c}
+											className={`px-4 py-2 text-center tabular-nums whitespace-nowrap ${rateColor(fRate)}`}
+										>
+											{fTotal > 0 ? `${fRate}%` : "-"}
+										</td>
+									);
+								})}
 								<td
 									className={`px-4 py-2 text-center tabular-nums font-bold ${rateColor(filtRate)}`}
 								>
