@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-04-21",
+  "exportedAt": "2026-05-20",
   "brands": [
     {
       "category": "自社",
@@ -1040,7 +1040,7 @@
     {
       "category": "グループ",
       "brand": "その他",
-      "nurseryCount": 30,
+      "nurseryCount": 31,
       "totalReviews": 36,
       "avgRating": 4.15,
       "nurseries": [
@@ -1271,6 +1271,14 @@
         {
           "name": "よつば保育園",
           "placeId": "ChIJuYERvynwQDURGiHxx1Pfenc",
+          "count": 0,
+          "rating": null,
+          "brand": "その他",
+          "category": "グループ"
+        },
+        {
+          "name": "Amazonすまいる保育園 仙台",
+          "placeId": "ChIJ_750zdsnil8RzpgH06QU2uk",
           "count": 0,
           "rating": null,
           "brand": "その他",
