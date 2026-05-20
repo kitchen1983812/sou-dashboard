@@ -5,7 +5,7 @@
       "category": "自社",
       "brand": "フェリーチェ",
       "nurseryCount": 25,
-      "totalReviews": 79,
+      "totalReviews": 82,
       "avgRating": 4.82,
       "nurseries": [
         {
@@ -35,7 +35,15 @@
         {
           "name": "フェリーチェ 座間Ⅱ園",
           "placeId": "ChIJLZnrOpn_GGARulv_-cYUkSM",
-          "count": 5,
+          "count": 6,
+          "rating": 5.0,
+          "brand": "フェリーチェ",
+          "category": "自社"
+        },
+        {
+          "name": "フェリーチェ 中野新橋園",
+          "placeId": "ChIJ-7i0-efyGGAR2Zm6giP_Fdc",
+          "count": 6,
           "rating": 5.0,
           "brand": "フェリーチェ",
           "category": "自社"
@@ -45,14 +53,6 @@
           "placeId": "ChIJYf0QStOdGGARaQzhDXeDgiA",
           "count": 5,
           "rating": 4.8,
-          "brand": "フェリーチェ",
-          "category": "自社"
-        },
-        {
-          "name": "フェリーチェ 中野新橋園",
-          "placeId": "ChIJ-7i0-efyGGAR2Zm6giP_Fdc",
-          "count": 5,
-          "rating": 5.0,
           "brand": "フェリーチェ",
           "category": "自社"
         },
@@ -121,6 +121,14 @@
           "category": "自社"
         },
         {
+          "name": "フェリーチェ 新座園",
+          "placeId": "ChIJt9t-ubLpGGARbSs4iZCwOMU",
+          "count": 2,
+          "rating": 5.0,
+          "brand": "フェリーチェ",
+          "category": "自社"
+        },
+        {
           "name": "フェリーチェ 稲城長沼園",
           "placeId": "ChIJAT_un8j6GGARRJDWMAye3XE",
           "count": 2,
@@ -155,14 +163,6 @@
         {
           "name": "フェリーチェ 朝霞園",
           "placeId": "ChIJgbwKmXfpGGARsTdBJiV-YpU",
-          "count": 1,
-          "rating": 5.0,
-          "brand": "フェリーチェ",
-          "category": "自社"
-        },
-        {
-          "name": "フェリーチェ 新座園",
-          "placeId": "ChIJt9t-ubLpGGARbSs4iZCwOMU",
           "count": 1,
           "rating": 5.0,
           "brand": "フェリーチェ",
@@ -304,8 +304,8 @@
       "category": "グループ",
       "brand": "スクルドエンジェル保育園",
       "nurseryCount": 91,
-      "totalReviews": 177,
-      "avgRating": 4.15,
+      "totalReviews": 184,
+      "avgRating": 4.19,
       "nurseries": [
         {
           "name": "スクルドエンジェル保育園 三郷中央園",
@@ -356,6 +356,14 @@
           "category": "グループ"
         },
         {
+          "name": "スクルドエンジェル保育園 浦安園",
+          "placeId": "ChIJ4xe4X4KHGGARTRSluhhtfQs",
+          "count": 7,
+          "rating": 4.7,
+          "brand": "スクルドエンジェル保育園",
+          "category": "グループ"
+        },
+        {
           "name": "スクルドエンジェル保育室 さきょうやま園",
           "placeId": "ChIJ11rJJZZ8A2ARIXROesxdB2g",
           "count": 6,
@@ -372,14 +380,6 @@
           "category": "グループ"
         },
         {
-          "name": "スクルドエンジェル保育園 浦安園",
-          "placeId": "ChIJ4xe4X4KHGGARTRSluhhtfQs",
-          "count": 6,
-          "rating": 4.7,
-          "brand": "スクルドエンジェル保育園",
-          "category": "グループ"
-        },
-        {
           "name": "スクルドエンジェル保育園 仙台宮城野原園",
           "placeId": "ChIJE2pAgfGHiV8RcWXmqWhf_6E",
           "count": 6,
@@ -392,6 +392,14 @@
           "placeId": "ChIJn479rbL5GGAR5BK-2fne-D0",
           "count": 5,
           "rating": 2.8,
+          "brand": "スクルドエンジェル保育園",
+          "category": "グループ"
+        },
+        {
+          "name": "スクルドエンジェル保育園 神納園",
+          "placeId": "ChIJPWDc25B1GGARxOQDHT8IF_c",
+          "count": 5,
+          "rating": 5.0,
           "brand": "スクルドエンジェル保育園",
           "category": "グループ"
         },
@@ -428,14 +436,6 @@
           "category": "グループ"
         },
         {
-          "name": "スクルドエンジェル保育園 神納園",
-          "placeId": "ChIJPWDc25B1GGARxOQDHT8IF_c",
-          "count": 4,
-          "rating": 5.0,
-          "brand": "スクルドエンジェル保育園",
-          "category": "グループ"
-        },
-        {
           "name": "スクルドエンジェル保育園 稲毛園",
           "placeId": "ChIJSTb-qfKDImARSYQsyE_KKZw",
           "count": 4,
@@ -464,6 +464,14 @@
           "placeId": "ChIJoaNxZ48NA2ARu5Zk7KkWRRY",
           "count": 4,
           "rating": 3.8,
+          "brand": "スクルドエンジェル保育園",
+          "category": "グループ"
+        },
+        {
+          "name": "スクルドエンジェル保育室 一宮平和園",
+          "placeId": "ChIJuVQf5RChA2ARiGrDvIP13TY",
+          "count": 3,
+          "rating": 3.7,
           "brand": "スクルドエンジェル保育園",
           "category": "グループ"
         },
@@ -500,14 +508,6 @@
           "category": "グループ"
         },
         {
-          "name": "スクルドエンジェル保育室 一宮平和園",
-          "placeId": "ChIJuVQf5RChA2ARiGrDvIP13TY",
-          "count": 2,
-          "rating": 3.0,
-          "brand": "スクルドエンジェル保育園",
-          "category": "グループ"
-        },
-        {
           "name": "スクルドエンジェル保育園 あじま園",
           "placeId": "ChIJZ1Ux5N1zA2AR10HyrRnUr7E",
           "count": 2,
@@ -524,8 +524,32 @@
           "category": "グループ"
         },
         {
+          "name": "スクルドエンジェル保育室 みなと園",
+          "placeId": "ChIJP3IcgCt4A2ARMdWM7cyKylQ",
+          "count": 2,
+          "rating": 5.0,
+          "brand": "スクルドエンジェル保育園",
+          "category": "グループ"
+        },
+        {
+          "name": "スクルドエンジェル保育室 ごきそ園",
+          "placeId": "ChIJGbYKnNVxA2ARaf0xDu3CQx0",
+          "count": 2,
+          "rating": 4.5,
+          "brand": "スクルドエンジェル保育園",
+          "category": "グループ"
+        },
+        {
           "name": "スクルドエンジェル保育園 川崎園",
           "placeId": "ChIJ1ZyP_rlgGGARectqKggV29w",
+          "count": 2,
+          "rating": 5.0,
+          "brand": "スクルドエンジェル保育園",
+          "category": "グループ"
+        },
+        {
+          "name": "スクルドエンジェル保育園 坂本園",
+          "placeId": "ChIJI5mOjB0LAWARL6tmOc8XSBg",
           "count": 2,
           "rating": 5.0,
           "brand": "スクルドエンジェル保育園",
@@ -572,14 +596,6 @@
           "category": "グループ"
         },
         {
-          "name": "スクルドエンジェル保育室 みなと園",
-          "placeId": "ChIJP3IcgCt4A2ARMdWM7cyKylQ",
-          "count": 1,
-          "rating": 5.0,
-          "brand": "スクルドエンジェル保育園",
-          "category": "グループ"
-        },
-        {
           "name": "スクルドエンジェル保育室 ふじがおか園",
           "placeId": "ChIJj5wQBIBvA2ARvyTss1Wt-ZM",
           "count": 1,
@@ -588,16 +604,8 @@
           "category": "グループ"
         },
         {
-          "name": "スクルドエンジェル保育室 ごきそ園",
-          "placeId": "ChIJGbYKnNVxA2ARaf0xDu3CQx0",
-          "count": 1,
-          "rating": 4.0,
-          "brand": "スクルドエンジェル保育園",
-          "category": "グループ"
-        },
-        {
-          "name": "スクルドエンジェル保育園 坂本園",
-          "placeId": "ChIJI5mOjB0LAWARL6tmOc8XSBg",
+          "name": "スクルドエンジェル保育室 おばた園",
+          "placeId": "ChIJ8ZZ2p6NxA2ARhnfymMq6-Ic",
           "count": 1,
           "rating": 5.0,
           "brand": "スクルドエンジェル保育園",
@@ -758,14 +766,6 @@
         {
           "name": "スクルドエンジェル保育室 太平通園",
           "placeId": "ChIJBRFZT3F3A2AR8Q0azZAy93U",
-          "count": 0,
-          "rating": null,
-          "brand": "スクルドエンジェル保育園",
-          "category": "グループ"
-        },
-        {
-          "name": "スクルドエンジェル保育室 おばた園",
-          "placeId": "ChIJ8ZZ2p6NxA2ARhnfymMq6-Ic",
           "count": 0,
           "rating": null,
           "brand": "スクルドエンジェル保育園",
@@ -1041,14 +1041,14 @@
       "category": "グループ",
       "brand": "その他",
       "nurseryCount": 31,
-      "totalReviews": 36,
-      "avgRating": 4.15,
+      "totalReviews": 35,
+      "avgRating": 4.19,
       "nurseries": [
         {
           "name": "レイクサイドインターナショナルチャイルドケア",
           "placeId": "ChIJU0nbAR6GImARFlEiUuyDQSg",
-          "count": 7,
-          "rating": 4.4,
+          "count": 6,
+          "rating": 5.0,
           "brand": "その他",
           "category": "グループ"
         },
@@ -1298,8 +1298,8 @@
       "category": "グループ",
       "brand": "あーす保育園",
       "nurseryCount": 18,
-      "totalReviews": 36,
-      "avgRating": 4.09,
+      "totalReviews": 37,
+      "avgRating": 4.15,
       "nurseries": [
         {
           "name": "あーす保育園 保田窪",
@@ -1406,6 +1406,14 @@
           "category": "グループ"
         },
         {
+          "name": "あーす保育園 鷺ノ宮",
+          "placeId": "ChIJxTDVqJftGGARKN66tLYEOvs",
+          "count": 1,
+          "rating": 5.0,
+          "brand": "あーす保育園",
+          "category": "グループ"
+        },
+        {
           "name": "あーす保育園 東油山",
           "placeId": "ChIJB69gCteVQTUR9bROoQYsx9U",
           "count": 1,
@@ -1436,14 +1444,6 @@
           "rating": null,
           "brand": "あーす保育園",
           "category": "グループ"
-        },
-        {
-          "name": "あーす保育園 鷺ノ宮",
-          "placeId": "ChIJxTDVqJftGGARKN66tLYEOvs",
-          "count": 0,
-          "rating": null,
-          "brand": "あーす保育園",
-          "category": "グループ"
         }
       ]
     },
@@ -1451,13 +1451,21 @@
       "category": "グループ",
       "brand": "キッズキッズ保育園",
       "nurseryCount": 10,
-      "totalReviews": 32,
-      "avgRating": 4.79,
+      "totalReviews": 35,
+      "avgRating": 4.81,
       "nurseries": [
         {
           "name": "キッズキッズ保育園 博多",
           "placeId": "ChIJ3RIYVL-RQTUR9jKY1MCD2v8",
-          "count": 9,
+          "count": 10,
+          "rating": 5.0,
+          "brand": "キッズキッズ保育園",
+          "category": "グループ"
+        },
+        {
+          "name": "キッズキッズ保育園 長丘",
+          "placeId": "ChIJQWNp0ViRQTURw9nP0-PDG1g",
+          "count": 5,
           "rating": 5.0,
           "brand": "キッズキッズ保育園",
           "category": "グループ"
@@ -1475,14 +1483,6 @@
           "placeId": "ChIJVyVgrdmYQTURzQvses3pvAQ",
           "count": 4,
           "rating": 4.0,
-          "brand": "キッズキッズ保育園",
-          "category": "グループ"
-        },
-        {
-          "name": "キッズキッズ保育園 長丘",
-          "placeId": "ChIJQWNp0ViRQTURw9nP0-PDG1g",
-          "count": 4,
-          "rating": 5.0,
           "brand": "キッズキッズ保育園",
           "category": "グループ"
         },
@@ -1521,8 +1521,8 @@
         {
           "name": "キッズキッズ保育園 小倉",
           "placeId": "ChIJVQrYB0y_QzUREcG089P1EsM",
-          "count": 0,
-          "rating": null,
+          "count": 1,
+          "rating": 5.0,
           "brand": "キッズキッズ保育園",
           "category": "グループ"
         },
