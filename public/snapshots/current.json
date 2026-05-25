@@ -1,5 +1,5 @@
 {
-  "date": "2026-05-19",
+  "date": "2026-05-25",
   "nurseries": {
     "ChIJAT_un8j6GGARRJDWMAye3XE": {
       "name": "稲城長沼園",
@@ -34,8 +34,8 @@
     "ChIJq9CYz9kDGWARvC3WXdkbKpA": {
       "name": "相模原園",
       "area": "神奈川県",
-      "count": 8,
-      "rating": 4.6
+      "count": 9,
+      "rating": 4.7
     },
     "ChIJ0QP_5KGKGGAR2U-hrZrUCZA": {
       "name": "大田馬込園",
@@ -672,8 +672,8 @@
     "ChIJt8ZmLGf9GGARSXGVC_Ta8Sk": {
       "name": "カメリアキッズ相模原園",
       "area": "神奈川県",
-      "count": 26,
-      "rating": 4.8
+      "count": 28,
+      "rating": 4.6
     },
     "ChIJ8b4vMF79GGAR_dHtHt7aK_M": {
       "name": "Yotsuba Nursery Sagamihara",
@@ -756,7 +756,7 @@
     "ChIJYd7LvJz1GGARWqwBhyYkOww": {
       "name": "Musashinakaharamorinoko Nursery",
       "area": "神奈川県",
-      "count": 2,
+      "count": 3,
       "rating": 5
     },
     "ChIJyT5S2Xf1GGARiWFgLnZrun8": {
@@ -786,8 +786,8 @@
     "ChIJhceeB3f_GGARESBkI8dz6WE": {
       "name": "Yanase Nursery",
       "area": "神奈川県",
-      "count": 2,
-      "rating": 4
+      "count": 1,
+      "rating": 5
     },
     "ChIJB9fZcZX_GGAR1TG0eLx1BQI": {
       "name": "Zama Shiritsu Chigusa Nursery",
