@@ -12,6 +12,7 @@ import {
 	normalizeArea,
 } from "@/lib/dashboardUtils";
 import InsightPanel from "./InsightPanel";
+import PendingStatusPanel from "./PendingStatusPanel";
 import type { ReviewData } from "@/app/api/reviews/route";
 import type { GroupBrandSummary } from "@/app/api/group-reviews/route";
 import type { GroupCapacityNursery } from "@/app/api/group-capacity/route";
@@ -450,7 +451,11 @@ export default function ExecutiveSummaryView({
 	return (
 		<div className="space-y-6">
 			{/* インサイトパネル */}
-			<InsightPanel inquiries={recent} prevInquiries={prevRecent} />
+			<InsightPanel
+				inquiries={recent}
+				prevInquiries={prevRecent}
+				allInquiries={inquiries}
+			/>
 
 			{/* 直近30日 KPI */}
 			<section>
@@ -811,6 +816,9 @@ export default function ExecutiveSummaryView({
 					</div>
 				)}
 			</section>
+
+			{/* ご案内済滞留・未決着管理 */}
+			<PendingStatusPanel inquiries={inquiries} />
 
 			{/* エリア戦略マップ */}
 			<section>

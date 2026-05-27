@@ -1,12 +1,13 @@
 "use client";
 
 import { Inquiry } from "@/types/inquiry";
-import { STATUS, computeScoreCards } from "@/lib/dashboardUtils";
+import { STATUS, computeScoreCards, parseDate } from "@/lib/dashboardUtils";
 
 export interface InsightPanelProps {
 	inquiries: Inquiry[];
 	prevInquiries?: Inquiry[] | null;
 	reviewData?: { area: string; ourAvg: number; compAvg: number }[];
+	allInquiries?: Inquiry[];
 }
 
 type InsightLevel = "critical" | "warning" | "success" | "info";
@@ -126,13 +127,57 @@ const LEVEL_ICONS: Record<
 
 const MAX_INSIGHTS = 5;
 
+function computeGuidedStallCounts(inquiries: Inquiry[] | undefined): {
+	over30: number;
+	over60: number;
+	over90: number;
+} {
+	if (!inquiries) return { over30: 0, over60: 0, over90: 0 };
+	const now = new Date();
+	let over30 = 0,
+		over60 = 0,
+		over90 = 0;
+	for (const inq of inquiries) {
+		if (inq.status !== STATUS.GUIDED) continue;
+		const d = parseDate(inq.postDate);
+		if (!d) continue;
+		const days = Math.floor((now.getTime() - d.getTime()) / 86400000);
+		if (days > 90) over90++;
+		else if (days > 60) over60++;
+		else if (days > 30) over30++;
+	}
+	return { over30, over60, over90 };
+}
+
 function generateInsights(
 	inquiries: Inquiry[],
 	prevInquiries: Inquiry[] | null | undefined,
 	reviewData: InsightPanelProps["reviewData"],
+	allInquiries?: Inquiry[],
 ): Insight[] {
 	const insights: Insight[] = [];
 	const current = computeScoreCards(inquiries);
+
+	// --- ご案内済滞留アラート（全期間ベース）---
+	const stalls = computeGuidedStallCounts(allInquiries);
+	if (stalls.over90 >= 10) {
+		insights.push({
+			level: "critical",
+			message: `ご案内済91日超 ${stalls.over90}件が滞留 → 即時棚卸し推奨（決着率の正確化が経営判断に必須）`,
+		});
+	}
+	if (stalls.over60 >= 15) {
+		insights.push({
+			level: "warning",
+			message: `ご案内済61〜90日 ${stalls.over60}件 → 各園のステータス更新習慣化を依頼`,
+		});
+	}
+	if (stalls.over30 >= 30) {
+		insights.push({
+			level: "warning",
+			message: `ご案内済31〜60日 ${stalls.over30}件 → 1週間以内に保護者検討中/連絡つかない等への更新を`,
+		});
+	}
 
 	// --- Warning: enrollment rate < 5% when total > 10 ---
 	if (current.totalInquiries > 10 && current.enrollmentRate < 5) {
@@ -212,8 +257,14 @@ export default function InsightPanel({
 	inquiries,
 	prevInquiries,
 	reviewData,
+	allInquiries,
 }: InsightPanelProps) {
-	const insights = generateInsights(inquiries, prevInquiries, reviewData);
+	const insights = generateInsights(
+		inquiries,
+		prevInquiries,
+		reviewData,
+		allInquiries,
+	);
 
 	if (insights.length === 0) return null;
 
