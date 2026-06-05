@@ -626,12 +626,12 @@ function CandidatesTab({ snapshot }: { snapshot: MarketResearchSnapshot }) {
 
 	return (
 		<div className="space-y-4">
-			<div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-900">
-				<p className="font-semibold mb-1">データ網羅範囲の注意</p>
+			<div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-sm text-emerald-900">
+				<p className="font-semibold mb-1">スコアリング対象</p>
 				<p>
-					現在のスコアリング対象は社長共有Excelに含まれる1都3県の市区町村のうち、既存出店エリアを除いた{" "}
-					{candidates.length}件です。1都3県全市区町村(約260)を網羅するには
-					Phase5の e-Stat補完が必要です。
+					1都3県の{candidates.length}
+					市区町村(既存出店エリアを除く)。元データ(2000-2024年・38市区町村)と
+					e-Stat補完(2014-2023年・厚労省人口動態統計)を統合。e-Stat補完分は出生数のみで保育所定員・利用人数なしのため需給ギャップスコアは中立扱い。
 				</p>
 			</div>
 

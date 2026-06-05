@@ -175,7 +175,7 @@ def main():
     output = {
         "meta": {
             "generatedAt": generated_at,
-            "source": "社長共有 ver2.2000~2025年各自治体出生数・保育所定員・利用人数.xlsx",
+            "source": "ver2.2000~2025年各自治体出生数・保育所定員・利用人数.xlsx",
             "years": YEARS,
             "metrics": {
                 "births": "出生数 (人/年度)",
