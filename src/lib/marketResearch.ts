@@ -31,14 +31,14 @@ export const NURSERY_CITY_MAP: Record<string, string> = {
 	蕨園: "11225", // 蕨市
 	蕨II園: "11225", // 蕨市
 	座間II園: "14216", // 座間市
-	// 「ふぇりーちぇほいくえん」「病児保育室にじのへや」は所在地の市区町村が
-	// 共有Excelの範囲外、または特殊形態のため未マッピング。
+	ふぇりーちぇほいくえん: "12101", // 千葉市中央区 (フェリーチェ 東千葉園, 祐光2-7-8)
+	病児保育室にじのへや: "11225", // 蕨市 (フェリーチェ 病児保育室, 中央3丁目-19-8)
 };
 
 /** スナップショットJSONを取得 (Client Componentから) */
 export async function fetchMarketResearchSnapshot(): Promise<MarketResearchSnapshot> {
 	const res = await fetch("/snapshots/market-research/data.json", {
-		cache: "force-cache",
+		cache: "no-store",
 	});
 	if (!res.ok) {
 		throw new Error("市場調査データの取得に失敗しました");

@@ -143,12 +143,12 @@ function ExistingAreaTab({ snapshot }: { snapshot: MarketResearchSnapshot }) {
 						園×市区町村 マッピング
 					</h3>
 					<span className="text-xs text-slate-500">
-						25園中{" "}
+						全{Object.keys(NURSERY_CITY_MAP).length}園マッピング適用 (うち
 						{
 							Object.values(NURSERY_CITY_MAP).filter((c) => snapshot.cities[c])
 								.length
 						}
-						園にマッピング適用 (一部所在地未確定園は除外)
+						園が市区町村データ取得済)
 					</span>
 				</div>
 
