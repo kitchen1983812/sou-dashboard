@@ -26,6 +26,11 @@ export const TABS: TabDef[] = [
 	{ id: "recruitCost", label: "採用費分析", title: "採用費分析" },
 	{ id: "ga4", label: "GA4", title: "サイトパフォーマンス (GA4)" },
 	{ id: "reviews", label: "Google口コミ", title: "Google口コミ KPI" },
+	{
+		id: "marketResearch",
+		label: "市場調査",
+		title: "市場調査 (出生数・保育所定員)",
+	},
 ];
 
 // --- ブランド名正規化（旧名→新名マッピング） ---

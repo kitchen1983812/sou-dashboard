@@ -55,7 +55,8 @@ export type TabId =
 	| "recruitReport"
 	| "recruitCost"
 	| "ga4"
-	| "reviews";
+	| "reviews"
+	| "marketResearch";
 
 /** タブ定義 */
 export interface TabDef {

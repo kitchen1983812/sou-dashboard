@@ -16,6 +16,7 @@ const fyShort = String(currentFY).slice(2);
 
 const EXECUTIVE_TABS: { id: TabId; label: string }[] = [
 	{ id: "executive", label: "経営サマリー" },
+	{ id: "marketResearch", label: "市場調査" },
 ];
 
 const INQUIRY_TABS: { id: TabId; label: string }[] = [

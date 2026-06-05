@@ -44,6 +44,7 @@ import RecruitCostView from "./RecruitCostView";
 import GA4View from "./GA4View";
 import ReviewsView from "./ReviewsView";
 import ExecutiveSummaryView from "./ExecutiveSummaryView";
+import MarketResearchView from "./MarketResearchView";
 import OccupancyView from "./OccupancyView";
 import StaffView from "./StaffView";
 import InsightPanel from "./InsightPanel";
@@ -190,6 +191,7 @@ function DashboardClientInner({
 	const showStatus = !showContactMethod;
 	const isRecruitTab =
 		activeTab === "executive" ||
+		activeTab === "marketResearch" ||
 		activeTab === "recruitReport" ||
 		activeTab === "recruitCost" ||
 		activeTab === "occupancy" ||
@@ -261,6 +263,10 @@ function DashboardClientInner({
 					{activeTab === "executive" ? (
 						<SectionErrorBoundary sectionName="経営サマリー">
 							<ExecutiveSummaryView inquiries={filteredInquiries} />
+						</SectionErrorBoundary>
+					) : activeTab === "marketResearch" ? (
+						<SectionErrorBoundary sectionName="市場調査">
+							<MarketResearchView />
 						</SectionErrorBoundary>
 					) : activeTab === "occupancy" ? (
 						<SectionErrorBoundary sectionName="定員充足率">
