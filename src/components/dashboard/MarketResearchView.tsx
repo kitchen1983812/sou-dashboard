@@ -32,6 +32,9 @@ const SUB_TABS: { id: MarketSubTab; label: string }[] = [
 	{ id: "candidates", label: "首都圏新規候補ランキング" },
 ];
 
+const UTILIZATION_DEFINITION =
+	"充足率 = 保育所利用人数 ÷ 保育所定員数 (認可保育所+小規模保育所のみ・各年度4/1時点)。100%超=満員以上(待機児童発生の可能性) / 90-100%=ほぼ満員 / 70%未満=供給余剰。SOU等の事業所内/企業主導型保育は分母分子に含まれない地域全体の指標。";
+
 export default function MarketResearchView() {
 	const [snapshot, setSnapshot] = useState<MarketResearchSnapshot | null>(null);
 	const [error, setError] = useState<string | null>(null);
@@ -182,9 +185,10 @@ function ExistingAreaTab({ snapshot }: { snapshot: MarketResearchSnapshot }) {
 								</th>
 								<th
 									scope="col"
-									className="px-3 py-2 text-right text-xs uppercase text-slate-500"
+									className="px-3 py-2 text-right text-xs uppercase text-slate-500 cursor-help"
+									title={UTILIZATION_DEFINITION}
 								>
-									直近充足率
+									直近充足率<sup className="text-[10px] ml-0.5">?</sup>
 								</th>
 								<th
 									scope="col"
@@ -264,6 +268,10 @@ function ExistingAreaTab({ snapshot }: { snapshot: MarketResearchSnapshot }) {
 						</tbody>
 					</table>
 				</div>
+
+				<p className="mt-3 text-xs text-slate-500">
+					<span className="font-medium">充足率:</span> {UTILIZATION_DEFINITION}
+				</p>
 			</div>
 
 			{selectedCity && (
@@ -446,9 +454,15 @@ function CityDetailPanel({
 				</div>
 
 				<div className="lg:col-span-2">
-					<h4 className="text-sm font-semibold text-slate-700 mb-2">
-						充足率推移 (%)
+					<h4
+						className="text-sm font-semibold text-slate-700 mb-2 cursor-help"
+						title={UTILIZATION_DEFINITION}
+					>
+						充足率推移 (%)<sup className="text-[10px] ml-0.5">?</sup>
 					</h4>
+					<p className="text-xs text-slate-500 mb-2">
+						{UTILIZATION_DEFINITION}
+					</p>
 					<ResponsiveContainer width="100%" height={200}>
 						<LineChart
 							data={chartData}
@@ -671,9 +685,10 @@ function CandidatesTab({ snapshot }: { snapshot: MarketResearchSnapshot }) {
 									</th>
 									<th
 										scope="col"
-										className="px-3 py-2 text-right text-xs uppercase text-slate-500"
+										className="px-3 py-2 text-right text-xs uppercase text-slate-500 cursor-help"
+										title={UTILIZATION_DEFINITION}
 									>
-										直近充足率
+										直近充足率<sup className="text-[10px] ml-0.5">?</sup>
 									</th>
 									<th
 										scope="col"
@@ -764,6 +779,10 @@ function CandidatesTab({ snapshot }: { snapshot: MarketResearchSnapshot }) {
 						<p>
 							需給ギャップ: 充足率100%以上=100点(満員=新規余地大) / 90%以上=80点
 							/ 80%以上=60点 / 70%以上=40点 / 70%未満=20点
+						</p>
+						<p>
+							<span className="font-medium">充足率:</span>{" "}
+							{UTILIZATION_DEFINITION}
 						</p>
 					</div>
 				</div>
