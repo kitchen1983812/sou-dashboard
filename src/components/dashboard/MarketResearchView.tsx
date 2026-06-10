@@ -293,7 +293,6 @@ function SummaryCards({ snapshot }: { snapshot: MarketResearchSnapshot }) {
 
 	const riskScores = existingCities.map(computeRiskScore);
 	const highRisk = riskScores.filter((r) => r.level === "high").length;
-	const mediumRisk = riskScores.filter((r) => r.level === "medium").length;
 
 	let totalBirthsLatest = 0;
 	let totalBirths2000 = 0;
@@ -312,8 +311,27 @@ function SummaryCards({ snapshot }: { snapshot: MarketResearchSnapshot }) {
 			? ((totalBirths2000 - totalBirthsLatest) / totalBirths2000) * 100
 			: null;
 
+	// 認可充足率の集計 (2026-06-10 MTG mikami指摘 反映)
+	const latestUtilizations: number[] = [];
+	let countLowUtil80 = 0; // <80% = 民間園に流れにくい
+	let countLowUtil70 = 0; // <70% = 危険水域
+	for (const c of existingCities) {
+		const latest = [...c.data.utilization].reverse().find((v) => v != null);
+		if (latest != null) {
+			const pct = latest * 100;
+			latestUtilizations.push(pct);
+			if (pct < 80) countLowUtil80++;
+			if (pct < 70) countLowUtil70++;
+		}
+	}
+	const avgUtilization =
+		latestUtilizations.length > 0
+			? latestUtilizations.reduce((a, b) => a + b, 0) /
+				latestUtilizations.length
+			: null;
+
 	return (
-		<div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+		<div className="grid grid-cols-2 md:grid-cols-5 gap-3">
 			<KpiCard
 				label="出店エリア数"
 				value={`${existingCities.length}市区町村`}
@@ -326,15 +344,24 @@ function SummaryCards({ snapshot }: { snapshot: MarketResearchSnapshot }) {
 				accent={totalDecline != null && totalDecline > 25 ? "warn" : "default"}
 			/>
 			<KpiCard
-				label="リスク高 エリア"
-				value={`${highRisk}件`}
-				sub="30%超減 or 直近3年急減"
-				accent={highRisk > 0 ? "warn" : "default"}
+				label="地域認可充足率 平均"
+				value={avgUtilization !== null ? `${avgUtilization.toFixed(1)}%` : "-"}
+				sub={`${latestUtilizations.length}市区町村平均`}
+				accent={
+					avgUtilization != null && avgUtilization < 85 ? "warn" : "default"
+				}
 			/>
 			<KpiCard
-				label="リスク中 エリア"
-				value={`${mediumRisk}件`}
-				sub="15-30%減レベル"
+				label="充足率 < 80% エリア"
+				value={`${countLowUtil80}件`}
+				sub="認可枠余り=民間園に流れにくい"
+				accent={countLowUtil80 > 0 ? "warn" : "default"}
+			/>
+			<KpiCard
+				label="出生数 リスク高 エリア"
+				value={`${highRisk}件`}
+				sub="2000年比30%超減 or 直近3年急減"
+				accent={highRisk > 0 ? "warn" : "default"}
 			/>
 		</div>
 	);
@@ -773,12 +800,18 @@ function CandidatesTab({ snapshot }: { snapshot: MarketResearchSnapshot }) {
 					</div>
 					<div className="mt-4 text-xs text-slate-500 space-y-1">
 						<p>
-							<span className="font-medium">スコア計算:</span> 規模(40%) +
-							需給ギャップ(40%) + トレンド(20%) = 総合
+							<span className="font-medium">スコア計算:</span> 規模(25%) +
+							需給ギャップ(55%) + トレンド(20%) = 総合
 						</p>
 						<p>
 							需給ギャップ: 充足率100%以上=100点(満員=新規余地大) / 90%以上=80点
 							/ 80%以上=60点 / 70%以上=40点 / 70%未満=20点
+						</p>
+						<p className="text-amber-700">
+							<span className="font-medium">
+								解釈の主軸 (2026-06-10 現場知見):
+							</span>{" "}
+							認可保育所充足率が高い=認可枠が満員=民間園(SOU)に流れやすい。出生数より自治体の認可定員政策の影響が大きいため需給ギャップを主指標として重み付け。
 						</p>
 						<p>
 							<span className="font-medium">充足率:</span>{" "}

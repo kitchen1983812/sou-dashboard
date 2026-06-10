@@ -168,7 +168,9 @@ export function computeCandidateScore(
 		trendScore = Math.min(100, Math.max(0, 50 + birthsTrend * 5));
 	}
 
-	const totalScore = sizeScore * 0.4 + gapScore * 0.4 + trendScore * 0.2;
+	// 2026-06-10 MTG mikami指摘反映: 認可充足率(=需要圧)を主指標とするため
+	// 規模40%/需給40%/トレンド20% → 規模25%/需給55%/トレンド20% に再配分
+	const totalScore = sizeScore * 0.25 + gapScore * 0.55 + trendScore * 0.2;
 
 	return {
 		city,
