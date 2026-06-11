@@ -1,0 +1,334 @@
+{
+  "generatedAt": "2026-06-11T16:50:29.224653+09:00",
+  "config": {
+    "commonCc": "",
+    "fromAddress": "",
+    "asanoBcc": "yukinaga.asano@edridge.co"
+  },
+  "nurseries": {
+    "稲城長沼園": {
+      "email": "felice.inaginaganuma@sou-kidscare.co.jp",
+      "brand": "フェリーチェ",
+      "director": "",
+      "individualCc": "",
+      "cityCode": "13225",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "京成八幡園": {
+      "email": "felice.keiseiyawata@sou-kidscare.co.jp",
+      "brand": "フェリーチェ",
+      "director": "",
+      "individualCc": "",
+      "cityCode": "12203",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "行徳園": {
+      "email": "felice.gyoutoku@sou-kidscare.co.jp",
+      "brand": "フェリーチェ",
+      "director": "",
+      "individualCc": "",
+      "cityCode": "12203",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "新座園": {
+      "email": "felice.niiza@sou-kidscare.co.jp",
+      "brand": "フェリーチェ",
+      "director": "",
+      "individualCc": "",
+      "cityCode": "11230",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "相武台前園": {
+      "email": "felice.soubudaimae@sou-kidscare.co.jp",
+      "brand": "フェリーチェ",
+      "director": "",
+      "individualCc": "",
+      "cityCode": "14216",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "相模原園": {
+      "email": "felice.sagamihara@sou-kidscare.co.jp",
+      "brand": "フェリーチェ",
+      "director": "",
+      "individualCc": "",
+      "cityCode": "14150",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "大田馬込園": {
+      "email": "felice.otamagome@sou-kidscare.co.jp",
+      "brand": "フェリーチェ",
+      "director": "",
+      "individualCc": "",
+      "cityCode": "13111",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "大和園": {
+      "email": "felice.yamato@sou-kidscare.co.jp",
+      "brand": "フェリーチェ",
+      "director": "",
+      "individualCc": "",
+      "cityCode": "14213",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "中央林間園": {
+      "email": "felice.chuorinkan@sou-kidscare.co.jp",
+      "brand": "フェリーチェ",
+      "director": "",
+      "individualCc": "",
+      "cityCode": "14213",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "中野新橋園": {
+      "email": "felice.nakanoshinbashi@sou-kidscare.co.jp",
+      "brand": "フェリーチェ",
+      "director": "",
+      "individualCc": "",
+      "cityCode": "13114",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "朝霞園": {
+      "email": "felice.asaka@sou-kidscare.co.jp",
+      "brand": "フェリーチェ",
+      "director": "",
+      "individualCc": "",
+      "cityCode": "11227",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "東川口園": {
+      "email": "felice.higashikawaguchi@sou-kidscare.co.jp",
+      "brand": "フェリーチェ",
+      "director": "",
+      "individualCc": "",
+      "cityCode": "11203",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "南行徳園": {
+      "email": "felice.minamigyoutoku@sou-kidscare.co.jp",
+      "brand": "フェリーチェ",
+      "director": "",
+      "individualCc": "",
+      "cityCode": "12203",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "柏II園": {
+      "email": "felice.kashiwa@sou-kidscare.co.jp",
+      "brand": "フェリーチェ",
+      "director": "",
+      "individualCc": "",
+      "cityCode": "12217",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "鳩ヶ谷園": {
+      "email": "felice.hatogaya@sou-kidscare.co.jp",
+      "brand": "フェリーチェ",
+      "director": "",
+      "individualCc": "",
+      "cityCode": "11203",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "武蔵中原園": {
+      "email": "felice.musashinakahara@sou-kidscare.co.jp",
+      "brand": "フェリーチェ",
+      "director": "",
+      "individualCc": "",
+      "cityCode": "14133",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "目黒園": {
+      "email": "felice.meguro@sou-kidscare.co.jp",
+      "brand": "フェリーチェ",
+      "director": "",
+      "individualCc": "",
+      "cityCode": "13110",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "練馬中村橋園": {
+      "email": "felice.nerimanakamurabashi@sou-kidscare.co.jp",
+      "brand": "フェリーチェ",
+      "director": "",
+      "individualCc": "",
+      "cityCode": "13120",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "和光園": {
+      "email": "felice.wako@sou-kidscare.co.jp",
+      "brand": "フェリーチェ",
+      "director": "",
+      "individualCc": "",
+      "cityCode": "11229",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "和光II園": {
+      "email": "felice.wako2@sou-kidscare.co.jp",
+      "brand": "フェリーチェ",
+      "director": "",
+      "individualCc": "",
+      "cityCode": "11229",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "蕨園": {
+      "email": "felice.warabi@sou-kidscare.co.jp",
+      "brand": "フェリーチェ",
+      "director": "",
+      "individualCc": "",
+      "cityCode": "11225",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "蕨II園": {
+      "email": "felice.warabi2@sou-kidscare.co.jp",
+      "brand": "フェリーチェ",
+      "director": "",
+      "individualCc": "",
+      "cityCode": "11225",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "ふぇりーちぇほいくえん(東千葉園)": {
+      "email": "felice.higashichiba@sou-kidscare.co.jp",
+      "brand": "フェリーチェ",
+      "director": "",
+      "individualCc": "",
+      "cityCode": "12101",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "病児保育室にじのへや": {
+      "email": "felice.nijinoheya@sou-kidscare.co.jp",
+      "brand": "フェリーチェ",
+      "director": "",
+      "individualCc": "",
+      "cityCode": "11225",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "座間II園": {
+      "email": "felice.zama@sou-kidscare.co.jp",
+      "brand": "フェリーチェ",
+      "director": "",
+      "individualCc": "",
+      "cityCode": "14216",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "成田園": {
+      "email": "wakuwaku.narita@pop-inc.jp",
+      "brand": "わくわく保育園(POP)",
+      "director": "平山典子",
+      "individualCc": "",
+      "cityCode": "",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "並木町園": {
+      "email": "wakuwaku.namiki@pop-inc.jp",
+      "brand": "わくわく保育園(POP)",
+      "director": "遠山育実",
+      "individualCc": "",
+      "cityCode": "",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "久住園": {
+      "email": "kuzumi@pop-inc.jp",
+      "brand": "わくわく保育園(POP)",
+      "director": "森田理香",
+      "individualCc": "",
+      "cityCode": "",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "もねの里園": {
+      "email": "wakuwaku.monenosato@pop-inc.jp",
+      "brand": "わくわく保育園(POP)",
+      "director": "櫻井恵子",
+      "individualCc": "",
+      "cityCode": "",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "レイクサイド": {
+      "email": "lakeside@pop-inc.jp",
+      "brand": "わくわく保育園(POP)",
+      "director": "徳永智子",
+      "individualCc": "",
+      "cityCode": "",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "東金園": {
+      "email": "togane@pop-inc.jp",
+      "brand": "わくわく保育園(POP)",
+      "director": "土肥妙子",
+      "individualCc": "",
+      "cityCode": "",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "スカイタウン園": {
+      "email": "skytown@kotori-hoiku.com",
+      "brand": "ことり保育園(give&give)",
+      "director": "植田あすか",
+      "individualCc": "",
+      "cityCode": "",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "公津の杜園": {
+      "email": "kouzunomori@kotori-hoiku.com",
+      "brand": "ことり保育園(give&give)",
+      "director": "稲葉里奈",
+      "individualCc": "",
+      "cityCode": "",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "日吉台園": {
+      "email": "hiyoshidai@kotori-hoiku.com",
+      "brand": "ことり保育園(give&give)",
+      "director": "遠藤菜摘美",
+      "individualCc": "",
+      "cityCode": "",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "勝田台園": {
+      "email": "katsutadai@kotori-hoiku.com",
+      "brand": "ことり保育園(give&give)",
+      "director": "石井祐子",
+      "individualCc": "",
+      "cityCode": "",
+      "notifyEnabled": true,
+      "patternForced": ""
+    },
+    "本八幡園": {
+      "email": "motoyawata@kotori-hoiku.com",
+      "brand": "ことり保育園(give&give)",
+      "director": "飯島愛子",
+      "individualCc": "",
+      "cityCode": "",
+      "notifyEnabled": true,
+      "patternForced": ""
+    }
+  }
+}

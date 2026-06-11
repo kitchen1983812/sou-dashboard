@@ -1,0 +1,38 @@
+name: Monthly Reminder Email (園リマインド)
+
+on:
+  # 毎月1日 00:00 UTC = JST 09:00
+  schedule:
+    - cron: "0 0 1 * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "true で送信せずログのみ"
+        required: false
+        default: "false"
+      test_mode:
+        description: "true で送信先を TEST_RECIPIENT に強制"
+        required: false
+        default: "false"
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+      - run: npm ci
+      - name: Send monthly reminder
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          NOTIFY_SHEET_ID: ${{ secrets.NOTIFY_SHEET_ID }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          TEST_MODE: ${{ github.event.inputs.test_mode || 'false' }}
+          TEST_RECIPIENT: ${{ secrets.TEST_RECIPIENT }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+        run: node scripts/send-monthly-reminder.mjs
