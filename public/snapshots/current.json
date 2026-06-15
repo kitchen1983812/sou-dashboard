@@ -1,5 +1,5 @@
 {
-  "date": "2026-06-08",
+  "date": "2026-06-15",
   "nurseries": {
     "ChIJAT_un8j6GGARRJDWMAye3XE": {
       "name": "稲城長沼園",
@@ -180,7 +180,7 @@
     "ChIJdU8HH5qLGGARDw4je5WILCo": {
       "name": "Gakkenほいくえん 馬込",
       "area": "東京都",
-      "count": 1,
+      "count": 2,
       "rating": 5
     },
     "ChIJwdieSjGLGGARtsb0Yu3zulE": {
@@ -216,13 +216,13 @@
     "ChIJEUkde9zyGGARlZHdOsklZuo": {
       "name": "Global Kids Nakano-Shimbashi",
       "area": "東京都",
-      "count": 4,
+      "count": 5,
       "rating": 5
     },
     "ChIJ__-Pw8HyGGARrd-V0-ZN74A": {
       "name": "Nakamachi Nursery",
       "area": "東京都",
-      "count": 1,
+      "count": 2,
       "rating": 5
     },
     "ChIJVTO3OOHyGGARx-48kpqxfbY": {
@@ -558,8 +558,8 @@
     "ChIJ3TNrxt_rGGAREd9w1ggXoIQ": {
       "name": "Wakotchi Little Star Nursery",
       "area": "埼玉県",
-      "count": 2,
-      "rating": 3
+      "count": 1,
+      "rating": 1
     },
     "ChIJrVoOR97rGGARzu-C1z2MFZk": {
       "name": "Hinata Nursery",
@@ -606,7 +606,7 @@
     "ChIJc5MifznrGGARtzrjyPg6gkw": {
       "name": "Jirokai Toda Nursery School",
       "area": "埼玉県",
-      "count": 1,
+      "count": 2,
       "rating": 5
     },
     "ChIJDQELpjPrGGARY8qMny7sl1M": {
