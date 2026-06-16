@@ -49,9 +49,16 @@ export default async function DashboardPage() {
 	const mainInquiries = transformInquiries(rawMain);
 	const fy22Inquiries = transformInquiries(rawFY22);
 
+	// 座間Ⅱ園→座間園 / 柏Ⅱ園→柏園 への改名でcompany列が空のまま
+	// 取り込まれているレコードを「アルコバレーノ(=フェリーチェ)」として扱う
+	const FELICE_SHEETS_WITHOUT_COMPANY = new Set(["座間園", "柏園"]);
+
 	// FY22以前の企業未設定データはアルコバレーノとして扱う
 	const inquiries = [...mainInquiries, ...fy22Inquiries].map((inq) => {
 		if (!inq.company) {
+			if (FELICE_SHEETS_WITHOUT_COMPANY.has(inq.sheetName?.trim())) {
+				return { ...inq, company: "アルコバレーノ" };
+			}
 			const d = parseDate(inq.postDate);
 			if (d && getFiscalYear(d) <= 2022) {
 				return { ...inq, company: "アルコバレーノ" };
