@@ -117,6 +117,14 @@ function DataSourceNote({ snapshot }: { snapshot: MarketResearchSnapshot }) {
 
 // ===== タブA: 既存出店エリア環境 =====
 
+interface NurseryOccupancy {
+	nursery: string;
+	area: string;
+	yearMonth: string;
+	capacity: number[];
+	enrolled: number[];
+}
+
 function ExistingAreaTab({ snapshot }: { snapshot: MarketResearchSnapshot }) {
 	const nurseriesByCity = useMemo(() => getNurseriesByCity(), []);
 	const existingCodes = useMemo(() => getExistingCityCodes(), []);
@@ -124,6 +132,60 @@ function ExistingAreaTab({ snapshot }: { snapshot: MarketResearchSnapshot }) {
 		const codes = Array.from(existingCodes).filter((c) => snapshot.cities[c]);
 		return codes[0] ?? "";
 	});
+
+	// 自園充足率(SOU運営データ)を /api/occupancy から取得し市区町村別に集計
+	const [occupancyByCity, setOccupancyByCity] = useState<
+		Map<string, { utilization: number; nurseries: string[]; yearMonth: string }>
+	>(new Map());
+
+	useEffect(() => {
+		fetch("/api/occupancy", { cache: "no-store" })
+			.then((r) => (r.ok ? r.json() : null))
+			.then((d: { nurseries: NurseryOccupancy[] } | null) => {
+				if (!d?.nurseries) return;
+				const byCity = new Map<
+					string,
+					{
+						capacityTotal: number;
+						enrolledTotal: number;
+						nurseries: string[];
+						yearMonth: string;
+					}
+				>();
+				for (const n of d.nurseries) {
+					const code = NURSERY_CITY_MAP[n.nursery];
+					if (!code) continue;
+					const capSum = (n.capacity ?? []).reduce((a, b) => a + (b ?? 0), 0);
+					const enrSum = (n.enrolled ?? []).reduce((a, b) => a + (b ?? 0), 0);
+					if (capSum === 0) continue;
+					const entry = byCity.get(code) ?? {
+						capacityTotal: 0,
+						enrolledTotal: 0,
+						nurseries: [],
+						yearMonth: n.yearMonth ?? "",
+					};
+					entry.capacityTotal += capSum;
+					entry.enrolledTotal += enrSum;
+					entry.nurseries.push(n.nursery);
+					byCity.set(code, entry);
+				}
+				const result = new Map<
+					string,
+					{ utilization: number; nurseries: string[]; yearMonth: string }
+				>();
+				byCity.forEach((v, code) => {
+					result.set(code, {
+						utilization: (v.enrolledTotal / v.capacityTotal) * 100,
+						nurseries: v.nurseries,
+						yearMonth: v.yearMonth,
+					});
+				});
+				setOccupancyByCity(result);
+			})
+			.catch(() => {
+				/* silently skip */
+			});
+	}, []);
 
 	const existingCities = useMemo(() => {
 		return Array.from(existingCodes)
@@ -140,6 +202,10 @@ function ExistingAreaTab({ snapshot }: { snapshot: MarketResearchSnapshot }) {
 		<div className="space-y-4">
 			<SummaryCards snapshot={snapshot} />
 
+			{selectedCity && (
+				<CityDetailPanel city={selectedCity} years={snapshot.meta.years} />
+			)}
+
 			<div className="bg-white rounded-xl border border-slate-200 p-4 md:p-6 shadow-sm">
 				<div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
 					<h3 className="text-base font-bold text-slate-900">
@@ -155,44 +221,54 @@ function ExistingAreaTab({ snapshot }: { snapshot: MarketResearchSnapshot }) {
 					</span>
 				</div>
 
-				<div className="overflow-x-auto">
+				<div
+					className="overflow-x-auto overflow-y-auto"
+					style={{ maxHeight: 380 }}
+				>
 					<table className="min-w-full text-sm">
-						<thead>
-							<tr className="bg-gray-50 border-b border-slate-200">
+						<thead className="sticky top-0 bg-gray-50 z-10">
+							<tr className="border-b border-slate-200">
 								<th
 									scope="col"
-									className="px-3 py-2 text-left text-xs uppercase text-slate-500"
+									className="px-3 py-2 text-left text-xs uppercase text-slate-500 bg-gray-50"
 								>
 									市区町村
 								</th>
 								<th
 									scope="col"
-									className="px-3 py-2 text-left text-xs uppercase text-slate-500"
+									className="px-3 py-2 text-left text-xs uppercase text-slate-500 bg-gray-50"
 								>
 									所在園
 								</th>
 								<th
 									scope="col"
-									className="px-3 py-2 text-right text-xs uppercase text-slate-500"
+									className="px-3 py-2 text-right text-xs uppercase text-slate-500 bg-gray-50"
 								>
 									直近出生数
 								</th>
 								<th
 									scope="col"
-									className="px-3 py-2 text-right text-xs uppercase text-slate-500"
+									className="px-3 py-2 text-right text-xs uppercase text-slate-500 bg-gray-50"
 								>
 									2000年比
 								</th>
 								<th
 									scope="col"
-									className="px-3 py-2 text-right text-xs uppercase text-slate-500 cursor-help"
+									className="px-3 py-2 text-right text-xs uppercase text-slate-500 cursor-help bg-gray-50"
 									title={UTILIZATION_DEFINITION}
 								>
-									直近充足率<sup className="text-[10px] ml-0.5">?</sup>
+									自治体 直近充足率<sup className="text-[10px] ml-0.5">?</sup>
 								</th>
 								<th
 									scope="col"
-									className="px-3 py-2 text-center text-xs uppercase text-slate-500"
+									className="px-3 py-2 text-right text-xs uppercase text-slate-500 bg-gray-50"
+									title="SOU自園の定員充足率(運営データ・全年齢合算)。自治体充足率と並べることで「認可枠の埋まり具合 vs 自園の入りやすさ」の仮説検証ができる"
+								>
+									自園 充足率<sup className="text-[10px] ml-0.5">?</sup>
+								</th>
+								<th
+									scope="col"
+									className="px-3 py-2 text-center text-xs uppercase text-slate-500 bg-gray-50"
 								>
 									詳細
 								</th>
@@ -210,6 +286,7 @@ function ExistingAreaTab({ snapshot }: { snapshot: MarketResearchSnapshot }) {
 									.reverse()
 									.find((v) => v !== null && v !== undefined);
 								const nurseries = nurseriesByCity[city.code] ?? [];
+								const occ = occupancyByCity.get(city.code);
 								return (
 									<tr
 										key={city.code}
@@ -254,6 +331,17 @@ function ExistingAreaTab({ snapshot }: { snapshot: MarketResearchSnapshot }) {
 												? `${(latestUtil * 100).toFixed(1)}%`
 												: "-"}
 										</td>
+										<td className="px-3 py-2 text-right tabular-nums text-slate-900">
+											{occ ? (
+												<span
+													title={`対象園: ${occ.nurseries.join(", ")} (${occ.yearMonth})`}
+												>
+													{occ.utilization.toFixed(1)}%
+												</span>
+											) : (
+												<span className="text-slate-400">-</span>
+											)}
+										</td>
 										<td className="px-3 py-2 text-center">
 											<button
 												onClick={() => setSelectedCode(city.code)}
@@ -270,13 +358,13 @@ function ExistingAreaTab({ snapshot }: { snapshot: MarketResearchSnapshot }) {
 				</div>
 
 				<p className="mt-3 text-xs text-slate-500">
-					<span className="font-medium">充足率:</span> {UTILIZATION_DEFINITION}
+					<span className="font-medium">自治体充足率:</span>{" "}
+					{UTILIZATION_DEFINITION}
+					<br />
+					<span className="font-medium">自園充足率:</span>{" "}
+					SOU自園の定員充足率(全年齢合算・運営データ最新月)。市区町村に複数園ある場合は加重平均(在園児数合計÷定員合計)。
 				</p>
 			</div>
-
-			{selectedCity && (
-				<CityDetailPanel city={selectedCity} years={snapshot.meta.years} />
-			)}
 		</div>
 	);
 }
