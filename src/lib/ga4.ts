@@ -152,15 +152,17 @@ export async function fetchGA4Data(
 			sessions: parseInt(row.metricValues?.[0]?.value || "0"),
 		}));
 
-		const totals = channelRes.data.totals?.[0];
-		const sessions = parseInt(totals?.metricValues?.[0]?.value || "0");
-		const users = parseInt(totals?.metricValues?.[1]?.value || "0");
-		const keyEvents = parseInt(totals?.metricValues?.[2]?.value || "0");
+		// channelRes は metricAggregations を指定していないため totals が返らない
+		// → channels 配列を合算して summary を算出
+		const sessions = channels.reduce((a, c) => a + c.sessions, 0);
+		const users = channels.reduce((a, c) => a + c.users, 0);
+		const keyEvents = channels.reduce((a, c) => a + c.keyEvents, 0);
 
-		const prevTotals = prevRes.data.totals?.[0];
-		const prevSessions = parseInt(prevTotals?.metricValues?.[0]?.value || "0");
-		const prevUsers = parseInt(prevTotals?.metricValues?.[1]?.value || "0");
-		const prevKeyEvents = parseInt(prevTotals?.metricValues?.[2]?.value || "0");
+		// prevRes は dimension 無しなので 1 行に合計が入る
+		const prevRow = prevRes.data.rows?.[0];
+		const prevSessions = parseInt(prevRow?.metricValues?.[0]?.value || "0");
+		const prevUsers = parseInt(prevRow?.metricValues?.[1]?.value || "0");
+		const prevKeyEvents = parseInt(prevRow?.metricValues?.[2]?.value || "0");
 
 		return {
 			summary: {
