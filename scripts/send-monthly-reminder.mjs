@@ -22,7 +22,7 @@ import { google } from "googleapis";
 import nodemailer from "nodemailer";
 
 const SHEET_ID_INQUIRIES = process.env.GOOGLE_SHEET_ID;
-const SHEET_ID_NOTIFY = process.env.NOTIFY_SHEET_ID ?? "1JcmgUo0kGim_5ojtE8C3Mhn8IXL4Dmh7LMuLFJi5ygc";
+const SHEET_ID_NOTIFY = process.env.NOTIFY_SHEET_ID || "1JcmgUo0kGim_5ojtE8C3Mhn8IXL4Dmh7LMuLFJi5ygc";
 const SMTP_HOST = process.env.SMTP_HOST;
 const SMTP_PORT = parseInt(process.env.SMTP_PORT ?? "587", 10);
 const SMTP_SECURE = process.env.SMTP_SECURE === "true";
