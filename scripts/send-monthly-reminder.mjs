@@ -364,6 +364,15 @@ async function main() {
 		auth: { user: SMTP_USER, pass: SMTP_PASSWORD },
 	});
 
+	// 接続検証 (失敗時の早期エラー)
+	try {
+		await transporter.verify();
+		console.log(`SMTP verify OK: ${SMTP_HOST}:${SMTP_PORT} secure=${SMTP_SECURE}`);
+	} catch (e) {
+		console.error(`SMTP verify FAILED: ${e?.message ?? e}`);
+		throw e;
+	}
+
 	// 全園のパターン判定 + 統計を先に揃える
 	const taskList = nurseries.map((n) => {
 		const row = statsByName.get(n.name) ?? {
@@ -422,15 +431,22 @@ async function main() {
 			try {
 				await transporter.sendMail({
 					from: `"${FROM_NAME}" <${SMTP_USER}>`,
+					sender: SMTP_USER,
 					to,
 					cc: cc || undefined,
 					bcc: bcc || undefined,
 					subject,
 					text: body,
+					envelope: {
+						from: SMTP_USER,
+						to: [to, cc, bcc].filter(Boolean).join(","),
+					},
 				});
 			} catch (e) {
 				status = `失敗: ${e?.message ?? String(e)}`;
-				console.error(`  ${n.name} ERROR: ${e?.message ?? e}`);
+				console.error(
+					`  ${n.name} ERROR: code=${e?.code} response=${e?.response} message=${e?.message}`,
+				);
 			}
 		}
 
