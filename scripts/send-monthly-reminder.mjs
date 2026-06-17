@@ -5,10 +5,14 @@
  *   GOOGLE_SERVICE_ACCOUNT_JSON  - service account JSON (raw string)
  *   GOOGLE_SHEET_ID              - 全データ用Sheets (集計元)
  *   NOTIFY_SHEET_ID              - 園マスタ_通知 用Sheets (1JcmgUo0kGim_5ojtE8C3Mhn8IXL4Dmh7LMuLFJi5ygc)
- *   GMAIL_USER                   - 送信元 Gmail
- *   GMAIL_APP_PASSWORD           - Gmail アプリパスワード (16桁)
+ *   SMTP_HOST                    - SMTPサーバー (例: sou-kidscare.sakura.ne.jp)
+ *   SMTP_PORT                    - SMTPポート (587=STARTTLS / 465=SSL)
+ *   SMTP_SECURE                  - "true"=SSL(465) / "false"=STARTTLS(587)
+ *   SMTP_USER                    - SMTP認証ユーザー (例: no-reply@sou-kidscare.co.jp)
+ *   SMTP_PASSWORD                - SMTPパスワード
+ *   FROM_NAME                    - 表示名 (デフォルト: SOUキッズケア本社事務局)
  *   TEST_MODE                    - "true" だと園マスタの送信先を無視し TEST_RECIPIENT のみに送信
- *   TEST_RECIPIENT               - TEST_MODE時の宛先 (例: yukinaga.asano@edridge.co)
+ *   TEST_RECIPIENT               - TEST_MODE時の宛先 (例: kitchen812@gmail.com)
  *   DRY_RUN                      - "true" だと送信せずログのみ
  *
  * 実行: node scripts/send-monthly-reminder.mjs
@@ -19,8 +23,12 @@ import nodemailer from "nodemailer";
 
 const SHEET_ID_INQUIRIES = process.env.GOOGLE_SHEET_ID;
 const SHEET_ID_NOTIFY = process.env.NOTIFY_SHEET_ID ?? "1JcmgUo0kGim_5ojtE8C3Mhn8IXL4Dmh7LMuLFJi5ygc";
-const GMAIL_USER = process.env.GMAIL_USER;
-const GMAIL_APP_PASSWORD = process.env.GMAIL_APP_PASSWORD;
+const SMTP_HOST = process.env.SMTP_HOST;
+const SMTP_PORT = parseInt(process.env.SMTP_PORT ?? "587", 10);
+const SMTP_SECURE = process.env.SMTP_SECURE === "true";
+const SMTP_USER = process.env.SMTP_USER;
+const SMTP_PASSWORD = process.env.SMTP_PASSWORD;
+const FROM_NAME = process.env.FROM_NAME ?? "SOUキッズケア本社事務局";
 const TEST_MODE = process.env.TEST_MODE === "true";
 const TEST_RECIPIENT = process.env.TEST_RECIPIENT;
 const DRY_RUN = process.env.DRY_RUN === "true";
@@ -330,8 +338,8 @@ async function main() {
 		console.log("送信実施フラグがFALSEのため終了 (TEST_MODE=true で強制実行可)");
 		return;
 	}
-	if (!GMAIL_USER || !GMAIL_APP_PASSWORD) {
-		throw new Error("GMAIL_USER / GMAIL_APP_PASSWORD 未設定");
+	if (!SMTP_HOST || !SMTP_USER || !SMTP_PASSWORD) {
+		throw new Error("SMTP_HOST / SMTP_USER / SMTP_PASSWORD 未設定");
 	}
 
 	console.log("Fetching 全データ...");
@@ -348,8 +356,10 @@ async function main() {
 	const statsByName = new Map(stats.map((s) => [s.nursery, s]));
 
 	const transporter = nodemailer.createTransport({
-		service: "gmail",
-		auth: { user: GMAIL_USER, pass: GMAIL_APP_PASSWORD },
+		host: SMTP_HOST,
+		port: SMTP_PORT,
+		secure: SMTP_SECURE, // true=465 SSL / false=587 STARTTLS
+		auth: { user: SMTP_USER, pass: SMTP_PASSWORD },
 	});
 
 	const results = [];
@@ -386,7 +396,7 @@ async function main() {
 		} else {
 			try {
 				await transporter.sendMail({
-					from: `"SOUキッズケア本社事務局" <${GMAIL_USER}>`,
+					from: `"${FROM_NAME}" <${SMTP_USER}>`,
 					to,
 					cc: cc || undefined,
 					bcc: bcc || undefined,
