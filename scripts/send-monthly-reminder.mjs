@@ -32,6 +32,8 @@ const FROM_NAME = process.env.FROM_NAME ?? "SOUキッズケア本社事務局";
 const TEST_MODE = process.env.TEST_MODE === "true";
 const TEST_RECIPIENT = process.env.TEST_RECIPIENT;
 const DRY_RUN = process.env.DRY_RUN === "true";
+// 各パターン(A/B/C)から1園ずつ計3通のみ送信。テンプレ確認用
+const SAMPLE_MODE = process.env.SAMPLE_MODE === "true";
 
 const DASHBOARD_URL = "https://sou-dashboard.vercel.app/dashboard";
 const ARRANGEMENT_SHEET_URL =
@@ -362,8 +364,8 @@ async function main() {
 		auth: { user: SMTP_USER, pass: SMTP_PASSWORD },
 	});
 
-	const results = [];
-	for (const n of nurseries) {
+	// 全園のパターン判定 + 統計を先に揃える
+	const taskList = nurseries.map((n) => {
 		const row = statsByName.get(n.name) ?? {
 			nursery: n.name,
 			total: 0,
@@ -375,6 +377,29 @@ async function main() {
 			guidedStall90: 0,
 		};
 		const pattern = n.patternForced || determinePattern(row);
+		return { n, row, pattern };
+	});
+
+	// SAMPLE_MODE: 各パターン(A/B/C)から最初の1園ずつ
+	let targets = taskList;
+	if (SAMPLE_MODE) {
+		const seen = new Set();
+		const picked = [];
+		for (const t of taskList) {
+			if (!seen.has(t.pattern)) {
+				seen.add(t.pattern);
+				picked.push(t);
+				if (seen.size === 3) break;
+			}
+		}
+		targets = picked;
+		console.log(
+			`SAMPLE_MODE: ${picked.length}件抽出 (${picked.map((t) => `${t.pattern}=${t.n.name}`).join(", ")})`,
+		);
+	}
+
+	const results = [];
+	for (const { n, row, pattern } of targets) {
 		const { subject, body } = buildSubjectBody(row, pattern, n.director, month);
 		const to = TEST_MODE ? TEST_RECIPIENT : n.email;
 		const cc = TEST_MODE

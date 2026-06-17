@@ -14,6 +14,10 @@ on:
         description: "true で送信先を TEST_RECIPIENT に強制"
         required: false
         default: "false"
+      sample_mode:
+        description: "true で各パターン(A/B/C)から1園ずつ計3通のみ送信"
+        required: false
+        default: "false"
 
 jobs:
   send:
@@ -39,4 +43,5 @@ jobs:
           TEST_MODE: ${{ github.event.inputs.test_mode || 'false' }}
           TEST_RECIPIENT: ${{ secrets.TEST_RECIPIENT }}
           DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+          SAMPLE_MODE: ${{ github.event.inputs.sample_mode || 'false' }}
         run: node scripts/send-monthly-reminder.mjs
