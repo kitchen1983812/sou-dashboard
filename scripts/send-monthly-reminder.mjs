@@ -18,8 +18,51 @@
  * 実行: node scripts/send-monthly-reminder.mjs
  */
 
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { google } from "googleapis";
 import nodemailer from "nodemailer";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+// ローカル実行用: .env と documents/*.json から認証情報を自動読み込み
+function loadLocalEnv() {
+	// SOU プロジェクトルートを推定: scripts/ → repositories/ax-dashboard/ → ../../ = SOU root
+	const souRoot = path.resolve(__dirname, "../../..");
+	const envPath = path.join(souRoot, ".env");
+	if (fs.existsSync(envPath)) {
+		const content = fs.readFileSync(envPath, "utf-8");
+		for (const line of content.split(/\r?\n/)) {
+			if (line.startsWith("#") || !line.includes("=")) continue;
+			const idx = line.indexOf("=");
+			const k = line.slice(0, idx).trim();
+			const v = line
+				.slice(idx + 1)
+				.trim()
+				.replace(/^['"]|['"]$/g, "");
+			if (!process.env[k]) process.env[k] = v;
+		}
+	}
+	if (!process.env.GOOGLE_SERVICE_ACCOUNT_JSON) {
+		const docsDir = path.join(souRoot, "documents");
+		if (fs.existsSync(docsDir)) {
+			for (const f of fs.readdirSync(docsDir)) {
+				if (!f.endsWith(".json")) continue;
+				try {
+					const c = JSON.parse(
+						fs.readFileSync(path.join(docsDir, f), "utf-8"),
+					);
+					if (c.type === "service_account") {
+						process.env.GOOGLE_SERVICE_ACCOUNT_JSON = JSON.stringify(c);
+						break;
+					}
+				} catch {}
+			}
+		}
+	}
+}
+loadLocalEnv();
 
 const SHEET_ID_INQUIRIES = process.env.GOOGLE_SHEET_ID;
 const SHEET_ID_NOTIFY = process.env.NOTIFY_SHEET_ID || "1JcmgUo0kGim_5ojtE8C3Mhn8IXL4Dmh7LMuLFJi5ygc";
@@ -34,6 +77,8 @@ const TEST_RECIPIENT = process.env.TEST_RECIPIENT;
 const DRY_RUN = process.env.DRY_RUN === "true";
 // 各パターン(A/B/C)から1園ずつ計3通のみ送信。テンプレ確認用
 const SAMPLE_MODE = process.env.SAMPLE_MODE === "true";
+// MD出力モード: SMTP接続せず reports/email-preview-YYYY-MM-DD.md を生成
+const PREVIEW_MD = process.env.PREVIEW_MD === "true";
 
 const DASHBOARD_URL = "https://sou-dashboard.vercel.app/dashboard";
 const ARRANGEMENT_SHEET_URL =
@@ -336,11 +381,11 @@ async function main() {
 	console.log(`  send enabled: ${config.sendEnabled}`);
 	console.log(`  from: ${config.fromAddress || "(未設定)"}`);
 
-	if (!config.sendEnabled && !TEST_MODE) {
+	if (!config.sendEnabled && !TEST_MODE && !PREVIEW_MD) {
 		console.log("送信実施フラグがFALSEのため終了 (TEST_MODE=true で強制実行可)");
 		return;
 	}
-	if (!SMTP_HOST || !SMTP_USER || !SMTP_PASSWORD) {
+	if (!PREVIEW_MD && (!SMTP_HOST || !SMTP_USER || !SMTP_PASSWORD)) {
 		throw new Error("SMTP_HOST / SMTP_USER / SMTP_PASSWORD 未設定");
 	}
 
@@ -357,20 +402,25 @@ async function main() {
 	const stats = computeNurseryStats(inquiries, fyStart, fyEnd);
 	const statsByName = new Map(stats.map((s) => [s.nursery, s]));
 
-	const transporter = nodemailer.createTransport({
-		host: SMTP_HOST,
-		port: SMTP_PORT,
-		secure: SMTP_SECURE, // true=465 SSL / false=587 STARTTLS
-		auth: { user: SMTP_USER, pass: SMTP_PASSWORD },
-	});
+	let transporter = null;
+	if (!PREVIEW_MD) {
+		transporter = nodemailer.createTransport({
+			host: SMTP_HOST,
+			port: SMTP_PORT,
+			secure: SMTP_SECURE, // true=465 SSL / false=587 STARTTLS
+			auth: { user: SMTP_USER, pass: SMTP_PASSWORD },
+		});
 
-	// 接続検証 (失敗時の早期エラー)
-	try {
-		await transporter.verify();
-		console.log(`SMTP verify OK: ${SMTP_HOST}:${SMTP_PORT} secure=${SMTP_SECURE}`);
-	} catch (e) {
-		console.error(`SMTP verify FAILED: ${e?.message ?? e}`);
-		throw e;
+		// 接続検証 (失敗時の早期エラー)
+		try {
+			await transporter.verify();
+			console.log(
+				`SMTP verify OK: ${SMTP_HOST}:${SMTP_PORT} secure=${SMTP_SECURE}`,
+			);
+		} catch (e) {
+			console.error(`SMTP verify FAILED: ${e?.message ?? e}`);
+			throw e;
+		}
 	}
 
 	// 全園のパターン判定 + 統計を先に揃える
@@ -408,6 +458,7 @@ async function main() {
 	}
 
 	const results = [];
+	const previewItems = [];
 	for (const { n, row, pattern } of targets) {
 		const { subject, body } = buildSubjectBody(row, pattern, n.director, month);
 		const to = TEST_MODE ? TEST_RECIPIENT : n.email;
@@ -425,7 +476,10 @@ async function main() {
 		);
 
 		let status = "成功";
-		if (DRY_RUN) {
+		if (PREVIEW_MD) {
+			status = "PREVIEW_MD";
+			previewItems.push({ n, row, pattern, subject, body, to, cc, bcc });
+		} else if (DRY_RUN) {
 			status = "DRY_RUN";
 		} else {
 			try {
@@ -465,8 +519,86 @@ async function main() {
 			status,
 		]);
 
-		// Gmail SMTP レート対策
-		await new Promise((r) => setTimeout(r, 1000));
+		// SMTP レート対策 (PREVIEW_MD時は不要)
+		if (!PREVIEW_MD) {
+			await new Promise((r) => setTimeout(r, 1000));
+		}
+	}
+
+	if (PREVIEW_MD) {
+		const today = new Date()
+			.toLocaleDateString("sv-SE", { timeZone: "Asia/Tokyo" });
+		const outPath = path.resolve(
+			__dirname,
+			`../../../reports/email-preview-${today}.md`,
+		);
+		const counts = { A: 0, B: 0, C: 0 };
+		for (const it of previewItems) counts[it.pattern]++;
+		const lines = [];
+		lines.push(`# 園リマインドメール プレビュー (${today})`);
+		lines.push("");
+		lines.push(`**対象月**: ${month}月`);
+		lines.push(`**集計対象**: FY${fy}`);
+		lines.push(
+			`**対象園数**: ${previewItems.length}件 (A通常=${counts.A} / B要対応=${counts.B} / C良好園=${counts.C})`,
+		);
+		lines.push(`**共通CC**: ${config.commonCc || "(未設定)"}`);
+		lines.push(`**BCC**: ${config.asanoBcc || "(未設定)"}`);
+		lines.push(`**送信元(予定)**: ${config.fromAddress || "(未設定)"}`);
+		lines.push("");
+		lines.push("## パターン判定基準");
+		lines.push("- **C(良好園)**: 決着率 ≥ 50%");
+		lines.push(
+			"- **B(要対応)**: 未決着 > 10件 または 91日超のご案内済滞留 ≥ 5件",
+		);
+		lines.push("- **A(通常)**: 上記以外");
+		lines.push("");
+		lines.push("---");
+		lines.push("");
+		// 目次
+		lines.push("## 目次");
+		previewItems.forEach((it, i) => {
+			const slug = `${i + 1}-${it.pattern}-${it.n.name}`;
+			lines.push(`- [${i + 1}. [${it.pattern}] ${it.n.name}](#${slug})`);
+		});
+		lines.push("");
+		lines.push("---");
+		lines.push("");
+		previewItems.forEach((it, i) => {
+			const slug = `${i + 1}-${it.pattern}-${it.n.name}`;
+			lines.push(`<a id="${slug}"></a>`);
+			lines.push(`## ${i + 1}. [${it.pattern}] ${it.n.name}`);
+			lines.push("");
+			lines.push("| 項目 | 値 |");
+			lines.push("|---|---|");
+			lines.push(`| ブランド | ${it.n.brand} |`);
+			lines.push(`| 園長 | ${it.n.director || "(未登録)"} |`);
+			lines.push(`| To | ${it.to} |`);
+			lines.push(`| CC | ${it.cc || "(なし)"} |`);
+			lines.push(`| BCC | ${it.bcc || "(なし)"} |`);
+			lines.push(`| 総数 | ${it.row.total} |`);
+			lines.push(`| 決着 | ${it.row.decided} |`);
+			lines.push(`| 未決着 | ${it.row.pending} (うちご案内済${it.row.guided}) |`);
+			lines.push(`| 91日超滞留 | ${it.row.guidedStall90} |`);
+			lines.push(`| 未対応 | ${it.row.unanswered} |`);
+			lines.push(`| 入園 | ${it.row.enrolled} |`);
+			lines.push("");
+			lines.push(`**件名**: ${it.subject}`);
+			lines.push("");
+			lines.push("**本文**:");
+			lines.push("");
+			lines.push("```");
+			lines.push(it.body);
+			lines.push("```");
+			lines.push("");
+			lines.push("---");
+			lines.push("");
+		});
+		fs.mkdirSync(path.dirname(outPath), { recursive: true });
+		fs.writeFileSync(outPath, lines.join("\n"), "utf-8");
+		console.log(`\nPREVIEW_MD: ${outPath} に書き出しました`);
+		console.log(`  対象園: ${previewItems.length}件 (A=${counts.A} B=${counts.B} C=${counts.C})`);
+		return;
 	}
 
 	console.log("Writing 通知ログ...");
