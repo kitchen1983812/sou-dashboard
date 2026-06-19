@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-11T16:50:29.224653+09:00",
+  "generatedAt": "2026-06-19T10:14:20.229277+09:00",
   "config": {
-    "commonCc": "",
-    "fromAddress": "",
+    "commonCc": "ar-honsya@sou-kidscare.co.jp",
+    "fromAddress": "no-reply@sou-kidscare.co.jp",
     "asanoBcc": "yukinaga.asano@edridge.co"
   },
   "nurseries": {
