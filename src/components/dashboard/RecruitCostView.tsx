@@ -45,11 +45,11 @@ export default function RecruitCostView({
 	const currentFY = getCurrentFY();
 	const [selectedFY, setSelectedFY] = useState(currentFY);
 
-	// FY一覧
+	// FY一覧 (集計基準: endDate = 掲載終了日/紹介・課金サイトは入職日)
 	const availableFYs = useMemo(() => {
 		const fySet = new Set<number>();
 		recruitCosts.forEach((c) => {
-			const d = parseDate(c.aggregateYearMonth);
+			const d = parseDate(c.endDate);
 			if (d) {
 				fySet.add(getFiscalYear(d));
 			} else {

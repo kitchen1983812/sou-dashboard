@@ -86,9 +86,11 @@ export function filterCostsByFY(
 	fy: number,
 ): RecruitCost[] {
 	return costs.filter((c) => {
-		const d = parseDate(c.aggregateYearMonth);
-		if (d) {
-			const cfy = getFiscalYear(d);
+		// 主指標: 掲載終了日(紹介・課金サイトは入職日) = endDate
+		// ユーザー方針 (2026-06-22): 「実際に費用が発生したタイミング」で集計
+		const dEnd = parseDate(c.endDate);
+		if (dEnd) {
+			const cfy = getFiscalYear(dEnd);
 			return cfy === fy;
 		}
 		// fallback: year/month
@@ -569,7 +571,13 @@ export function computeMonthlyCostTrend(
 		const m = ((i + 3) % 12) + 1;
 		const y = m >= 4 ? fy : fy + 1;
 
+		// 主指標: endDate (掲載終了日/紹介・課金サイトは入職日)
+		// fallback: year/month
 		let filteredCosts = costs.filter((c) => {
+			const dEnd = parseDate(c.endDate);
+			if (dEnd) {
+				return dEnd.getFullYear() === y && dEnd.getMonth() + 1 === m;
+			}
 			return Number(c.year) === y && Number(c.month) === m;
 		});
 
