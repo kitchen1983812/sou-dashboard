@@ -72,6 +72,8 @@ const SMTP_SECURE = process.env.SMTP_SECURE === "true";
 const SMTP_USER = process.env.SMTP_USER;
 const SMTP_PASSWORD = process.env.SMTP_PASSWORD;
 const FROM_NAME = process.env.FROM_NAME ?? "SOUキッズケア本社事務局";
+// 送信者メールアドレス (Resend では SMTP_USER='resend' なので別途指定が必要)
+const FROM_ADDRESS = process.env.FROM_ADDRESS || SMTP_USER;
 const TEST_MODE = process.env.TEST_MODE === "true";
 const TEST_RECIPIENT = process.env.TEST_RECIPIENT;
 const DRY_RUN = process.env.DRY_RUN === "true";
@@ -484,15 +486,15 @@ async function main() {
 		} else {
 			try {
 				await transporter.sendMail({
-					from: `"${FROM_NAME}" <${SMTP_USER}>`,
-					sender: SMTP_USER,
+					from: `"${FROM_NAME}" <${FROM_ADDRESS}>`,
+					sender: FROM_ADDRESS,
 					to,
 					cc: cc || undefined,
 					bcc: bcc || undefined,
 					subject,
 					text: body,
 					envelope: {
-						from: SMTP_USER,
+						from: FROM_ADDRESS,
 						to: [to, cc, bcc].filter(Boolean).join(","),
 					},
 				});

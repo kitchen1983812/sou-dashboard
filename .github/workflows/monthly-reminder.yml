@@ -40,6 +40,7 @@ jobs:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           FROM_NAME: ${{ secrets.FROM_NAME }}
+          FROM_ADDRESS: ${{ secrets.FROM_ADDRESS }}
           TEST_MODE: ${{ github.event.inputs.test_mode || 'false' }}
           TEST_RECIPIENT: ${{ secrets.TEST_RECIPIENT }}
           DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
