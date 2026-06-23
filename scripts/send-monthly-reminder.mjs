@@ -82,9 +82,18 @@ const SAMPLE_MODE = process.env.SAMPLE_MODE === "true";
 // MD出力モード: SMTP接続せず reports/email-preview-YYYY-MM-DD.md を生成
 const PREVIEW_MD = process.env.PREVIEW_MD === "true";
 
-const DASHBOARD_URL = "https://sou-dashboard.vercel.app/dashboard";
-const ARRANGEMENT_SHEET_URL =
-	"https://docs.google.com/spreadsheets/d/1JZBJuvlzKL0iujUcz-dtJMcJmjB47jjXyR_kiXvFH1A/edit";
+// シートURL生成用 (NOTIFY_SHEET_ID と同じ Sheets内の各園worksheet を参照)
+function buildSheetUrl(spreadsheetId, gid) {
+	return `https://docs.google.com/spreadsheets/d/${spreadsheetId}/edit?gid=${gid}#gid=${gid}`;
+}
+
+// 園マスタの園名 → worksheet名 の表記ゆれマッピング
+// (柏II/座間II は運用名・worksheet側は柏/座間、ふぇりーちぇ括弧の全半角差)
+const NURSERY_TO_WORKSHEET = {
+	柏II園: "柏園",
+	座間II園: "座間園",
+	"ふぇりーちぇほいくえん(東千葉園)": "ふぇりーちぇほいくえん（東千葉園）",
+};
 
 const DECIDED_STATUSES = new Set([
 	"入園",
@@ -112,6 +121,34 @@ async function getSheetValues(auth, spreadsheetId, range) {
 	const sheets = google.sheets({ version: "v4", auth });
 	const res = await sheets.spreadsheets.values.get({ spreadsheetId, range });
 	return res.data.values ?? [];
+}
+
+// worksheet名 → gid のマップを取得 (各園個別シートURLへのリンク用)
+async function getWorksheetMap(auth, spreadsheetId) {
+	const sheets = google.sheets({ version: "v4", auth });
+	const res = await sheets.spreadsheets.get({ spreadsheetId });
+	const map = {};
+	for (const s of res.data.sheets ?? []) {
+		map[s.properties.title] = s.properties.sheetId;
+	}
+	return map;
+}
+
+// 園名 → 該当worksheetのURL (該当なしなら null)
+function nurseryUrl(nurseryName, worksheetMap, spreadsheetId) {
+	const wsName = NURSERY_TO_WORKSHEET[nurseryName] ?? nurseryName;
+	const gid = worksheetMap[wsName];
+	if (gid === undefined) return null;
+	return buildSheetUrl(spreadsheetId, gid);
+}
+
+// HTML エスケープ
+function esc(s) {
+	return String(s ?? "")
+		.replace(/&/g, "&amp;")
+		.replace(/</g, "&lt;")
+		.replace(/>/g, "&gt;")
+		.replace(/"/g, "&quot;");
 }
 
 async function appendSheetRow(auth, spreadsheetId, range, row) {
@@ -185,16 +222,31 @@ function determinePattern(row) {
 	return "A";
 }
 
-function buildSubjectBody(row, pattern, directorName, month) {
-	const directorPrefix = directorName ? `${directorName} 様` : "園長 様";
+// 全パターン共通のクロージング文
+const CLOSING_TEXT = [
+	"",
+	"ステータスの整理は経営判断(入園率の見える化・採用計画)にも直結する大切な情報になります。",
+	"ご協力よろしくお願いいたします。",
+	"",
+	"--",
+	"SOUキッズケア 本社事務局",
+	"(自動配信メールです)",
+];
+
+function buildSubjectBody(row, pattern, directorName, month, sheetUrl) {
+	const headerLine = row.nursery; // 宛名: 園名のみ
+	const sheetLine = sheetUrl
+		? [`${row.nursery}のシート: ${sheetUrl}`, ""]
+		: [];
+
 	if (pattern === "C") {
 		return {
 			subject: `【SOUキッズケア】${month}月 ステータス整理ご協力への御礼(${row.nursery})`,
-			body: [
-				directorPrefix,
+			text: [
+				headerLine,
 				"",
 				"いつもありがとうございます。",
-				`${month}月のステータス整理状況のご報告と、ご相談がございます。`,
+				`${month}月のステータス整理状況のご報告です。`,
 				"",
 				`▼ ${row.nursery} 現在の状況`,
 				`・総問い合わせ件数: ${row.total}件`,
@@ -205,25 +257,16 @@ function buildSubjectBody(row, pattern, directorName, month) {
 				"日々のステータス更新を丁寧に実施いただき、ありがとうございます。",
 				`${row.nursery}の運用は、SOUキッズケア全体の中でもベンチマーク的な水準です。`,
 				"",
-				"▼ ご相談",
-				"他園でステータス更新がうまく進んでいないケースがあり、",
-				`${row.nursery}の運用フローを参考にさせていただきたく、20分ほどお時間を頂戴できないでしょうか。`,
-				"",
-				"オンラインまたは電話で構いません。ご都合のよい日時を本社事務局までお知らせください。",
-				"",
-				`ダッシュボード: ${DASHBOARD_URL}`,
-				"",
-				"--",
-				"SOUキッズケア 本社事務局",
-				"(自動配信メールです)",
+				...sheetLine,
+				...CLOSING_TEXT,
 			].join("\n"),
 		};
 	}
 	if (pattern === "B") {
 		return {
 			subject: `【SOUキッズケア】${month}月 ステータス棚卸しのお願い(${row.nursery}・要対応)`,
-			body: [
-				directorPrefix,
+			text: [
+				headerLine,
 				"",
 				"いつも保護者様対応をありがとうございます。",
 				`${month}月のステータス棚卸しに関して、ご相談がございます。`,
@@ -246,27 +289,16 @@ function buildSubjectBody(row, pattern, directorName, month) {
 				"  ・一定期間連絡がつかない方",
 				"  ・受入要件と合致しなかった方",
 				"",
-				"▼ 集中棚卸し時間のご提案",
-				"通常作業に上乗せの依頼となるため、",
-				`${month}月中に60分ほどお時間をいただければ十分かと思います。`,
-				"",
-				"▼ 本社サポート",
-				"ご不明点・ご相談は本社事務局まで。",
-				"リストの一括確認方法のご案内も可能です。",
-				"",
-				`ダッシュボード: ${DASHBOARD_URL}`,
-				`配置表: ${ARRANGEMENT_SHEET_URL}`,
-				"",
-				"--",
-				"SOUキッズケア 本社事務局",
-				"(自動配信メールです)",
+				...sheetLine,
+				...CLOSING_TEXT,
 			].join("\n"),
 		};
 	}
+	// パターンA(通常)
 	return {
 		subject: `【SOUキッズケア】${month}月 ステータス棚卸しのお願い(${row.nursery})`,
-		body: [
-			directorPrefix,
+		text: [
+			headerLine,
 			"",
 			"いつも保護者様対応とご入園後のサポート、ありがとうございます。",
 			`${month}月の問い合わせステータス棚卸しのご案内です。`,
@@ -289,21 +321,113 @@ function buildSubjectBody(row, pattern, directorName, month) {
 			"  [保護者様検討中] … 検討中の連絡が直近で取れている方",
 			"  [待ちリスト登録済み] … 空き待ちで継続フォロー中の方",
 			"",
-			"▼ 作業の目安",
-			"30分程度を目安にご対応いただけますと幸いです。",
-			"ご不明点があれば本社事務局までお気軽にご相談ください。",
-			"",
-			`ダッシュボード: ${DASHBOARD_URL}`,
-			`配置表: ${ARRANGEMENT_SHEET_URL}`,
-			"",
-			"ステータスの整理は経営判断(入園率の見える化・採用計画)にも直結する大切な情報になります。",
-			"ご協力よろしくお願いいたします。",
-			"",
-			"--",
-			"SOUキッズケア 本社事務局",
-			"(自動配信メールです)",
+			...sheetLine,
+			...CLOSING_TEXT,
 		].join("\n"),
 	};
+}
+
+// HTML版テンプレート (見栄え改善・テキスト版とセットで送信)
+function buildHtml(row, pattern, month, sheetUrl) {
+	const decidedRate =
+		row.total > 0 ? ((row.decided / row.total) * 100).toFixed(1) : 0;
+	const sheetButton = sheetUrl
+		? `<p style="margin:20px 0;text-align:center;">
+				<a href="${esc(sheetUrl)}" style="display:inline-block;background:#0078ab;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-weight:600;">${esc(row.nursery)}のシートを開く</a>
+			</p>`
+		: "";
+
+	const closing = `
+		<div style="background:#f8f9fa;padding:16px;border-radius:6px;margin-top:24px;border-left:4px solid #008cc9;">
+			<p style="margin:0;font-size:14px;color:#444;line-height:1.7;">
+				ステータスの整理は経営判断(入園率の見える化・採用計画)にも直結する大切な情報になります。<br>
+				ご協力よろしくお願いいたします。
+			</p>
+		</div>
+		<div style="margin-top:24px;padding-top:16px;border-top:1px solid #ddd;font-size:12px;color:#888;text-align:center;">
+			SOUキッズケア 本社事務局<br>
+			(自動配信メールです)
+		</div>`;
+
+	// 数値表 (各パターンで使う)
+	const tableA = `
+		<table style="width:100%;border-collapse:collapse;margin:12px 0;">
+			<tr><td style="padding:8px;background:#fef3e7;border:1px solid #e0d4c0;width:60%;">総問い合わせ件数</td><td style="padding:8px;border:1px solid #e0d4c0;text-align:right;font-weight:600;">${row.total}件</td></tr>
+			<tr><td style="padding:8px;background:#fef3e7;border:1px solid #e0d4c0;">決着済み</td><td style="padding:8px;border:1px solid #e0d4c0;text-align:right;font-weight:600;">${row.decided}件</td></tr>
+			<tr><td style="padding:8px;background:#fef3e7;border:1px solid #e0d4c0;">未決着(ご案内済 含む)</td><td style="padding:8px;border:1px solid #e0d4c0;text-align:right;font-weight:600;color:#d97706;">${row.pending}件</td></tr>
+			<tr><td style="padding:8px;background:#fef3e7;border:1px solid #e0d4c0;">うち、ご案内済</td><td style="padding:8px;border:1px solid #e0d4c0;text-align:right;font-weight:600;">${row.guided}件</td></tr>
+		</table>`;
+	const tableB = `
+		<table style="width:100%;border-collapse:collapse;margin:12px 0;">
+			<tr><td style="padding:8px;background:#fef3e7;border:1px solid #e0d4c0;width:60%;">未決着件数(うちご案内済 ${row.guided}件)</td><td style="padding:8px;border:1px solid #e0d4c0;text-align:right;font-weight:600;color:#dc2626;">${row.pending}件</td></tr>
+			<tr><td style="padding:8px;background:#fef3e7;border:1px solid #e0d4c0;">91日超 ご案内済滞留</td><td style="padding:8px;border:1px solid #e0d4c0;text-align:right;font-weight:600;color:#dc2626;">${row.guidedStall90}件</td></tr>
+			<tr><td style="padding:8px;background:#fef3e7;border:1px solid #e0d4c0;">未対応</td><td style="padding:8px;border:1px solid #e0d4c0;text-align:right;font-weight:600;">${row.unanswered}件</td></tr>
+			<tr><td style="padding:8px;background:#fef3e7;border:1px solid #e0d4c0;">FY入園実績</td><td style="padding:8px;border:1px solid #e0d4c0;text-align:right;font-weight:600;color:#059669;">${row.enrolled}件</td></tr>
+		</table>`;
+	const tableC = `
+		<table style="width:100%;border-collapse:collapse;margin:12px 0;">
+			<tr><td style="padding:8px;background:#fef3e7;border:1px solid #e0d4c0;width:60%;">総問い合わせ件数</td><td style="padding:8px;border:1px solid #e0d4c0;text-align:right;font-weight:600;">${row.total}件</td></tr>
+			<tr><td style="padding:8px;background:#fef3e7;border:1px solid #e0d4c0;">決着率</td><td style="padding:8px;border:1px solid #e0d4c0;text-align:right;font-weight:600;color:#059669;">${decidedRate}%</td></tr>
+			<tr><td style="padding:8px;background:#fef3e7;border:1px solid #e0d4c0;">ご案内済の長期滞留</td><td style="padding:8px;border:1px solid #e0d4c0;text-align:right;font-weight:600;">ほとんどありません</td></tr>
+		</table>`;
+
+	const baseWrap = (innerHtml) => `
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;background:#f4f4f4;font-family:'Hiragino Kaku Gothic ProN','Meiryo',sans-serif;color:#333;line-height:1.7;">
+	<div style="max-width:600px;margin:0 auto;background:#fff;padding:30px;">
+		<div style="border-bottom:3px solid #008cc9;padding-bottom:12px;margin-bottom:20px;">
+			<div style="font-size:13px;color:#008cc9;font-weight:600;">SOUキッズケア 月次ご連絡</div>
+			<div style="font-size:20px;font-weight:700;color:#222;margin-top:4px;">${esc(row.nursery)}</div>
+		</div>
+		${innerHtml}
+		${closing}
+	</div>
+</body></html>`;
+
+	if (pattern === "C") {
+		return baseWrap(`
+			<p style="font-size:15px;">いつもありがとうございます。<br>${month}月のステータス整理状況のご報告です。</p>
+			<h3 style="font-size:15px;color:#008cc9;border-left:4px solid #008cc9;padding-left:10px;margin-top:24px;">現在の状況</h3>
+			${tableC}
+			<h3 style="font-size:15px;color:#008cc9;border-left:4px solid #008cc9;padding-left:10px;margin-top:24px;">御礼</h3>
+			<p>日々のステータス更新を丁寧に実施いただき、ありがとうございます。<br>${esc(row.nursery)}の運用は、SOUキッズケア全体の中でもベンチマーク的な水準です。</p>
+			${sheetButton}
+		`);
+	}
+	if (pattern === "B") {
+		return baseWrap(`
+			<p style="font-size:15px;">いつも保護者様対応をありがとうございます。<br>${month}月のステータス棚卸しに関して、ご相談がございます。</p>
+			<h3 style="font-size:15px;color:#dc2626;border-left:4px solid #dc2626;padding-left:10px;margin-top:24px;">現在の状況(要対応)</h3>
+			${tableB}
+			<h3 style="font-size:15px;color:#008cc9;border-left:4px solid #008cc9;padding-left:10px;margin-top:24px;">ご依頼内容</h3>
+			<p>ご案内済のまま長期間が経過している案件が一定数あり、<br>実際にはご入園・ご辞退で既に決着しているケースも含まれている可能性があります。</p>
+			<p>以下のいずれかに該当する案件があれば、最終ステータスへの更新をお願いいたします。<br>(保護者様への確認は不要です。園長様の認識ベースでの更新で構いません)</p>
+			<ul style="padding-left:20px;">
+				<li>既に入園された方</li>
+				<li>他園に決まった/辞退された方</li>
+				<li>一定期間連絡がつかない方</li>
+				<li>受入要件と合致しなかった方</li>
+			</ul>
+			${sheetButton}
+		`);
+	}
+	return baseWrap(`
+		<p style="font-size:15px;">いつも保護者様対応とご入園後のサポート、ありがとうございます。<br>${month}月の問い合わせステータス棚卸しのご案内です。</p>
+		<h3 style="font-size:15px;color:#008cc9;border-left:4px solid #008cc9;padding-left:10px;margin-top:24px;">現在の状況</h3>
+		${tableA}
+		<h3 style="font-size:15px;color:#008cc9;border-left:4px solid #008cc9;padding-left:10px;margin-top:24px;">ご依頼内容</h3>
+		<p>「ご案内済」のままになっている方について、以下のいずれかへ更新をお願いします。<br>保育園としての対応自体は完了されていることが多いですが、シート上のステータスのみが古くなっているケースがあります。</p>
+		<table style="width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;">
+			<tr><td style="padding:6px;background:#e0f2fe;border:1px solid #c0d8e0;font-weight:600;width:35%;">入園</td><td style="padding:6px;border:1px solid #c0d8e0;">既にご入園された方</td></tr>
+			<tr><td style="padding:6px;background:#fef3e7;border:1px solid #c0d8e0;font-weight:600;">辞退</td><td style="padding:6px;border:1px solid #c0d8e0;">ご家庭側で辞退の意思表明があった方</td></tr>
+			<tr><td style="padding:6px;background:#fef3e7;border:1px solid #c0d8e0;font-weight:600;">連絡つかない</td><td style="padding:6px;border:1px solid #c0d8e0;">一定期間以上、保護者様と連絡が取れていない方</td></tr>
+			<tr><td style="padding:6px;background:#fef3e7;border:1px solid #c0d8e0;font-weight:600;">諸事情により受入不可</td><td style="padding:6px;border:1px solid #c0d8e0;">受け入れ要件と合致しなかった方</td></tr>
+			<tr><td style="padding:6px;background:#fff;border:1px solid #c0d8e0;font-weight:600;">保護者様検討中</td><td style="padding:6px;border:1px solid #c0d8e0;">検討中の連絡が直近で取れている方</td></tr>
+			<tr><td style="padding:6px;background:#fff;border:1px solid #c0d8e0;font-weight:600;">待ちリスト登録済み</td><td style="padding:6px;border:1px solid #c0d8e0;">空き待ちで継続フォロー中の方</td></tr>
+		</table>
+		${sheetButton}
+	`);
 }
 
 function parseConfig(masterRows) {
@@ -382,6 +506,10 @@ async function main() {
 	console.log(`  active nurseries: ${nurseries.length}`);
 	console.log(`  send enabled: ${config.sendEnabled}`);
 	console.log(`  from: ${config.fromAddress || "(未設定)"}`);
+
+	console.log("Fetching worksheet map (各園シートURL用)...");
+	const worksheetMap = await getWorksheetMap(auth, SHEET_ID_NOTIFY);
+	console.log(`  worksheets: ${Object.keys(worksheetMap).length}`);
 
 	if (!config.sendEnabled && !TEST_MODE && !PREVIEW_MD) {
 		console.log("送信実施フラグがFALSEのため終了 (TEST_MODE=true で強制実行可)");
@@ -462,7 +590,9 @@ async function main() {
 	const results = [];
 	const previewItems = [];
 	for (const { n, row, pattern } of targets) {
-		const { subject, body } = buildSubjectBody(row, pattern, n.director, month);
+		const sheetUrl = nurseryUrl(n.name, worksheetMap, SHEET_ID_NOTIFY);
+		const { subject, text } = buildSubjectBody(row, pattern, n.director, month, sheetUrl);
+		const html = buildHtml(row, pattern, month, sheetUrl);
 		const to = TEST_MODE ? TEST_RECIPIENT : n.email;
 		const cc = TEST_MODE
 			? ""
@@ -480,7 +610,7 @@ async function main() {
 		let status = "成功";
 		if (PREVIEW_MD) {
 			status = "PREVIEW_MD";
-			previewItems.push({ n, row, pattern, subject, body, to, cc, bcc });
+			previewItems.push({ n, row, pattern, subject, body: text, to, cc, bcc });
 		} else if (DRY_RUN) {
 			status = "DRY_RUN";
 		} else {
@@ -492,7 +622,8 @@ async function main() {
 					cc: cc || undefined,
 					bcc: bcc || undefined,
 					subject,
-					text: body,
+					text,
+					html,
 					envelope: {
 						from: FROM_ADDRESS,
 						to: [to, cc, bcc].filter(Boolean).join(","),
