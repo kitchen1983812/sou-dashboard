@@ -222,11 +222,10 @@ function determinePattern(row) {
 	return "A";
 }
 
-// 全パターン共通のクロージング文
+// 全パターン共通のクロージング文 (1文・改行なし)
 const CLOSING_TEXT = [
 	"",
-	"ステータスの整理は経営判断(入園率の見える化・採用計画)にも直結する大切な情報になります。",
-	"ご協力よろしくお願いいたします。",
+	"ステータスの整理は経営判断(入園率の見える化・採用計画)にも直結する大切な情報になりますので、ご協力よろしくお願いいたします。",
 	"",
 	"--",
 	"SOUキッズケア 本社事務局",
@@ -333,15 +332,14 @@ function buildHtml(row, pattern, month, sheetUrl) {
 		row.total > 0 ? ((row.decided / row.total) * 100).toFixed(1) : 0;
 	const sheetButton = sheetUrl
 		? `<p style="margin:20px 0;text-align:center;">
-				<a href="${esc(sheetUrl)}" style="display:inline-block;background:#0078ab;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-weight:600;">${esc(row.nursery)}のシートを開く</a>
+				<a href="${esc(sheetUrl)}" style="display:inline-block;background:#0078ab;color:#fff;padding:12px 24px;text-decoration:none;font-weight:600;">${esc(row.nursery)}のシートを開く</a>
 			</p>`
 		: "";
 
 	const closing = `
-		<div style="background:#f8f9fa;padding:16px;border-radius:6px;margin-top:24px;border-left:4px solid #008cc9;">
+		<div style="background:#f8f9fa;padding:16px;margin-top:24px;border-left:4px solid #008cc9;">
 			<p style="margin:0;font-size:14px;color:#444;line-height:1.7;">
-				ステータスの整理は経営判断(入園率の見える化・採用計画)にも直結する大切な情報になります。<br>
-				ご協力よろしくお願いいたします。
+				ステータスの整理は経営判断(入園率の見える化・採用計画)にも直結する大切な情報になりますので、ご協力よろしくお願いいたします。
 			</p>
 		</div>
 		<div style="margin-top:24px;padding-top:16px;border-top:1px solid #ddd;font-size:12px;color:#888;text-align:center;">
