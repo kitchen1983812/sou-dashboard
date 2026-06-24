@@ -81,6 +81,10 @@ const DRY_RUN = process.env.DRY_RUN === "true";
 const SAMPLE_MODE = process.env.SAMPLE_MODE === "true";
 // MD出力モード: SMTP接続せず reports/email-preview-YYYY-MM-DD.md を生成
 const PREVIEW_MD = process.env.PREVIEW_MD === "true";
+// ブランド絞り込み (部分一致): 例 "POP" "ことり" "フェリーチェ"
+const BRAND_FILTER = (process.env.BRAND_FILTER ?? "").trim();
+// 営業日判定スキップ (workflow_dispatch時) - 手動実行は強制
+const FORCE_RUN = process.env.FORCE_RUN === "true";
 
 // シートURL生成用 (NOTIFY_SHEET_ID と同じ Sheets内の各園worksheet を参照)
 function buildSheetUrl(spreadsheetId, gid) {
@@ -176,6 +180,29 @@ function parseDate(s) {
 
 function getCurrentFY(date) {
 	return date.getMonth() < 3 ? date.getFullYear() - 1 : date.getFullYear();
+}
+
+// 当月の第1営業日 (平日・元旦のみハードコード除外)
+// 注: GitHub Actions runner は UTC。JST(+9h)に変換して判定する。
+function getFirstBusinessDayOfMonthJST(now) {
+	// JSTのDateを取得
+	const jst = new Date(now.getTime() + 9 * 60 * 60 * 1000);
+	const year = jst.getUTCFullYear();
+	const month = jst.getUTCMonth();
+	let d = new Date(Date.UTC(year, month, 1));
+	// 元旦は休み → 2日へ
+	if (month === 0 && d.getUTCDate() === 1) d.setUTCDate(2);
+	while (d.getUTCDay() === 0 || d.getUTCDay() === 6) {
+		d.setUTCDate(d.getUTCDate() + 1);
+	}
+	return d.getUTCDate(); // 日付のみ返す
+}
+
+function isFirstBusinessDayJST(now) {
+	const jst = new Date(now.getTime() + 9 * 60 * 60 * 1000);
+	const today = jst.getUTCDate();
+	const firstBizDay = getFirstBusinessDayOfMonthJST(now);
+	return today === firstBizDay;
 }
 
 function computeNurseryStats(inquiries, fyStart, fyEnd) {
@@ -494,16 +521,42 @@ function parseInquiries(rows) {
 async function main() {
 	if (!SHEET_ID_INQUIRIES) throw new Error("GOOGLE_SHEET_ID 未設定");
 
+	// 営業日判定 (GitHub Actions schedule経由かつ FORCE_RUN=false の場合のみ判定)
+	// workflow_dispatch (手動実行) / TEST_MODE / PREVIEW_MD / FORCE_RUN=true はスキップ
+	const eventName = process.env.GITHUB_EVENT_NAME;
+	const isSchedule = eventName === "schedule";
+	if (
+		isSchedule &&
+		!FORCE_RUN &&
+		!TEST_MODE &&
+		!PREVIEW_MD &&
+		!isFirstBusinessDayJST(new Date())
+	) {
+		console.log(
+			`本日は第1営業日ではないためスキップ (今月の第1営業日: ${getFirstBusinessDayOfMonthJST(new Date())}日)`,
+		);
+		return;
+	}
+
 	const auth = authClient();
 	await auth.authorize();
 
 	console.log("Fetching 園マスタ_通知...");
 	const masterRows = await getSheetValues(auth, SHEET_ID_NOTIFY, "園マスタ_通知!A1:J100");
 	const config = parseConfig(masterRows);
-	const nurseries = parseNurseries(masterRows);
+	let nurseries = parseNurseries(masterRows);
 	console.log(`  active nurseries: ${nurseries.length}`);
 	console.log(`  send enabled: ${config.sendEnabled}`);
 	console.log(`  from: ${config.fromAddress || "(未設定)"}`);
+
+	// BRAND_FILTER (部分一致): 例 BRAND_FILTER="POP" でわくわく保育園のみ
+	if (BRAND_FILTER) {
+		const before = nurseries.length;
+		nurseries = nurseries.filter((n) => n.brand.includes(BRAND_FILTER));
+		console.log(
+			`  BRAND_FILTER="${BRAND_FILTER}": ${before} → ${nurseries.length}件`,
+		);
+	}
 
 	console.log("Fetching worksheet map (各園シートURL用)...");
 	const worksheetMap = await getWorksheetMap(auth, SHEET_ID_NOTIFY);
