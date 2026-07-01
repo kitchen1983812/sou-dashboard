@@ -680,12 +680,21 @@ async function main() {
 		return { n, row, pattern };
 	});
 
+	// FY問い合わせ0件園はスキップ (棚卸し不要のため通知しない)
+	const zeroInquiryTasks = taskList.filter((t) => t.row.total === 0);
+	const activeTaskList = taskList.filter((t) => t.row.total > 0);
+	if (zeroInquiryTasks.length > 0) {
+		console.log(
+			`  FY問い合わせ0件でスキップ: ${zeroInquiryTasks.length}園 (${zeroInquiryTasks.map((t) => t.n.name).join(", ")})`,
+		);
+	}
+
 	// SAMPLE_MODE: 各パターン(A/B/C)から最初の1園ずつ
-	let targets = taskList;
+	let targets = activeTaskList;
 	if (SAMPLE_MODE) {
 		const seen = new Set();
 		const picked = [];
-		for (const t of taskList) {
+		for (const t of activeTaskList) {
 			if (!seen.has(t.pattern)) {
 				seen.add(t.pattern);
 				picked.push(t);
