@@ -1,6 +1,6 @@
 {
   "exportedAt": "2026-07-01",
-  "yearMonth": "59",
+  "yearMonth": "202605",
   "nurseries": [
     {
       "name": "ことり保育園スカイタウン園",
@@ -339,46 +339,88 @@
       "updatedAt": "2026/4/10 14:54:5"
     },
     {
+      "name": "にじのへや",
+      "rawName": "にじのへや",
+      "company": "SOUキッズケア株式会社（アルコバレーノ）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "認可",
+      "yearMonth": "202605",
+      "totalCapacity": 4,
+      "totalEnrolled": 0,
+      "prevExited": 0,
+      "prevEntered": 0,
+      "fillRate": 0,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": "2026/4/22 9:12:50"
+    },
+    {
       "name": "ふぇりーちぇほいくえん",
       "rawName": "ふぇりーちぇほいくえん",
       "company": "SOUキッズケア株式会社（アルコバレーノ）",
       "brand": "フェリーチェ",
       "category": "自社",
       "management": "直営",
-      "form": "認可保育所",
-      "yearMonth": "202604",
+      "form": "認可",
+      "yearMonth": "202605",
       "totalCapacity": 59,
-      "totalEnrolled": 69,
-      "prevExited": 5,
-      "prevEntered": 6,
-      "fillRate": 116,
+      "totalEnrolled": 70,
+      "prevExited": 0,
+      "prevEntered": 0,
+      "fillRate": 119,
       "ages": [
         {
-          "capacity": 0,
-          "enrolled": 5
+          "capacity": 9,
+          "enrolled": 15
         },
         {
-          "capacity": 0,
+          "capacity": 12,
+          "enrolled": 17
+        },
+        {
+          "capacity": 14,
+          "enrolled": 18
+        },
+        {
+          "capacity": 8,
           "enrolled": 9
         },
         {
-          "capacity": 0,
-          "enrolled": 11
+          "capacity": 8,
+          "enrolled": 6
         },
         {
-          "capacity": 0,
-          "enrolled": 15
-        },
-        {
-          "capacity": 0,
-          "enrolled": 15
-        },
-        {
-          "capacity": 0,
-          "enrolled": 14
+          "capacity": 8,
+          "enrolled": 5
         }
       ],
-      "updatedAt": "2026/4/17 10:52:39"
+      "updatedAt": "2026/4/22 9:12:50"
     },
     {
       "name": "フェリーチェ 中央林間園",
@@ -3739,48 +3781,6 @@
         }
       ],
       "updatedAt": "2026/4/6 15:13:1"
-    },
-    {
-      "name": "認可",
-      "rawName": "認可",
-      "company": "直営",
-      "brand": "その他",
-      "category": "グループ",
-      "management": "202605",
-      "form": "ふぇりーちぇほいくえん",
-      "yearMonth": "59",
-      "totalCapacity": 70,
-      "totalEnrolled": 119,
-      "prevExited": 0,
-      "prevEntered": 0,
-      "fillRate": 14,
-      "ages": [
-        {
-          "capacity": 18,
-          "enrolled": 8
-        },
-        {
-          "capacity": 0,
-          "enrolled": 0
-        },
-        {
-          "capacity": 0,
-          "enrolled": 0
-        },
-        {
-          "capacity": 0,
-          "enrolled": 0
-        },
-        {
-          "capacity": 0,
-          "enrolled": 0
-        },
-        {
-          "capacity": 0,
-          "enrolled": 0
-        }
-      ],
-      "updatedAt": ""
     },
     {
       "name": "イオンゆめみらい保育園四日市泊",
