@@ -182,27 +182,67 @@ function getCurrentFY(date) {
 	return date.getMonth() < 3 ? date.getFullYear() - 1 : date.getFullYear();
 }
 
-// 当月の第1営業日 (平日・元旦のみハードコード除外)
-// 注: GitHub Actions runner は UTC。JST(+9h)に変換して判定する。
-function getFirstBusinessDayOfMonthJST(now) {
-	// JSTのDateを取得
+// ブランド → 配信対象の営業日番号 (第N営業日)
+// Resend無料プランの1日100件上限を回避するため2日に分けて配信 (2026-08 開始)
+// 第1営業日: フェリーチェ 25園 × 3宛先 = 75件
+// 第2営業日: わくわく(POP) 6園 + ことり(give&give) 5園 × 3宛先 = 33件
+const BRAND_TO_BUSINESS_DAY = {
+	フェリーチェ: 1,
+	"わくわく保育園(POP)": 2,
+	"ことり保育園(give&give)": 2,
+};
+const DEFAULT_BUSINESS_DAY = 1; // マスタに未登録のブランドは第1営業日扱い
+
+// 当月の第N営業日の日付を返す (N=1 が第1営業日)
+// 平日カウント + 元旦のみハードコード除外
+function getNthBusinessDayOfMonthJST(now, n) {
 	const jst = new Date(now.getTime() + 9 * 60 * 60 * 1000);
 	const year = jst.getUTCFullYear();
 	const month = jst.getUTCMonth();
 	let d = new Date(Date.UTC(year, month, 1));
-	// 元旦は休み → 2日へ
-	if (month === 0 && d.getUTCDate() === 1) d.setUTCDate(2);
-	while (d.getUTCDay() === 0 || d.getUTCDay() === 6) {
-		d.setUTCDate(d.getUTCDate() + 1);
+	let count = 0;
+	while (count < n) {
+		const day = d.getUTCDate();
+		const dow = d.getUTCDay();
+		const isNewYearsDay = month === 0 && day === 1;
+		const isWeekend = dow === 0 || dow === 6;
+		if (!isWeekend && !isNewYearsDay) {
+			count += 1;
+			if (count === n) break;
+		}
+		d.setUTCDate(day + 1);
 	}
-	return d.getUTCDate(); // 日付のみ返す
+	return d.getUTCDate();
 }
 
-function isFirstBusinessDayJST(now) {
+// 今日が当月の第何営業日か (営業日でなければ null)
+function getBusinessDayNumberJST(now) {
 	const jst = new Date(now.getTime() + 9 * 60 * 60 * 1000);
+	const year = jst.getUTCFullYear();
+	const month = jst.getUTCMonth();
 	const today = jst.getUTCDate();
-	const firstBizDay = getFirstBusinessDayOfMonthJST(now);
-	return today === firstBizDay;
+	let count = 0;
+	for (let day = 1; day <= today; day += 1) {
+		const d = new Date(Date.UTC(year, month, day));
+		const dow = d.getUTCDay();
+		const isNewYearsDay = month === 0 && day === 1;
+		const isWeekend = dow === 0 || dow === 6;
+		if (!isWeekend && !isNewYearsDay) count += 1;
+	}
+	if (count === 0) return null; // 元旦・週末など営業日でない
+	const d = new Date(Date.UTC(year, month, today));
+	const dow = d.getUTCDay();
+	const isNewYearsDay = month === 0 && today === 1;
+	if (dow === 0 || dow === 6 || isNewYearsDay) return null;
+	return count;
+}
+
+// 後方互換: 第1営業日判定 (呼出元の削除まで維持)
+function getFirstBusinessDayOfMonthJST(now) {
+	return getNthBusinessDayOfMonthJST(now, 1);
+}
+function isFirstBusinessDayJST(now) {
+	return getBusinessDayNumberJST(now) === 1;
 }
 
 function computeNurseryStats(inquiries, fyStart, fyEnd) {
@@ -525,17 +565,25 @@ async function main() {
 	// workflow_dispatch (手動実行) / TEST_MODE / PREVIEW_MD / FORCE_RUN=true はスキップ
 	const eventName = process.env.GITHUB_EVENT_NAME;
 	const isSchedule = eventName === "schedule";
-	if (
-		isSchedule &&
-		!FORCE_RUN &&
-		!TEST_MODE &&
-		!PREVIEW_MD &&
-		!isFirstBusinessDayJST(new Date())
-	) {
+	const now = new Date();
+	const bizDayNumber = getBusinessDayNumberJST(now);
+	if (isSchedule && !FORCE_RUN && !TEST_MODE && !PREVIEW_MD) {
+		if (bizDayNumber === null) {
+			console.log("本日は営業日ではないためスキップ (土日または元旦)");
+			return;
+		}
+		const targetBrands = Object.entries(BRAND_TO_BUSINESS_DAY)
+			.filter(([, day]) => day === bizDayNumber)
+			.map(([brand]) => brand);
+		if (targetBrands.length === 0) {
+			console.log(
+				`本日は第${bizDayNumber}営業日: 配信対象ブランドなしのためスキップ`,
+			);
+			return;
+		}
 		console.log(
-			`本日は第1営業日ではないためスキップ (今月の第1営業日: ${getFirstBusinessDayOfMonthJST(new Date())}日)`,
+			`本日は第${bizDayNumber}営業日: 配信対象ブランド = ${targetBrands.join(", ")}`,
 		);
-		return;
 	}
 
 	const auth = authClient();
@@ -548,6 +596,19 @@ async function main() {
 	console.log(`  active nurseries: ${nurseries.length}`);
 	console.log(`  send enabled: ${config.sendEnabled}`);
 	console.log(`  from: ${config.fromAddress || "(未設定)"}`);
+
+	// 営業日ブランドフィルタ (schedule経由のみ)
+	// workflow_dispatch / TEST_MODE / PREVIEW_MD / FORCE_RUN=true は全ブランド対象
+	if (isSchedule && !FORCE_RUN && !TEST_MODE && !PREVIEW_MD && bizDayNumber !== null) {
+		const before = nurseries.length;
+		nurseries = nurseries.filter((n) => {
+			const day = BRAND_TO_BUSINESS_DAY[n.brand] ?? DEFAULT_BUSINESS_DAY;
+			return day === bizDayNumber;
+		});
+		console.log(
+			`  第${bizDayNumber}営業日フィルタ: ${before} → ${nurseries.length}件`,
+		);
+	}
 
 	// BRAND_FILTER (部分一致): 例 BRAND_FILTER="POP" でわくわく保育園のみ
 	if (BRAND_FILTER) {
@@ -575,7 +636,6 @@ async function main() {
 	const inquiries = parseInquiries(inqRows);
 	console.log(`  inquiries: ${inquiries.length}`);
 
-	const now = new Date();
 	const fy = getCurrentFY(now);
 	const fyStart = new Date(fy, 3, 1);
 	const fyEnd = new Date(fy + 1, 2, 31, 23, 59, 59);
