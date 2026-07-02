@@ -108,6 +108,7 @@ const DECIDED_STATUSES = new Set([
 ]);
 const STATUS_GUIDED = "ご案内済";
 const STATUS_UNANSWERED = "未対応";
+const STATUS_INPROGRESS = "対応中";
 const STATUS_ENROLLED = "入園";
 
 function authClient() {
@@ -262,6 +263,7 @@ function computeNurseryStats(inquiries, fyStart, fyEnd) {
 				pending: 0,
 				guided: 0,
 				unanswered: 0,
+				inProgress: 0,
 				enrolled: 0,
 				guidedStall90: 0,
 			});
@@ -277,16 +279,18 @@ function computeNurseryStats(inquiries, fyStart, fyEnd) {
 			if (days > 90) row.guidedStall90++;
 		}
 		if (s === STATUS_UNANSWERED || !s) row.unanswered++;
+		if (s === STATUS_INPROGRESS) row.inProgress++;
 		if (s === STATUS_ENROLLED) row.enrolled++;
 	}
 	return Array.from(map.values());
 }
 
+// 必須対応 = 未対応(空欄含む) + 対応中。社長方針: これを主眼に、ご案内済は変化時のみ更新
 function determinePattern(row) {
-	const decidedRate = row.total > 0 ? (row.decided / row.total) * 100 : 0;
-	if (decidedRate >= 50) return "C";
-	if (row.pending > 10 || row.guidedStall90 >= 5) return "B";
-	return "A";
+	const mustHandle = row.unanswered + row.inProgress;
+	if (mustHandle === 0) return "C"; // 必須対応なし → 御礼のみ
+	if (mustHandle >= 5) return "B"; // 必須対応が多い → 要対応・強調
+	return "A"; // 必須対応 1-4件 → 通常のお願い
 }
 
 // 全パターン共通のクロージング文 (1文・改行なし)
@@ -305,23 +309,37 @@ function buildSubjectBody(row, pattern, directorName, month, sheetUrl) {
 		? [`${row.nursery}のシート: ${sheetUrl}`, ""]
 		: [];
 
+	const mustHandle = row.unanswered + row.inProgress;
+
+	// 未対応・対応中の案件を実態に合わせて更新する際の選択肢 (共通)
+	const statusChoices = [
+		"(保護者様への確認は不要です。園長様の認識ベースでの更新で構いません)",
+		"",
+		"  更新先: [入園] / [辞退] / [連絡つかない] / [諸事情により受入不可]",
+		"        [保護者様検討中] / [待ちリスト登録済み] / [ご案内済]",
+	];
+	// ご案内済の扱い (共通・優先度低)
+	const guidedNote = [
+		"▼ 「ご案内済」について",
+		"「ご案内済」の案件は、状況に変化があった場合のみステータス変更をお願いします。",
+		"(変化がなければ、そのままで構いません)",
+	];
+
 	if (pattern === "C") {
 		return {
-			subject: `【SOUキッズケア】${month}月 ステータス整理ご協力への御礼(${row.nursery})`,
+			subject: `【SOUキッズケア】${month}月 ステータスは良好です(${row.nursery})`,
 			text: [
 				headerLine,
 				"",
 				"いつもありがとうございます。",
-				`${month}月のステータス整理状況のご報告です。`,
+				`${month}月時点で、対応が必要な「未対応」「対応中」の案件はございません。`,
 				"",
 				`▼ ${row.nursery} 現在の状況`,
-				`・総問い合わせ件数: ${row.total}件`,
-				`・決着率: ${row.total > 0 ? ((row.decided / row.total) * 100).toFixed(1) : 0}%`,
-				"・ご案内済の長期滞留: ほとんどありません",
+				"・未対応: 0件",
+				"・対応中: 0件",
 				"",
-				"▼ 御礼",
-				"日々のステータス更新を丁寧に実施いただき、ありがとうございます。",
-				`${row.nursery}の運用は、SOUキッズケア全体の中でもベンチマーク的な水準です。`,
+				"日々の丁寧なステータス更新、ありがとうございます。",
+				...guidedNote,
 				"",
 				...sheetLine,
 				...CLOSING_TEXT,
@@ -330,62 +348,45 @@ function buildSubjectBody(row, pattern, directorName, month, sheetUrl) {
 	}
 	if (pattern === "B") {
 		return {
-			subject: `【SOUキッズケア】${month}月 ステータス棚卸しのお願い(${row.nursery}・要対応)`,
+			subject: `【SOUキッズケア】${month}月 ステータス更新のお願い(${row.nursery}・要対応)`,
 			text: [
 				headerLine,
 				"",
 				"いつも保護者様対応をありがとうございます。",
-				`${month}月のステータス棚卸しに関して、ご相談がございます。`,
+				`${month}月の問い合わせステータスについてご相談です。`,
 				"",
-				`▼ ${row.nursery} 現在の状況`,
-				`・未決着件数: ${row.pending}件(うち、ご案内済 ${row.guided}件)`,
-				`・91日超 ご案内済滞留: ${row.guidedStall90}件`,
+				`▼ ${row.nursery} 必須対応(優先的にステータス更新をお願いします)`,
 				`・未対応: ${row.unanswered}件`,
-				`・FY入園実績: ${row.enrolled}件`,
+				`・対応中: ${row.inProgress}件`,
 				"",
-				"▼ ご依頼内容",
-				"ご案内済のまま長期間が経過している案件が一定数あり、",
-				"実際にはご入園・ご辞退で既に決着しているケースも含まれている可能性があります。",
+				`「未対応」「対応中」の案件が合計${mustHandle}件あります。`,
+				"現在の状況に合わせて、優先的にステータス更新をお願いいたします。",
+				...statusChoices,
 				"",
-				"以下のいずれかに該当する案件があれば、最終ステータスへの更新をお願いいたします。",
-				"(保護者様への確認は不要です。園長様の認識ベースでの更新で構いません)",
-				"",
-				"  ・既に入園された方",
-				"  ・他園に決まった/辞退された方",
-				"  ・一定期間連絡がつかない方",
-				"  ・受入要件と合致しなかった方",
+				...guidedNote,
 				"",
 				...sheetLine,
 				...CLOSING_TEXT,
 			].join("\n"),
 		};
 	}
-	// パターンA(通常)
+	// パターンA(通常・必須対応 1-4件)
 	return {
-		subject: `【SOUキッズケア】${month}月 ステータス棚卸しのお願い(${row.nursery})`,
+		subject: `【SOUキッズケア】${month}月 ステータス更新のお願い(${row.nursery})`,
 		text: [
 			headerLine,
 			"",
 			"いつも保護者様対応とご入園後のサポート、ありがとうございます。",
-			`${month}月の問い合わせステータス棚卸しのご案内です。`,
+			`${month}月の問い合わせステータスについてご連絡です。`,
 			"",
-			`▼ ${row.nursery} 現在の状況`,
-			`・総問い合わせ件数: ${row.total}件`,
-			`・決着済み: ${row.decided}件`,
-			`・未決着(ご案内済 含む): ${row.pending}件`,
-			`・うち、ご案内済: ${row.guided}件`,
+			`▼ ${row.nursery} 必須対応(ステータス更新をお願いします)`,
+			`・未対応: ${row.unanswered}件`,
+			`・対応中: ${row.inProgress}件`,
 			"",
-			"▼ ご依頼内容",
-			"「ご案内済」のままになっている方について、以下のいずれかへ更新をお願いします。",
-			"保育園としての対応自体は完了されていることが多いですが、",
-			"シート上のステータスのみが古くなっているケースがあります。",
+			"上記の「未対応」「対応中」の案件について、現在の状況に合わせて更新をお願いいたします。",
+			...statusChoices,
 			"",
-			"  [入園]      … 既にご入園された方",
-			"  [辞退]      … ご家庭側で辞退の意思表明があった方",
-			"  [連絡つかない] … 一定期間以上、保護者様と連絡が取れていない方",
-			"  [諸事情により受入不可] … 受け入れ要件と合致しなかった方",
-			"  [保護者様検討中] … 検討中の連絡が直近で取れている方",
-			"  [待ちリスト登録済み] … 空き待ちで継続フォロー中の方",
+			...guidedNote,
 			"",
 			...sheetLine,
 			...CLOSING_TEXT,
@@ -395,8 +396,6 @@ function buildSubjectBody(row, pattern, directorName, month, sheetUrl) {
 
 // HTML版テンプレート (見栄え改善・テキスト版とセットで送信)
 function buildHtml(row, pattern, month, sheetUrl) {
-	const decidedRate =
-		row.total > 0 ? ((row.decided / row.total) * 100).toFixed(1) : 0;
 	const sheetButton = sheetUrl
 		? `<p style="margin:20px 0;text-align:center;">
 				<a href="${esc(sheetUrl)}" style="display:inline-block;background:#0078ab;color:#fff;padding:12px 24px;text-decoration:none;font-weight:600;">${esc(row.nursery)}のシートを開く</a>
@@ -414,27 +413,33 @@ function buildHtml(row, pattern, month, sheetUrl) {
 			(自動配信メールです)
 		</div>`;
 
-	// 数値表 (各パターンで使う)
-	const tableA = `
+	const mustHandle = row.unanswered + row.inProgress;
+
+	// 必須対応(未対応・対応中)を主眼にした数値表 (A/B共通)
+	const mustHandleTable = (accent) => `
 		<table style="width:100%;border-collapse:collapse;margin:12px 0;">
-			<tr><td style="padding:8px;background:#fef3e7;border:1px solid #e0d4c0;width:60%;">総問い合わせ件数</td><td style="padding:8px;border:1px solid #e0d4c0;text-align:right;font-weight:600;">${row.total}件</td></tr>
-			<tr><td style="padding:8px;background:#fef3e7;border:1px solid #e0d4c0;">決着済み</td><td style="padding:8px;border:1px solid #e0d4c0;text-align:right;font-weight:600;">${row.decided}件</td></tr>
-			<tr><td style="padding:8px;background:#fef3e7;border:1px solid #e0d4c0;">未決着(ご案内済 含む)</td><td style="padding:8px;border:1px solid #e0d4c0;text-align:right;font-weight:600;color:#d97706;">${row.pending}件</td></tr>
-			<tr><td style="padding:8px;background:#fef3e7;border:1px solid #e0d4c0;">うち、ご案内済</td><td style="padding:8px;border:1px solid #e0d4c0;text-align:right;font-weight:600;">${row.guided}件</td></tr>
+			<tr><td style="padding:8px;background:#fef3e7;border:1px solid #e0d4c0;width:60%;">未対応</td><td style="padding:8px;border:1px solid #e0d4c0;text-align:right;font-weight:700;color:${accent};">${row.unanswered}件</td></tr>
+			<tr><td style="padding:8px;background:#fef3e7;border:1px solid #e0d4c0;">対応中</td><td style="padding:8px;border:1px solid #e0d4c0;text-align:right;font-weight:700;color:${accent};">${row.inProgress}件</td></tr>
 		</table>`;
-	const tableB = `
-		<table style="width:100%;border-collapse:collapse;margin:12px 0;">
-			<tr><td style="padding:8px;background:#fef3e7;border:1px solid #e0d4c0;width:60%;">未決着件数(うちご案内済 ${row.guided}件)</td><td style="padding:8px;border:1px solid #e0d4c0;text-align:right;font-weight:600;color:#dc2626;">${row.pending}件</td></tr>
-			<tr><td style="padding:8px;background:#fef3e7;border:1px solid #e0d4c0;">91日超 ご案内済滞留</td><td style="padding:8px;border:1px solid #e0d4c0;text-align:right;font-weight:600;color:#dc2626;">${row.guidedStall90}件</td></tr>
-			<tr><td style="padding:8px;background:#fef3e7;border:1px solid #e0d4c0;">未対応</td><td style="padding:8px;border:1px solid #e0d4c0;text-align:right;font-weight:600;">${row.unanswered}件</td></tr>
-			<tr><td style="padding:8px;background:#fef3e7;border:1px solid #e0d4c0;">FY入園実績</td><td style="padding:8px;border:1px solid #e0d4c0;text-align:right;font-weight:600;color:#059669;">${row.enrolled}件</td></tr>
-		</table>`;
+	const tableA = mustHandleTable("#d97706");
+	const tableB = mustHandleTable("#dc2626");
 	const tableC = `
 		<table style="width:100%;border-collapse:collapse;margin:12px 0;">
-			<tr><td style="padding:8px;background:#fef3e7;border:1px solid #e0d4c0;width:60%;">総問い合わせ件数</td><td style="padding:8px;border:1px solid #e0d4c0;text-align:right;font-weight:600;">${row.total}件</td></tr>
-			<tr><td style="padding:8px;background:#fef3e7;border:1px solid #e0d4c0;">決着率</td><td style="padding:8px;border:1px solid #e0d4c0;text-align:right;font-weight:600;color:#059669;">${decidedRate}%</td></tr>
-			<tr><td style="padding:8px;background:#fef3e7;border:1px solid #e0d4c0;">ご案内済の長期滞留</td><td style="padding:8px;border:1px solid #e0d4c0;text-align:right;font-weight:600;">ほとんどありません</td></tr>
+			<tr><td style="padding:8px;background:#fef3e7;border:1px solid #e0d4c0;width:60%;">未対応</td><td style="padding:8px;border:1px solid #e0d4c0;text-align:right;font-weight:700;color:#059669;">0件</td></tr>
+			<tr><td style="padding:8px;background:#fef3e7;border:1px solid #e0d4c0;">対応中</td><td style="padding:8px;border:1px solid #e0d4c0;text-align:right;font-weight:700;color:#059669;">0件</td></tr>
 		</table>`;
+	// ご案内済の扱い (共通・優先度低の注記ボックス)
+	const guidedNoteHtml = `
+		<div style="background:#f8f9fa;padding:12px 16px;margin:16px 0;border-left:3px solid #bbb;">
+			<p style="margin:0;font-size:13px;color:#666;line-height:1.7;">
+				<strong>「ご案内済」について</strong><br>
+				「ご案内済」の案件は、状況に変化があった場合のみステータス変更をお願いします。(変化がなければそのままで構いません)
+			</p>
+		</div>`;
+	// 更新先ステータスの選択肢 (A/B共通)
+	const statusChoicesHtml = `
+		<p style="font-size:13px;color:#666;margin-bottom:4px;">(保護者様への確認は不要です。園長様の認識ベースでの更新で構いません)</p>
+		<p style="font-size:14px;color:#444;">更新先: ［入園］／［辞退］／［連絡つかない］／［諸事情により受入不可］<br>　　　　［保護者様検討中］／［待ちリスト登録済み］／［ご案内済］</p>`;
 
 	const baseWrap = (innerHtml) => `
 <!DOCTYPE html>
@@ -452,45 +457,32 @@ function buildHtml(row, pattern, month, sheetUrl) {
 
 	if (pattern === "C") {
 		return baseWrap(`
-			<p style="font-size:15px;">いつもありがとうございます。<br>${month}月のステータス整理状況のご報告です。</p>
-			<h3 style="font-size:15px;color:#008cc9;border-left:4px solid #008cc9;padding-left:10px;margin-top:24px;">現在の状況</h3>
+			<p style="font-size:15px;">いつもありがとうございます。<br>${month}月時点で、対応が必要な「未対応」「対応中」の案件はございません。</p>
+			<h3 style="font-size:15px;color:#059669;border-left:4px solid #059669;padding-left:10px;margin-top:24px;">現在の状況</h3>
 			${tableC}
-			<h3 style="font-size:15px;color:#008cc9;border-left:4px solid #008cc9;padding-left:10px;margin-top:24px;">御礼</h3>
-			<p>日々のステータス更新を丁寧に実施いただき、ありがとうございます。<br>${esc(row.nursery)}の運用は、SOUキッズケア全体の中でもベンチマーク的な水準です。</p>
+			<p>日々の丁寧なステータス更新、ありがとうございます。</p>
+			${guidedNoteHtml}
 			${sheetButton}
 		`);
 	}
 	if (pattern === "B") {
 		return baseWrap(`
-			<p style="font-size:15px;">いつも保護者様対応をありがとうございます。<br>${month}月のステータス棚卸しに関して、ご相談がございます。</p>
-			<h3 style="font-size:15px;color:#dc2626;border-left:4px solid #dc2626;padding-left:10px;margin-top:24px;">現在の状況(要対応)</h3>
+			<p style="font-size:15px;">いつも保護者様対応をありがとうございます。<br>${month}月の問い合わせステータスについてご相談です。</p>
+			<h3 style="font-size:15px;color:#dc2626;border-left:4px solid #dc2626;padding-left:10px;margin-top:24px;">必須対応(優先的にステータス更新をお願いします)</h3>
 			${tableB}
-			<h3 style="font-size:15px;color:#008cc9;border-left:4px solid #008cc9;padding-left:10px;margin-top:24px;">ご依頼内容</h3>
-			<p>ご案内済のまま長期間が経過している案件が一定数あり、<br>実際にはご入園・ご辞退で既に決着しているケースも含まれている可能性があります。</p>
-			<p>以下のいずれかに該当する案件があれば、最終ステータスへの更新をお願いいたします。<br>(保護者様への確認は不要です。園長様の認識ベースでの更新で構いません)</p>
-			<ul style="padding-left:20px;">
-				<li>既に入園された方</li>
-				<li>他園に決まった/辞退された方</li>
-				<li>一定期間連絡がつかない方</li>
-				<li>受入要件と合致しなかった方</li>
-			</ul>
+			<p style="font-size:14px;">「未対応」「対応中」の案件が合計<strong style="color:#dc2626;">${mustHandle}件</strong>あります。優先的にステータス更新をお願いいたします。</p>
+			${statusChoicesHtml}
+			${guidedNoteHtml}
 			${sheetButton}
 		`);
 	}
 	return baseWrap(`
-		<p style="font-size:15px;">いつも保護者様対応とご入園後のサポート、ありがとうございます。<br>${month}月の問い合わせステータス棚卸しのご案内です。</p>
-		<h3 style="font-size:15px;color:#008cc9;border-left:4px solid #008cc9;padding-left:10px;margin-top:24px;">現在の状況</h3>
+		<p style="font-size:15px;">いつも保護者様対応とご入園後のサポート、ありがとうございます。<br>${month}月の問い合わせステータスについてご連絡です。</p>
+		<h3 style="font-size:15px;color:#d97706;border-left:4px solid #d97706;padding-left:10px;margin-top:24px;">必須対応(ステータス更新をお願いします)</h3>
 		${tableA}
-		<h3 style="font-size:15px;color:#008cc9;border-left:4px solid #008cc9;padding-left:10px;margin-top:24px;">ご依頼内容</h3>
-		<p>「ご案内済」のままになっている方について、以下のいずれかへ更新をお願いします。<br>保育園としての対応自体は完了されていることが多いですが、シート上のステータスのみが古くなっているケースがあります。</p>
-		<table style="width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;">
-			<tr><td style="padding:6px;background:#e0f2fe;border:1px solid #c0d8e0;font-weight:600;width:35%;">入園</td><td style="padding:6px;border:1px solid #c0d8e0;">既にご入園された方</td></tr>
-			<tr><td style="padding:6px;background:#fef3e7;border:1px solid #c0d8e0;font-weight:600;">辞退</td><td style="padding:6px;border:1px solid #c0d8e0;">ご家庭側で辞退の意思表明があった方</td></tr>
-			<tr><td style="padding:6px;background:#fef3e7;border:1px solid #c0d8e0;font-weight:600;">連絡つかない</td><td style="padding:6px;border:1px solid #c0d8e0;">一定期間以上、保護者様と連絡が取れていない方</td></tr>
-			<tr><td style="padding:6px;background:#fef3e7;border:1px solid #c0d8e0;font-weight:600;">諸事情により受入不可</td><td style="padding:6px;border:1px solid #c0d8e0;">受け入れ要件と合致しなかった方</td></tr>
-			<tr><td style="padding:6px;background:#fff;border:1px solid #c0d8e0;font-weight:600;">保護者様検討中</td><td style="padding:6px;border:1px solid #c0d8e0;">検討中の連絡が直近で取れている方</td></tr>
-			<tr><td style="padding:6px;background:#fff;border:1px solid #c0d8e0;font-weight:600;">待ちリスト登録済み</td><td style="padding:6px;border:1px solid #c0d8e0;">空き待ちで継続フォロー中の方</td></tr>
-		</table>
+		<p style="font-size:14px;">上記の「未対応」「対応中」の案件について、ステータス更新をお願いいたします。</p>
+		${statusChoicesHtml}
+		${guidedNoteHtml}
 		${sheetButton}
 	`);
 }
