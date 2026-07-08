@@ -27,9 +27,7 @@ export default function TimelineChart({
 
 	return (
 		<div className="bg-white shadow-sm p-5">
-			<h3 className="text-sm font-semibold text-gray-700 mb-3">
-				{title}
-			</h3>
+			<h3 className="text-sm font-semibold text-gray-700 mb-3">{title}</h3>
 			<ResponsiveContainer width="100%" height={280}>
 				<LineChart data={data}>
 					<CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
@@ -78,10 +76,10 @@ export default function TimelineChart({
 					<Line
 						type="monotone"
 						dataKey="count"
-						stroke="#008cc9"
+						stroke="#2e7cc2"
 						strokeWidth={2}
-						dot={{ r: 3, fill: "#008cc9" }}
-						activeDot={{ r: 5, fill: "#005f8a" }}
+						dot={{ r: 3, fill: "#2e7cc2" }}
+						activeDot={{ r: 5, fill: "#1b5c8a" }}
 					/>
 				</LineChart>
 			</ResponsiveContainer>

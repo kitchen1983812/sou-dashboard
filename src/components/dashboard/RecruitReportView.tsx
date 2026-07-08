@@ -34,11 +34,11 @@ import {
 
 // 3トーン: brand系グラデーション + グレー
 const COLORS = [
-	"#008cc9", // brand-500
+	"#2e7cc2", // brand-500
 	"#4db5e3", // brand-300
-	"#0078ab", // brand-600
+	"#24699f", // brand-600
 	"#80caeb", // brand-200
-	"#005f8a", // brand-700
+	"#1b5c8a", // brand-700
 	"#b3dff3", // brand-100
 	"#9ca3af", // gray-400
 	"#d1d5db", // gray-300
@@ -46,9 +46,9 @@ const COLORS = [
 
 const STATUS_GROUP_COLORS: Record<string, string> = {
 	// ポジティブ(brand系濃淡)
-	入社: "#008cc9", // brand-500
+	入社: "#2e7cc2", // brand-500
 	内定: "#4db5e3", // brand-300
-	合格: "#0078ab", // brand-600
+	合格: "#24699f", // brand-600
 	面接見学: "#80caeb", // brand-200
 	応募: "#b3dff3", // brand-100
 	// ネガティブ

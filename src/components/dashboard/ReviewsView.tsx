@@ -1109,7 +1109,7 @@ export default function ReviewsView({ inquiries }: ReviewsViewProps) {
 								type="monotone"
 								dataKey="gbpCount"
 								name="GBP累計"
-								stroke="#008cc9"
+								stroke="#2e7cc2"
 								strokeWidth={2}
 								dot={{ r: 4 }}
 							/>
@@ -1123,7 +1123,7 @@ export default function ReviewsView({ inquiries }: ReviewsViewProps) {
 								yAxisId="right"
 								dataKey="enrolled"
 								name="入園"
-								fill="#0078ab"
+								fill="#24699f"
 							/>
 						</ComposedChart>
 					</ResponsiveContainer>

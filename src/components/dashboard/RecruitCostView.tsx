@@ -26,9 +26,9 @@ import {
 import DualAxisChart from "@/components/charts/DualAxisChart";
 
 const CATEGORY_COLORS: Record<string, string> = {
-	"保育:正社員": "#008cc9", // brand-500
+	"保育:正社員": "#2e7cc2", // brand-500
 	"保育:パート": "#4db5e3", // brand-300
-	"他:正社員": "#0078ab", // brand-600
+	"他:正社員": "#24699f", // brand-600
 	"他:パート": "#80caeb", // brand-200
 	合計: "#6B7280", // gray-500
 };
@@ -231,7 +231,7 @@ export default function RecruitCostView({
 						{
 							key: "cost",
 							name: "採用コスト",
-							color: "#008cc9",
+							color: "#2e7cc2",
 							type: "bar",
 						},
 					]}
@@ -326,7 +326,7 @@ export default function RecruitCostView({
 							yAxisId="hires"
 							type="monotone"
 							dataKey="hires"
-							stroke="#008cc9"
+							stroke="#2e7cc2"
 							strokeWidth={2}
 							dot={{ r: 3 }}
 							name="入社数"
@@ -509,7 +509,7 @@ export default function RecruitCostView({
 									yAxisId="hires"
 									type="monotone"
 									dataKey="hires"
-									stroke="#008cc9"
+									stroke="#2e7cc2"
 									strokeWidth={2}
 									dot={{ r: 3 }}
 									name="入社数"

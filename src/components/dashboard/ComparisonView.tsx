@@ -43,7 +43,7 @@ function useUniqueFYs(inquiries: Inquiry[]): number[] {
 
 // --- 直近3年度 月次推移チャート ---
 
-const FY_LINE_COLORS = ["#9CA3AF", "#4db5e3", "#008cc9"]; // oldest=gray, middle=amber, newest=red
+const FY_LINE_COLORS = ["#9CA3AF", "#4db5e3", "#2e7cc2"]; // oldest=gray, middle=amber, newest=red
 
 type MonthlyComparisonPoint = {
 	month: string;
@@ -288,152 +288,162 @@ function ComparisonTable({
 				FY / 総数 / 入園数 / 入園率
 			</h3>
 			<div className="overflow-auto max-h-[600px]">
-			<table className="w-full text-sm">
-				<thead className="sticky top-0 z-10 bg-white">
-					<tr className="border-b-2 border-gray-300">
-						<th className="px-2 py-1.5 text-left" rowSpan={2}>
-							エリア
-						</th>
-						<th className="px-2 py-1.5 text-left" rowSpan={2}>
-							シート名
-						</th>
-						{fyList.map((fy) => (
+				<table className="w-full text-sm">
+					<thead className="sticky top-0 z-10 bg-white">
+						<tr className="border-b-2 border-gray-300">
+							<th className="px-2 py-1.5 text-left" rowSpan={2}>
+								エリア
+							</th>
+							<th className="px-2 py-1.5 text-left" rowSpan={2}>
+								シート名
+							</th>
+							{fyList.map((fy) => (
+								<th
+									key={fy}
+									className="px-2 py-1 text-center border-l border-gray-200"
+									colSpan={3}
+								>
+									FY{fy - 2000}
+								</th>
+							))}
 							<th
-								key={fy}
-								className="px-2 py-1 text-center border-l border-gray-200"
+								className="px-2 py-1 text-center border-l border-gray-300"
 								colSpan={3}
 							>
-								FY{fy - 2000}
+								総計
 							</th>
-						))}
-						<th
-							className="px-2 py-1 text-center border-l border-gray-300"
-							colSpan={3}
-						>
-							総計
-						</th>
-					</tr>
-					<tr className="border-b border-gray-200">
-						{[...fyList, "total"].map((fy) => (
-							<React.Fragment key={`hdr-${fy}`}>
-								<th className="px-1.5 py-1 text-center border-l border-gray-200">
-									総数
-								</th>
-								<th className="px-1.5 py-1 text-center">入園数</th>
-								<th className="px-1.5 py-1 text-center">入園率</th>
+						</tr>
+						<tr className="border-b border-gray-200">
+							{[...fyList, "total"].map((fy) => (
+								<React.Fragment key={`hdr-${fy}`}>
+									<th className="px-1.5 py-1 text-center border-l border-gray-200">
+										総数
+									</th>
+									<th className="px-1.5 py-1 text-center">入園数</th>
+									<th className="px-1.5 py-1 text-center">入園率</th>
+								</React.Fragment>
+							))}
+						</tr>
+					</thead>
+					<tbody>
+						{Array.from(grouped.entries()).map(([area, areaRows]) => (
+							<React.Fragment key={area}>
+								{areaRows.map((row, i) => (
+									<tr
+										key={`${area}-${row.nurseryName}`}
+										className="border-b border-gray-100"
+									>
+										{i === 0 && (
+											<td
+												className="px-2 py-1.5 font-medium text-gray-700"
+												rowSpan={areaRows.length + 1}
+											>
+												{area}
+											</td>
+										)}
+										<td className="px-2 py-1.5 text-gray-600">
+											{row.nurseryName}
+										</td>
+										{fyList.map((fy) => (
+											<React.Fragment key={`${row.nurseryName}-${fy}`}>
+												<td
+													className={`px-1.5 py-1.5 text-center border-l border-gray-100 ${getCellBg(
+														(row[`fy${fy}_total`] as number) || 0,
+														maxTotal,
+													)}`}
+												>
+													{(row[`fy${fy}_total`] as number) || "-"}
+												</td>
+												<td
+													className={`px-1.5 py-1.5 text-center ${getCellBg(
+														(row[`fy${fy}_enrolled`] as number) || 0,
+														maxTotal * 0.3,
+													)}`}
+												>
+													{(row[`fy${fy}_enrolled`] as number) || "-"}
+												</td>
+												<td className="px-1.5 py-1.5 text-center">
+													{(row[`fy${fy}_rate`] as number) > 0
+														? `${row[`fy${fy}_rate`]}%`
+														: "-"}
+												</td>
+											</React.Fragment>
+										))}
+										<td className="px-1.5 py-1.5 text-center border-l border-gray-300 font-medium">
+											{row.grandTotal || "-"}
+										</td>
+										<td className="px-1.5 py-1.5 text-center font-medium">
+											{row.grandEnrolled || "-"}
+										</td>
+										<td className="px-1.5 py-1.5 text-center font-medium">
+											{(row.grandRate as number) > 0
+												? `${row.grandRate}%`
+												: "-"}
+										</td>
+									</tr>
+								))}
+								{/* Area subtotal */}
+								<tr className="border-b border-gray-200 bg-gray-50 font-medium">
+									<td className="px-2 py-1.5 text-gray-600">合計</td>
+									{fyList.map((fy) => {
+										const total = areaRows.reduce(
+											(s, r) => s + ((r[`fy${fy}_total`] as number) || 0),
+											0,
+										);
+										const enrolled = areaRows.reduce(
+											(s, r) => s + ((r[`fy${fy}_enrolled`] as number) || 0),
+											0,
+										);
+										const rate =
+											total > 0
+												? Math.round((enrolled / total) * 1000) / 10
+												: 0;
+										return (
+											<React.Fragment key={`sub-${area}-${fy}`}>
+												<td className="px-1.5 py-1.5 text-center border-l border-gray-200">
+													{total}
+												</td>
+												<td className="px-1.5 py-1.5 text-center">
+													{enrolled}
+												</td>
+												<td className="px-1.5 py-1.5 text-center">
+													{rate > 0 ? `${rate}%` : "-"}
+												</td>
+											</React.Fragment>
+										);
+									})}
+									{(() => {
+										const total = areaRows.reduce(
+											(s, r) => s + ((r.grandTotal as number) || 0),
+											0,
+										);
+										const enrolled = areaRows.reduce(
+											(s, r) => s + ((r.grandEnrolled as number) || 0),
+											0,
+										);
+										const rate =
+											total > 0
+												? Math.round((enrolled / total) * 1000) / 10
+												: 0;
+										return (
+											<>
+												<td className="px-1.5 py-1.5 text-center border-l border-gray-300">
+													{total}
+												</td>
+												<td className="px-1.5 py-1.5 text-center">
+													{enrolled}
+												</td>
+												<td className="px-1.5 py-1.5 text-center">
+													{rate > 0 ? `${rate}%` : "-"}
+												</td>
+											</>
+										);
+									})()}
+								</tr>
 							</React.Fragment>
 						))}
-					</tr>
-				</thead>
-				<tbody>
-					{Array.from(grouped.entries()).map(([area, areaRows]) => (
-						<React.Fragment key={area}>
-							{areaRows.map((row, i) => (
-								<tr
-									key={`${area}-${row.nurseryName}`}
-									className="border-b border-gray-100"
-								>
-									{i === 0 && (
-										<td
-											className="px-2 py-1.5 font-medium text-gray-700"
-											rowSpan={areaRows.length + 1}
-										>
-											{area}
-										</td>
-									)}
-									<td className="px-2 py-1.5 text-gray-600">
-										{row.nurseryName}
-									</td>
-									{fyList.map((fy) => (
-										<React.Fragment key={`${row.nurseryName}-${fy}`}>
-											<td
-												className={`px-1.5 py-1.5 text-center border-l border-gray-100 ${getCellBg(
-													(row[`fy${fy}_total`] as number) || 0,
-													maxTotal,
-												)}`}
-											>
-												{(row[`fy${fy}_total`] as number) || "-"}
-											</td>
-											<td
-												className={`px-1.5 py-1.5 text-center ${getCellBg(
-													(row[`fy${fy}_enrolled`] as number) || 0,
-													maxTotal * 0.3,
-												)}`}
-											>
-												{(row[`fy${fy}_enrolled`] as number) || "-"}
-											</td>
-											<td className="px-1.5 py-1.5 text-center">
-												{(row[`fy${fy}_rate`] as number) > 0
-													? `${row[`fy${fy}_rate`]}%`
-													: "-"}
-											</td>
-										</React.Fragment>
-									))}
-									<td className="px-1.5 py-1.5 text-center border-l border-gray-300 font-medium">
-										{row.grandTotal || "-"}
-									</td>
-									<td className="px-1.5 py-1.5 text-center font-medium">
-										{row.grandEnrolled || "-"}
-									</td>
-									<td className="px-1.5 py-1.5 text-center font-medium">
-										{(row.grandRate as number) > 0 ? `${row.grandRate}%` : "-"}
-									</td>
-								</tr>
-							))}
-							{/* Area subtotal */}
-							<tr className="border-b border-gray-200 bg-gray-50 font-medium">
-								<td className="px-2 py-1.5 text-gray-600">合計</td>
-								{fyList.map((fy) => {
-									const total = areaRows.reduce(
-										(s, r) => s + ((r[`fy${fy}_total`] as number) || 0),
-										0,
-									);
-									const enrolled = areaRows.reduce(
-										(s, r) => s + ((r[`fy${fy}_enrolled`] as number) || 0),
-										0,
-									);
-									const rate =
-										total > 0 ? Math.round((enrolled / total) * 1000) / 10 : 0;
-									return (
-										<React.Fragment key={`sub-${area}-${fy}`}>
-											<td className="px-1.5 py-1.5 text-center border-l border-gray-200">
-												{total}
-											</td>
-											<td className="px-1.5 py-1.5 text-center">{enrolled}</td>
-											<td className="px-1.5 py-1.5 text-center">
-												{rate > 0 ? `${rate}%` : "-"}
-											</td>
-										</React.Fragment>
-									);
-								})}
-								{(() => {
-									const total = areaRows.reduce(
-										(s, r) => s + ((r.grandTotal as number) || 0),
-										0,
-									);
-									const enrolled = areaRows.reduce(
-										(s, r) => s + ((r.grandEnrolled as number) || 0),
-										0,
-									);
-									const rate =
-										total > 0 ? Math.round((enrolled / total) * 1000) / 10 : 0;
-									return (
-										<>
-											<td className="px-1.5 py-1.5 text-center border-l border-gray-300">
-												{total}
-											</td>
-											<td className="px-1.5 py-1.5 text-center">{enrolled}</td>
-											<td className="px-1.5 py-1.5 text-center">
-												{rate > 0 ? `${rate}%` : "-"}
-											</td>
-										</>
-									);
-								})()}
-							</tr>
-						</React.Fragment>
-					))}
-				</tbody>
-			</table>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	);

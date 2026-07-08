@@ -524,7 +524,7 @@ function CityDetailPanel({
 							<Line
 								type="monotone"
 								dataKey="出生数"
-								stroke="#008cc9"
+								stroke="#2e7cc2"
 								strokeWidth={2}
 								dot={false}
 							/>
@@ -553,7 +553,7 @@ function CityDetailPanel({
 							<Line
 								type="monotone"
 								dataKey="定員"
-								stroke="#0078ab"
+								stroke="#24699f"
 								strokeWidth={2}
 								dot={false}
 							/>

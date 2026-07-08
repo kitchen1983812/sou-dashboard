@@ -600,7 +600,7 @@ export default function PendingStatusPanel({
 								yAxisId="left"
 								dataKey="decided"
 								name="決着"
-								fill="#008cc9"
+								fill="#2e7cc2"
 								stackId="a"
 							/>
 							<Bar

@@ -2,7 +2,7 @@
 
 // Brand colors（SOU ダッシュボード共通）
 const SERIES_COLORS = [
-	"#008cc9", // brand-500
+	"#2e7cc2", // brand-500
 	"#0ea5e9", // sky-500
 	"#16a34a", // green-600
 	"#8b5cf6", // violet-500

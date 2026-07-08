@@ -61,9 +61,9 @@ export const STATUS = {
 
 export const STATUS_COLORS: Record<string, string> = {
 	// 3トーン配色: brand系(ポジティブ) / 赤(要アクション) / グレー系(その他)
-	[STATUS.ENROLLED]: "#008cc9", // brand-500: 成約
+	[STATUS.ENROLLED]: "#2e7cc2", // brand-500: 成約
 	[STATUS.GUIDED]: "#4db5e3", // brand-300: 案内済
-	[STATUS.WAITLISTED]: "#0078ab", // brand-600: 待ちリスト
+	[STATUS.WAITLISTED]: "#24699f", // brand-600: 待ちリスト
 	[STATUS.UNANSWERED]: "#DC2626", // red-600: 要アクション
 	[STATUS.IN_PROGRESS]: "#F59E0B", // amber-500: 進行中
 	[STATUS.CONSIDERING]: "#9ca3af", // gray-400: 検討中

@@ -10,7 +10,7 @@ interface GaugeChartProps {
 function getGaugeColor(value: number): string {
 	if (value > 100) return "#dc2626"; // 定員超過: red-600
 	if (value >= 95) return "#16a34a"; // 高充足: green-600
-	if (value >= 80) return "#008cc9"; // 良好: brand-500
+	if (value >= 80) return "#2e7cc2"; // 良好: brand-500
 	if (value >= 60) return "#f59e0b"; // やや低: amber-500
 	return "#dc2626"; // 低充足: red-600
 }

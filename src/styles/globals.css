@@ -7,32 +7,44 @@
    Raw named values. Do not use directly in components.
    ============================================================ */
 :root {
-  /* Brand */
-  --primitive-brand-50: #e6f4fb;
-  --primitive-brand-100: #b3dff3;
-  --primitive-brand-300: #4db5e3;
-  --primitive-brand-500: #008cc9;
-  --primitive-brand-600: #0078ab;
-  --primitive-brand-700: #005f8a;
+  /* Brand — スクルドブルー基調 (デザインガイド Ver.1.0)
+     500=ライトブルー #2E7CC2 (見出し・強調) / 700=スクルドブルー #1B5C8A (基調) */
+  --primitive-brand-50: #eef5fb;
+  --primitive-brand-100: #d9e8f5;
+  --primitive-brand-300: #a9cbe8;
+  --primitive-brand-500: #2e7cc2;
+  --primitive-brand-600: #24699f;
+  --primitive-brand-700: #1b5c8a;
 
-  /* Gray */
-  --primitive-gray-50: #f9fafb;
-  --primitive-gray-100: #f3f4f6;
-  --primitive-gray-200: #e5e7eb;
-  --primitive-gray-300: #d1d5db;
-  --primitive-gray-400: #9ca3af;
-  --primitive-gray-500: #6b7280;
-  --primitive-gray-700: #374151;
-  --primitive-gray-800: #1f2937;
-  --primitive-gray-900: #111827;
+  /* Accent — アクセント3色 (「ここぞ」の一点用) */
+  --primitive-coral-50: #fcede6;
+  --primitive-coral-500: #e8825a;
+  --primitive-coral-600: #d26a43;
+  --primitive-sunny-50: #fdf3da;
+  --primitive-sunny-500: #f2c14e;
+  --primitive-sunny-600: #c99a2e;
+  --primitive-sky-50: #e4f1f6;
+  --primitive-sky-500: #4fa9c9;
+  --primitive-sky-600: #3d8fac;
+
+  /* Neutral — 温かみのあるニュートラル (墨 / サブ / ペーパー) */
+  --primitive-gray-50: #f7f6f0;   /* 背景(淡・温かみ) */
+  --primitive-gray-100: #eef0ea;
+  --primitive-gray-200: #e6e3d8;  /* 境界(温かみ) */
+  --primitive-gray-300: #d8d4c6;
+  --primitive-gray-400: #9a9484;
+  --primitive-gray-500: #5c6b67;  /* サブテキスト */
+  --primitive-gray-700: #3a4642;
+  --primitive-gray-800: #22302e;  /* 墨(本文) */
+  --primitive-gray-900: #141d1b;
 
   /* Status */
   --primitive-green-50: #f0fdf4;
   --primitive-green-600: #16a34a;
   --primitive-red-50: #fef2f2;
   --primitive-red-600: #dc2626;
-  --primitive-amber-50: #fffbeb;
-  --primitive-amber-600: #d97706;
+  --primitive-amber-50: #fdf3da;
+  --primitive-amber-600: #c99a2e;
 }
 
 /* ============================================================
@@ -74,9 +86,15 @@
 }
 
 body {
-  @apply bg-white text-gray-800;
+  background: #fbfaf6; /* ペーパー (デザインガイド: 70% 白基調・温かみ) */
+  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* 見出しは Zen角ゴシック (力強く安定した骨格)。本文は Noto Sans JP を継承 */
+h1, h2, h3, h4, h5, h6, .font-display {
+  font-family: var(--font-display), var(--font-body), system-ui, sans-serif;
 }
 
 /* テーブル共通: 等幅数値 + セル余白底上げ */

@@ -9,11 +9,11 @@ interface ChannelDonutProps {
 
 // brand系グラデーション + グレー（色数を抑えて視覚的ノイズを軽減）
 const COLORS = [
-	"#008cc9", // brand-500
+	"#2e7cc2", // brand-500
 	"#4db5e3", // brand-300
-	"#0078ab", // brand-600
+	"#24699f", // brand-600
 	"#80caeb", // brand-200
-	"#005f8a", // brand-700
+	"#1b5c8a", // brand-700
 	"#b3dff3", // brand-100
 	"#9ca3af", // gray-400
 	"#d1d5db", // gray-300
@@ -29,9 +29,7 @@ export default function ChannelDonut({ data }: ChannelDonutProps) {
 
 	return (
 		<div className="bg-white shadow-sm p-5">
-			<h3 className="text-sm font-semibold text-gray-700 mb-3">
-				経路
-			</h3>
+			<h3 className="text-sm font-semibold text-gray-700 mb-3">経路</h3>
 			<div className="flex items-start gap-4">
 				<div className="w-48 h-48">
 					<ResponsiveContainer width="100%" height="100%">

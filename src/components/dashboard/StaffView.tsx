@@ -42,7 +42,7 @@ const QUADRANT_META: Record<
 > = {
 	profit: {
 		label: "利益最大化",
-		color: "#008cc9",
+		color: "#2e7cc2",
 		desc: "充足率高×正社員率高。安定運営エリア",
 	},
 	recruit: {

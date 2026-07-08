@@ -169,9 +169,7 @@ export default function GA4View() {
 
 			{/* サマリーカード */}
 			<section>
-				<h3 className="text-sm font-semibold text-gray-700 mb-3">
-					サマリー
-				</h3>
+				<h3 className="text-sm font-semibold text-gray-700 mb-3">サマリー</h3>
 				<div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
 					<SummaryCard
 						label="セッション"
@@ -232,7 +230,7 @@ export default function GA4View() {
 									}
 									wrapperStyle={{ fontSize: 11 }}
 								/>
-								<Bar dataKey="sessions" fill="#008cc9" name="sessions" />
+								<Bar dataKey="sessions" fill="#2e7cc2" name="sessions" />
 								<Bar dataKey="users" fill="#4db5e3" name="users" />
 								<Bar dataKey="keyEvents" fill="#9ca3af" name="keyEvents" />
 							</BarChart>
@@ -275,7 +273,7 @@ export default function GA4View() {
 								<Line
 									type="monotone"
 									dataKey="sessions"
-									stroke="#008cc9"
+									stroke="#2e7cc2"
 									strokeWidth={2}
 									dot={false}
 									name="sessions"

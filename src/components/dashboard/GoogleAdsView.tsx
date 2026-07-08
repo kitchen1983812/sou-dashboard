@@ -542,7 +542,7 @@ export default function GoogleAdsView({
 							<Bar
 								yAxisId="left"
 								dataKey="inquiryCount"
-								fill="#008cc9"
+								fill="#2e7cc2"
 								radius={[3, 3, 0, 0]}
 								barSize={28}
 							/>
