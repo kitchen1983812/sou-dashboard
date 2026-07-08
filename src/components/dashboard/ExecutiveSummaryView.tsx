@@ -190,9 +190,9 @@ function MiniKPI({
 					: "bg-white border-gray-200";
 
 	return (
-		<div className={`rounded border px-4 py-3 ${bgClass}`}>
+		<div className={`rounded-lg border px-4 py-3 ${bgClass}`}>
 			<div className="text-xs text-gray-500 font-medium mb-1">{label}</div>
-			<div className="text-2xl font-bold text-gray-900">
+			<div className="font-display font-black text-ink text-2xl tabular-nums">
 				{value.toLocaleString()}
 				{suffix && (
 					<span className="text-sm font-normal text-gray-500 ml-0.5">
@@ -582,7 +582,37 @@ export default function ExecutiveSummaryView({
 				allInquiries={inquiries}
 			/>
 
-			{/* 直近30日 KPI */}
+			{/* 年度累計 vs 前年度（まず年度マクロ） */}
+			<section>
+				<h3 className="text-base font-bold text-gray-800 mb-3">
+					年度累計（FY{String(getCurrentFY()).slice(2)}）vs 前年度
+				</h3>
+				<div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+					<MiniKPI
+						label="問い合わせ"
+						value={fyCards.totalInquiries}
+						prevValue={prevFyCards.totalInquiries}
+					/>
+					<MiniKPI
+						label="入園"
+						value={fyCards.enrollments}
+						prevValue={prevFyCards.enrollments}
+						highlight="brand"
+					/>
+					<MiniKPI
+						label="入園率"
+						value={Math.round(fyCards.enrollmentRate * 10) / 10}
+						suffix="%"
+					/>
+					<MiniKPI
+						label="辞退"
+						value={fyCards.declined}
+						prevValue={prevFyCards.declined}
+					/>
+				</div>
+			</section>
+
+			{/* 直近30日 KPI（次に直近ミクロ） */}
 			<section>
 				<h3 className="text-base font-bold text-gray-800 mb-3">直近30日 KPI</h3>
 				<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 md:gap-3">
@@ -618,36 +648,6 @@ export default function ExecutiveSummaryView({
 						value={Math.round(recentCards.unansweredRate * 10) / 10}
 						suffix="%"
 						highlight={recentCards.unansweredRate > 30 ? "danger" : undefined}
-					/>
-				</div>
-			</section>
-
-			{/* 年度累計 vs 前年度 */}
-			<section>
-				<h3 className="text-base font-bold text-gray-800 mb-3">
-					年度累計（FY{String(getCurrentFY()).slice(2)}）vs 前年度
-				</h3>
-				<div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-					<MiniKPI
-						label="問い合わせ"
-						value={fyCards.totalInquiries}
-						prevValue={prevFyCards.totalInquiries}
-					/>
-					<MiniKPI
-						label="入園"
-						value={fyCards.enrollments}
-						prevValue={prevFyCards.enrollments}
-						highlight="brand"
-					/>
-					<MiniKPI
-						label="入園率"
-						value={Math.round(fyCards.enrollmentRate * 10) / 10}
-						suffix="%"
-					/>
-					<MiniKPI
-						label="辞退"
-						value={fyCards.declined}
-						prevValue={prevFyCards.declined}
 					/>
 				</div>
 			</section>
@@ -773,7 +773,7 @@ export default function ExecutiveSummaryView({
 					<div className="bg-white shadow-sm p-4">
 						<div className="text-xs text-gray-500 mb-1">充足率</div>
 						<div className="flex items-baseline gap-2">
-							<span className="text-2xl font-bold text-gray-900">
+							<span className="font-display font-black text-ink text-2xl tabular-nums">
 								{healthScore.ownFillRate != null
 									? `${healthScore.ownFillRate.toFixed(1)}%`
 									: "-"}
@@ -812,7 +812,7 @@ export default function ExecutiveSummaryView({
 					<div className="bg-white shadow-sm p-4">
 						<div className="text-xs text-gray-500 mb-1">GBP平均評価</div>
 						<div className="flex items-baseline gap-2">
-							<span className="text-2xl font-bold text-gray-900">
+							<span className="font-display font-black text-ink text-2xl tabular-nums">
 								★
 								{healthScore.ownAvgRating != null
 									? healthScore.ownAvgRating.toFixed(2)
@@ -852,7 +852,7 @@ export default function ExecutiveSummaryView({
 					<div className="bg-white shadow-sm p-4">
 						<div className="text-xs text-gray-500 mb-1">園あたり口コミ数</div>
 						<div className="flex items-baseline gap-2">
-							<span className="text-2xl font-bold text-gray-900">
+							<span className="font-display font-black text-ink text-2xl tabular-nums">
 								{healthScore.ownDensity != null
 									? healthScore.ownDensity.toFixed(1)
 									: "-"}

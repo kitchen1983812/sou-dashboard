@@ -19,13 +19,18 @@ const EXECUTIVE_TABS: { id: TabId; label: string }[] = [
 	{ id: "marketResearch", label: "市場調査" },
 ];
 
-const INQUIRY_TABS: { id: TabId; label: string }[] = [
+// 問い合わせ分析（自社問い合わせデータの集計）
+const ANALYSIS_TABS: { id: TabId; label: string }[] = [
 	{ id: "weeklyReport", label: "週次レポート" },
 	{ id: "recent", label: "直近30日-園別" },
 	{ id: "annual", label: `FY${fyShort} 年度集計-園別` },
 	{ id: "fyMonthly", label: `FY${fyShort} 年度集計-月次別` },
 	{ id: "comparison", label: "年度比較" },
 	{ id: "report", label: "ブランド別" },
+];
+
+// 集客（広告・アクセス解析・口コミ）
+const MARKETING_TABS: { id: TabId; label: string }[] = [
 	{ id: "googleAds", label: "Google広告" },
 	{ id: "ga4", label: "GA4" },
 	{ id: "reviews", label: "Google口コミ" },
@@ -41,15 +46,29 @@ const RECRUIT_TABS: { id: TabId; label: string }[] = [
 	{ id: "recruitCost", label: "採用費分析" },
 ];
 
+// 折りたたみグループ（経営タブは常時展開のため含めない）
+const COLLAPSIBLE_GROUPS: {
+	key: string;
+	title: string;
+	tabs: { id: TabId; label: string }[];
+}[] = [
+	{ key: "analysis", title: "問い合わせ分析", tabs: ANALYSIS_TABS },
+	{ key: "marketing", title: "集客", tabs: MARKETING_TABS },
+	{ key: "ops", title: "運営", tabs: OPERATIONS_TABS },
+	{ key: "recruit", title: "採用", tabs: RECRUIT_TABS },
+];
+
 export default function TabNavigation({
 	activeTab,
 	onTabChange,
 }: TabNavigationProps) {
 	const [collapsed, setCollapsed] = useState(false);
 	const [mobileOpen, setMobileOpen] = useState(false);
-	const [inquiryOpen, setInquiryOpen] = useState(true);
-	const [opsOpen, setOpsOpen] = useState(true);
-	const [recruitOpen, setRecruitOpen] = useState(true);
+	const [openGroups, setOpenGroups] = useState<Record<string, boolean>>(() =>
+		Object.fromEntries(COLLAPSIBLE_GROUPS.map((g) => [g.key, true])),
+	);
+	const toggleGroup = (key: string) =>
+		setOpenGroups((prev) => ({ ...prev, [key]: !prev[key] }));
 
 	// モバイルメニュー選択時の自動クローズ
 	const handleMobileTabChange = (tab: TabId) => {
@@ -68,12 +87,8 @@ export default function TabNavigation({
 						activeTab={activeTab}
 						onTabChange={handleMobileTabChange}
 						onClose={() => setMobileOpen(false)}
-						inquiryOpen={inquiryOpen}
-						setInquiryOpen={setInquiryOpen}
-						opsOpen={opsOpen}
-						setOpsOpen={setOpsOpen}
-						recruitOpen={recruitOpen}
-						setRecruitOpen={setRecruitOpen}
+						openGroups={openGroups}
+						toggleGroup={toggleGroup}
 					/>
 				)}
 				<nav
@@ -114,12 +129,8 @@ export default function TabNavigation({
 					activeTab={activeTab}
 					onTabChange={handleMobileTabChange}
 					onClose={() => setMobileOpen(false)}
-					inquiryOpen={inquiryOpen}
-					setInquiryOpen={setInquiryOpen}
-					opsOpen={opsOpen}
-					setOpsOpen={setOpsOpen}
-					recruitOpen={recruitOpen}
-					setRecruitOpen={setRecruitOpen}
+					openGroups={openGroups}
+					toggleGroup={toggleGroup}
 				/>
 			)}
 			<nav
@@ -178,145 +189,82 @@ export default function TabNavigation({
 					</ul>
 				</div>
 
-				{/* 集客パート */}
-				<div className="border-t border-gray-200">
-					<button
-						onClick={() => setInquiryOpen(!inquiryOpen)}
-						className="w-full flex items-center justify-between px-4 py-2.5 text-sm font-bold text-brand-700 tracking-wider hover:bg-brand-50 border-b border-gray-100"
-					>
-						<span className="flex items-center gap-1.5">
-							<span className="w-1.5 h-4 bg-brand-500 rounded-full" />
-							集客
-						</span>
-						<svg
-							className={`w-3.5 h-3.5 transition-transform ${
-								inquiryOpen ? "" : "-rotate-90"
-							}`}
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24"
-						>
-							<path
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth={2}
-								d="M19 9l-7 7-7-7"
-							/>
-						</svg>
-					</button>
-					{inquiryOpen && (
-						<ul>
-							{INQUIRY_TABS.map((tab) => (
-								<li key={tab.id}>
-									<button
-										onClick={() => onTabChange(tab.id)}
-										className={`w-full text-left px-4 py-2 text-sm transition-colors ${
-											activeTab === tab.id
-												? "bg-brand-50 text-brand-700 border-l-[3px] border-brand-500 font-semibold"
-												: "text-gray-600 hover:bg-gray-50 hover:text-gray-900 border-l-[3px] border-transparent"
-										}`}
-									>
-										{tab.label}
-									</button>
-								</li>
-							))}
-						</ul>
-					)}
-				</div>
-
-				{/* 運営パート */}
-				<div className="border-t border-gray-200 mt-1">
-					<button
-						onClick={() => setOpsOpen(!opsOpen)}
-						className="w-full flex items-center justify-between px-4 py-2.5 text-sm font-bold text-brand-700 tracking-wider hover:bg-brand-50 border-b border-gray-100"
-					>
-						<span className="flex items-center gap-1.5">
-							<span className="w-1.5 h-4 bg-brand-500 rounded-full" />
-							運営
-						</span>
-						<svg
-							className={`w-3.5 h-3.5 transition-transform ${
-								opsOpen ? "" : "-rotate-90"
-							}`}
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24"
-						>
-							<path
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth={2}
-								d="M19 9l-7 7-7-7"
-							/>
-						</svg>
-					</button>
-					{opsOpen && (
-						<ul>
-							{OPERATIONS_TABS.map((tab) => (
-								<li key={tab.id}>
-									<button
-										onClick={() => onTabChange(tab.id)}
-										className={`w-full text-left px-4 py-2 text-sm transition-colors ${
-											activeTab === tab.id
-												? "bg-brand-50 text-brand-700 border-l-[3px] border-brand-500 font-semibold"
-												: "text-gray-600 hover:bg-gray-50 hover:text-gray-900 border-l-[3px] border-transparent"
-										}`}
-									>
-										{tab.label}
-									</button>
-								</li>
-							))}
-						</ul>
-					)}
-				</div>
-
-				{/* 採用パート */}
-				<div className="border-t border-gray-200 mt-1">
-					<button
-						onClick={() => setRecruitOpen(!recruitOpen)}
-						className="w-full flex items-center justify-between px-4 py-2.5 text-sm font-bold text-brand-700 tracking-wider hover:bg-brand-50 border-b border-gray-100"
-					>
-						<span className="flex items-center gap-1.5">
-							<span className="w-1.5 h-4 bg-brand-500 rounded-full" />
-							採用
-						</span>
-						<svg
-							className={`w-3.5 h-3.5 transition-transform ${
-								recruitOpen ? "" : "-rotate-90"
-							}`}
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24"
-						>
-							<path
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth={2}
-								d="M19 9l-7 7-7-7"
-							/>
-						</svg>
-					</button>
-					{recruitOpen && (
-						<ul>
-							{RECRUIT_TABS.map((tab) => (
-								<li key={tab.id}>
-									<button
-										onClick={() => onTabChange(tab.id)}
-										className={`w-full text-left px-4 py-2 text-sm transition-colors ${
-											activeTab === tab.id
-												? "bg-brand-50 text-brand-700 border-l-[3px] border-brand-500 font-semibold"
-												: "text-gray-600 hover:bg-gray-50 hover:text-gray-900 border-l-[3px] border-transparent"
-										}`}
-									>
-										{tab.label}
-									</button>
-								</li>
-							))}
-						</ul>
-					)}
-				</div>
+				{/* 折りたたみグループ（問い合わせ分析 / 集客 / 運営 / 採用） */}
+				{COLLAPSIBLE_GROUPS.map((g) => (
+					<SidebarSection
+						key={g.key}
+						title={g.title}
+						tabs={g.tabs}
+						isOpen={openGroups[g.key]}
+						onToggle={() => toggleGroup(g.key)}
+						activeTab={activeTab}
+						onTabChange={onTabChange}
+					/>
+				))}
 			</nav>
 		</>
+	);
+}
+
+/** デスクトップ サイドバーの折りたたみセクション */
+function SidebarSection({
+	title,
+	tabs,
+	isOpen,
+	onToggle,
+	activeTab,
+	onTabChange,
+}: {
+	title: string;
+	tabs: { id: TabId; label: string }[];
+	isOpen: boolean;
+	onToggle: () => void;
+	activeTab: TabId;
+	onTabChange: (tab: TabId) => void;
+}) {
+	return (
+		<div className="border-t border-gray-200 mt-1">
+			<button
+				onClick={onToggle}
+				className="w-full flex items-center justify-between px-4 py-2.5 text-sm font-bold text-brand-700 tracking-wider hover:bg-brand-50 border-b border-gray-100"
+			>
+				<span className="flex items-center gap-1.5">
+					<span className="w-1.5 h-4 bg-brand-500 rounded-full" />
+					{title}
+				</span>
+				<svg
+					className={`w-3.5 h-3.5 transition-transform ${isOpen ? "" : "-rotate-90"}`}
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24"
+				>
+					<path
+						strokeLinecap="round"
+						strokeLinejoin="round"
+						strokeWidth={2}
+						d="M19 9l-7 7-7-7"
+					/>
+				</svg>
+			</button>
+			{isOpen && (
+				<ul>
+					{tabs.map((tab) => (
+						<li key={tab.id}>
+							<button
+								onClick={() => onTabChange(tab.id)}
+								className={`w-full text-left px-4 py-2 text-sm transition-colors ${
+									activeTab === tab.id
+										? "bg-brand-50 text-brand-700 border-l-[3px] border-brand-500 font-semibold"
+										: "text-gray-600 hover:bg-gray-50 hover:text-gray-900 border-l-[3px] border-transparent"
+								}`}
+							>
+								{tab.label}
+							</button>
+						</li>
+					))}
+				</ul>
+			)}
+		</div>
 	);
 }
 
@@ -350,24 +298,16 @@ interface MobileDrawerProps {
 	activeTab: TabId;
 	onTabChange: (tab: TabId) => void;
 	onClose: () => void;
-	inquiryOpen: boolean;
-	setInquiryOpen: (v: boolean) => void;
-	opsOpen: boolean;
-	setOpsOpen: (v: boolean) => void;
-	recruitOpen: boolean;
-	setRecruitOpen: (v: boolean) => void;
+	openGroups: Record<string, boolean>;
+	toggleGroup: (key: string) => void;
 }
 
 function MobileDrawer({
 	activeTab,
 	onTabChange,
 	onClose,
-	inquiryOpen,
-	setInquiryOpen,
-	opsOpen,
-	setOpsOpen,
-	recruitOpen,
-	setRecruitOpen,
+	openGroups,
+	toggleGroup,
 }: MobileDrawerProps) {
 	return (
 		<div
@@ -421,35 +361,18 @@ function MobileDrawer({
 					))}
 				</ul>
 
-				{/* 集客 */}
-				<DrawerSection
-					title="集客"
-					isOpen={inquiryOpen}
-					setIsOpen={setInquiryOpen}
-					tabs={INQUIRY_TABS}
-					activeTab={activeTab}
-					onTabChange={onTabChange}
-				/>
-
-				{/* 運営 */}
-				<DrawerSection
-					title="運営"
-					isOpen={opsOpen}
-					setIsOpen={setOpsOpen}
-					tabs={OPERATIONS_TABS}
-					activeTab={activeTab}
-					onTabChange={onTabChange}
-				/>
-
-				{/* 採用 */}
-				<DrawerSection
-					title="採用"
-					isOpen={recruitOpen}
-					setIsOpen={setRecruitOpen}
-					tabs={RECRUIT_TABS}
-					activeTab={activeTab}
-					onTabChange={onTabChange}
-				/>
+				{/* 折りたたみグループ（問い合わせ分析 / 集客 / 運営 / 採用） */}
+				{COLLAPSIBLE_GROUPS.map((g) => (
+					<DrawerSection
+						key={g.key}
+						title={g.title}
+						isOpen={openGroups[g.key]}
+						setIsOpen={() => toggleGroup(g.key)}
+						tabs={g.tabs}
+						activeTab={activeTab}
+						onTabChange={onTabChange}
+					/>
+				))}
 			</nav>
 		</div>
 	);
