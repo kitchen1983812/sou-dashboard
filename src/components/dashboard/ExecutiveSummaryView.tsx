@@ -212,6 +212,39 @@ function MiniKPI({
 	);
 }
 
+/** 経営ハイライト用タイル（ブランドブルー地・白文字） */
+function HeroTile({
+	label,
+	value,
+	sub,
+	tone = "muted",
+}: {
+	label: string;
+	value: string;
+	sub: string;
+	tone?: "good" | "warn" | "muted";
+}) {
+	const subColor =
+		tone === "good"
+			? "text-sunny-500"
+			: tone === "warn"
+				? "text-coral-500"
+				: "text-brand-100";
+	return (
+		<div className="min-w-0">
+			<div className="text-[11px] text-brand-100 font-medium mb-1 truncate">
+				{label}
+			</div>
+			<div className="font-display font-black text-white text-2xl md:text-3xl leading-none tracking-wide tabular-nums">
+				{value}
+			</div>
+			<div className={`text-[11px] mt-1 font-medium ${subColor} truncate`}>
+				{sub}
+			</div>
+		</div>
+	);
+}
+
 /** ゲージバー */
 function GaugeBar({
 	label,
@@ -448,8 +481,100 @@ export default function ExecutiveSummaryView({
 		};
 	}, [occupancyData, groupCapacity, reviewsData, groupReviews]);
 
+	// 正社員比率（自社・職員データから算出）
+	const staffRate = useMemo(() => {
+		if (!staffData?.nurseries?.length) return null;
+		let total = 0;
+		let seishain = 0;
+		for (const n of staffData.nurseries) {
+			total += n.total;
+			seishain += n.seishain;
+		}
+		return total > 0 ? Math.round((seishain / total) * 1000) / 10 : null;
+	}, [staffData]);
+
+	// 経営ハイライト（トップライン: 一目で経営状況が分かる5指標）
+	const inquiryYoY = useMemo(() => {
+		const prev = prevFyCards.totalInquiries;
+		if (!prev) return null;
+		return Math.round(((fyCards.totalInquiries - prev) / prev) * 1000) / 10;
+	}, [fyCards.totalInquiries, prevFyCards.totalInquiries]);
+
 	return (
 		<div className="space-y-6">
+			{/* 経営ハイライト（トップライン） */}
+			<section
+				aria-label="経営ハイライト"
+				className="bg-brand-700 text-white rounded-xl px-4 py-4 md:px-6 md:py-5"
+			>
+				<div className="flex items-center gap-2 mb-3">
+					<span className="w-1 h-4 bg-sunny-500 rounded-full" />
+					<h3 className="font-display text-sm font-bold tracking-wide">
+						経営ハイライト（FY{String(getCurrentFY()).slice(2)}）
+					</h3>
+				</div>
+				<div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
+					<HeroTile
+						label="問い合わせ累計"
+						value={fyCards.totalInquiries.toLocaleString()}
+						sub={
+							inquiryYoY === null
+								? "前年比 —"
+								: `前年比 ${inquiryYoY >= 0 ? "+" : ""}${inquiryYoY}%`
+						}
+						tone={
+							inquiryYoY === null ? "muted" : inquiryYoY >= 0 ? "good" : "warn"
+						}
+					/>
+					<HeroTile
+						label="入園率"
+						value={`${Math.round(fyCards.enrollmentRate * 10) / 10}%`}
+						sub={`入園 ${funnel.enrolled}件`}
+						tone="muted"
+					/>
+					<HeroTile
+						label="定員充足率"
+						value={
+							healthScore.ownFillRate != null
+								? `${Math.round(healthScore.ownFillRate)}%`
+								: "—"
+						}
+						sub={`自社${occupancyData?.nurseries.length ?? 25}園`}
+						tone={
+							healthScore.ownFillRate == null
+								? "muted"
+								: healthScore.ownFillRate >= 85
+									? "good"
+									: healthScore.ownFillRate < 70
+										? "warn"
+										: "muted"
+						}
+					/>
+					<HeroTile
+						label="口コミ評価"
+						value={
+							healthScore.ownAvgRating != null
+								? healthScore.ownAvgRating.toFixed(2)
+								: "—"
+						}
+						sub={`自社${healthScore.ownNurseriesCount}園平均`}
+						tone={
+							healthScore.ownAvgRating == null
+								? "muted"
+								: healthScore.ownAvgRating >= 4.5
+									? "good"
+									: "muted"
+						}
+					/>
+					<HeroTile
+						label="正社員比率"
+						value={staffRate != null ? `${staffRate}%` : "—"}
+						sub="自社フェリーチェ"
+						tone="muted"
+					/>
+				</div>
+			</section>
+
 			{/* インサイトパネル */}
 			<InsightPanel
 				inquiries={recent}
