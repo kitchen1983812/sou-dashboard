@@ -46,7 +46,7 @@ export default function ScoreCard({
 
 	return (
 		<div
-			className={`bg-white shadow-sm relative group ${
+			className={`bg-white rounded-lg border border-gray-200 relative group ${
 				isCompact ? "px-3 py-2.5" : "p-4 sm:p-5"
 			}`}
 			onMouseEnter={() => tooltip && setShowTooltip(true)}
@@ -64,7 +64,7 @@ export default function ScoreCard({
 				</div>
 			)}
 			<p
-				className={`font-bold text-gray-900 ${
+				className={`font-display font-black text-ink ${
 					isCompact ? "text-lg mt-0.5" : "text-xl sm:text-2xl mt-1.5"
 				}`}
 			>

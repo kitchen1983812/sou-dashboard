@@ -126,12 +126,21 @@ export default function TabNavigation({
 				data-sidebar
 				className="hidden md:flex w-48 shrink-0 border-r border-gray-200 bg-white flex-col print:hidden"
 			>
-				{/* 折りたたみボタン */}
-				<div className="flex justify-end px-2 pt-2">
+				{/* ブランドヘッダー + 折りたたみボタン */}
+				<div className="flex items-center justify-between gap-2 px-3 py-3 border-b border-gray-200">
+					<div className="leading-tight">
+						<div className="font-display font-black text-brand-700 text-[15px] tracking-wide">
+							SOU キッズケア
+						</div>
+						<div className="text-[9px] tracking-[0.16em] text-brand-500 font-bold">
+							MANAGEMENT DASHBOARD
+						</div>
+					</div>
 					<button
 						onClick={() => setCollapsed(true)}
-						className="p-1 text-gray-400 hover:text-gray-700 hover:bg-gray-100 rounded"
+						className="p-1 text-gray-400 hover:text-brand-600 hover:bg-brand-50 rounded shrink-0"
 						title="メニューを閉じる"
+						aria-label="メニューを閉じる"
 					>
 						<svg
 							className="w-4 h-4"

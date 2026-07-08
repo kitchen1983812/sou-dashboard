@@ -221,12 +221,15 @@ function DashboardClientInner({
 		<div className="flex min-h-screen">
 			<TabNavigation activeTab={activeTab} onTabChange={handleTabChange} />
 
-			<div className="flex-1 overflow-auto bg-gray-50 min-w-0">
+			<div className="flex-1 overflow-auto bg-paper min-w-0">
 				<div className="p-3 md:p-5 lg:p-8 space-y-4 md:space-y-6 lg:space-y-8">
-					{/* Title */}
-					<h2 className="text-lg font-bold text-gray-800">
-						{currentTab?.title}
-					</h2>
+					{/* Title (章扉の型: コーラルのアクセントバー + Zen角ゴシック見出し) */}
+					<div className="flex items-center gap-2.5">
+						<span className="w-1 h-6 bg-coral-500 rounded-full flex-none" />
+						<h2 className="font-display text-xl font-black text-ink leading-tight tracking-wide">
+							{currentTab?.title}
+						</h2>
+					</div>
 
 					{/* Filters (集客タブのみ表示) */}
 					{!isRecruitTab && (
