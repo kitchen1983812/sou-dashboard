@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-02",
+  "exportedAt": "2026-07-14",
   "yearMonth": "202605",
   "nurseries": [
     {
@@ -418,48 +418,6 @@
         {
           "capacity": 12,
           "enrolled": 11
-        }
-      ],
-      "updatedAt": ""
-    },
-    {
-      "name": "にじのへや",
-      "rawName": "にじのへや",
-      "company": "SOUキッズケア（Arc）",
-      "brand": "フェリーチェ",
-      "category": "自社",
-      "management": "直営",
-      "form": "病児保育",
-      "yearMonth": "202605",
-      "totalCapacity": 4,
-      "totalEnrolled": 4,
-      "prevExited": 0,
-      "prevEntered": 0,
-      "fillRate": 100,
-      "ages": [
-        {
-          "capacity": 0,
-          "enrolled": 0
-        },
-        {
-          "capacity": 1,
-          "enrolled": 1
-        },
-        {
-          "capacity": 1,
-          "enrolled": 1
-        },
-        {
-          "capacity": 1,
-          "enrolled": 1
-        },
-        {
-          "capacity": 1,
-          "enrolled": 1
-        },
-        {
-          "capacity": 0,
-          "enrolled": 0
         }
       ],
       "updatedAt": ""
@@ -1464,6 +1422,48 @@
         {
           "capacity": 0,
           "enrolled": 0
+        },
+        {
+          "capacity": 0,
+          "enrolled": 0
+        }
+      ],
+      "updatedAt": ""
+    },
+    {
+      "name": "病児保育室にじのへや",
+      "rawName": "にじのへや",
+      "company": "SOUキッズケア（Arc）",
+      "brand": "フェリーチェ",
+      "category": "自社",
+      "management": "直営",
+      "form": "病児保育",
+      "yearMonth": "202605",
+      "totalCapacity": 4,
+      "totalEnrolled": 4,
+      "prevExited": 0,
+      "prevEntered": 0,
+      "fillRate": 100,
+      "ages": [
+        {
+          "capacity": 0,
+          "enrolled": 0
+        },
+        {
+          "capacity": 1,
+          "enrolled": 1
+        },
+        {
+          "capacity": 1,
+          "enrolled": 1
+        },
+        {
+          "capacity": 1,
+          "enrolled": 1
+        },
+        {
+          "capacity": 1,
+          "enrolled": 1
         },
         {
           "capacity": 0,
